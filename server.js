@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const config = require('./config/main.js');
 const app = express();
+const routes = require('./routes/authRoutes.js')
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
