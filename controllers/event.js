@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require("../models/Event");
 
 module.exports = {
   createEvent: function(req, res) {
