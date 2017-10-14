@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const scraperController = require("../../controllers/scraperController");
 
-
 router.route("/")
   .get(scraperController.findAll)
   .post(scraperController.create);
