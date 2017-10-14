@@ -1,8 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const config = require('./config/main.js');
 const app = express();
-const PORT = process.env.PORT || 3001;
+const routes = require('./routes/authRoutes.js');
+
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,19 +21,20 @@ app.use(function(req, res, next) {
   next();
 });
 
+// Here are all of our routes on this one tiny line
+routes(app)
 
-app.use(routes);// Set up promises with mongoose
-
+// Set up promises with mongoose
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/eventsdb",
+  config.db,
   {
     useMongoClient: true
   }
 );
 
 // Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+app.listen(config.port, function() {
+  console.log(`🌎  ==> API Server now listening on PORT ${config.port}!`);
 });
