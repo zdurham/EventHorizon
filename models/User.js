@@ -21,6 +21,10 @@ const UserSchema = new Schema({
     firstName: { type: String },
     lastName: { type: String }
   },
+  events : [{
+    type: Schema.Types.ObjectId,
+    ref: 'Event'
+  }],
   role: {
     type: String,
     enum: ['User', 'Advertiser', 'Moderator'],
