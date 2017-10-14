@@ -89,9 +89,9 @@ exports.register = function (req, res, next) {
   });
 };
 
-//= =======================================
+//=======================================
 // Authorization Middleware
-//= =======================================
+//=======================================
 
 // Role authorization check
 exports.roleAuthorization = function (requiredRole) {
