@@ -1,0 +1,23 @@
+.top-bar {
+    color: #841983;
+    text-align: center;
+}
+
+a {
+    color: #A4d555;
+}
+
+a:hover {
+    color: #841983; 
+}
+
+
+.button  {
+    background-color: #A4d555;
+    
+}
+
+.button:hover {
+    background-color: #841983; 
+}
+
