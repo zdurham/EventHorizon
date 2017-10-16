@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 
 const About = () =>
   <div>
-    <h4></h4>
     <div className="about">
       <div className="row">
         <div className="large-12 columns">
@@ -14,7 +13,7 @@ const About = () =>
     <div className="info">
       <div className="row">
         <div className="large-12 columns">
-          <h4></h4>
+          <h4>Event</h4>
         </div>
       </div>
     </div>
