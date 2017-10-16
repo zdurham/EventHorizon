@@ -19,7 +19,11 @@ const userEventSchema = new Schema({
   link: { type: String },
   petFriendly: { type: Boolean },
   kidFriendly: { type: Boolean},
-  user: [{
+  attendingList: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  upvotedList: [{
     type: Schema.Types.ObjectId,
     ref: 'User'
   }]

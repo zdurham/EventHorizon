@@ -43,7 +43,7 @@
 }
 
 .login-box-social-section {
-  background: url("../img/bookstack.png");
+  /*background: url("../img/bookstack.png");*/
   background-size: cover;
   background-position: center;
 }
