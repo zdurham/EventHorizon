@@ -19,6 +19,7 @@ class LandingPage extends Component {
 
               </div>
             </div>
+
         </div>
 
         <div className="info">
