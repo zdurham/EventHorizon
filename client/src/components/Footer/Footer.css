@@ -1,13 +1,14 @@
 footer {
   position: fixed;
   width: 100%;
+  background-color: #EEEEEE;
   left: 0;
   bottom: 0;
-  min-height: 200px;
   padding: 20px 20px 40px;
 }
 
 footer h5 {
+  color: #841983;
   padding-top: 20px;
 }
 

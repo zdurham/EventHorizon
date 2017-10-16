@@ -1,9 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 
- const About = () =>
-
-  <div className="grid-x">
-    <h4></h4>
+const About = () =>
+  <div>
     <div className="about">
       <div className="row">
         <div className="large-12 columns">
@@ -15,7 +13,7 @@ import React, { Component } from "react";
     <div className="info">
       <div className="row">
         <div className="large-12 columns">
-          <h4></h4>
+          <h4>Event</h4>
         </div>
       </div>
     </div>
