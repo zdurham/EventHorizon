@@ -4,14 +4,13 @@ import "./App.css"
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import About from "./pages/About";
-import Calendar from "./pages/Calendar";
 
 const App = () =>
   <Router>
     <div>
       <Nav />
       <Switch>
-        <Route exact path="/about" component={About} />
+        <Route exact path="/" component={About}/>
       </Switch>
       <Footer />
     </div>

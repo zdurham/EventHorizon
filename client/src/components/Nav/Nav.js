@@ -20,7 +20,7 @@ const Nav = () =>
       </div>
       <div className="top-bar-right">
         <ul className="menu">
-          <li><a className="button" href="/login">Log In</a></li>
+          <li><a className="button" dataRevealId="LogInModal" href="#">Log In</a></li>
         </ul>
       </div>
     </div>
