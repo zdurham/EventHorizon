@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import BKVid from "../../components/BKVid";
 
-class LandingPage extends Component {
+class About extends Component {
 
   render() {
 
