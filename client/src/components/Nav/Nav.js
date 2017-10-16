@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import './Nav.css';
 
 const Nav = () =>
@@ -16,7 +15,7 @@ const Nav = () =>
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/events">Events</a></li>
-          <li><a href="/advertise">Affiliates</a></li>
+          <li><a href="/advertise">Advertise</a></li>
         </ul>
       </div>
       <div className="top-bar-right">
