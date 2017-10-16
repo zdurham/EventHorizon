@@ -5,7 +5,7 @@ const About = () =>
     <div className="about">
       <div className="row">
         <div className="large-12 columns">
-          <h3> About <a name="about"> <b> OverReacted Calendars </b></a></h3>
+          <h3> About <a name="about"> Over-Reacted Events  </a></h3>
           Happy Outings, Start Here!
         </div>
       </div>
@@ -17,6 +17,8 @@ const About = () =>
         </div>
       </div>
     </div>
-  </div>;
+  </div>
+
+
 
 export default About;
