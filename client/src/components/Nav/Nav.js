@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './Nav.css';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import Modal from 'react-modal';
 import LogInModal from '../LogInModal';
 
@@ -14,7 +15,7 @@ const customStyles = {
   }
 };
 
-class Nav extends Component {
+class navbarInstance extends Component {
 
   constructor(props) {
     super(props);
@@ -49,41 +50,39 @@ class Nav extends Component {
 
   render() {
     return (
-      <header>
-
-        <div className="top-bar">
-          <div className="top-bar-left">
-            <ul className="dropdown menu" data-dropdown-menu>
-              <li className="menu-text">RTP Community Calendar</li>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/events">Events</a></li>
-              <li><a href="/advertise">Advertise</a></li>
-            </ul>
-          </div>
-          <div className="top-bar-right">
-            <ul className="menu">
-              <li><button onClick={this.openModal}>Log In</button></li>
-            </ul>
-          </div>
-        </div>
+      <Navbar collapseOnSelect>
+        <Navbar.Header>
+          <Navbar.Brand>
+            <a href="/">RTP Community Calendar</a>
+          </Navbar.Brand>
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <Nav>
+            <NavItem eventKey={1} href="/">Home</NavItem>
+            <NavItem eventKey={2} href="/about">About</NavItem>
+            <NavItem eventKey={3} href="/events">Events</NavItem>
+            <NavItem eventKey={4} href="/advertise">Advertise</NavItem>
+          </Nav>
+          <Nav pullRight>
+            <NavItem eventKey={1}><button onClick={this.openModal}>Log In</button></NavItem>
+          </Nav>
+        </Navbar.Collapse>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style={customStyles}
           contentLabel="Example Modal"
         >
-        
           <LogInModal
             username={this.state.username}
             password={this.state.password}
             handleInputChange={this.handleInputChange}
           />
-
         </Modal>
-      </header>
+      </Navbar>
     )
   }
 
 }
-export default Nav;
+export default navbarInstance;
