@@ -4,26 +4,22 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const config = require('./config/main.js');
 const app = express();
-const passport = require('passport');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const routes = require('./routes')
+const flash = require('connect-flash')
 
 /// ------------------------------------------ 
 // BODY PARSER
 // Configure body parser for AJAX requests
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({type: 'application/vnd.api+json' }))
 ///
 
-/// ------------------------------------------ 
-// PASSPORT CODE
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
-///
 
 /// ------------------------------------------ 
 // MONGOOSE CODE
@@ -36,6 +32,20 @@ mongoose.connect(
     useMongoClient: true
   }
 );
+///
+
+/// ------------------------------------------ 
+// SESSION CODE
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: config.secret, // session secret
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  cookie: { maxAge: 60000 }
+}));
+///
+
+
 
 
 /// ------------------------------------------
@@ -52,9 +62,8 @@ app.use(express.static("client/build"));
 
 /// ------------------------------------------
 // ROUTES
-app.use(routes)
-// code below is going to be used, or at least a version of it
-// require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./routes/authRoutes')(app)
+
 ///
 
 
