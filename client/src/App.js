@@ -5,6 +5,7 @@ import "./App.css"
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import About from "./pages/About";
+import Events from "./pages/Events";
 
 const App = () =>
   <Router>
