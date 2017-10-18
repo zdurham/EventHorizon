@@ -5,3 +5,5 @@ const authRequests = {
     return axios.post('/register', data)
   }
 }
+
+export default authRequests
