@@ -1,6 +1,7 @@
 // Dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
+var cors = require('cors')
 const mongoose = require("mongoose");
 const config = require('./config/main.js');
 const app = express();
@@ -36,6 +37,8 @@ mongoose.connect(
 
 /// ------------------------------------------ 
 // SESSION CODE
+// Add cookieParser for auth
+app.use(cookieParser()); // read cookies (needed for auth)
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -45,14 +48,23 @@ app.use(session({
 }));
 ///
 
+/// ------------------------------------------
+// PERSISTENT SESSIONS
+// Make user info available on all templates
+app.use((req, res, next) => {
+  res.locals.currentUser = req.session.userId
+  next();
+})
+///
 
-
+/// ------------------------------------------ 
+// CORS CODE
+app.use(cors())
+///
 
 /// ------------------------------------------
 // Morgan Logger code to log requests
 app.use(morgan('dev')); // log every request to the console
-// Add cookieParser for auth
-app.use(cookieParser()); // read cookies (needed for auth)
 ///
 
 /// ------------------------------------------

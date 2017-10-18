@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const _ = require('lodash')
 
 const Schema = mongoose.Schema;
 
@@ -18,6 +18,10 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  isAdvertiser: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -59,6 +63,15 @@ UserSchema.pre('save', function(next) {
     user.password = hash;
     next();
   })
+})
+
+UserSchema.method('sanitize', function() {
+  let omittedFields = [
+    'password',
+    'email',
+    '__v'
+  ]
+  return _.omit(this.toObject(), omittedFields)
 })
 
 module.exports = mongoose.model('User', UserSchema);

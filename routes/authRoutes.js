@@ -20,8 +20,10 @@ module.exports = (app) => {
           return next(err)
         }
         else {
-          req.session.userId = user._id;
-          return res.redirect('/dashboard')
+          req.session.userId = user._id
+          res.status(201).json({
+            user: user.sanitize()
+          })
         }
       })
     }
@@ -75,7 +77,7 @@ module.exports = (app) => {
         else {
           // Set the session ID as the user's unique id
           req.session.userId = user._id
-          res.send('This is working?')
+          res.status(201).json(user.sanitize())
         }
       })
     }
