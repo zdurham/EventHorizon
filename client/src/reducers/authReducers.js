@@ -1,8 +1,9 @@
-// reducers
+// AUTHENTICATION REDUCERS
 
-function getUser(state = {}, action) {
+// If triggered, this reducer will authenticate the user
+function authUser(state = {}, action) {
   switch(action.type) {
-    case "GET_USER":
+    case "AUTH_USER":
       return Object.assign({}, state, {
         user: action.payload,
         isAuthenticated: true
@@ -10,6 +11,19 @@ function getUser(state = {}, action) {
     default:
       return state
   }    
+}
+
+// If triggered, this reducer will remove user authentication and remove user information from the store
+function removeAuthUser(state ={}, action) {
+  switch(action.type) {
+    case "REMOVE_AUTH":
+      return Object.assign({}, state, {
+        user: action.payload,
+        isAuthenticated: false
+      })
+    default:
+      return state
+  }
 }
 
 export default getUser;

@@ -5,7 +5,9 @@ import "./App.css"
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import About from "./pages/About";
-import Register from './components/Register'
+import Register from './components/Register';
+import Login from './components/Login';
+import Logout from './components/Logout';
 
 // These are necessary for Redux
 import { Provider } from 'react-redux'
@@ -19,6 +21,8 @@ const App = () =>
         <Switch>
           <Route exact path="/" component={About}/>
           <Route exact path='/register' component={Register} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/logout' component={Logout} />
         </Switch>
         {/* <Footer /> */}
       </div>

@@ -15,4 +15,4 @@ export const setCookie = (name, value, options = {}) =>
 export const getCookie = name => cookies.get(name);
 
 // name = name of the cookie we want to get. This removes the cookie
-export const deleteCookie = name => cookies.remove(name);
+export const removeCookie = name => cookies.remove(name);

@@ -7,7 +7,7 @@ const reqLogin = require('../middleware/reqLogin')
 
 module.exports = (app) => {
 
-  // Post Login
+  // Login
   app.post('/login', (req, res, next) => {
     // Check to see if both inputs were filled out
     if (req.body.email && req.body.password) {
@@ -21,9 +21,11 @@ module.exports = (app) => {
         }
         else {
           req.session.userId = user._id
-          res.status(201).json({
-            user: user.sanitize()
-          })
+          // Send user information to the client side in a JSON object if successful
+          // Sanitize is a method in the user schema
+          res.status(201).json(
+            user.sanitize()
+          )
         }
       })
     }
@@ -36,20 +38,20 @@ module.exports = (app) => {
   })
 
   // Logout
-  app.get('/logout', (req, res, next) => {
+  app.post('/logout', (req, res, next) => {
     if (req.session) {
       req.session.destroy((err) => {
         if (err) {
           return next(err)
         }
         else {
-          return res.redirect('/')
+          res.end()
         }
       })
     }
   })
 
-  // Post registration request
+  // Registration
   app.post('/register', (req, res, next) => {
 
     // First check to make sure all fields were filled out
@@ -77,7 +79,11 @@ module.exports = (app) => {
         else {
           // Set the session ID as the user's unique id
           req.session.userId = user._id
-          res.status(201).json(user.sanitize())
+          // Send user information to the client side in a JSON object if successful
+          // Sanitize is a method in the user schema
+          res.status(201).json(
+            user.sanitize()
+          )
         }
       })
     }
@@ -87,17 +93,5 @@ module.exports = (app) => {
       err.status = 400;
       return next(err);
     }
-  })
-
-  app.get('/dashboard', reqLogin, (req, res, next) => {
-    User.findById(req.session.userId).populate({path: 'articles', populate: {path: 'notes'}}).exec((err, user) => {
-      if (err) {
-        return next(err)
-      }
-      else {
-        console.log('USER', user)
-        return res.render('dashboard', {profile: user, articles: user.articles, notes: user.articles.notes})
-      }
-    }) 
   })
 }
