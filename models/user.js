@@ -19,12 +19,16 @@ const UserSchema = new Schema({
     firstName: { type: String },
     lastName: { type: String }
   },
-  age: { 
+  age: {
     type: Number
   },
   sex: {
     type: String
-  }
+  },
+  createdEvents: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Event'
+  }]
 })
 
 // Hashes the password before being saved to the database
