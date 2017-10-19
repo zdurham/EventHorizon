@@ -61,7 +61,7 @@ class navbarInstance extends Component {
           <Nav>
             <NavItem eventKey={1} href="/">Home</NavItem>
             <NavItem eventKey={2} href="/about">About</NavItem>
-            <NavItem eventKey={3} href="/events">Events</NavItem>
+            <NavItem eventKey={3} href="/Events">Events</NavItem>
             <NavItem eventKey={4} href="/advertise">Advertise</NavItem>
           </Nav>
           <Nav pullRight>

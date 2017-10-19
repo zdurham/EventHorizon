@@ -22,7 +22,21 @@ const UserSchema = new Schema({
   isAdvertiser: {
     type: Boolean,
     default: false
-  }
+  },
+  profile: {
+    firstName: { type: String },
+    lastName: { type: String }
+  },
+  age: {
+    type: Number
+  },
+  sex: {
+    type: String
+  },
+  createdEvents: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Event'
+  }]
 })
 
 UserSchema.statics.authenticate = (email, password, callback) => {
@@ -78,3 +92,4 @@ UserSchema.method('sanitize', function() {
 let User = mongoose.model("User", UserSchema)
 
 module.exports = User
+

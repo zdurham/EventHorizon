@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout';
+import Events from "./pages/Events";
 
 // These are necessary for Redux
 import { Provider } from 'react-redux'

@@ -2,7 +2,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userEventSchema = new Schema({
+const EventSchema = new Schema({
+  createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
   name: { type: String, required: true },
   genre: { type: String, required: true },
   description: { type: String },
@@ -22,13 +23,98 @@ const userEventSchema = new Schema({
   attendingList: [{
     type: Schema.Types.ObjectId,
     ref: 'User'
-  }],
-  upvotedList: [{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
   }]
 });
 
-const UserEvent = mongoose.model("UserEvent", userEventSchema);
 
-module.exports = UserEvent;
+//All of this below is related to the upvoting/downvoting stuff
+
+  EventSchema.add({
+    vote: {
+      positive: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+      negative: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+    }
+  });
+
+  EventSchema.methods.upvote = function upvote(user, fn) {
+    // Reset vote if existed
+    this.vote.negative.pull(user);
+
+    // Upvote
+    this.vote.positive.addToSet(user);
+
+    // If callback fn, save and return
+    if (2 === arguments.length) {
+      this.save(fn);
+    };
+  };
+
+  EventSchema.methods.downvote = function downvote(user, fn) {
+    // Reset vote if existed
+    this.vote.positive.pull(user);
+
+    // Downvote
+    this.vote.negative.addToSet(user);
+
+    // If callback fn, save and return
+    if (2 === arguments.length) {
+      this.save(fn);
+    };
+  };
+
+  EventSchema.methods.unvote = function unvote(user, fn) {
+    this.vote.negative.pull(user);
+    this.vote.positive.pull(user);
+
+    // If callback fn, save and return
+    if (2 === arguments.length) {
+      this.save(fn);
+    };
+  }
+
+  EventSchema.methods.upvoted = function upvoted(user) {
+    if (user._id) {
+      return schema.methods.upvoted.call(this, user._id);
+    };
+
+    return !!~this.vote.positive.indexOf(user);
+  };
+
+  EventSchema.methods.downvoted = function downvoted(user) {
+    if (user._id) {
+      return schema.methods.downvoted.call(this, user._id);
+    };
+
+    return !!~this.vote.negative.indexOf(user);
+  };
+
+  EventSchema.methods.voted = function voted(user) {
+    if (user._id) {
+      return schema.methods.voted.call(this, user._id);
+    };
+
+    return schema.methods.upvoted(user) || schema.methods.downvoted(user);
+  }
+
+  EventSchema.virtual('upvotes').get(function upvotes() {
+    return this.vote.positive.length;
+  });
+
+  EventSchema.virtual('downvotes').get(function downvotes() {
+    return this.vote.negative.length;
+  });
+
+  EventSchema.virtual('votes').get(function votes() {
+    var positives = this.vote.positive;
+    var negatives = this.vote.negative;
+    return [].concat(positives).concat(negatives).length;
+  });
+
+  EventSchema.virtual('voteScore').get(function voteScore() {
+    return this.upvotes - this.downvotes;
+  });
+
+
+const Event = mongoose.model("Event", EventSchema);
+
+module.exports = Event;
