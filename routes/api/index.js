@@ -1,9 +1,11 @@
 const router = require("express").Router();
 const authRoutes = require("./authRoutes");
-const userEventRoutes = require("./eventRoutes");
+const eventRoutes = require("./eventRoutes");
+const userRoutes = require("./userRoutes");
 
 // Mounting each kind of route on url paramater paths
 router.use("/auth", authRoutes);
-router.use("/event", userEventRoutes);
+router.use("/event", eventRoutes);
+router.use('/user', userRoutes);
 
 module.exports = router;
