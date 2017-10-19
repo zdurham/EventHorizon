@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const _ = require('lodash')
 
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+  username: {
+    type: String,
+    unique: true
+  },
   email: {
     type: String,
     lowercase: true,
@@ -14,6 +18,10 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  isAdvertiser: {
+    type: Boolean,
+    default: false
   },
   profile: {
     firstName: { type: String },
@@ -31,31 +39,57 @@ const UserSchema = new Schema({
   }]
 })
 
-// Hashes the password before being saved to the database
-UserSchema.pre('save', function (next) {
-  const user = this,
-    SALT_FACTOR = 5;
+UserSchema.statics.authenticate = (email, password, callback) => {
+  // Find email to match to input email
+  User.findOne({ email: email })
+    .exec((err, user) => {
+      // If err send err
+      if (err) {
+        return callback(err)
+      }
+      // If no user, send User not found err
+      else if (!user) {
+        var err = new Error('User not found')
+        err.status = 401
+        return callback(err)
+      }
+      // If user is found, bcrypt takes the password and checks using bcrypt's compare method
+      bcrypt.compare(password, user.password, (err, result) => {
+        // if result is true (match) then return user info
+        if (result === true) {
+          return callback(null, user);
+        }
+        // otherwise, do not return user info
+        else {
+          return callback();
+        }
+      })
+    })
+}
 
-  if (!user.isModified('password')) return next();
+// This method hashes the password before saving it to Mongo
+UserSchema.pre('save', function(next) {
+  const user = this;
+  bcrypt.hash(user.password, 10, function(err, hash) {
+    if (err) {
+      return next(err)
+    }
+    user.password = hash;
+    next();
+  })
+})
 
-  bcrypt.genSalt(SALT_FACTOR, (err, salt) => {
-    if (err) return next(err);
+UserSchema.method('sanitize', function() {
+  let omittedFields = [
+    'password',
+    'email',
+    '__v'
+  ]
+  return _.omit(this.toObject(), omittedFields)
+})
 
-    bcrypt.hash(user.password, salt, null, (err, hash) => {
-      if (err) return next(err);
-      user.password = hash;
-      next();
-    });
-  });
-});
 
-// Method to compare password for login
-UserSchema.methods.comparePassword = function (candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-    if (err) { return cb(err); }
+let User = mongoose.model("User", UserSchema)
 
-    cb(null, isMatch);
-  });
-};
+module.exports = User
 
-module.exports = mongoose.model('User', UserSchema);
