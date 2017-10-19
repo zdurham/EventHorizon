@@ -29,12 +29,12 @@ export default {
     return axios.delete("/api/event/" + id);
   },
 
-  //Gets the info for a single event.
+  //Gets the info for a single event. Pass in event ID.
   getSingleEvent: function(id) {
     return axios.get("/api/event/" + id);
   },
 
-  //This call allows you to get all the events posted by a single user.
+  //This call allows you to get all the events posted by a single user. Pass in user ID.
   findAllByUser: function(id) {
     return axios.get("/api/event/find/" + id);
   }
