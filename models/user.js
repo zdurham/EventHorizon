@@ -74,4 +74,7 @@ UserSchema.method('sanitize', function() {
   return _.omit(this.toObject(), omittedFields)
 })
 
-module.exports = mongoose.model('User', UserSchema);
+
+let User = mongoose.model("User", UserSchema)
+
+module.exports = User

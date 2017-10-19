@@ -40,6 +40,7 @@ mongoose.connect(
 // Add cookieParser for auth
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(session({
+  name: 'user_session',
   resave: true,
   saveUninitialized: true,
   secret: config.secret, // session secret

@@ -6,10 +6,6 @@ import { logoutUser } from '../actions/authActions'
 import { connect } from 'react-redux' 
 
 class Logout extends React.Component {
-  constructor(props) {
-    super(props)
-
-  }
   
   onSubmit = e => {
     this.props.logoutUser()
@@ -27,8 +23,8 @@ class Logout extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   logoutUser() {
-    dispatch(logoutUser)
+    dispatch(logoutUser())
   }
 })
 
-export default connect(null, logoutUser)(Logout)
+export default connect(null, { logoutUser })(Logout)

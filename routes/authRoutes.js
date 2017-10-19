@@ -1,5 +1,5 @@
 // Requiring models
-const User = require('../models/user')
+const User = require('../models/User')
 // Requiring middleware
 const isLoggedIn = require('../middleware/authentication.js')
 const reqLogin = require('../middleware/reqLogin')
@@ -23,7 +23,7 @@ module.exports = (app) => {
           req.session.userId = user._id
           // Send user information to the client side in a JSON object if successful
           // Sanitize is a method in the user schema
-          res.status(201).json(
+          res.status(200).json(
             user.sanitize()
           )
         }
@@ -45,7 +45,7 @@ module.exports = (app) => {
           return next(err)
         }
         else {
-          res.end()
+          res.send(console.log('session destroyed'))
         }
       })
     }
@@ -81,7 +81,7 @@ module.exports = (app) => {
           req.session.userId = user._id
           // Send user information to the client side in a JSON object if successful
           // Sanitize is a method in the user schema
-          res.status(201).json(
+          res.status(200).json(
             user.sanitize()
           )
         }
