@@ -1,4 +1,5 @@
-import { setCookie, removeCookie } from '../utils/cookies'
+import { setCookie, removeCookie, getCookie } from '../utils/cookies'
+import { getStorage } from '../utils/localStorage'
 import authRequests from '../utils/api/authRequests'
 
 // ACTION HANDLERS
@@ -17,44 +18,64 @@ function removeAuthUserAction() {
   }
 }
 
+function getUser(data) {
+  return {
+    type: 'GET_USER',
+    payload: data
+  }
+}
+
 /// ------------------------------------
 // ACTIONS
 
 // Registration Action
-export function registerUser(userData) {
+export const registerUser = (userData) => {
   return dispatch => {
     // Using an axios post request function from the utils folder 
     authRequests.register(userData)
     .then(res => {
-      // set a cookie in the browser for storage
-      setCookie('user', res.data)
+      // set data in localStorage
+      localStorage.setItem('user', JSON.stringify(res.data))
       dispatch(authUserAction(res.data))
     })
   }
 }
 
 // Login Action
-export function loginUser(userData) {
+export const loginUser = (userData) => {
   return dispatch => {
     // Using an axios post request function from the utils folder
     authRequests.login(userData)
     .then(res => {
-      // set a cookie in the browser for storage
-      setCookie('user', res.data)
+      // data in localStorage
+      localStorage.setItem('user', JSON.stringify(res.data))
       dispatch(authUserAction(res.data))
     }) 
   }
 }
 
 // Logout Action
-export function logoutUser() {
+export const logoutUser = () => {
   return dispatch => {
     authRequests.logout()
     .then(res => {
-      removeCookie('user')
+      localStorage.removeItem('user')
       dispatch(removeAuthUserAction())
     })
   }
-  
 }
+
+// Get User Action
+export const getAuthUser = () => {
+  return dispatch => {
+    let user = JSON.parse(getStorage('user'))
+    dispatch(getUser(user))
+  }
+  // try {
+  //   const response = await get(dispatch, GET_AUTHENTICATED_USER, `${AUTH_ENDPOINT_BASE}/profile`, true);
+  //   return Promise.resolve(response);
+  // } catch (err) {
+  //   await handleError(dispatch, err, GET_AUTHENTICATED_USER);
+  // }
+};
 ///

@@ -9,15 +9,17 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Events from "./pages/Events";
+import Dashboard from './pages/Dashboard';
+import Authenticate from './components/Authenticate'
+
 import Event from "./components/Event";
+
 
 // These are necessary for Redux
 import { Provider } from 'react-redux'
 import store from './store'
 
 const App = () =>
-  </Router>;
-
   <Provider store={store}>
     <Router>
       <div>
@@ -27,6 +29,7 @@ const App = () =>
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/logout' component={Logout} />
+          <Route exact path='/dashboard' component={Authenticate(Dashboard)} />
           <Route exact path="/events" component={Events}/>
         </Switch>
         {/* <Footer /> */}
