@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import About from "./pages/About";
 import Events from "./pages/Events";
+import Event from "./components/Event";
 
 const App = () =>
   <Router>
@@ -13,6 +14,7 @@ const App = () =>
       <Nav />
       <Switch>
         <Route exact path="/" component={About}/>
+        <Route exact path="/events" component={Events}/>
       </Switch>
       {/* <Footer /> */}
     </div>
