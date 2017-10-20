@@ -7,7 +7,6 @@ export default (ComposedComponent) => {
   class Authenticate extends React.Component {
 
     componentDidMount = () => {
-      // this.props.getAuthUser();
       this.checkAuth(this.props.authenticated);
     }
 
