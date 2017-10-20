@@ -4,6 +4,8 @@ const User = require('../models/User')
 const isLoggedIn = require('../middleware/authentication.js')
 const reqLogin = require('../middleware/reqLogin')
 
+// TODO:
+// Refactor methods and put them into a separate auth file. Do this after the project is complete. Readability < Finished Product
 
 module.exports = (app) => {
 
@@ -45,7 +47,8 @@ module.exports = (app) => {
           return next(err)
         }
         else {
-          res.send(console.log('session destroyed'))
+          res.clearCookie('user_session', { path: '/' })
+          res.send(console.log('User logged out'))
         }
       })
     }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { loginUser } from '../actions/authActions'
 import { connect } from 'react-redux' 
+import { BrowserRouter as Link } from 'react-router-dom'
 
 class Login extends React.Component {
   constructor(props) {
@@ -23,28 +24,34 @@ class Login extends React.Component {
       password: this.state.password
     })
   }
- 
+
+  dash = () => {
+    return this.props.history.push('/dashboard');
+  } 
   render() {
     return(
-      <form onSubmit={this.onSubmit}>
-        <h1>Login</h1>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          value={this.state.email}
-          onChange={this.onChange}
-          type='text'
-        />
-        <label htmlFor='password'>Password</label>
-        <input 
-          name='password'
-          value={this.state.password}
-          onChange={this.onChange}
-          type='password'
-        />
-        <button>Login
-        </button>
-      </form>
+      <div>
+        <form onSubmit={this.onSubmit}>
+          <h1>Login</h1>
+          <label htmlFor='email'>Email</label>
+          <input
+            name='email'
+            value={this.state.email}
+            onChange={this.onChange}
+            type='text'
+          />
+          <label htmlFor='password'>Password</label>
+          <input 
+            name='password'
+            value={this.state.password}
+            onChange={this.onChange}
+            type='password'
+          />
+          <button>Login
+          </button>
+        </form>
+        <button onClick={this.dash} >Dashboard</button>
+      </div>
     )
   }
 

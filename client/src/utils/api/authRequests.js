@@ -14,6 +14,10 @@ const authRequests = {
   // Logout request
   logout(data) {
     return axios.post('/logout', data)
+  },
+
+  getUser(data) {
+    return axios.post('/user', data)
   }
 }
 
