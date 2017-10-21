@@ -4,6 +4,7 @@ import JoinBtn from "../../components/JoinBtn";
 import Carousel from "../../components/Carousel";
 import { Container, Row, Col, Jumbotron, Button } from 'reactstrap';
 import Ionicon from 'react-ionicons'
+import Footer from "../../components/Footer";
 
 class About extends Component {
 
@@ -40,8 +41,10 @@ class About extends Component {
         <Row>
           <Col>
             <JoinBtn />
+            <hr />
           </Col>
         </Row>
+        <Footer />
       </Container>
       </div>
     )
