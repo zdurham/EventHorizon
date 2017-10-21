@@ -3,10 +3,6 @@
     text-align: center;
 }
 
-a:hover {
-    color: #841983;
-}
-
-.button:hover {
+button:hover {
     background-color: #841983;
 }
