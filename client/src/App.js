@@ -12,7 +12,6 @@ import Events from "./pages/Events";
 import Dashboard from './pages/Dashboard';
 import Authenticate from './components/Authenticate'
 
-import Event from "./components/Event";
 
 
 // These are necessary for Redux

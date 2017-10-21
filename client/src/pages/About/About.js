@@ -10,21 +10,18 @@ class About extends Component {
 
   render() {
 
-    return (
-      <div>
-      <Row className="carousel">
-        <Col lg="12">
-      <Carousel />
-        </Col>
-      </Row>
+    return (   
       <Container>
           <BKVid />
           <hr />
+          <div className= "carousel">
+           <Carousel />
+           </div>
         <Row className="infoBar" id="info">
           <Col xs="6" sm="4">
           <h3>Post</h3>
           <Ionicon icon="ion-android-calendar" fontSize="35px"></Ionicon>
-          <p> Found an fun event?  Please Share It! </p>
+          <p> Do you have a fun event?  Please Share It! </p>
           </Col>
           <Col xs="6" sm="4">
           <h3>Vote</h3>
@@ -46,7 +43,6 @@ class About extends Component {
         </Row>
         <Footer />
       </Container>
-      </div>
     )
   }
 }
