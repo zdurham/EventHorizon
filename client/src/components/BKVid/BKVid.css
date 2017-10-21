@@ -1,7 +1,7 @@
 /*Testing Backgroud Video Capability*/
 .heropanel--video {
     font-family:sans-serif;
-    min-height:500px;
+    /*min-height:500px;*/
 }
 
 @keyframes gm-slidein {
@@ -24,7 +24,6 @@
     -o-animation:gm-slidein 3s 1;
     -webkit-animation:gm-slidein 3s 1;
     animation:gm-slidein 3s 1;
-    border-bottom:1px solid #FFF;
     margin:0 auto;
     max-width:50%;
     padding:4em 0 2em;

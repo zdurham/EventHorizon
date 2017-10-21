@@ -1,6 +1,7 @@
-import { setCookie, removeCookie, getCookie } from '../utils/cookies'
 import { getStorage } from '../utils/localStorage'
 import authRequests from '../utils/api/authRequests'
+{/*import { setCookie, removeCookie, getCookie } from '../utils/cookies'*/}
+
 
 // ACTION HANDLERS
 // authenticates the user. Used for both register and login

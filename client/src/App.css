@@ -6,3 +6,19 @@ body {
 hr {
   margin: 10px 0;
 }
+
+.carousel {
+  width: 100%;
+  text-align:center;
+  margin:0 auto;
+}
+
+#info {
+  text-align: center;
+}
+
+.indexBar {
+    border-bottom:10px solid grey;
+    margin:0 auto;
+    text-align: center;
+}

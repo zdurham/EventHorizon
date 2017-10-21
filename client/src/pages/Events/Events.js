@@ -1,19 +1,27 @@
 import React, { Component } from "react";
-import Event from "../../components/Event";
+import DateCard from "../../components/DateCard";
+import TopEvents from "../../components/TopEvents";
+import { Container, Row, Col } from 'reactstrap';
 
 class Events extends Component {
 
   render() {
 
     return (
-
-<div className="container">
-    <div className="row">
-        <div className="col-sm-8">
-              <Event />
-        </div>
-    </div>
-</div>
+        <Container>
+        
+            <Row>
+                <Col sm="12" md={{ size: 8, offset: 2 }}>
+                    <DateCard />
+                    <DateCard />
+                    <DateCard />
+                    <DateCard />
+                </Col>
+                <Col lg="auto">
+                    <TopEvents />
+                </Col>
+            </Row>
+        </Container>
     )
   }
 }

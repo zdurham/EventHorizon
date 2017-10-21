@@ -1,31 +1,24 @@
 import React, { Component } from "react";
 import './Nav.css';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import Modal from 'react-modal';
-import LogInModal from '../LogInModal';
+import { Collapse, Modal, ModalFooter, ModalHeader, ModalBody, ModalFooterNavbar, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
+import LogInBtn from '../LogInBtn';
 
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
 
 class navbarInstance extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
-      modalIsOpen: false,
-      username: '',
-      password: ''
-    }
-
+      isOpen: false,
+      modal: false
+    };
+      this.toggle = this.toggle.bind(this);
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen,
+      modal: !this.state.modal
+    });
   }
 
   handleInputChange = event => {
@@ -35,54 +28,28 @@ class navbarInstance extends Component {
     });
   };
 
-  openModal = () => {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
-  }
-
-  closeModal = () => {
-    this.setState({modalIsOpen: false});
-  }
-
   render() {
     return (
-      <Navbar collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="/">RTP Community Calendar</a>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <NavItem eventKey={1} href="/">Home</NavItem>
-            <NavItem eventKey={2} href="/about">About</NavItem>
-            <NavItem eventKey={3} href="/Events">Events</NavItem>
-            <NavItem eventKey={4} href="/advertise">Advertise</NavItem>
-          </Nav>
-          <Nav pullRight>
-            <NavItem eventKey={1}><button onClick={this.openModal}>Log In</button></NavItem>
-          </Nav>
-        </Navbar.Collapse>
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
-          <LogInModal
-            username={this.state.username}
-            password={this.state.password}
-            handleInputChange={this.handleInputChange}
-          />
-        </Modal>
-      </Navbar>
-    )
+      <div>
+        <Navbar color="faded" light expand="lg">
+          <NavbarBrand href="/">RTP Community Calendar</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/Events">Events</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/Advertise">Advertise</NavLink>
+              </NavItem>
+              <NavItem>
+                <LogInBtn />
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
+    );
   }
-
 }
 export default navbarInstance;
