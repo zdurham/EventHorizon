@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const EventSchema = new Schema({
   createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
   name: { type: String },
+  advert: { type: Boolean },
   genre: { type: String },
   description: { type: String },
   date: { type: Date },
