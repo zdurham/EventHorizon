@@ -1,3 +1,7 @@
 .navbar {
   background-color: #789b3e;
 }
+
+a.nav-link {
+  cursor: pointer;
+}
