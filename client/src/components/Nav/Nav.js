@@ -25,7 +25,7 @@ class navbarInstance extends Component {
     return (
       <Navbar className='fixed-top' color="faded" light expand="lg">
         <Container>
-          <NavbarBrand href="/">RTP Community Calendar</NavbarBrand>
+          <NavbarBrand href="/">CommunityCal</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
