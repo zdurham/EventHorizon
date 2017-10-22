@@ -10,6 +10,12 @@ export default (ComposedComponent) => {
       this.checkAuth(this.props.authenticated);
     }
 
+    componentDidUpdate = (nextProps) => {
+      if (this.props.authenticated !== nextProps.authenticated) {
+        this.checkAuth(nextProps.authenticated);
+      }
+    };
+
     checkAuth = (isAuthed) => {
       if (!isAuthed) {
         // If the user isn't authenticated, redirect to login
@@ -23,7 +29,7 @@ export default (ComposedComponent) => {
     // Render component that is passed into this
     render() {
       return(
-        <ComposedComponent />
+        <ComposedComponent {...this.props} />
       )
     }
   }
