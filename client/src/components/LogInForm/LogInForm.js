@@ -26,7 +26,6 @@ class LogInForm extends React.Component {
       email: this.state.email,
       password: this.state.password
     })
-    this.props.history.push('/dashboard')
   }
 
   render() {
