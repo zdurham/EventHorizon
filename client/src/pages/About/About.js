@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import BKVid from "../../components/BKVid";
 import JoinBtn from "../../components/JoinBtn";
 import Carousel from "../../components/Carousel";
 import { Container, Row, Col } from 'reactstrap';
@@ -15,7 +14,6 @@ class About extends Component {
           <Carousel />
         </div>
         <Container>
-          {/* <BKVid /> */}
           <hr />
           <Row className="infoBar" id="info">
             <Col xs="6" sm="4">
