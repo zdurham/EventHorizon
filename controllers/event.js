@@ -2,15 +2,15 @@ const db = require("../models");
 
 module.exports = {
   createEvent: function(req, res) {
-    let newEvent = new db.Event(req.body);
+    var userId = req.params.id;
     //saving event to mongoose
-    newEvent.save(function(error, doc) {
+    db.Event.create(req.body, function(error, doc) {
       //sending errors
       if (error) {
         res.send(error);
       } else {
       // Find our user and push the new Event id into the User's Events array
-      db.User.findOneAndUpdate({}, { $push: { "createdEvents": doc._id } }, { new: true }, function(err, newdoc) {
+      db.User.findOneAndUpdate({ _id: userId }, { $push: { "createdEvents": doc._id } }, { new: true }, function(err, newdoc) {
         if (err) {
           res.send(err);
         } else {
@@ -30,7 +30,8 @@ module.exports = {
   findAll: function(req, res) {
     db.Event
       .find(req.query)
-      .sort({ date: -1 })
+      .where('date').gt(Date.now())
+      .sort({ date: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -47,5 +48,21 @@ module.exports = {
       .findById({ _id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  upvoteEvent: function(req, res) {
+    var userId = req.params.id;
+    db.Event.findById(req.body._id)
+    .then(dbModel => dbModel.upvoted(userId, function(){
+      res.json(dbModel);
+    }))
+    .catch(err => res.status(422).json(err));
+  },
+  downvoteEvent: function(req, res) {
+    var userId = req.params.id;
+    db.Event.findById(req.body._id)
+    .then(dbModel => dbModel.downvoted(userId, function(){
+      res.json(dbModel);
+    }))
+    .catch(err => res.status(422).json(err));
   }
 };

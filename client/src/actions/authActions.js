@@ -1,4 +1,3 @@
-import { setCookie, removeCookie, getCookie } from '../utils/cookies'
 import { getStorage } from '../utils/localStorage'
 import authRequests from '../utils/api/authRequests'
 
@@ -31,7 +30,7 @@ function getUser(data) {
 // Registration Action
 export const registerUser = (userData) => {
   return dispatch => {
-    // Using an axios post request function from the utils folder 
+    // Using an axios post request function from the utils folder
     authRequests.register(userData)
     .then(res => {
       // set data in localStorage
@@ -50,7 +49,7 @@ export const loginUser = (userData) => {
       // data in localStorage
       localStorage.setItem('user', JSON.stringify(res.data))
       dispatch(authUserAction(res.data))
-    }) 
+    })
   }
 }
 

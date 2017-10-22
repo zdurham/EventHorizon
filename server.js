@@ -12,7 +12,7 @@ const MongoStore = require('connect-mongo')(session);
 const routes = require('./routes')
 const flash = require('connect-flash')
 
-/// ------------------------------------------ 
+/// ------------------------------------------
 // BODY PARSER
 // Configure body parser for AJAX requests
 app.use(bodyParser.json());
@@ -22,7 +22,7 @@ app.use(bodyParser.json({type: 'application/vnd.api+json' }))
 ///
 
 
-/// ------------------------------------------ 
+/// ------------------------------------------
 // MONGOOSE CODE
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
@@ -35,7 +35,7 @@ mongoose.connect(
 );
 ///
 
-/// ------------------------------------------ 
+/// ------------------------------------------
 // SESSION CODE
 // Add cookieParser for auth
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -58,7 +58,7 @@ app.use((req, res, next) => {
 })
 ///
 
-/// ------------------------------------------ 
+/// ------------------------------------------
 // CORS CODE
 app.use(cors())
 ///
@@ -76,7 +76,7 @@ app.use(express.static("client/build"));
 /// ------------------------------------------
 // ROUTES
 require('./routes/authRoutes')(app)
-
+app.use(routes);
 ///
 
 
