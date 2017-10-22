@@ -4,14 +4,14 @@ const Schema = mongoose.Schema;
 
 const EventSchema = new Schema({
   createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
-  name: { type: String, required: true },
-  genre: { type: String, required: true },
+  name: { type: String },
+  genre: { type: String },
   description: { type: String },
   date: { type: Date },
   startTime: { type: String },
   endTime: { type: String },
   allDay: { type: Boolean },
-  location: { type: String, required: true },
+  location: { type: String },
   address: { type: String },
   city: { type: String },
   state: { type: String, default: "NC" },
@@ -72,20 +72,24 @@ const EventSchema = new Schema({
     };
   }
 
-  EventSchema.methods.upvoted = function upvoted(user) {
-    if (user._id) {
-      return schema.methods.upvoted.call(this, user._id);
-    };
-
-    return !!~this.vote.positive.indexOf(user);
+  EventSchema.methods.upvoted = function upvoted(user, cb) {
+    if (this.vote.positive.indexOf(user) >= 0) {
+      console.log(this.vote.positive.indexOf(user))
+      this.unvote(user, cb);
+    } else {
+      console.log("asdf");
+      this.upvote(user, cb);
+    }
   };
 
-  EventSchema.methods.downvoted = function downvoted(user) {
-    if (user._id) {
-      return schema.methods.downvoted.call(this, user._id);
-    };
-
-    return !!~this.vote.negative.indexOf(user);
+  EventSchema.methods.downvoted = function downvoted(user, cb) {
+    if (this.vote.negative.indexOf(user) >= 0) {
+      console.log(this.vote.positive.indexOf(user))
+      this.unvote(user, cb);
+    } else {
+      console.log("asdf");
+      this.downvote(user, cb);
+    }
   };
 
   EventSchema.methods.voted = function voted(user) {
