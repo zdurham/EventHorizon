@@ -31,6 +31,7 @@ module.exports = {
     db.Event
       .find(req.query)
       .where('date').gt(Date.now())
+      .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
       .sort({ date: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -39,6 +40,7 @@ module.exports = {
     db.Event
       .find(req.query)
       .where('createdBy').equals(req.params.id)
+      .populate('attendingList', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -46,6 +48,7 @@ module.exports = {
   getSingleEvent: function(req, res) {
     db.Event
       .findById({ _id: req.params.id })
+      .populate('attendingList', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
