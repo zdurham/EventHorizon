@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import './SignUpForm.css';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-{/*import { registerUser } from '../actions/authActions'*/}
+import { registerUser } from '../../actions/authActions'
 
 class SignUpForm extends React.Component {
   constructor(props) {
@@ -68,8 +68,8 @@ class SignUpForm extends React.Component {
       <Label for="confirmPassword" hidden>Confirm Password</Label>
       <Input 
       type="password" 
-      name="confirmPassword" 
-      id="confirmPassword" 
+      name="confPassword" 
+      id="confPassword" 
       placeholder="Confirm Password"  
       value={this.state.confPassword}
       onChange={this.onChange}      
@@ -91,12 +91,11 @@ class SignUpForm extends React.Component {
     );
   }
 }
-export default SignUpForm;
 
-/*const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   registerUser() {
     dispatch(registerUser())
   }
 })
 
-export default connect(null, { registerUser })(Register);*/
+export default connect(null, { registerUser })(SignUpForm);
