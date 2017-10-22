@@ -1,8 +1,3 @@
-.top-bar {
-    color: #841983;
-    text-align: center;
-}
-
-button:hover {
-    background-color: #841983;
+.navbar {
+  background-color: #789b3e;
 }

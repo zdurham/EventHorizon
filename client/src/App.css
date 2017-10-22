@@ -3,6 +3,11 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+/* Offset the height of the fixed navbar */
+main {
+  margin-top: 56px;
+}
+
 hr {
   margin: 10px 0;
 }

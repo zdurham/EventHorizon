@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import './Nav.css';
-import { Collapse, Modal, ModalFooter, ModalHeader, ModalBody, ModalFooterNavbar, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
+import { Container, Collapse, Modal, ModalFooter, ModalHeader, ModalBody, ModalFooterNavbar, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import LogInBtn from '../LogInBtn';
 
 
 class navbarInstance extends Component {
   constructor(props) {
     super(props);
-
+    this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
       modal: false
     };
-      this.toggle = this.toggle.bind(this);
   }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen,
@@ -21,17 +21,10 @@ class navbarInstance extends Component {
     });
   }
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
   render() {
     return (
-      <div>
-        <Navbar color="faded" light expand="lg">
+      <Navbar className='fixed-top' color="faded" light expand="lg">
+        <Container>
           <NavbarBrand href="/">RTP Community Calendar</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -47,8 +40,8 @@ class navbarInstance extends Component {
               </NavItem>
             </Nav>
           </Collapse>
-        </Navbar>
-      </div>
+        </Container>
+      </Navbar>
     );
   }
 }
