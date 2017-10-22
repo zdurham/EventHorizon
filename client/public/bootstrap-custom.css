@@ -219,15 +219,17 @@ sup {
 }
 
 a {
-  color: #007bff;
+  /*color: #007bff;*/
+  color: rgba(245, 245, 245, 0.7);;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 
 a:hover {
-  color: #0056b3;
-  text-decoration: underline;
+  /*color: #0056b3;*/
+  color: whitesmoke;
+  /*text-decoration: underline;*/
 }
 
 a:not([href]):not([tabindex]) {
@@ -3948,8 +3950,7 @@ tbody.collapse.show {
 
 .navbar-light .navbar-brand {
   /*color: rgba(0, 0, 0, 0.9);*/
-  font-weight: 700;
-  color: rgba(245, 245, 245, 0.8);
+  color: rgba(245, 245, 245, 0.7);
   transition: color 0.3s ease-out;
 }
 
@@ -3960,7 +3961,7 @@ tbody.collapse.show {
 
 .navbar-light .navbar-nav .nav-link {
   /*color: rgba(0, 0, 0, 0.5);*/
-  color: rgba(245, 245, 245, 0.8);
+  color: rgba(245, 245, 245, 0.7);
 }
 
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {

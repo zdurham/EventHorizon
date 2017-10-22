@@ -1,17 +1,23 @@
 footer {
-  position: fixed;
-  width: 100%;
-  background-color: #EEEEEE;
-  left: 0;
-  bottom: 0;
-  padding: 20px 20px 40px;
+  color: #4a4a4a;
+  background-color: #789b3e;
+  padding-top: 20px;
 }
 
 footer h5 {
-  color: #841983;
   padding-top: 20px;
 }
 
 footer a {
   display: block;
+}
+
+.footer-links {
+  padding-bottom: 40px;
+}
+
+.footer-copyright {
+  font-weight: 700;
+  background-color: #637f33;
+  padding: 20px 0;
 }

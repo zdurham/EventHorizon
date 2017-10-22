@@ -30,7 +30,7 @@ const App = () =>
           <Route exact path='/dashboard' component={Authenticate(Dashboard)} />
           <Route exact path="/events" component={Events}/>
         </Switch>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Router>
   </Provider>
