@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './Nav.css';
-import { Container, Collapse, Modal, ModalFooter, ModalHeader, ModalBody, ModalFooterNavbar, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
+import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import LogInBtn from '../LogInBtn';
 
 
@@ -35,9 +35,7 @@ class navbarInstance extends Component {
               <NavItem>
                 <NavLink href="/Advertise">Advertise</NavLink>
               </NavItem>
-              <NavItem>
-                <LogInBtn />
-              </NavItem>
+              <LogInBtn />
             </Nav>
           </Collapse>
         </Container>
