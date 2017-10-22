@@ -10,8 +10,8 @@ class About extends Component {
 
   render() {
 
-    return (   
-      <Container>
+    return (
+      <Container tag="main">
           <BKVid />
           <hr />
           <div className= "carousel">
@@ -34,7 +34,7 @@ class About extends Component {
           <Ionicon icon="ion-ios-people" fontSize="35px"></Ionicon>
           <p> Get out &amp; join the fun! </p>
           </Col>
-        </Row>  
+        </Row>
         <Row>
           <Col>
             <JoinBtn />
