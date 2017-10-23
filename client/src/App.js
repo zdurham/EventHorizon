@@ -7,8 +7,9 @@ import About from "./pages/About";
 import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout';
-import Events from "./pages/Events";
 import Dashboard from './pages/Dashboard';
+import Events from "./pages/Events";
+import NewEvent from "./pages/NewEvent";
 import Authenticate from './components/Authenticate'
 
 
@@ -29,6 +30,7 @@ const App = () =>
           <Route exact path='/logout' component={Logout} />
           <Route exact path='/dashboard' component={Authenticate(Dashboard)} />
           <Route exact path="/events" component={Events}/>
+          <Route exact path="/new_event" component={NewEvent}/>
         </Switch>
         <Footer />
       </div>

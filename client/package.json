@@ -4,7 +4,9 @@
   "private": true,
   "proxy": "http://localhost:3030/",
   "dependencies": {
+    "availity-reactstrap-validation": "2.0.0-alpha.0",
     "bootstrap": "^4.0.0-beta",
+    "moment": "^2.19.1",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-ionicons": "^1.5.9",
