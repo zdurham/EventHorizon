@@ -1,4 +1,4 @@
-import React, { Link } from 'react';
+import React from 'react';
 import './Footer.css';
 import { Container, Row, Col } from 'reactstrap';
 

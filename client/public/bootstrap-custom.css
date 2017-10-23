@@ -493,10 +493,11 @@ h6, .h6 {
 }
 
 hr {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  /*border-top: 1px solid rgba(0, 0, 0, 0.1);*/
+  border-top: 1px solid rgba(74, 74, 74, 0.5);
 }
 
 small,
