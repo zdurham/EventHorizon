@@ -54,7 +54,6 @@ export const logoutUser = () => {
   return dispatch => {
     authRequests.logout()
     .then(res => {
-      localStorage.removeItem('reduxPersist:authUser')
       dispatch(removeAuthUserAction())
     })
   }
