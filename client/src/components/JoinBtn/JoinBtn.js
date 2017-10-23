@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Ionicon from 'react-ionicons'
 import './JoinBtn.css';
 import SignUpForm from '../SignUpForm';
-import { Collapse, Modal, ModalFooter, ModalHeader, ModalBody, ModalFooterNavbar, Button } from 'reactstrap';
+import { Container, Collapse, Modal, ModalFooter, ModalHeader, ModalBody, ModalFooterNavbar, Button } from 'reactstrap';
 
 class JoinBtn extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class JoinBtn extends Component {
   render() {
     return (
 
-    <div>
+    <Container>
     <Button size="lg" id="joinBtn" block onClick={this.toggle}>{this.props.buttonLabel} Join Our Community!</Button>
     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
         <ModalHeader id="header" toggle={this.toggle}>Join</ModalHeader>
@@ -52,12 +52,12 @@ class JoinBtn extends Component {
         </Button>
         <Button color="danger" block>Google
           <br />
-          <Ionicon id="icon" icon="ion-social-googleplus" fontSize="20" color="white"></Ionicon></Button>        
+          <Ionicon id="icon" icon="ion-social-googleplus" fontSize="20" color="white"></Ionicon></Button>
         <ModalFooter>
         </ModalFooter>
         </ModalBody>
     </Modal>
-    </div>
+  </Container>
     );
   }
 }
