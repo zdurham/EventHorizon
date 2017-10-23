@@ -53,4 +53,5 @@ export default {
   attendEvent: function(eventData, id) {
     return axios.post("/api/event/attend/" + id, eventData);
   }
+
 };
