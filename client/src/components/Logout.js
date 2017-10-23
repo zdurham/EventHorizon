@@ -2,7 +2,7 @@
 // It can be deleted when a dynamic logout button is added to the navbar
 
 import React from 'react'
-import { logoutUser, getAuthUser } from '../actions/authActions'
+import { logoutUser } from '../actions/authActions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux' 
 
@@ -11,22 +11,12 @@ class Logout extends React.Component {
   onSubmit = e => {
     this.props.logoutUser()
   }
- 
-  // check storage
-  check = () => {
-    this.props.getAuthUser()
-  }
 
   render() {
     return(
-      <div>
-        <button onClick={this.check}>
-          Check Local Storage
-        </button>
         <button onClick={this.onSubmit} className='btn btn-primary'>
           Logout
         </button>
-      </div>
     )
   }
 
@@ -34,8 +24,8 @@ class Logout extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      ...bindActionCreators({ logoutUser, getAuthUser }, dispatch)
+      ...bindActionCreators({ logoutUser}, dispatch)
   }
 }
 
-export default connect(null, { logoutUser, getAuthUser })(Logout)
+export default connect(null, { logoutUser })(Logout)

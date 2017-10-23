@@ -1,4 +1,4 @@
-import React, { Link } from 'react';
+import React from 'react';
 import './Footer.css';
 import { Container, Row, Col } from 'reactstrap';
 
@@ -24,7 +24,7 @@ const Footer = () =>
           <a href="#advertise">Advertise</a>
         </Col>
         <Col sm="12" md="4">
-          <h5>Social Media</h5>
+          <h5>Social</h5>
           <hr />
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
           <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>

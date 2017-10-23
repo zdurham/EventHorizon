@@ -1,1 +1,18 @@
-/*Testing Backgroud Video Capability*/
+.carousel-caption {
+  left: 0%;
+  right: 0%;
+  bottom: 0;
+  background-color: rgba(34, 34, 34, 0.5);
+  color: whitesmoke;
+  text-shadow: 1px 1px #4a4a4a;
+  padding-top: 10px;
+  border-radius: 0.3rem;
+}
+
+.carousel-caption h3 {
+  font-size: 30px;
+}
+
+.carousel-caption p {
+  font-size: 18px;
+}

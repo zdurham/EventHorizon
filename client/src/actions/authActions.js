@@ -1,6 +1,4 @@
-import { getStorage } from '../utils/localStorage'
 import authRequests from '../utils/api/authRequests'
-{/*import { setCookie, removeCookie, getCookie } from '../utils/cookies'*/}
 
 
 // ACTION HANDLERS
@@ -35,8 +33,6 @@ export const registerUser = (userData) => {
     // Using an axios post request function from the utils folder
     authRequests.register(userData)
     .then(res => {
-      // set data in localStorage
-      localStorage.setItem('user', JSON.stringify(res.data))
       dispatch(authUserAction(res.data))
     })
   }
@@ -48,8 +44,6 @@ export const loginUser = (userData) => {
     // Using an axios post request function from the utils folder
     authRequests.login(userData)
     .then(res => {
-      // data in localStorage
-      localStorage.setItem('user', JSON.stringify(res.data))
       dispatch(authUserAction(res.data))
     })
   }
@@ -60,23 +54,19 @@ export const logoutUser = () => {
   return dispatch => {
     authRequests.logout()
     .then(res => {
-      localStorage.removeItem('user')
+      localStorage.removeItem('reduxPersist:authUser')
       dispatch(removeAuthUserAction())
     })
   }
 }
 
+// code below may not be needed with redux-persist npm package
+
 // Get User Action
 export const getAuthUser = () => {
   return dispatch => {
-    let user = JSON.parse(getStorage('user'))
-    dispatch(getUser(user))
+
   }
-  // try {
-  //   const response = await get(dispatch, GET_AUTHENTICATED_USER, `${AUTH_ENDPOINT_BASE}/profile`, true);
-  //   return Promise.resolve(response);
-  // } catch (err) {
-  //   await handleError(dispatch, err, GET_AUTHENTICATED_USER);
-  // }
+
 };
 ///

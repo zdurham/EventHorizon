@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 export default (ComposedComponent) => {
   class Authenticate extends React.Component {
 
-    componentDidMount = () => {
+    componentWillMount = () => {
       this.checkAuth(this.props.authenticated);
     }
 

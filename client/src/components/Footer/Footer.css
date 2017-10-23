@@ -21,3 +21,9 @@ footer a {
   background-color: #637f33;
   padding: 20px 0;
 }
+
+@media only screen and (max-width: 480px) {
+  footer h5 {
+    font-size: 18px;
+  }
+}
