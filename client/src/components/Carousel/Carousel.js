@@ -1,25 +1,3 @@
-// import React, { Component } from "react";
-// import './Carousel.css';
-// import { UncontrolledCarousel } from 'reactstrap';
-//
-// const items = [
-//   {
-//     src: '/img/carousel-1.jpg',
-//     altText: 'Concerts',
-//     caption: "Whether you're going to a concert..."
-//   },
-//   {
-//     src: '/img/carousel-2.jpg'
-//   },
-//   {
-//     src: '/img/carousel-3.jpg'
-//   }
-// ];
-//
-// const Carousel = () => <UncontrolledCarousel items={items} />;
-//
-// export default Carousel;
-
 import React, { Component } from 'react';
 import './Carousel.css';
 import {
@@ -35,7 +13,7 @@ const items = [
     src: '/img/carousel-1.jpg',
     altText: 'Fans at a concert',
     heading: "Concerts",
-    caption: "Whether you're looking for a concert..."
+    caption: "Whether you're looking for a performance..."
   },
   {
     src: '/img/carousel-2.jpg',
