@@ -28,6 +28,36 @@ const EventSchema = new Schema({
 });
 
 
+//This is for attending an event
+
+EventSchema.methods.attendEvent = function attendEvent(user, fn) {
+  // Add to attending array
+  this.attendingList.addToSet(user);
+
+  // If callback fn, save and return
+  if (2 === arguments.length) {
+    this.save(fn);
+  };
+};
+
+EventSchema.methods.unattend = function unattend(user, fn) {
+  this.attendingList.pull(user);
+
+  // If callback fn, save and return
+  if (2 === arguments.length) {
+    this.save(fn);
+  };
+};
+
+EventSchema.methods.attending = function attending(user, cb) {
+  if (this.attendingList.indexOf(user) >= 0) {
+    this.unattend(user, cb);
+  } else {
+    this.attendEvent(user, cb);
+  }
+};
+
+
 //All of this below is related to the upvoting/downvoting stuff
 
   EventSchema.add({
@@ -71,24 +101,20 @@ const EventSchema = new Schema({
     if (2 === arguments.length) {
       this.save(fn);
     };
-  }
+  };
 
   EventSchema.methods.upvoted = function upvoted(user, cb) {
     if (this.vote.positive.indexOf(user) >= 0) {
-      console.log(this.vote.positive.indexOf(user))
       this.unvote(user, cb);
     } else {
-      console.log("asdf");
       this.upvote(user, cb);
     }
   };
 
   EventSchema.methods.downvoted = function downvoted(user, cb) {
     if (this.vote.negative.indexOf(user) >= 0) {
-      console.log(this.vote.positive.indexOf(user))
       this.unvote(user, cb);
     } else {
-      console.log("asdf");
       this.downvote(user, cb);
     }
   };
