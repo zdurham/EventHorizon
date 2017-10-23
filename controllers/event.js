@@ -67,5 +67,13 @@ module.exports = {
       res.json(dbModel);
     }))
     .catch(err => res.status(422).json(err));
+  },
+  attendEvent: function(req, res) {
+    var userId = req.params.id;
+    db.Event.findById(req.body._id)
+    .then(dbModel => dbModel.attending(userId, function(){
+      res.json(dbModel);
+    }))
+    .catch(err => res.status(422).json(err));
   }
 };

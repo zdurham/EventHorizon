@@ -47,6 +47,10 @@ export default {
   //Same as the upvote. Just make sure to have the event id formatted with the key "_id".
   downvote: function(eventData, id) {
     return axios.post("/api/event/downvote/" + id, eventData);
-  }
+  },
 
+  //This function is to attend an event. Similar to upvote. id is the User ID. Pass in through the eventData is the ID of the event using "_id" format.
+  attendEvent: function(eventData, id) {
+    return axios.post("/api/event/attend/" + id, eventData);
+  }
 };

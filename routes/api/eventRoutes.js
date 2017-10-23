@@ -20,4 +20,7 @@ router.route("/upvote/:id")
 router.route("/downvote/:id")
   .post(eventController.downvoteEvent);
 
+router.route("/attend/:id")
+  .post(eventController.attendEvent);
+
 module.exports = router;
