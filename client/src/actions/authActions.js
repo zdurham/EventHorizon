@@ -1,4 +1,3 @@
-import { getStorage } from '../utils/localStorage'
 import authRequests from '../utils/api/authRequests'
 
 
@@ -34,8 +33,6 @@ export const registerUser = (userData) => {
     // Using an axios post request function from the utils folder
     authRequests.register(userData)
     .then(res => {
-      // set data in localStorage
-      // localStorage.setItem('user', JSON.stringify(res.data))
       dispatch(authUserAction(res.data))
     })
   }
@@ -47,7 +44,6 @@ export const loginUser = (userData) => {
     // Using an axios post request function from the utils folder
     authRequests.login(userData)
     .then(res => {
-
       dispatch(authUserAction(res.data))
     })
   }
