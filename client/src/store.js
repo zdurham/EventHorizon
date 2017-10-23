@@ -2,18 +2,18 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducers from './reducers'
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { persistStore, autoRehydrate } from 'redux-persist';
+import { loadState, saveState } from './utils/localStorage'
 
-
-// const persistState = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {}
-
+const persistState = loadState();
 
 // Create store and incorporate middleware
-const store = createStore(reducers, composeWithDevTools(
+const store = createStore(reducers, persistState, composeWithDevTools(
   applyMiddleware(thunk),
-  autoRehydrate()
 ));
 
-persistStore(store)
+store.subscribe(() => {
+  saveState(store.getState());
+})
+
 
 export default store
