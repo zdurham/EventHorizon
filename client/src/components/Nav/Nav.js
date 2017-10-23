@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import './Nav.css';
-import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
-import { NavLink as NavStrapLink } from 'reactstrap'
-import { NavLink } from 'react-router-dom'
+import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { NavLink as RRLink } from 'react-router-dom'
 import LogInBtn from '../LogInBtn';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions'
@@ -34,14 +33,12 @@ class navbarInstance extends Component {
       button = 
       <div>
         <NavItem>
-          <NavStrapLink>
-            <NavLink to='/dashboard' exact >Dashboard</NavLink>
-          </NavStrapLink>
+          <NavLink tag={RRLink} to='/dashboard' exact >Dashboard</NavLink>
         </NavItem>
         <NavItem>
-          <NavStrapLink onClick={this.props.logoutUser}>
+          <NavLink onClick={this.props.logoutUser}>
             Logout
-          </NavStrapLink>
+          </NavLink>
         </NavItem>
       </div>
     }
@@ -53,14 +50,10 @@ class navbarInstance extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavStrapLink>
-                  <NavLink to="/Events">Events</NavLink>
-                </NavStrapLink>
+                <NavLink tag={RRLink} to="/Events">Events</NavLink>
               </NavItem>
               <NavItem>
-                <NavStrapLink>
-                  <NavLink to="/Advertise">Advertise</NavLink>
-                </NavStrapLink>
+                <NavLink tag={RRLink} to="/Advertise">Advertise</NavLink>
               </NavItem>
               {button}
             </Nav>
