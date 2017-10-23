@@ -220,10 +220,11 @@ sup {
 
 a {
   /*color: #007bff;*/
-  color: rgba(245, 245, 245, 0.7);;
+  color: rgba(245, 245, 245, 0.7);
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  transition: color 0.3s ease-out; /* new */
 }
 
 a:hover {
@@ -233,13 +234,16 @@ a:hover {
 }
 
 a:not([href]):not([tabindex]) {
-  color: inherit;
+  /*color: inherit;*/
+  color: rgba(245, 245, 245, 0.7);
   text-decoration: none;
 }
 
 a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
-  color: inherit;
+  /*color: inherit;*/
+  color: whitesmoke;
   text-decoration: none;
+  cursor: pointer; /* new */
 }
 
 a:not([href]):not([tabindex]):focus {

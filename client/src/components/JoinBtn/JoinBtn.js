@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Ionicon from 'react-ionicons'
 import './JoinBtn.css';
 import SignUpForm from '../SignUpForm';
-import { Container, Collapse, Modal, ModalFooter, ModalHeader, ModalBody, ModalFooterNavbar, Button } from 'reactstrap';
+import { Container, Modal, ModalFooter, ModalHeader, ModalBody, Button } from 'reactstrap';
 
 class JoinBtn extends Component {
   constructor(props) {
@@ -29,35 +29,35 @@ class JoinBtn extends Component {
 
   render() {
     return (
-
-    <Container>
-    <Button size="lg" id="joinBtn" block onClick={this.toggle}>{this.props.buttonLabel} Join Our Community!</Button>
-    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-        <ModalHeader id="header" toggle={this.toggle}>Join</ModalHeader>
-        <ModalBody>
-        <SignUpForm
-        username={this.state.username}
-        password={this.state.password}
-        handleInputChange={this.handleInputChange}
-        />
-        <br />
-        <h4> Or Via </h4>
-        <hr />
-        <Button color="info" block>Twitter
-           <br />
-           <Ionicon id="icon" icon="ion-social-twitter" fontSize="20" color="white"></Ionicon></Button>
-        <Button color="primary" block>Facebook
-          <br />
-          <Ionicon id="icon" icon="ion-social-facebook" fontSize="22" color="white"></Ionicon>
-        </Button>
-        <Button color="danger" block>Google
-          <br />
-          <Ionicon id="icon" icon="ion-social-googleplus" fontSize="20" color="white"></Ionicon></Button>
-        <ModalFooter>
-        </ModalFooter>
-        </ModalBody>
-    </Modal>
-  </Container>
+      <Container className="btn-container">
+        <Button size="lg" className="button-primary" onClick={this.toggle}>{this.props.buttonLabel}Join Our Community!</Button>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalHeader id="header" toggle={this.toggle}>Join</ModalHeader>
+          <ModalBody>
+          <SignUpForm
+            username={this.state.username}
+            password={this.state.password}
+            handleInputChange={this.handleInputChange}
+          />
+            <br />
+            <h4>Or Via</h4>
+            <hr />
+            <Button color="info" block>Twitter
+              <br />
+              <Ionicon id="icon" icon="ion-social-twitter" fontSize="20" color="white"></Ionicon></Button>
+            <Button color="primary" block>Facebook
+              <br />
+              <Ionicon id="icon" icon="ion-social-facebook" fontSize="22" color="white"></Ionicon>
+            </Button>
+            <Button color="danger" block>Google
+              <br />
+              <Ionicon id="icon" icon="ion-social-googleplus" fontSize="20" color="white"></Ionicon>
+            </Button>
+          <ModalFooter>
+          </ModalFooter>
+          </ModalBody>
+        </Modal>
+      </Container>
     );
   }
 }

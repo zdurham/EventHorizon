@@ -8,13 +8,15 @@ main {
   margin-top: 56px;
 }
 
-.carousel {
-  width: 100%;
-  margin:0;
+button {
+  cursor: pointer;
 }
 
-.indexBar {
-    border-bottom:10px solid grey;
-    margin:0 auto;
-    text-align: center;
+.button-primary {
+  background-color: #841983;
+  transition: background-color 0.3s ease-out;
+}
+
+.button-primary:hover {
+  background-color: #9a4299;
 }

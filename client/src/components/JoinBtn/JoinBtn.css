@@ -1,1 +1,4 @@
-/* Join Button CSS */
+.btn-container {
+  text-align: center;
+  margin-bottom: 80px;
+}
