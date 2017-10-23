@@ -3,6 +3,8 @@ import moment from 'moment';
 import './EventForm.css';
 import { Container, Row, Col, FormGroup, Label, Button } from 'reactstrap';
 import { AvForm, AvField, AvGroup, AvInput, AvFeedback, AvRadioGroup, AvRadio } from 'availity-reactstrap-validation';
+import { connect } from 'react-redux'
+import { createEvent } from '../../actions/eventActions'
 
 class EventForm extends Component {
   constructor(props) {
@@ -16,6 +18,8 @@ class EventForm extends Component {
 
   handleValidSubmit(event, values) {
     this.setState({values});
+    this.props.createEvent(values, this.props.userId)
+
   }
 
   render() {
@@ -172,4 +176,14 @@ class EventForm extends Component {
   }
 }
 
-export default EventForm;
+const mapDispatchToProps = dispatch => ({
+  createEvent() {
+    dispatch(createEvent())
+  }
+})
+
+const mapStateToProps = state => ({
+  userId: state.authUser.user._id
+})
+
+export default connect(mapStateToProps, { createEvent })(EventForm);

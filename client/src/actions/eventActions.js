@@ -16,11 +16,11 @@ function event(eventData) {
 
 /// ------------------------------------
 // ACTIONS
-export const createEvent = (eventData, id) => {
-  dispatch => {
-    api.createEvent(eventData, id)
+export const createEvent = (eventData, userId) => {
+  return dispatch => {
+    api.createEvent(eventData, userId)
     .then(res => {
-
+      dispatch(event(eventData))
     })
   }
   
