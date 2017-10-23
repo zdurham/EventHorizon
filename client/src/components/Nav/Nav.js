@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import './Nav.css';
-import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import { NavLink as NavStrapLink } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
 import LogInBtn from '../LogInBtn';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/authActions'
 
 
 class navbarInstance extends Component {
@@ -22,20 +26,43 @@ class navbarInstance extends Component {
   }
 
   render() {
+    let button;
+    if (!this.props.authenticated) {
+      button = <LogInBtn />
+    }
+    else {
+      button = 
+      <div>
+        <NavItem>
+          <NavStrapLink>
+            <NavLink to='/dashboard' exact >Dashboard</NavLink>
+          </NavStrapLink>
+        </NavItem>
+        <NavItem>
+          <NavStrapLink onClick={this.props.logoutUser}>
+            Logout
+          </NavStrapLink>
+        </NavItem>
+      </div>
+    }
     return (
       <Navbar className='fixed-top' color="faded" light expand="lg">
         <Container>
-          <NavbarBrand href="/">CommunityCal</NavbarBrand>
+          <NavbarBrand to="/">CommunityCal</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/Events">Events</NavLink>
+                <NavStrapLink>
+                  <NavLink to="/Events">Events</NavLink>
+                </NavStrapLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/Advertise">Advertise</NavLink>
+                <NavStrapLink>
+                  <NavLink to="/Advertise">Advertise</NavLink>
+                </NavStrapLink>
               </NavItem>
-              <LogInBtn />
+              {button}
             </Nav>
           </Collapse>
         </Container>
@@ -43,4 +70,15 @@ class navbarInstance extends Component {
     );
   }
 }
-export default navbarInstance;
+
+const mapStateToProps = state => ({
+  authenticated: state.authUser.isAuthenticated
+})
+
+const mapDispatchToProps = dispatch => ({
+  logoutUser() {
+    dispatch(logoutUser())
+  }
+})
+
+export default connect(mapStateToProps, { logoutUser })(navbarInstance);
