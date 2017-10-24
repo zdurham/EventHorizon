@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import './JoinForm.css';
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, FormGroup, Label } from 'reactstrap';
 import { registerUser } from '../../actions/authActions'
 
-class SignUpForm extends React.Component {
+class SignUpForm extends Component {
   constructor(props) {
     super(props)
 

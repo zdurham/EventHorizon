@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import FontAwesome from 'react-fontawesome';
+import React from "react";
 import './TopEvents.css';
 import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText, CardLink } from 'reactstrap';
 

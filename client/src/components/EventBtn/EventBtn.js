@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FontAwesome from 'react-fontawesome';
 import './EventBtn.css';
-import { Collapse, Modal, ModalFooter, ModalHeader, ModalBody, ModalFooterNavbar, Button } from 'reactstrap';
+import { Modal, ModalFooter, ModalHeader, ModalBody, Button } from 'reactstrap';
 
 class EventBtn extends Component {
   constructor(props) {

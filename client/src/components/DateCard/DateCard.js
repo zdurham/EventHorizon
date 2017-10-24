@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FontAwesome from 'react-fontawesome';
 import './DateCard.css';
-import { Row, Col, Card, Button, CardLink, CardSubtitle, CardHeader, CardFooter, CardBody, CardTitle, CardText, Collapse } from 'reactstrap';
+import { Row, Col, Card, CardLink, CardText, Collapse } from 'reactstrap';
 
 class DateCard extends Component {
   constructor(props) {

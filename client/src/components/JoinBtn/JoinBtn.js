@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import FontAwesome from 'react-fontawesome';
 import './JoinBtn.css';
 import JoinForm from '../JoinForm';
 import SocialBtns from '../SocialBtns';
