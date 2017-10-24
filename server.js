@@ -72,7 +72,7 @@ app.use(express.static("client/build"));
 
 /// ------------------------------------------
 // ROUTES
-require('./routes/authRoutes')(app)
+require('./routes/authRoutes')(app, passport)
 app.use(routes);
 ///
 
