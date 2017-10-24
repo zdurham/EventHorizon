@@ -42,13 +42,10 @@ require('./config/passport')(passport); // pass passport for configuration
 // Add cookieParser for auth
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(session({
-  name: 'user_session',
   resave: true,
   saveUninitialized: true,
   secret: config.secret, // session secret
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  cookie: { maxAge: 60000 }
-  // required for passport
 }));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions

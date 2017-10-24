@@ -7,8 +7,10 @@ const auth = {
   },
 
   logout: (req, res, next) => {
-    req.logout();
-    res.send(console.log('user logged out'))
+    req.session.destroy(function() {
+      req.logout();
+      res.send(console.log('user logged out'))
+    }) 
   },
   
 
