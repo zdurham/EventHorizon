@@ -1,7 +1,28 @@
-h4 {
-    text-align: center;
+.modal-header {
+  border-bottom: none;
 }
 
-#header {
-    text-align: center;
+.subheading {
+  display: flex;
+  align-items: center;
+  height: 67px;
+}
+
+.subheading h4 {
+  margin-bottom: 0;
+}
+
+.btn-login {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: background-color 0.3s
+}
+
+.btn-login .fa {
+  font-size: 28px;
+}
+
+.btn-login:hover {
+
 }

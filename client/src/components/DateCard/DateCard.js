@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import FontAwesome from 'react-fontawesome';
 import './DateCard.css';
 import { Row, Col, Card, Button, CardLink, CardSubtitle, CardHeader, CardFooter, CardBody, CardTitle, CardText, Collapse } from 'reactstrap';
-import Ionicon from 'react-ionicons'
 
 class DateCard extends Component {
   constructor(props) {
@@ -28,11 +28,11 @@ class DateCard extends Component {
 
       <Card>
         <CardText className="eventName text-left" onClick={this.toggle} >Event Title</CardText>
-        <CardText> 
+        <CardText>
             <Col>
             <Row tag="p">
-        <div className="userName" >Added by:.....   |</div> 
-        <div className="eventDate">Date:       |</div> 
+        <div className="userName" >Added by:.....   |</div>
+        <div className="eventDate">Date:       |</div>
         <CardLink href="#"> Event Type </CardLink>
             </Row>
             </Col>
@@ -40,13 +40,13 @@ class DateCard extends Component {
         <CardText>
         <Collapse isOpen={this.state.collapse}>
           <CardText>Event description...fun fun fun blah blah blah and all the good stuf that makes you come out of the house.</CardText>
-            <Ionicon icon="ion-chevron-up" fontSize="15px" color="grey"></Ionicon>
-            <Ionicon icon="ion-chevron-down" fontSize="15px" color="grey"></Ionicon>
+            <FontAwesome icon="ion-chevron-up" fontSize="15px" color="grey"></FontAwesome>
+            <FontAwesome icon="ion-chevron-down" fontSize="15px" color="grey"></FontAwesome>
            </Collapse>
         </CardText>
         {/*<CardFooter>
             <CardLink href="#"> Event Category </CardLink>
-            <div className="userName"> Added by: </div> <div className="eventDate">Date: </div> 
+            <div className="userName"> Added by: </div> <div className="eventDate">Date: </div>
          </CardFooter>*/}
       </Card>
     </div>

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import './LogInBtn.css';
-import Ionicon from 'react-ionicons'
+import FontAwesome from 'react-fontawesome';
 import LogInForm from '../LogInForm';
-import { Collapse, Modal, ModalFooter, ModalHeader, ModalBody, ModalFooterNavbar, NavItem, NavLink, Button } from 'reactstrap';
+import { Button, Col, Collapse, Modal, ModalHeader, ModalBody, NavItem, NavLink, Row } from 'reactstrap';
 
 class LogInBtn extends Component {
   constructor(props) {
@@ -30,35 +30,51 @@ class LogInBtn extends Component {
   };
 
   render() {
+    const svgSize = '48px';
     return (
       <NavItem>
         <NavLink onClick={this.toggle}>Log In</NavLink>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader id="header" toggle={this.toggle}>Log In</ModalHeader>
+        <Modal
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          className={this.props.className}>
+          <ModalHeader toggle={this.toggle}>Sign In Using...</ModalHeader>
           <ModalBody>
+            <Row className="btn-container">
+              <Col>
+                <Button className="btn-login btn-social btn-facebook">
+                  <FontAwesome
+                    name="facebook">
+                  </FontAwesome>
+                  <span className="d-none d-sm-block">Facebook</span>
+                </Button>
+              </Col>
+              <Col>
+                <Button className="btn-login btn-social btn-google">
+                  <FontAwesome
+                    name="google">
+                  </FontAwesome>
+                  <span className="d-none d-sm-block">Google</span>
+                </Button>
+              </Col>
+              <Col>
+                <Button className="btn-login btn-social btn-twitter">
+                  <FontAwesome
+                    name="twitter">
+                  </FontAwesome>
+                  <span className="d-none d-sm-block">Twitter</span>
+                </Button>
+              </Col>
+            </Row>
+            <div className="subheading">
+              <h4>Or With...</h4>
+            </div>
             <LogInForm
             username={this.state.username}
             password={this.state.password}
             handleInputChange={this.handleInputChange}
             />
-            <br />
-            <h4> Or Via </h4>
-            <hr />
-            <Button color="info" block>Twitter
-               <br />
-               <Ionicon id="icon" icon="ion-social-twitter" fontSize="20" color="white"></Ionicon>
-            </Button>
-            <Button color="primary" block>Facebook
-              <br />
-              <Ionicon id="icon" icon="ion-social-facebook" fontSize="22" color="white"></Ionicon>
-            </Button>
-            <Button color="danger" block>Google
-              <br />
-              <Ionicon id="icon" icon="ion-social-googleplus" fontSize="20" color="white"></Ionicon>
-            </Button>
           </ModalBody>
-          <ModalFooter>
-          </ModalFooter>
         </Modal>
       </NavItem>
     );
