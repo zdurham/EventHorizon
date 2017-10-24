@@ -39,33 +39,10 @@ const UserSchema = new Schema({
   }]
 })
 
-UserSchema.statics.authenticate = (email, password, callback) => {
-  // Find email to match to input email
-  User.findOne({ email: email })
-    .exec((err, user) => {
-      // If err send err
-      if (err) {
-        return callback(err)
-      }
-      // If no user, send User not found err
-      else if (!user) {
-        var err = new Error('User not found')
-        err.status = 401
-        return callback(err)
-      }
-      // If user is found, bcrypt takes the password and checks using bcrypt's compare method
-      bcrypt.compare(password, user.password, (err, result) => {
-        // if result is true (match) then return user info
-        if (result === true) {
-          return callback(null, user);
-        }
-        // otherwise, do not return user info
-        else {
-          return callback();
-        }
-      })
-    })
-}
+// checking if password is valid
+UserSchema.method('validPassword', function(password) {
+  return bcrypt.compareSync(password, this.password);
+});
 
 // This method hashes the password before saving it to Mongo
 UserSchema.pre('save', function(next) {

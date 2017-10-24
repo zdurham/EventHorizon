@@ -1,26 +1,27 @@
 const router = require("express").Router();
 const eventController = require("../../controllers/event");
+const reqLogin = require('../../middleware/reqLogin')
 
 router.route("/")
   .get(eventController.findAll);
 
 router.route("/createEvent/:id")
-  .post(eventController.createEvent);
+  .post(reqLogin, eventController.createEvent);
 
 router.route("/:id")
   .post(eventController.remove)
   .get(eventController.getSingleEvent);
 
 router.route("/find/:id")
-  .get(eventController.findAllByUser);
+  .get(reqLogin, eventController.findAllByUser);
 
 router.route("/upvote/:id")
-  .post(eventController.upvoteEvent);
+  .post(reqLogin, eventController.upvoteEvent);
 
 router.route("/downvote/:id")
-  .post(eventController.downvoteEvent);
+  .post(reqLogin, eventController.downvoteEvent);
 
 router.route("/attend/:id")
-  .post(eventController.attendEvent);
+  .post(reqLogin, eventController.attendEvent);
 
 module.exports = router;

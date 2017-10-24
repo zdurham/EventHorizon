@@ -11,6 +11,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const routes = require('./routes')
 const flash = require('connect-flash')
+const passport = require('passport')
 
 /// ------------------------------------------
 // BODY PARSER
@@ -36,26 +37,19 @@ mongoose.connect(
 ///
 
 /// ------------------------------------------
-// SESSION CODE
+// SESSION CODE AND PASSPORT
+require('./config/passport')(passport); // pass passport for configuration
 // Add cookieParser for auth
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(session({
-  name: 'user_session',
   resave: true,
   saveUninitialized: true,
   secret: config.secret, // session secret
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  cookie: { maxAge: 60000 }
 }));
-///
-
-/// ------------------------------------------
-// PERSISTENT SESSIONS
-// Make user info available on all templates
-app.use((req, res, next) => {
-  res.locals.currentUser = req.session.userId
-  next();
-})
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 ///
 
 /// ------------------------------------------
@@ -75,7 +69,7 @@ app.use(express.static("client/build"));
 
 /// ------------------------------------------
 // ROUTES
-require('./routes/authRoutes')(app)
+require('./routes/authRoutes')(app, passport)
 app.use(routes);
 ///
 
