@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
         {this.props.userEvents &&
           <h1> Your events have loaded</h1>
         }
-        {this.props.userEvents.map(event => {
+        {this.props.userEvents && this.props.userEvents.map(event => {
           return(
             <div className='container'>
               <p>{event.name}</p>
@@ -45,7 +45,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   userId: state.authUser.user._id,
-  userEvents: state.events.userEvents
+  userEvents: state.events.userEvents,
 })
 
 export default connect(mapStateToProps, { getUserEvents })(Dashboard)

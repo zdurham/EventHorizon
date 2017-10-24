@@ -12,7 +12,7 @@ function authUserAction(data) {
 
 function removeAuthUserAction() {
   return {
-    type: 'REMOVE_AUTH',
+    type: 'USER_LOGOUT',
     payload: {}
   }
 }

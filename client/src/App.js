@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { browserHistory } from 'react-router-dom'
 import "./App.css"
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -10,10 +11,10 @@ import NewEvent from "./pages/NewEvent";
 import Authenticate from './components/Authenticate'
 
 
-
 // These are necessary for Redux
 import { Provider } from 'react-redux'
 import store from './store'
+
 
 const App = () =>
   <Provider store={store}>
