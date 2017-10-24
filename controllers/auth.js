@@ -1,14 +1,14 @@
 
 const auth = {
+
   login: (req, res, next) => {
-    res.status(200).json(
-      req.user.sanitize
-    )
+    res.status(200).json(req.user.sanitize())
   },
 
   logout: (req, res, next) => {
     req.session.destroy(function() {
       req.logout();
+      res.clearCookie('connect.sid')
       res.send(console.log('user logged out'))
     }) 
   },
