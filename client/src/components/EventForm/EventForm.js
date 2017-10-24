@@ -19,7 +19,6 @@ class EventForm extends Component {
   handleValidSubmit(event, values) {
     this.setState({values});
     this.props.createEvent(values, this.props.userId)
-
   }
 
   render() {
@@ -98,7 +97,8 @@ class EventForm extends Component {
           </Row>
           <AvGroup>
             <Label check inline>
-              <AvInput type="checkbox" name="allDay" />All day event</Label>
+              <AvInput type="checkbox" name="allDay" />All day event
+            </Label>
           </AvGroup>
           <AvGroup>
             <Label for="evt-loc">Place</Label>
@@ -153,24 +153,23 @@ class EventForm extends Component {
 
           <AvGroup>
             <Label check inline>
-              <AvInput type="checkbox" name="kidFriendly" />Kid friendly</Label>
+              <AvInput type="checkbox" name="kidFriendly" />Kid friendly
+            </Label>
           </AvGroup>
           <AvGroup>
             <Label check inline>
-              <AvInput type="checkbox" name="petFriendly" />Pet friendly</Label>
+              <AvInput type="checkbox" name="petFriendly" />Pet friendly
+            </Label>
           </AvGroup>
           <AvGroup>
             <Label check inline>
-              <AvInput type="checkbox" name="advert" />Advertise this event</Label>
+              <AvInput type="checkbox" name="advert" />Advertise this event
+            </Label>
           </AvGroup>
           <FormGroup>
             <Button>Submit</Button>
           </FormGroup>
         </AvForm>
-        {this.state.values && <div>
-          <h5>Submission values</h5>
-          Values: <pre>{JSON.stringify(this.state.values, null, 2)}</pre>
-        </div>}
       </Container>
     );
   }
