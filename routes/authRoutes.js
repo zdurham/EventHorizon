@@ -1,7 +1,7 @@
 // Requiring models
 const User = require('../models/User')
 // Requiring middleware
-const isLoggedIn = require('../middleware/authentication.js')
+// const isLoggedIn = require('../middleware/authentication.js')
 const reqLogin = require('../middleware/reqLogin')
 
 // TODO:
@@ -10,34 +10,10 @@ const reqLogin = require('../middleware/reqLogin')
 module.exports = (app) => {
 
   // Login
-  app.post('/login', (req, res, next) => {
-    // Check to see if both inputs were filled out
-    if (req.body.email && req.body.password) {
-
-      // Authenticate method (part of UserSchema) used to check email and password against db data 
-      User.authenticate(req.body.email, req.body.password, (err, user) => {
-        if (err || !user) {
-          let err = new Error("Wrong email or password")
-          err.status = 401
-          return next(err)
-        }
-        else {
-          req.session.userId = user._id
-          // Send user information to the client side in a JSON object if successful
-          // Sanitize is a method in the user schema
-          res.status(200).json(
-            user.sanitize()
-          )
-        }
-      })
-    }
-    // Error sent if one or both inputs weren't filled out
-    else {
-      var err = new Error("Email and password are both required")
-      err.status = 401
-      return next(err)
-    }
-  })
+  app.post('/login', passport.authenticate('local-signup', { failureFlash: true }), (req, res, next) => {
+    res.status(200).json(
+      user.sanitize()
+    )
 
   // Logout
   app.post('/logout', (req, res, next) => {
