@@ -10,10 +10,16 @@ export default (ComposedComponent) => {
       this.checkAuth(this.props.authenticated);
     }
 
+    componentWillUpdate = (nextProps) => {
+      if (nextProps.authenticated !== this.props.authenticated) {
+        this.checkAuth(nextProps.authenticated)
+      }
+    }
+
     checkAuth = (isAuthed) => {
       if (!isAuthed) {
         // If the user isn't authenticated, redirect to login
-        return this.props.history.push('/login');
+        return this.props.history.push('/');
       }
       else {
         return this.props.getAuthUser();

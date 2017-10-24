@@ -3,6 +3,7 @@ const db = require("../models");
 module.exports = {
   createEvent: function(req, res) {
     var userId = req.params.id;
+    req.body.createdBy = userId
     //saving event to mongoose
     db.Event.create(req.body, function(error, doc) {
       //sending errors

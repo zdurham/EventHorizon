@@ -1,8 +1,22 @@
-import { authUser }from './authReducers'
+import { authUser } from './authReducers'
+import { events } from './eventReducers'
 import { combineReducers } from 'redux'
 
-
-export default combineReducers({
-  authUser
+const appReducers = combineReducers({
+  authUser,
+  events
 })
+
+const rootReducer = (state, action) => {
+  if (action.type === 'USER_LOGOUT') {
+    state = undefined
+  }
+
+  return appReducers(state, action)
+}
+
+export default rootReducer
+
+
+
 

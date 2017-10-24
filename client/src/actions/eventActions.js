@@ -9,6 +9,13 @@ function event(eventData) {
   }
 }
 
+function userEvents(eventData) {
+  return {
+    type: 'USER_EVENTS',
+    payload: eventData
+  }
+}
+
 
 
 
@@ -16,14 +23,22 @@ function event(eventData) {
 
 /// ------------------------------------
 // ACTIONS
-export const createEvent = (eventData, id) => {
-  dispatch => {
-    api.createEvent(eventData, id)
+export const createEvent = (eventData, userId) => {
+  return dispatch => {
+    api.createEvent(eventData, userId)
     .then(res => {
-
+      dispatch(event(eventData))
     })
   }
   
 }
 
+export const getUserEvents = (userId) => {
+  return dispatch => {
+    api.findAllByUser(userId)
+    .then(res => {
+      dispatch(userEvents(res.data))
+    })
+  }
+}
 ///

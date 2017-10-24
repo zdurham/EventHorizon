@@ -6,9 +6,6 @@ export function authUser(state = {}, action) {
     case "GET_USER":
       console.log('get and auth user', state)
       return { ...state, user: action.payload, isAuthenticated: true}
-    case "REMOVE_AUTH":
-      console.log('remove-state', state)
-      return { ...state, user: action.payload, isAuthenticated: false}
     default:
       return state
   }    
