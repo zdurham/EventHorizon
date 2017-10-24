@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Ionicon from 'react-ionicons'
+import FontAwesome from 'react-fontawesome';
 import './JoinBtn.css';
 import SignUpForm from '../SignUpForm';
 import { Container, Modal, ModalFooter, ModalHeader, ModalBody, Button } from 'reactstrap';
@@ -44,14 +44,14 @@ class JoinBtn extends Component {
             <hr />
             <Button color="info" block>Twitter
               <br />
-              <Ionicon id="icon" icon="ion-social-twitter" fontSize="20" color="white"></Ionicon></Button>
+              <FontAwesome id="icon" icon="ion-social-twitter" fontSize="20" color="white"></FontAwesome></Button>
             <Button color="primary" block>Facebook
               <br />
-              <Ionicon id="icon" icon="ion-social-facebook" fontSize="22" color="white"></Ionicon>
+              <FontAwesome id="icon" icon="ion-social-facebook" fontSize="22" color="white"></FontAwesome>
             </Button>
             <Button color="danger" block>Google
               <br />
-              <Ionicon id="icon" icon="ion-social-googleplus" fontSize="20" color="white"></Ionicon>
+              <FontAwesome id="icon" icon="ion-social-googleplus" fontSize="20" color="white"></FontAwesome>
             </Button>
           <ModalFooter>
           </ModalFooter>

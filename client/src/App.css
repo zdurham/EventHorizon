@@ -9,7 +9,12 @@ main {
 }
 
 button {
-  cursor: pointer;
+  cursor: pointer !important;
+  border: none !important;
+}
+
+button:hover {
+  border: none !important;
 }
 
 .button-primary {
@@ -19,4 +24,24 @@ button {
 
 .button-primary:hover {
   background-color: #9a4299;
+}
+
+.btn-social {
+  transition: all 0.3s ease-out !important;
+}
+
+.btn-social:hover {
+  transform: scale(1.1) !important;
+}
+
+.btn-facebook, .btn-facebook:hover {
+  background-color: #3b5998;
+}
+
+.btn-google, .btn-google:hover {
+  background-color: #db4437;
+}
+
+.btn-twitter, .btn-twitter:hover {
+  background-color: #1da1f2;
 }

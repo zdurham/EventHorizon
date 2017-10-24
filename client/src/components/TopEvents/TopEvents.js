@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import FontAwesome from 'react-fontawesome';
 import './TopEvents.css';
 import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText, CardLink } from 'reactstrap';
-import Ionicon from 'react-ionicons'
 
 const TopEvents = (props) =>  {
   return (
