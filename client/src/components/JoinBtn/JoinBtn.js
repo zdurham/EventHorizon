@@ -29,10 +29,14 @@ class JoinBtn extends Component {
 
   render() {
     return (
-      <Container className="btn-container">
-        <Button size="lg" className="button-primary" onClick={this.toggle}>{this.props.buttonLabel}Join Our Community!</Button>
+      <Container className="text-center">
+        <Button
+          size="lg"
+          className="button-primary" onClick={this.toggle}>
+          Join Our Community!
+        </Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader id="header" toggle={this.toggle}>Join</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Join</ModalHeader>
           <ModalBody>
           <SignUpForm
             username={this.state.username}
@@ -53,8 +57,6 @@ class JoinBtn extends Component {
               <br />
               <FontAwesome id="icon" icon="ion-social-googleplus" fontSize="20" color="white"></FontAwesome>
             </Button>
-          <ModalFooter>
-          </ModalFooter>
           </ModalBody>
         </Modal>
       </Container>

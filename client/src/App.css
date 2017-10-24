@@ -23,7 +23,11 @@ button:hover {
 }
 
 .button-primary:hover {
-  background-color: #9a4299;
+  background-color: #6d156c;
+}
+
+.close:hover {
+  background-color: inherit;
 }
 
 .btn-social {
@@ -31,7 +35,7 @@ button:hover {
 }
 
 .btn-social:hover {
-  transform: scale(1.1) !important;
+  transform: scale(1.07) !important;
 }
 
 .btn-facebook, .btn-facebook:hover {

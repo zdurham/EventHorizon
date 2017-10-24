@@ -7,11 +7,13 @@
   text-align: center;
 }
 
-.info .col {
+.info div[class^='col'] {
   padding: 20px;
 }
 
-.info svg {
+.info .fa {
+  font-size: 42px;
+  color: #841983;
   margin: 16px 0;
 }
 

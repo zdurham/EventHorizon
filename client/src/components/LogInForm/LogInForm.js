@@ -1,6 +1,7 @@
 import React from "react";
 import './LogInForm.css';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
+import { Container, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 
@@ -8,16 +9,15 @@ class LogInForm extends React.Component {
   constructor(props) {
     super(props)
 
+    this.handleValidSubmit = this.handleValidSubmit.bind(this);
     this.state = {
       email: '',
       password: ''
     }
   }
 
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
+  handleValidSubmit(event, values) {
+    this.setState({values});
   }
 
   handleSubmit = e => {
@@ -30,38 +30,36 @@ class LogInForm extends React.Component {
 
   render() {
     return (
-      <div>
-      <Form onSubmit={this.handleSubmit}>
-        <FormGroup>
-            <Label for="email">Email</Label>{' '}
-            <Input 
-            type="text" 
-            name="email" 
-            id="email" 
-            placeholder="Cool Kid" 
-            value={this.state.email}
-            onChange={this.handleChange}
-            />
-          </FormGroup>
-          {' '}
-          <FormGroup>
-            <Label for="password">Password</Label>{' '}
-            <Input 
-            type="password" 
-            name="password" 
-            id="password" 
-            placeholder="Top Secret" 
-            value={this.state.password}
-            onChange={this.handleChange}
-            />
-          </FormGroup>
-          {' '}
-          <Button id="submitBtn" value="log-in" block>Log In</Button>
-      </Form>
-      </div>
+      <AvForm id="login-form" onSubmit={this.handleSubmit}>
+        <AvGroup>
+          <Label for="login-email">Email</Label>
+          <AvInput
+            type="email"
+            name="email"
+            id="login-email"
+            required />
+          <AvFeedback>Enter a valid email address</AvFeedback>
+        </AvGroup>
+        <AvGroup>
+          <Label for="login-pwd">Password</Label>
+          <AvInput
+            type="password"
+            name="password"
+            id="login-pwd"
+            required />
+          <AvFeedback>Enter password for account</AvFeedback>
+        </AvGroup>
+        <FormGroup className="text-center">
+          <Button
+            size="lg"
+            className="button-primary"
+            block>
+            Log In
+          </Button>
+        </FormGroup>
+      </AvForm>
     )
   }
-
 }
 
 const mapDispatchToProps = dispatch => ({

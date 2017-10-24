@@ -36,10 +36,15 @@ class LogInBtn extends Component {
         <NavLink onClick={this.toggle}>Log In</NavLink>
         <Modal
           isOpen={this.state.modal}
-          toggle={this.toggle}
-          className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Sign In Using...</ModalHeader>
+          toggle={this.toggle}>
+          <ModalHeader toggle={this.toggle}>Sign In Options
+          </ModalHeader>
           <ModalBody>
+            <LogInForm
+              username={this.state.username}
+              password={this.state.password}
+              handleInputChange={this.handleInputChange}
+            />
             <Row className="btn-container">
               <Col>
                 <Button className="btn-login btn-social btn-facebook">
@@ -66,14 +71,6 @@ class LogInBtn extends Component {
                 </Button>
               </Col>
             </Row>
-            <div className="subheading">
-              <h4>Or With...</h4>
-            </div>
-            <LogInForm
-            username={this.state.username}
-            password={this.state.password}
-            handleInputChange={this.handleInputChange}
-            />
           </ModalBody>
         </Modal>
       </NavItem>
