@@ -7,7 +7,7 @@ const Footer = () =>
   <footer>
     <Container className="footer-links">
       <Row>
-        <Col sm="12" md="4">
+        <Col xs="12" md="4">
           <h5>Contributors</h5>
           <hr />
           <a href="https://github.com/MitHipster" target="_blank" rel="noopener noreferrer">Tim Acker</a>
@@ -15,7 +15,7 @@ const Footer = () =>
           <a href="https://github.com/zdurham" target="_blank" rel="noopener noreferrer">Zach Durham</a>
           <a href="https://github.com/MoHampton" target="_blank" rel="noopener noreferrer">Mo Hampton</a>
         </Col>
-        <Col sm="12" md="4">
+        <Col xs="12" md="4">
           <h5>Site Map</h5>
           <hr />
           <a href="#home">Home</a>
@@ -23,7 +23,7 @@ const Footer = () =>
           <a href="#calendar">Calendar</a>
           <a href="#advertise">Advertise</a>
         </Col>
-        <Col sm="12" md="4">
+        <Col xs="12" md="4">
           <h5>Social</h5>
           <hr />
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>

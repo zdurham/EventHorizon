@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import './LogInBtn.css';
-import FontAwesome from 'react-fontawesome';
 import LogInForm from '../LogInForm';
-import { Button, Col, Collapse, Modal, ModalHeader, ModalBody, NavItem, NavLink, Row } from 'reactstrap';
+import SocialBtns from '../SocialBtns';
+import { Collapse, Modal, ModalHeader, ModalBody, ModalFooter, NavItem, NavLink } from 'reactstrap';
 
 class LogInBtn extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class LogInBtn extends Component {
     });
   }
 
-    handleInputChange = event => {
+  handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
@@ -30,14 +30,15 @@ class LogInBtn extends Component {
   };
 
   render() {
-    const svgSize = '48px';
     return (
       <NavItem>
         <NavLink onClick={this.toggle}>Log In</NavLink>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Sign In Options
+          <ModalHeader
+            toggle={this.toggle}>
+            Sign In Options
           </ModalHeader>
           <ModalBody>
             <LogInForm
@@ -45,33 +46,10 @@ class LogInBtn extends Component {
               password={this.state.password}
               handleInputChange={this.handleInputChange}
             />
-            <Row className="btn-container">
-              <Col>
-                <Button className="btn-login btn-social btn-facebook">
-                  <FontAwesome
-                    name="facebook">
-                  </FontAwesome>
-                  <span className="d-none d-sm-block">Facebook</span>
-                </Button>
-              </Col>
-              <Col>
-                <Button className="btn-login btn-social btn-google">
-                  <FontAwesome
-                    name="google">
-                  </FontAwesome>
-                  <span className="d-none d-sm-block">Google</span>
-                </Button>
-              </Col>
-              <Col>
-                <Button className="btn-login btn-social btn-twitter">
-                  <FontAwesome
-                    name="twitter">
-                  </FontAwesome>
-                  <span className="d-none d-sm-block">Twitter</span>
-                </Button>
-              </Col>
-            </Row>
           </ModalBody>
+          <ModalFooter>
+            <SocialBtns />
+          </ModalFooter>
         </Modal>
       </NavItem>
     );

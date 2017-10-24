@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import FontAwesome from 'react-fontawesome';
 import './JoinBtn.css';
-import SignUpForm from '../SignUpForm';
+import JoinForm from '../JoinForm';
+import SocialBtns from '../SocialBtns';
 import { Container, Modal, ModalFooter, ModalHeader, ModalBody, Button } from 'reactstrap';
 
 class JoinBtn extends Component {
@@ -20,7 +21,7 @@ class JoinBtn extends Component {
     });
   }
 
-    handleInputChange = event => {
+  handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
@@ -32,32 +33,28 @@ class JoinBtn extends Component {
       <Container className="text-center">
         <Button
           size="lg"
-          className="button-primary" onClick={this.toggle}>
-          Join Our Community!
+          className="button-primary"
+          onClick={this.toggle}>
+          Join Community
         </Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Join</ModalHeader>
+        <Modal
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          className={this.props.className}>
+          <ModalHeader
+            toggle={this.toggle}>
+            Sign Up Options
+          </ModalHeader>
           <ModalBody>
-          <SignUpForm
-            username={this.state.username}
-            password={this.state.password}
-            handleInputChange={this.handleInputChange}
-          />
-            <br />
-            <h4>Or Via</h4>
-            <hr />
-            <Button color="info" block>Twitter
-              <br />
-              <FontAwesome id="icon" icon="ion-social-twitter" fontSize="20" color="white"></FontAwesome></Button>
-            <Button color="primary" block>Facebook
-              <br />
-              <FontAwesome id="icon" icon="ion-social-facebook" fontSize="22" color="white"></FontAwesome>
-            </Button>
-            <Button color="danger" block>Google
-              <br />
-              <FontAwesome id="icon" icon="ion-social-googleplus" fontSize="20" color="white"></FontAwesome>
-            </Button>
+            <JoinForm
+              username={this.state.username}
+              password={this.state.password}
+              handleInputChange={this.handleInputChange}
+            />
           </ModalBody>
+          <ModalFooter>
+            <SocialBtns />
+          </ModalFooter>
         </Modal>
       </Container>
     );
