@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import './LogInForm.css';
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
-import { Container, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, FormGroup, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 
-class LogInForm extends React.Component {
+class LogInForm extends Component {
   constructor(props) {
     super(props)
 

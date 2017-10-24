@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './LogInBtn.css';
 import LogInForm from '../LogInForm';
 import SocialBtns from '../SocialBtns';
-import { Collapse, Modal, ModalHeader, ModalBody, ModalFooter, NavItem, NavLink } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, NavItem, NavLink } from 'reactstrap';
 
 class LogInBtn extends Component {
   constructor(props) {

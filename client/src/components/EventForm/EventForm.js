@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import './EventForm.css';
 import { Container, Row, Col, FormGroup, Label, Button } from 'reactstrap';
-import { AvForm, AvField, AvGroup, AvInput, AvFeedback, AvRadioGroup, AvRadio } from 'availity-reactstrap-validation';
+import { AvForm, AvField, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
 import { connect } from 'react-redux'
 import { createEvent } from '../../actions/eventActions'
 

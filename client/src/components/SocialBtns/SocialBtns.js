@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './SocialBtns.css';
 import FontAwesome from 'react-fontawesome';
-import { Button, Col, Collapse, Modal, ModalHeader, ModalBody, ModalFooter, NavItem, NavLink, Row } from 'reactstrap';
+import { Button, Col, Row } from 'reactstrap';
 
 class SearchBtns extends Component {
   constructor(props) {
@@ -12,7 +12,6 @@ class SearchBtns extends Component {
   }
 
   render() {
-    const svgSize = '48px';
     return (
       <Row>
         <Col>
