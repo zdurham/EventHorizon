@@ -16,8 +16,10 @@ class SignUpForm extends Component {
     }
   }
 
-  handleSubmit = (e) => {
-    if (this.state.values.password === this.state.values.confPassword) {
+  handleValidSubmit = (event, values) => {
+    this.setState({values});
+    console.log(this.state)
+    if (this.state.password === this.state.confPassword) {
       this.props.registerUser({
         email: this.state.values.email,
         password: this.state.values.password
@@ -31,7 +33,7 @@ class SignUpForm extends Component {
 
   render() {
     return(
-      <AvForm id="join-form" onSubmit={this.handleSubmit}>
+      <AvForm id="join-form" onValidSubmit={this.handleValidSubmit}>
         <AvGroup>
           <Label for="join-email">Email</Label>
           <AvInput
