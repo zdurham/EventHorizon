@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const eventController = require("../../controllers/event");
 const reqLogin = require('../../middleware/reqLogin')
+const passport = require('passport')
 
 router.route("/")
   .get(eventController.findAll);
