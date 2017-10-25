@@ -21,7 +21,8 @@ class EventForm extends Component {
     const yrsOut = 2;
     return(
       <Container>
-        <AvForm onValidSubmit={this.handleValidSubmit}>
+        <AvForm id="evt-form" onValidSubmit={this.handleValidSubmit}>
+          <h4 className="section-title">Enter event information below</h4>
           <AvGroup>
             <Label for="evt-name">Event Name *</Label>
             <AvInput
@@ -32,7 +33,7 @@ class EventForm extends Component {
             <AvFeedback>This field is required</AvFeedback>
           </AvGroup>
           <AvGroup>
-            <Label for="evt-genre">Event Type</Label>
+            <Label for="evt-genre">Event Type *</Label>
             <AvInput
               type="text"
               name="genre"
@@ -41,7 +42,7 @@ class EventForm extends Component {
             <AvFeedback>This field is required</AvFeedback>
           </AvGroup>
           <AvGroup>
-            <Label for="evt-desc">Description</Label>
+            <Label for="evt-desc">Description *</Label>
             <AvInput
               type="textarea"
               name="description"
@@ -50,7 +51,7 @@ class EventForm extends Component {
             <AvFeedback>This field is required</AvFeedback>
           </AvGroup>
           <AvGroup>
-            <Label for="evt-url">URL (if available)</Label>
+            <Label for="evt-url">Website</Label>
             <AvInput
               type="url"
               name="link"
@@ -60,7 +61,7 @@ class EventForm extends Component {
           <AvFeedback>This field is invalid.</AvFeedback>
           </AvGroup>
           <AvGroup>
-            <Label for="evt-date">Event Date</Label>
+            <Label for="evt-date">Event Date *</Label>
             <AvInput
               type="date"
               name="date"
@@ -72,7 +73,7 @@ class EventForm extends Component {
           <Row>
             <Col xs="12" sm="6">
               <AvGroup>
-                <Label for="evt-start">Start Time</Label>
+                <Label for="evt-start">Start Time *</Label>
                 <AvInput
                   type="time"
                   name="startTime"
@@ -97,19 +98,19 @@ class EventForm extends Component {
             </Label>
           </AvGroup>
           <AvGroup>
-            <Label for="evt-loc">Place</Label>
+            <Label for="evt-loc">Place *</Label>
             <AvInput
               type="text"
               name="location"
               id="evt-loc"
               required />
-            <AvFeedback>This field is required</AvFeedback>
+            <AvFeedback>This field is required *</AvFeedback>
           </AvGroup>
 
           <Row>
             <Col xs="12" sm="8">
               <AvGroup>
-                <Label for="evt-addr">Street</Label>
+                <Label for="evt-addr">Street *</Label>
                 <AvInput
                   type="text"
                   name="address"
@@ -125,7 +126,7 @@ class EventForm extends Component {
           <Row>
             <Col xs="12" sm="5">
               <AvGroup>
-                <Label for="evt-city">City</Label>
+                <Label for="evt-city">City *</Label>
                 <AvInput
                   type="text"
                   name="city"
@@ -135,7 +136,7 @@ class EventForm extends Component {
               </AvGroup>
             </Col>
             <Col xs="12" sm="4">
-              <AvField type="select" name="state" label="State" required>
+              <AvField type="select" name="state" label="State *" required>
                 <option value="NA" disabled>Chose State</option>
                 <option value="NC">North Carolina</option>
                 <option value="SC">South Carolina</option>
@@ -143,7 +144,7 @@ class EventForm extends Component {
               </AvField>
             </Col>
             <Col xs="12" sm="3">
-              <AvField name="zipCode" label="Zip Code" pattern="[0-9]{5}" required />
+              <AvField name="zipCode" label="Zip Code *" pattern="[0-9]{5}" required />
             </Col>
           </Row>
 
@@ -162,8 +163,13 @@ class EventForm extends Component {
               <AvInput type="checkbox" name="advert" />Advertise this event
             </Label>
           </AvGroup>
+          <p><em>* Required</em></p>
           <FormGroup>
-            <Button>Submit</Button>
+            <Button
+              size="lg"
+              className="button-primary">
+              Create Event
+            </Button>
           </FormGroup>
         </AvForm>
       </Container>

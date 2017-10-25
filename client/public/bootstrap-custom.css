@@ -2044,6 +2044,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .form-check-inline {
   display: inline-block;
   margin-right: 0.75rem;
+  margin-left: 20px; /* new */
 }
 
 .form-check-inline .form-check-label {
@@ -3983,7 +3984,9 @@ tbody.collapse.show {
 .navbar-light .navbar-nav .active > .nav-link,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .nav-link.active {
-  color: rgba(0, 0, 0, 0.9);
+  /*color: rgba(0, 0, 0, 0.9);*/
+  color: rgba(74, 74, 74, 0.8);
+  font-weight: 700;
 }
 
 .navbar-light .navbar-toggler {
