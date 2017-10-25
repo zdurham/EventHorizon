@@ -14,4 +14,4 @@ class Event extends React.Component {
   }
 }
 
-export default connect()(Event)
+export default connect(mapStateToProps)(Event)

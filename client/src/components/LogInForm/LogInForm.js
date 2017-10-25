@@ -17,6 +17,7 @@ class LogInForm extends Component {
   }
 
   handleValidSubmit = (event, values) =>{
+    event.preventDefault()
     this.setState({values});
     this.props.loginUser({
       email: this.state.values.email,
