@@ -33,8 +33,12 @@ class navbarInstance extends Component {
       button = 
       <div>
         <NavItem>
+          <NavLink tag={RRLink} to="/new_event">Create Event</NavLink>
+        </NavItem>
+        <NavItem>
           <NavLink tag={RRLink} to='/dashboard' exact >Dashboard</NavLink>
         </NavItem>
+        
         <NavItem>
           <NavLink onClick={this.props.logoutUser}>
             Logout
@@ -54,9 +58,6 @@ class navbarInstance extends Component {
               </NavItem>
               <NavItem>
                 <NavLink tag={RRLink} to="/Advertise">Advertise</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={RRLink} to="/new_event">Create Event</NavLink>
               </NavItem>
               {button}
             </Nav>
