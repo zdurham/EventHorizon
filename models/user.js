@@ -5,10 +5,6 @@ const _ = require('lodash')
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  username: {
-    type: String,
-    // unique: true
-  },
   email: {
     type: String,
     lowercase: true,

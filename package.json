@@ -31,6 +31,7 @@
     "lodash": "^4.17.4",
     "mongoose": "^4.11.7",
     "morgan": "^1.9.0",
+    "node": "^8.8.0",
     "node-gyp": "^3.6.2",
     "passport": "^0.4.0",
     "passport-http": "^0.3.0",
