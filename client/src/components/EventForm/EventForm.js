@@ -10,13 +10,9 @@ class EventForm extends Component {
   constructor(props) {
     super(props);
 
-    this.handleValidSubmit = this.handleValidSubmit.bind(this);
-    this.state = {
-      name: ''
-    }
   }
 
-  handleValidSubmit(event, values) {
+  handleValidSubmit = (event, values) => {
     this.setState({values});
     this.props.createEvent(values, this.props.userId)
   }

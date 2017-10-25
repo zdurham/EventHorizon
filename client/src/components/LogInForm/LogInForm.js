@@ -9,14 +9,14 @@ class LogInForm extends Component {
   constructor(props) {
     super(props)
 
-    this.handleValidSubmit = this.handleValidSubmit.bind(this);
+    
     this.state = {
       email: '',
       password: ''
     }
   }
 
-  handleValidSubmit(event, values) {
+  handleValidSubmit = (event, values) =>{
     this.setState({values});
     this.props.loginUser({
       email: this.state.values.email,

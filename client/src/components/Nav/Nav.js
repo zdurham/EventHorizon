@@ -55,6 +55,9 @@ class navbarInstance extends Component {
               <NavItem>
                 <NavLink tag={RRLink} to="/Advertise">Advertise</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink tag={RRLink} to="/new_event">Create Event</NavLink>
+              </NavItem>
               {button}
             </Nav>
           </Collapse>
