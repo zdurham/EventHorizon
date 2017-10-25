@@ -1,5 +1,6 @@
 const db = require("../models");
 
+
 module.exports = {
   createEvent: function(req, res) {
     var userId = req.params.id;

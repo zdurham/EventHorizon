@@ -17,9 +17,16 @@ class SignUpForm extends Component {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault()
-    this.props.registerUser(this.state)
-    this.props.history.push('/dashboard')
+    if (this.state.values.password === this.state.values.confPassword) {
+      this.props.registerUser({
+        email: this.state.values.email,
+        password: this.state.values.password
+      })
+    }
+    else {
+      console.log("The passwords don't match")
+    }
+    
   }
 
   render() {

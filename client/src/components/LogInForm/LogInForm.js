@@ -18,19 +18,15 @@ class LogInForm extends Component {
 
   handleValidSubmit(event, values) {
     this.setState({values});
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
     this.props.loginUser({
-      email: this.state.email,
-      password: this.state.password
+      email: this.state.values.email,
+      password: this.state.values.password
     })
   }
 
   render() {
     return (
-      <AvForm id="login-form" onSubmit={this.handleSubmit}>
+      <AvForm id="login-form" onValidSubmit={this.handleValidSubmit}>
         <AvGroup>
           <Label for="login-email">Email</Label>
           <AvInput

@@ -1,4 +1,5 @@
 const LocalStrategy = require('passport-local').Strategy
+const BasicStrategy = require('passport-http').BasicStrategy
 const User = require('../models/User')
 
 module.exports = function(passport) {
@@ -54,7 +55,6 @@ module.exports = function(passport) {
             // set the user's local credentials
             newUser.email  = email;
             newUser.password = password;
-            newUser.username = req.body.username
 
             // save the user
             newUser.save(function(err) {
@@ -66,54 +66,47 @@ module.exports = function(passport) {
     });    
 }));
 
-// passport.use('local-signin', new LocalStrategy({
-//   usernameField: 'email',
-//   passwordField: 'password',
-//   passReqToCallback: true
-// },
-
-// function(req, email, password, done) {
-//   User.findOne({ 'email': email }, function(err, user) {
-//     // If any errors are generated, return done with the error
-//     if (err) {
-//       return done(err)
-//     }
-
-//     // Is there a user?
-//     if (!user) {
-//       return done(null, false);
-//     }
-
-//     // Does the user have a valid password?
-//     if (!user.validatePassword(password)) {
-//       return done(null, false);
-//     }
-
-//     return done(null, user)
-//   })
-// }
-// ))
-// };
-
 passport.use('local-login', new LocalStrategy({
   usernameField : 'email',
   passwordField : 'password',
   passReqToCallback : true
 },
-function(req, email, password, done) {
-  User.findOne({email: email}, function(err, user) {
-      if(err) {
-        return errHandler(err);
-        }
-      if(!user) {
-        return done(null, false, {errMsg: 'User does not exist, please' +
-        ' <a class="errMsg" href="/signup">signup</a>'});
-        }
-      if(!user.validPassword(password)) {
-        return done(null, false, {errMsg: 'Invalid password try again'});
-        }
-      return done(null, user);
-  });
+  function(req, email, password, done) {
+    User.findOne({email: email}, function(err, user) {
+        if(err) {
+          console.log(err)
+          return errHandler(err);
+          }
+        if(!user) {
+          return done(null, false, {errMsg: 'User does not exist, please' +
+          ' <a class="errMsg" href="/signup">signup</a>'});
+          }
+        if(!user.validPassword(password)) {
+          return done(null, false, {errMsg: 'Invalid password try again'});
+          }
+        return done(null, user);
+    });
 
-}));
+  }));
+
+// passport.use('BasicStrategy', new BasicStrategy({
+//   usernameField: 'email'
+//   },
+//   function(email, password, done) {
+//     User.findOne({ 'email': email }, function(err, user) {
+//       if (err) {
+//         return err
+//       }
+//       if (!user) {
+//         return done(null, false)
+//       }
+
+//       if (!user.validPassword(password)) {
+//         return done(null, false);
+//       }
+//       return done(null, user);
+//     })
+//   }
+// ))
 }
+
