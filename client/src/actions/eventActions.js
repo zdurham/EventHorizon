@@ -16,6 +16,13 @@ function userEvents(eventData) {
   }
 }
 
+function allEvents(eventData) {
+  return {
+    type: 'All_EVENTS',
+    payload: eventData
+  }
+}
+
 
 
 
@@ -23,21 +30,32 @@ function userEvents(eventData) {
 
 /// ------------------------------------
 // ACTIONS
+// This is for creating an event
 export const createEvent = (eventData, userId) => {
   return dispatch => {
     api.createEvent(eventData, userId)
-    .then(res => {
-      dispatch(event(eventData))
-    })
+      .then(res => {
+        dispatch(event(eventData))
+      })
   }
-  
 }
 
+// This gathers the events that a specific user has created
 export const getUserEvents = (userId) => {
   return dispatch => {
     api.findAllByUser(userId)
+      .then(res => {
+        dispatch(userEvents(res.data))
+      })
+  }
+}
+
+// This is for gathering all events for the events page
+export const getAllEvents = () => {
+  return dispatch => {
+    api.getAllEvents()
     .then(res => {
-      dispatch(userEvents(res.data))
+      dispatch()
     })
   }
 }

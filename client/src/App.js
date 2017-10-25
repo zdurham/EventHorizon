@@ -9,7 +9,7 @@ import Dashboard from './pages/Dashboard';
 import Events from "./pages/Events";
 import NewEvent from "./pages/NewEvent";
 import Authenticate from './components/Authenticate'
-
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 
 // These are necessary for Redux
 import { Provider } from 'react-redux'

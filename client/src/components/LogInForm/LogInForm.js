@@ -25,6 +25,7 @@ class LogInForm extends Component {
       password: this.state.values.password
     })
     this.props.toggle()
+    
   }
 
   render() {
