@@ -8,7 +8,7 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.user._id)
+    console.log(this.props.user)
     this.displayEvents(this.props.user._id)
   }
 

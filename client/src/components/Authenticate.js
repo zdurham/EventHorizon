@@ -29,13 +29,14 @@ export default (ComposedComponent) => {
     // Render component that is passed into this
     render() {
       return(
-        <ComposedComponent />
+        <ComposedComponent {...this.props}/>
       )
     }
   }
 
   const mapStateToProps = ( state ) => ({ 
-    authenticated: state.authUser.isAuthenticated
+    authenticated: state.authUser.isAuthenticated,
+    user: state.authUser.user
   });
   
   return withRouter(connect(mapStateToProps, { getAuthUser })(Authenticate));

@@ -1,6 +1,5 @@
 import authRequests from '../utils/api/authRequests'
 
-
 // ACTION HANDLERS
 // authenticates the user. Used for both register and login
 function authUserAction(data) {
@@ -45,6 +44,7 @@ export const loginUser = (userData) => {
     authRequests.login(userData)
     .then(res => {
       dispatch(authUserAction(res.data))
+
     })
   }
 }
