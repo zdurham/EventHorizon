@@ -6,7 +6,7 @@ export function events(state = {}, action) {
     case "EVENT_CREATED":
       return {...state, events: action.payload}
     case "USER_EVENTS":
-      return {...state, userEvents: action.payload}
+      return {...state, events: action.payload}
     default:
       return state
   }    
