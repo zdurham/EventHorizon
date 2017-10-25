@@ -26,14 +26,16 @@ class navbarInstance extends Component {
 
   render() {
     let dynamicNav;
+    let viewEvents =
+      <NavItem>
+        <NavLink tag={RRLink} to="/events">View Events</NavLink>
+      </NavItem>
     if (!this.props.authenticated) {
       dynamicNav =
       <Nav className="ml-auto" navbar>
+        {viewEvents}
         <NavItem>
-          <NavLink tag={RRLink} to="/Events">Events</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink tag={RRLink} to="/Advertise">Advertise</NavLink>
+          <NavLink tag={RRLink} to="/advertise">Advertise</NavLink>
         </NavItem>
         <LogInBtn />
       </Nav>
@@ -41,8 +43,9 @@ class navbarInstance extends Component {
     else {
       dynamicNav =
       <Nav className="ml-auto" navbar>
+        {viewEvents}
         <NavItem>
-          <NavLink tag={RRLink} to="/new_event">Create Event</NavLink>
+          <NavLink tag={RRLink} to="/new_event">Add Event</NavLink>
         </NavItem>
         <NavItem>
           <NavLink tag={RRLink} to='/dashboard' exact >Dashboard</NavLink>
@@ -55,7 +58,7 @@ class navbarInstance extends Component {
     return (
       <Navbar className='fixed-top' color="faded" light expand="lg">
         <Container>
-          <NavbarBrand to="/">CommunityCal</NavbarBrand>
+          <NavbarBrand tag={RRLink} to="/">CommunityCal</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             {dynamicNav}
