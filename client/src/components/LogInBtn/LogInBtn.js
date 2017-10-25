@@ -45,6 +45,7 @@ class LogInBtn extends Component {
               username={this.state.username}
               password={this.state.password}
               handleInputChange={this.handleInputChange}
+              toggle={this.toggle}
             />
           </ModalBody>
           <ModalFooter>

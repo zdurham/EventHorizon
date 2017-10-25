@@ -8,7 +8,8 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    this.displayEvents(this.props.userId)
+    console.log(this.props.user)
+    this.displayEvents(this.props.user._id)
   }
 
   displayEvents = (id) => {
@@ -44,8 +45,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  userId: state.authUser.user._id,
-  userEvents: state.events.userEvents,
+  user: state.authUser.user,
+  userEvents: state.events.events,
 })
 
 export default connect(mapStateToProps, { getUserEvents })(Dashboard)
