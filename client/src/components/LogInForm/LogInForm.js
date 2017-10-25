@@ -3,6 +3,7 @@ import './LogInForm.css';
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
 import { Button, FormGroup, Label } from 'reactstrap';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import { loginUser } from '../../actions/authActions';
 
 class LogInForm extends Component {
@@ -23,6 +24,7 @@ class LogInForm extends Component {
       email: this.state.values.email,
       password: this.state.values.password
     })
+    this.props.toggle()
   }
 
   render() {
@@ -65,4 +67,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(null,  { loginUser } )(LogInForm);
+export default withRouter(connect(null,  { loginUser } )(LogInForm));

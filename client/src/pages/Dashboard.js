@@ -8,6 +8,7 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.user._id)
     this.displayEvents(this.props.user._id)
   }
 
@@ -44,7 +45,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  user: state.authUser.user ? state.authUser.user : undefined,
+  user: state.authUser.user,
   userEvents: state.events.events,
 })
 

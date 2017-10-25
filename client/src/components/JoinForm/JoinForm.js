@@ -4,6 +4,7 @@ import './JoinForm.css';
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
 import { Button, FormGroup, Label } from 'reactstrap';
 import { registerUser } from '../../actions/authActions'
+import { withRouter } from 'react-router-dom'
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class SignUpForm extends Component {
         email: this.state.values.email,
         password: this.state.values.password
       })
+      this.props.toggle()
     }
     else {
       console.log("The passwords don't match")
@@ -81,4 +83,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(null, { registerUser })(SignUpForm);
+export default withRouter(connect(null, { registerUser })(SignUpForm));
