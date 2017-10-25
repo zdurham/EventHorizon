@@ -1,7 +1,12 @@
-textarea {
-  resize: none;
+#evt-form .section-title {
+  padding-top: 40px;
+  margin-bottom: 40px;
 }
 
-.form-check-inline {
-  margin-left: 20px;
+#evt-form .button-primary {
+  margin-top: 24px;;
+}
+
+textarea {
+  resize: none;
 }
