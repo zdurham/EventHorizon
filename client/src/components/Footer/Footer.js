@@ -18,10 +18,10 @@ const Footer = () =>
         <Col xs="12" md="4">
           <h5>Site Map</h5>
           <hr />
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#calendar">Calendar</a>
-          <a href="#advertise">Advertise</a>
+          <a href="/">About</a>
+          <a href="/events">Events</a>
+          <a href="/dashboard">Dashboard</a>
+          <a href="/advertise">Advertise</a>
         </Col>
         <Col xs="12" md="4">
           <h5>Social</h5>
