@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import DateCard from "../../components/DateCard";
-import TopEvents from "../../components/TopEvents";
+import DateCard from "../components/DateCard";
+import TopEvents from "../components/TopEvents";
 import { Container, Row, Col } from 'reactstrap';
-import { getAllEvents } from '../../actions/eventActions';
+import { getAllEvents } from '../actions/eventActions';
 
 class Events extends Component {
   constructor(props) {
@@ -19,27 +19,25 @@ class Events extends Component {
   }
 
   render() {
-
+    console.log(this.props.allEvents);
     return (
-        <Container tag="main">
-
-            <Row>
-                <Col sm="12" md={{ size: 8, offset: 2 }}>
-                    <DateCard />
-                    <DateCard />
-                    <DateCard />
-                    <DateCard />
-                </Col>
-                <Col lg="auto">
-                </Col>
-            </Row>
-            <Row>
-                <Col lg="auto">
-                    <TopEvents />
-                </Col>
-            </Row>
-
-        </Container>
+      <Container tag="main">
+        <Row>
+          <Col sm="12" md={{ size: 8, offset: 2 }}>
+            {/* {this.props.allEvents.map(event => (
+              <DateCard event/>
+            ))} */}
+            <DateCard {allEvents}
+          </Col>
+          <Col lg="auto">
+          </Col>
+        </Row>
+        <Row>
+          <Col lg="auto">
+            <TopEvents />
+          </Col>
+        </Row>
+      </Container>
     )
   }
 }

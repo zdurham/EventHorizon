@@ -39,11 +39,11 @@ class Dashboard extends Component {
 
   render() {
     return(
-      <div className='container'>
+      <main className='container'>
         <h1>Welcome to the Dashboard</h1>
         <h1> Here are your events</h1>
-        {this.props.userEvents ? 
-          (this.props.userEvents.length > 1 ? 
+        {this.props.userEvents ?
+          (this.props.userEvents.length > 1 ?
           this.props.userEvents.map(event => {
             return (<div>
               <h1>{event.name}</h1>
@@ -51,15 +51,15 @@ class Dashboard extends Component {
               <button onClick={() => this.props.deleteEvent(event._id)}>Delete</button>
             </div>
           )
-          }) : 
+          }) :
           <div className='well'>
             <h1>{this.props.userEvents.name}</h1>
             <h1>{this.props.userEvents.description}</h1>
             <button onClick={() => this.props.deleteEvent(this.props.userEvents._id)}>Delete</button>
-          </div>) : 
+          </div>) :
           <h1>There are no events to show </h1>
         }
-      </div>
+      </main>
     )
   }
 }
