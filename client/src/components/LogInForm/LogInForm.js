@@ -25,7 +25,6 @@ class LogInForm extends Component {
       password: this.state.values.password
     })
     this.props.toggle()
-    
   }
 
   render() {
@@ -68,4 +67,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default withRouter(connect(null,  { loginUser } )(LogInForm));
+export default withRouter(connect(null,  { loginUser })(LogInForm));

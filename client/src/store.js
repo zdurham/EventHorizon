@@ -4,7 +4,6 @@ import reducers from './reducers'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { loadState, saveState } from './utils/localStorage'
 
-
 const persistState = loadState();
 
 // Create store and incorporate middleware

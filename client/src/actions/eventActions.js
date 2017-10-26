@@ -23,6 +23,33 @@ function allEvents(eventData) {
   }
 }
 
+function deleteOne(eventData) {
+  return {
+    type: 'DELETE_EVENT',
+    payload: eventData
+  }
+}
+
+function getOne(eventData) {
+  return {
+    type: 'ONE_EVENT',
+    payload: eventData
+  }
+}
+
+function upVote(eventData) {
+  return {
+    type: 'UPVOTE',
+    payload: eventData
+  }
+}
+
+function downVote(eventData) {
+  return {
+    type: 'DOWNVOTE',
+    payload: eventData
+  }
+}
 
 
 
@@ -54,9 +81,46 @@ export const getUserEvents = (userId) => {
 export const getAllEvents = () => {
   return dispatch => {
     api.getAllEvents()
-    .then(res => {
-      dispatch()
-    })
+      .then(res => {
+        dispatch(allEvents(res.data))
+      })
+  }
+}
+
+// This is for deleting an event
+export const deleteEvent = (eventId) => {
+  return dispatch => {
+    api.deleteEvent(eventId)
+      .then(res => {
+        dispatch(deleteOne(res.data))
+      })
+  }
+}
+
+export const getOneEvent = (eventId) => {
+  return dispatch => {
+    api.getSingleEvent(eventId)
+      .then(res => {
+        dispatch(getOne(res.data))
+      })
+  }
+}
+
+export const upvote = (eventData, userId) => {
+  return dispatch => {
+    api.upvote(eventData, userId)
+      .then(res => {
+        dispatch(upVote(res.data))
+      })
+  }
+}
+
+export const downvote = (eventData, userId) => {
+  return dispatch => {
+    api.downvote(eventData, userId)
+      .then(res => {
+        dispatch(downVote(res.data))
+      })
   }
 }
 ///
