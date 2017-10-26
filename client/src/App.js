@@ -5,7 +5,7 @@ import "./App.css"
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import About from "./pages/About";
-import Dashboard from './pages/Dashboard';
+import Dashboard from "./pages/Dashboard";
 import Events from "./pages/Events";
 import NewEvent from "./pages/NewEvent";
 import Authenticate from './components/Authenticate'
@@ -22,7 +22,7 @@ const App = () =>
         <Nav />
         <Switch>
           <Route exact path="/" component={About}/>
-          <Route exact path='/dashboard' component={Authenticate(Dashboard)} />
+          <Route exact path="/dashboard" component={Authenticate(Dashboard)} />
           <Route exact path="/events" component={Events}/>
           <Route exact path="/new_event" component={NewEvent}/>
         </Switch>

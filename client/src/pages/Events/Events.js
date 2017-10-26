@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import DateCard from "../../components/DateCard";
 import TopEvents from "../../components/TopEvents";
-import EventBtn from "../../components/EventBtn";
 import { Container, Row, Col } from 'reactstrap';
 import { getAllEvents } from '../../actions/eventActions';
 
@@ -33,7 +32,6 @@ class Events extends Component {
                     <DateCard />
                 </Col>
                 <Col lg="auto">
-                    <EventBtn />
                 </Col>
             </Row>
             <Row>
