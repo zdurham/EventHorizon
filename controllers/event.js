@@ -73,9 +73,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAllByUser: function(req, res) {
-    //checking if user is advertiser
+    // checking if user is advertiser
+    const userId = req.params.userId
+    console.log(userId)
     db.User
-      .findById({ _id: req.params.id })
+      .findById({ _id: req.params.userId })
       .then(function(dbModel) {
         if(dbModel.isAdvertiser) {
           db.Event
@@ -88,7 +90,7 @@ module.exports = {
         } else {
           db.Event
             .find(req.query)
-            .where('createdBy').equals(req.params.id)
+            .where('createdBy').equals(userId)
             .populate('attendingList', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
             .sort({ date: -1 })
             .then(dbModel => res.json(dbModel))
@@ -96,6 +98,7 @@ module.exports = {
         }
       })
   },
+
   getSingleEvent: function(req, res) {
     db.User
       .findById({ _id: req.params.userId })

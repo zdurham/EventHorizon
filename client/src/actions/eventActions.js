@@ -65,6 +65,7 @@ export const createEvent = (eventData, userId) => {
 
 // This gathers the events that a specific user has created
 export const getUserEvents = (userId) => {
+  console.log(userId)
   return dispatch => {
     api.findAllByUser(userId)
       .then(res => {
@@ -80,6 +81,7 @@ export const getAllEvents = () => {
       .then(res => {
         dispatch(allEvents(res.data))
       })
+      .catch(err => console.log(err))
   }
 }
 
@@ -119,3 +121,4 @@ export const downvote = (eventData, userId) => {
       })
   }
 }
+
