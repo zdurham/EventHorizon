@@ -9,6 +9,12 @@ main {
   padding-top: 40px;
 }
 
+hr.line-style {
+  border: 0;
+  height: 4px;
+  border-top: 2px solid rgba(74, 74, 74, 0.5);
+}
+
 button {
   cursor: pointer !important;
   border: none !important;
