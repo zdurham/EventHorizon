@@ -57,15 +57,16 @@ module.exports = {
 
   },
   remove: function(req, res) {
+    console.log(req.body)
     db.Event
-      .findById({ _id: req.params.eventId })
+      .findById({ _id: req.body.eventId })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findAll: function(req, res) {
     db.Event
-      .find(req.query)
+      .find()
       .where('date').gt(Date.now())
       .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
       .sort({ date: 1 })
@@ -101,17 +102,17 @@ module.exports = {
 
   getSingleEvent: function(req, res) {
     db.User
-      .findById({ _id: req.params.userId })
+      .findById({ _id: req.body.userId })
       .then(function(dbModel) {
         if(dbModel.isAdvertiser) {
           db.Event
-            .findById({ _id: req.params.eventId })
+            .findById({ _id: req.body.eventId })
             .populate('attendingList', '-_id -__v -email -password')
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
         } else {
           db.Event
-            .findById({ _id: req.params.eventId })
+            .findById({ _id: req.body.eventId })
             .populate('attendingList', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
