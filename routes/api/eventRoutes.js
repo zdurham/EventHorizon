@@ -9,10 +9,8 @@ router.route("/")
 router.route("/createEvent/:id")
   .post(reqLogin, eventController.createEvent);
 
-
-
 router.route("/find/:userId")
-  .get(eventController.findAllByUser);
+  .get(reqLogin, eventController.findAllByUser);
 
 router.route("/upvote/:id")
   .post(reqLogin, eventController.upvoteEvent);
@@ -23,8 +21,9 @@ router.route("/downvote/:id")
 router.route("/attend/:id")
   .post(reqLogin, eventController.attendEvent);
 
-router.route("/:eventId/:userId")
-  .post(eventController.remove)
+router.route("/remove")
+  .post(reqLogin, eventController.remove)
+router.route("/singleEvent")
   .get(eventController.getSingleEvent);
 
 module.exports = router;

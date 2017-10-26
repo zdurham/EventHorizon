@@ -48,7 +48,7 @@ class Dashboard extends Component {
             return (<div>
               <h1>{event.name}</h1>
               <h1>{event.description}</h1>
-              <button onClick={() => this.delete(event._id)}>Delete</button>
+              <button onClick={() => this.props.deleteEvent(event._id)}>Delete</button>
             </div>
           )
           }) : 
