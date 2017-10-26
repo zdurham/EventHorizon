@@ -10,10 +10,10 @@ import Events from "./pages/Events";
 import NewEvent from "./pages/NewEvent";
 import Authenticate from './components/Authenticate'
 
-
 // These are necessary for Redux
 import { Provider } from 'react-redux'
 import store from './store'
+
 
 const App = () =>
   <Provider store={store}>

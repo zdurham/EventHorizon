@@ -15,8 +15,8 @@ export default {
   //------------------------------
 
   //Creates an event and then pushes that event into the User's "createdEvents" array. id refers to user ID.
-  createEvent: function(eventData, id) {
-    return axios.post("/api/event/createEvent/" + id, eventData)
+  createEvent: function(eventData, userId) {
+    return axios.post("/api/event/createEvent/" + userId, eventData)
   },
 
   //This gets every event.
@@ -25,8 +25,8 @@ export default {
   },
 
   //Deletes an event. Pass in event ID.
-  deleteEvent: function(id) {
-    return axios.delete("/api/event/" + id);
+  deleteEvent: function(eventId) {
+    return axios.delete("/api/event/" + eventId);
   },
 
   //Gets the info for a single event. Pass in event ID and userID.
@@ -35,13 +35,13 @@ export default {
   },
 
   //This call allows you to get all the events posted by a single user. Pass in user ID.
-  findAllByUser: function(id) {
-    return axios.get("/api/event/find/" + id);
+  findAllByUser: function(userId) {
+    return axios.get("/api/event/find/" + userId);
   },
 
   //This will toggle the upvotes. id is the User ID. All you need to pass in through the eventData is the ID of the event using "_id" format.
-  upvote: function(eventData, id) {
-    return axios.post("/api/event/upvote/" + id, eventData);
+  upvote: function(eventData, userId) {
+    return axios.post("/api/event/upvote/" + userId, eventData);
   },
 
   //Same as the upvote. Just make sure to have the event id formatted with the key "_id".
