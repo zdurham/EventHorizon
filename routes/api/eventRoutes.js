@@ -9,7 +9,7 @@ router.route("/")
 router.route("/createEvent/:id")
   .post(reqLogin, eventController.createEvent);
 
-router.route("/:id")
+router.route("/:eventId/:userId")
   .post(eventController.remove)
   .get(eventController.getSingleEvent);
 

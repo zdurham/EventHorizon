@@ -1,10 +1,24 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import DateCard from "../../components/DateCard";
 import TopEvents from "../../components/TopEvents";
 import EventBtn from "../../components/EventBtn";
 import { Container, Row, Col } from 'reactstrap';
+import { getAllEvents } from '../../actions/eventActions';
 
 class Events extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    console.log(this.props);
+    this.displayEvents()
+  }
+
+  displayEvents = () => {
+    this.props.getAllEvents()
+  }
 
   render() {
 
@@ -32,4 +46,15 @@ class Events extends Component {
     )
   }
 }
-export default Events;
+
+const mapDispatchToProps = dispatch => ({
+  getAllEvents() {
+    dispatch(getAllEvents())
+  }
+})
+
+const mapStateToProps = state => ({
+  allEvents: state.events.events,
+})
+
+export default connect(mapStateToProps, { getAllEvents })(Events)

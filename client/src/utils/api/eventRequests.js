@@ -29,9 +29,9 @@ export default {
     return axios.delete("/api/event/" + eventId);
   },
 
-  //Gets the info for a single event. Pass in event ID.
-  getSingleEvent: function(eventId) {
-    return axios.get("/api/event/" + eventId);
+  //Gets the info for a single event. Pass in event ID and userID.
+  getSingleEvent: function(eventId, userId) {
+    return axios.get("/api/event/" + eventId + "/" + userId);
   },
 
   //This call allows you to get all the events posted by a single user. Pass in user ID.

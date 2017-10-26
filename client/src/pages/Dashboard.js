@@ -1,8 +1,8 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { getUserEvents } from '../actions/eventActions'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getUserEvents } from '../actions/eventActions';
 
-class Dashboard extends React.Component {
+class Dashboard extends Component {
   constructor(props) {
     super(props)
   }
