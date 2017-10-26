@@ -1,0 +1,13 @@
+.up-vote, .down-vote {
+    color: gray;
+    padding: 5px;
+}
+
+.eventCard {
+    padding: 5px;
+}
+
+.eventDate {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
