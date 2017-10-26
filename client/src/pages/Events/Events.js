@@ -55,6 +55,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   allEvents: state.events.events,
+  user: state.authUser.user ? state.authUser : {}
 })
 
 export default connect(mapStateToProps, { getAllEvents })(Events)
