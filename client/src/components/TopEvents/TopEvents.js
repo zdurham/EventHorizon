@@ -11,7 +11,7 @@ const TopEvents = (props) =>  {
           <CardTitle>RTP Trending</CardTitle>
           <CardText>Event Details <CardLink href="#">link</CardLink></CardText>
           <CardText>Event Details <CardLink href="#">link</CardLink></CardText>
-          <Button center id="JoinBtn" >Share</Button>
+          <Button id="JoinBtn" >Share</Button>
         </CardBody>
         <CardFooter></CardFooter>
       </Card>

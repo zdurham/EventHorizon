@@ -19,15 +19,13 @@ class Events extends Component {
   }
 
   render() {
-    console.log(this.props.allEvents);
     return (
       <Container tag="main">
         <Row>
-          <Col sm="12" md={{ size: 8, offset: 2 }}>
-            {/* {this.props.allEvents.map(event => (
-              <DateCard event/>
-            ))} */}
-            <DateCard {allEvents}
+          <Col xs="12" md="8">
+            {this.props.allEvents.map(event => (
+              <DateCard key={event._id} event={event}/>
+            ))}
           </Col>
           <Col lg="auto">
           </Col>

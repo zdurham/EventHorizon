@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import FontAwesome from 'react-fontawesome';
 import './DateCard.css';
-import { Row, Col, Card, CardLink, CardTitle, CardText, Collapse } from 'reactstrap';
+import { Button, Card, CardBody, CardLink, CardTitle, CardSubtitle, CardText, Collapse } from 'reactstrap';
+import moment from 'moment';
 
 class DateCard extends Component {
   constructor(props) {
@@ -15,36 +16,37 @@ class DateCard extends Component {
   }
 
   render() {
+    console.log('card', this.props);
     return (
-    <div>
-       {/* <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Toggle</Button>
-        <Collapse isOpen={this.state.collapse}>
-      <Card>
+      <Card key={this.props.event._id}>
         <CardBody>
-            Expanded Event Info
+          <CardTitle>{this.props.event.name}</CardTitle>
+          <CardSubtitle tag="h5">{this.props.event.location}</CardSubtitle>
+          <CardText >
+            <span>{moment(this.props.event.date).format('dddd, MMMM Do')} - {moment(this.props.event.startTime, 'HH:mm').format('h:mmA')}</span>
+          </CardText>
+          <div className="card-buttons">
+            <Button size="sm" onClick={this.toggle}>More Info</Button>
+            <div className="card-votes">
+              <div className="card-vote up">
+                <FontAwesome className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>
+                <span>0</span>
+              </div>
+              <div className="card-vote down">
+                <FontAwesome className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <Collapse isOpen={this.state.collapse}>
+            <div className="line-container">
+              <hr className="line-style" />
+            </div>
+            <CardText>{this.props.event.description}</CardText>
+            <CardLink href={this.props.event.link}>Visit Website</CardLink>
+          </Collapse>
         </CardBody>
       </Card>
-      </Collapse>*/}
-
-      <Card body className="eventCard">
-        <CardTitle className="eventName text-left" onClick={this.toggle}>Event Name</CardTitle>
-        <CardText >
-        <div className="userName" >Added by:</div>
-        <div className="eventDate">Date: </div>
-        </CardText>
-        <CardText>
-        <Collapse isOpen={this.state.collapse}>
-          <CardText>Event description...fun fun fun blah blah blah and all the good stuf that makes you come out of the house.</CardText>
-            <FontAwesome className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>
-            <FontAwesome className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
-           </Collapse>
-        </CardText>
-        {/*<CardFooter>
-            <CardLink href="#"> Event Category </CardLink>
-            <div className="userName"> Added by: </div> <div className="eventDate">Date: </div>
-         </CardFooter>*/}
-      </Card>
-    </div>
     );
   }
 }

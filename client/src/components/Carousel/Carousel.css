@@ -1,3 +1,7 @@
+.carousel {
+  margin-top: -40px; /* Needed to offset padding added to main element */
+}
+
 .carousel-caption {
   left: 0%;
   right: 0%;

@@ -1,13 +1,33 @@
-.up-vote, .down-vote {
-    color: gray;
-    padding: 5px;
+.card-text {
+  margin-top: 10px;
 }
 
-.eventCard {
-    padding: 5px;
+.card-text span {
+  display: block;
 }
 
-.eventDate {
-    padding-bottom: 0;
-    margin-bottom: 0;
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-buttons .card-votes {
+  display: flex;
+}
+
+.card-buttons .card-vote {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-buttons .up, .card-buttons .down {
+  color: gray;
+}
+
+.card .line-container {
+  height: 45px;
+  width: 100%;
+  clear: both;
+  padding-top: 20px;
 }
