@@ -12,6 +12,7 @@ class SignUpForm extends Component {
 
     this.state = {
       email: '',
+      username: '',
       password: '',
       confPassword: ''
     }
@@ -24,6 +25,7 @@ class SignUpForm extends Component {
     if (this.state.password === this.state.confPassword) {
       this.props.registerUser({
         email: this.state.values.email,
+        username: this.state.values.username,
         password: this.state.values.password
       })
       this.props.toggle()
@@ -31,7 +33,7 @@ class SignUpForm extends Component {
     else {
       console.log("The passwords don't match")
     }
-    
+
   }
 
   render() {
@@ -45,6 +47,16 @@ class SignUpForm extends Component {
             id="join-email"
             required />
           <AvFeedback>Enter a valid email address</AvFeedback>
+        </AvGroup>
+        <AvGroup>
+          <Label for="join-user">Username</Label>
+          <AvInput
+            type="text"
+            name="username"
+            id="join-user"
+            placeholder="Your community name"
+            required />
+          <AvFeedback>This field is required</AvFeedback>
         </AvGroup>
         <AvGroup>
           <Label for="join-pwd">Password</Label>
