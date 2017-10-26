@@ -18,13 +18,10 @@ function userEvents(eventData) {
 
 function allEvents(eventData) {
   return {
-
     type: 'All_EVENTS',
-
     payload: eventData
   }
 }
-
 
 function deleteOne(eventData) {
   return {
@@ -54,9 +51,6 @@ function downVote(eventData) {
   }
 }
 
-
-///
-
 /// ------------------------------------
 // ACTIONS
 // This is for creating an event
@@ -67,7 +61,6 @@ export const createEvent = (eventData, userId) => {
         dispatch(event(eventData))
       })
   }
-
 }
 
 // This gathers the events that a specific user has created
@@ -126,13 +119,3 @@ export const downvote = (eventData, userId) => {
       })
   }
 }
-
-export const getAllEvents = () => {
-  return dispatch => {
-    api.getAllEvents()
-    .then(res => {
-      dispatch(allEvents(res.data))
-    })
-  }
-}
-///
