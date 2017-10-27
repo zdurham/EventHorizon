@@ -149,16 +149,13 @@ module.exports = {
 
 
   unvoteEvent: function(req, res) {
-    console.log(req.body)
     let userId = req.body.userId;
-    db.Event.find({ _id: req.body.eventId })
+    db.Event.findOne({ _id: req.body.eventId })
     .then(dbModel => {
-      console.log(dbModel)
       dbModel.unvoted(userId, function() {
       res.json(dbModel);
     })})
     .catch(err => {
-      console.log(err)
       res.status(422).json(err)
     })
   },
