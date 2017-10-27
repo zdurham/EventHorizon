@@ -41,7 +41,7 @@ function upVote(eventData) {
   return {
     type: 'UPVOTE',
     eventId: eventData._id,
-    payload: eventData.vote
+    payload: eventData
   }
 }
 
@@ -49,7 +49,7 @@ function downVote(eventData) {
   return {
     type: 'DOWNVOTE',
     eventId: eventData._id,
-    payload: eventData.vote
+    payload: eventData
   }
 }
 
@@ -57,7 +57,7 @@ function unVote(eventData) {
   return {
     type: 'UNVOTE',
     eventId: eventData._id,
-    payload: eventData.vote
+    payload: eventData
   }
 }
 
