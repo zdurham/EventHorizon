@@ -13,17 +13,19 @@ export function events(state = [], action) {
     case "DELETE_EVENT":
       return {...state, events: action.payload}
     case "UPVOTE":
-    // const upArray = state.events.filter(item => item._id !== action.eventId).concat(action.payload) 
-    const upArray = state.events.map(event => {
-      if (event._id === action.eventId) {
-        event = action.payload
-      }
+    // check for matching event by Id
+      const upArray = state.events.map(event => {
+        
+        if (event._id === action.eventId) {
+          event = action.payload
+        }
 
-      return event
-      })
+          return event
+        })
+
+      // return state with new array
       return { ...state, events: upArray }
     case "DOWNVOTE":
-      // const downArray = state.events.filter(item => item._id !==action.eventId).concat(action.payload)
       const downArray = state.events.map(event => {
         if (event._id === action.eventId) {
           event = action.payload
@@ -31,6 +33,14 @@ export function events(state = [], action) {
         return event
       })
       return { ...state, events: downArray }
+    case "UNVOTE":
+      return { ...state, events: state.events.map(event => {
+        if (event._id === action.eventId) {
+          event = action.payload
+        }
+
+        return event
+      })}
     default:
       return state
   }    

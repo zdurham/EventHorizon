@@ -54,6 +54,7 @@ export default {
     return axios.post("/api/event/downvote/", {eventId, userId});
   },
 
+  // Removes vote upon double-clicking of a voting icon
   unvote: function(eventId, userId) {
     return axios.post('api/event/unvote', {eventId, userId})
   },

@@ -4,7 +4,7 @@ import './DateCard.css';
 import { Button, Card, CardBody, CardLink, CardTitle, CardSubtitle, CardText, Collapse } from 'reactstrap';
 import moment from 'moment';
 import { connect } from 'react-redux'
-import { upvote, downvote } from '../../actions/eventActions'
+import { upvote, downvote, unvote } from '../../actions/eventActions'
 
 class DateCard extends Component {
   constructor(props) {
@@ -27,8 +27,27 @@ class DateCard extends Component {
     // insert conditional stuff here
   }
 
+  clickUnvote = (eventId, userId) => {
+    this.props.unvote(eventId, userId)
+  }
+
   render() {
-    console.log('card', this.props);
+
+    // upvote button
+    let upvote = <FontAwesome onClick={() => this.clickUpvote(this.props.event._id, this.props.user._id)} className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>;
+
+    // downvote button
+    let downvote = <FontAwesome onClick={() => this.clickDownvote(this.props.event._id, this.props.user._id)} className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
+
+    // if the buttons have been clicked, the click function is removed
+    // NOTE THIS WILL BE REPLACED WITH UNVOTE FUNCTION WHEN UNVOTE IS ENABLED
+    if (this.props.event.vote.positive.includes(this.props.user._id)) {
+      upvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="up-vote-active" name="thumbs-o-up" size="2x"></FontAwesome>
+    }
+    if (this.props.event.vote.negative.includes(this.props.user._id)) {
+      downvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="down-vote-active" name="thumbs-o-down" size="2x"></FontAwesome>
+    }
+    
     return (
       <Card key={this.props.event._id}>
         <CardBody>
@@ -76,12 +95,11 @@ class DateCard extends Component {
             </Button>
             <div className="card-votes">
               <div className="card-vote up">
-
-                <FontAwesome onClick={() => this.clickUpvote(this.props.event._id, this.props.user)} className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>
+                {upvote}
                 <span>{this.props.event.vote.positive.length}</span>
               </div>
               <div className="card-vote down">
-                <FontAwesome onClick={() => this.clickDownvote(this.props.event._id, this.props.user)} className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
+                {downvote}
                 <span>{this.props.event.vote.negative.length}</span>
 
               </div>
@@ -101,7 +119,7 @@ class DateCard extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.authUser.user,
+  user: state.authUser.user
 })
 
-export default connect(mapStateToProps, { upvote, downvote })(DateCard)
+export default connect(mapStateToProps, { upvote, downvote, unvote })(DateCard)

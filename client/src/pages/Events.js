@@ -11,10 +11,6 @@ class Events extends Component {
   }
 
   componentWillMount() {
-    this.displayEvents()
-  }
-
-  displayEvents = () => {
     this.props.getAllEvents()
   }
 
@@ -23,7 +19,7 @@ class Events extends Component {
       <Container tag="main">
         <Row>
           <Col xs="12" md="8">
-            {this.props.allEvents.map(event => (
+            {(this.props.allEvents && this.props.allEvents.length > 1) && this.props.allEvents.map(event => (
               <DateCard
                 key={event._id}
                 event={event}/>

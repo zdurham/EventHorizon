@@ -18,11 +18,15 @@ router.route("/upvote/")
 router.route("/downvote/")
   .post(reqLogin, eventController.downvoteEvent);
 
+router.route("/unvote")
+  .post(reqLogin, eventController.unvoteEvent);
+
 router.route("/attend/:id")
   .post(reqLogin, eventController.attendEvent);
 
 router.route("/remove")
-  .post(reqLogin, eventController.remove)
+  .post(reqLogin, eventController.remove);
+  
 router.route("/singleEvent")
   .get(eventController.getSingleEvent);
 
