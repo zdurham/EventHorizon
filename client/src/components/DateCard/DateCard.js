@@ -16,6 +16,16 @@ class DateCard extends Component {
     this.setState({ collapse: !this.state.collapse });
   }
 
+  clickUpvote = (eventId, userId) => {
+    this.props.upvote(eventId, userId)
+    // insert conditional stuff here
+  }
+
+  clickDownvote = (eventId, userId) => {
+    this.props.downvote(eventId, userId)
+    // insert conditional stuff here
+  }
+
   render() {
     console.log('card', this.props);
     return (
@@ -66,11 +76,11 @@ class DateCard extends Component {
             <div className="card-votes">
               <div className="card-vote up">
 
-                <FontAwesome onClick={() => this.props.upvote(this.props.event._id, this.props.user)} className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>
+                <FontAwesome onClick={() => this.clickUpvote(this.props.event._id, this.props.user)} className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>
                 <span>{this.props.event.vote.positive.length}</span>
               </div>
               <div className="card-vote down">
-                <FontAwesome onClick={() => this.props.downvote(this.props.event._id, this.props.user)} className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
+                <FontAwesome onClick={() => this.clickDownvote(this.props.event._id, this.props.user)} className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
                 <span>{this.props.event.vote.negative.length}</span>
 
               </div>

@@ -42,6 +42,10 @@ const UserSchema = new Schema({
   sex: {
     type: String
   },
+  userLikes: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Event'
+  }],
   createdEvents: [{
     type: Schema.Types.ObjectId,
     ref: 'Event'

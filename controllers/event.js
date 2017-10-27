@@ -57,13 +57,20 @@ module.exports = {
 
   },
   remove: function(req, res) {
-    console.log(req.body)
+    console.log(req.body.eventId)
     db.Event
-      .findById({ _id: req.body.eventId })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
+      .remove({ _id: req.body.eventId })
+      .exec((err, data) => {
+        if (err) {
+          console.log(err)
+        }
+        else {
+          res.json(data)
+        }
+      })
       .catch(err => res.status(422).json(err));
   },
+
   findAll: function(req, res) {
     db.Event
       .find()

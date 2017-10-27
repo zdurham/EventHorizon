@@ -16,19 +16,17 @@ export function events(state = [], action) {
     // const upArray = state.events.filter(item => item._id !== action.eventId).concat(action.payload) 
     const upArray = state.events.map(event => {
       if (event._id === action.eventId) {
-        event.vote = action.payload
+        event = action.payload
       }
+
       return event
-    })
-    console.log(upArray)
-      return {
-        ...state, events: upArray
-      }
+      })
+      return { ...state, events: upArray }
     case "DOWNVOTE":
       // const downArray = state.events.filter(item => item._id !==action.eventId).concat(action.payload)
       const downArray = state.events.map(event => {
         if (event._id === action.eventId) {
-          event.vote = action.payload
+          event = action.payload
         }
         return event
       })
