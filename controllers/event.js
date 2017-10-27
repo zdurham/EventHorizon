@@ -126,6 +126,8 @@ module.exports = {
         }
       })
   },
+
+
   upvoteEvent: function(req, res) {
     var userId = req.body.userId;
     db.Event.findById({ _id: req.body.eventId })
@@ -134,6 +136,8 @@ module.exports = {
     }))
     .catch(err => res.status(422).json(err));
   },
+
+
   downvoteEvent: function(req, res) {
     var userId = req.body.userId;
     db.Event.findById({_id: req.body.eventId})
@@ -142,6 +146,24 @@ module.exports = {
     }))
     .catch(err => res.status(422).json(err));
   },
+
+
+  unvoteEvent: function(req, res) {
+    console.log(req.body)
+    let userId = req.body.userId;
+    db.Event.find({ _id: req.body.eventId })
+    .then(dbModel => {
+      console.log(dbModel)
+      dbModel.unvoted(userId, function() {
+      res.json(dbModel);
+    })})
+    .catch(err => {
+      console.log(err)
+      res.status(422).json(err)
+    })
+  },
+
+
   attendEvent: function(req, res) {
     var userId = req.params.id;
     var eventId = req.body._id;

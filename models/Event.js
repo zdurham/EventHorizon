@@ -119,6 +119,10 @@ EventSchema.methods.attending = function attending(user, cb) {
     }
   };
 
+  EventSchema.methods.unvoted = function unvoted(user, cb) {
+    this.unvote(user, cb)
+  };
+
   EventSchema.methods.voted = function voted(user) {
     if (user._id) {
       return schema.methods.voted.call(this, user._id);

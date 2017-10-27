@@ -4,7 +4,7 @@ import './DateCard.css';
 import { Button, Card, CardBody, CardLink, CardTitle, CardSubtitle, CardText, Collapse } from 'reactstrap';
 import moment from 'moment';
 import { connect } from 'react-redux'
-import { upvote, downvote } from '../../actions/eventActions'
+import { upvote, downvote, unvote } from '../../actions/eventActions'
 
 class DateCard extends Component {
   constructor(props) {
@@ -27,21 +27,25 @@ class DateCard extends Component {
     // insert conditional stuff here
   }
 
+  clickUnvote = (eventId, userId) => {
+    this.props.unvote(eventId, userId)
+  }
+
   render() {
 
     // upvote button
-    let upvote = <FontAwesome onClick={() => this.clickUpvote(this.props.event._id, this.props.user)} className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>;
+    let upvote = <FontAwesome onClick={() => this.clickUpvote(this.props.event._id, this.props.user._id)} className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>;
 
     // downvote button
-    let downvote = <FontAwesome onClick={() => this.clickDownvote(this.props.event._id, this.props.user)} className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
+    let downvote = <FontAwesome onClick={() => this.clickDownvote(this.props.event._id, this.props.user._id)} className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
 
     // if the buttons have been clicked, the click function is removed
     // NOTE THIS WILL BE REPLACED WITH UNVOTE FUNCTION WHEN UNVOTE IS ENABLED
     if (this.props.event.vote.positive.includes(this.props.user._id)) {
-      upvote = <FontAwesome disabled='true' className="up-vote-active" name="thumbs-o-up" size="2x"></FontAwesome>
+      upvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="up-vote-active" name="thumbs-o-up" size="2x"></FontAwesome>
     }
     if (this.props.event.vote.negative.includes(this.props.user._id)) {
-      downvote = <FontAwesome disabled='true' className="down-vote-active" name="thumbs-o-down" size="2x"></FontAwesome>
+      downvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="down-vote-active" name="thumbs-o-down" size="2x"></FontAwesome>
     }
     
     return (
@@ -118,4 +122,4 @@ const mapStateToProps = state => ({
   user: state.authUser.user
 })
 
-export default connect(mapStateToProps, { upvote, downvote })(DateCard)
+export default connect(mapStateToProps, { upvote, downvote, unvote })(DateCard)
