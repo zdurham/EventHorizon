@@ -4,6 +4,7 @@ import './DateCard.css';
 import { Button, Card, CardBody, CardLink, CardTitle, CardSubtitle, CardText, Collapse } from 'reactstrap';
 import moment from 'moment';
 import { connect } from 'react-redux'
+import { upvote, downvote } from '../../actions/eventActions'
 
 class DateCard extends Component {
   constructor(props) {
@@ -103,4 +104,4 @@ const mapStateToProps = state => ({
   user: state.authUser.user,
 })
 
-export default connect(mapStateToProps)(DateCard)
+export default connect(mapStateToProps, { upvote, downvote })(DateCard)
