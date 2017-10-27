@@ -23,18 +23,61 @@ class DateCard extends Component {
           <CardTitle>{this.props.event.name}</CardTitle>
           <CardSubtitle tag="h5">{this.props.event.location}</CardSubtitle>
           <CardText >
-            <span>{moment(this.props.event.date).format('dddd, MMMM Do')} - {moment(this.props.event.startTime, 'HH:mm').format('h:mmA')}</span>
+            <span>
+              {moment(this.props.event.date).format('ddd, MMMM D')} - {moment(this.props.event.startTime, 'HH:mm').format('h:mmA')}
+              {
+                (this.props.event.endTime.length !== 0) ? ' to ' + moment(this.props.event.endTime, 'HH:mm').format('h:mmA') : ''
+              }
+            </span>
+          </CardText>
+          <CardText>
+            {
+              (this.props.event.allDay === true) ?
+              <FontAwesome
+                className="card-extras"
+                name="sun-o"
+                title="All Day Event">
+              </FontAwesome> : ''
+            }
+            {
+            (this.props.event.kidFriendly === true) ?
+              <FontAwesome
+                className="card-extras"
+                name="child"
+                title="Kid Friendly">
+              </FontAwesome> : ''
+            }
+            {
+            (this.props.event.petFriendly === true) ?
+              <FontAwesome
+                className="card-extras"
+                name="paw"
+                title="Pet Friendly">
+              </FontAwesome> : ''
+            }
           </CardText>
           <div className="card-buttons">
-            <Button size="sm" onClick={this.toggle}>More Info</Button>
+            <Button
+              size="sm"
+              className="button-primary" onClick={this.toggle}>
+              More Info
+            </Button>
             <div className="card-votes">
               <div className="card-vote up">
-                <FontAwesome className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>
-                <span>0</span>
+                <FontAwesome
+                  className="up-vote"
+                  name="thumbs-o-up"
+                  size="2x">
+                </FontAwesome>
+                <span className="text-success">220</span>
               </div>
               <div className="card-vote down">
-                <FontAwesome className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
-                <span>0</span>
+                <FontAwesome
+                  className="down-vote"
+                  name="thumbs-o-down"
+                  size="2x">
+                </FontAwesome>
+                <span className="text-danger">45</span>
               </div>
             </div>
           </div>

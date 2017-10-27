@@ -1,14 +1,23 @@
+.card {
+  margin-bottom: 20px;
+}
+
 .card-text {
   margin-top: 10px;
 }
 
-.card-text span {
-  display: block;
+.card-extras {
+  font-size: 20px;
+  margin-right: 10px;
 }
 
 .card-buttons {
   display: flex;
   justify-content: space-between;
+}
+
+.card .fa {
+  color: rgba(33, 37, 41, 0.7);
 }
 
 .card-buttons .card-votes {
@@ -21,8 +30,16 @@
   align-items: center;
 }
 
-.card-buttons .up, .card-buttons .down {
-  color: gray;
+.card-vote:first-child {
+  margin-right: 14px;
+}
+
+.card-vote span {
+  display: block;
+}
+
+.card-vote span:first-child {
+  margin-right: 4px;
 }
 
 .card .line-container {
@@ -30,4 +47,15 @@
   width: 100%;
   clear: both;
   padding-top: 20px;
+}
+
+.collapse .card-link {
+  font-size: 14px;;
+  color: #841983;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.collapse .card-link:hover {
+  background-color: rgba(33, 37, 41, 0.2);;
 }
