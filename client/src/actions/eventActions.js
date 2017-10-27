@@ -40,14 +40,24 @@ function getOne(eventData) {
 function upVote(eventData) {
   return {
     type: 'UPVOTE',
-    payload: eventData
+    eventId: eventData._id,
+    payload: eventData.vote
   }
 }
 
 function downVote(eventData) {
   return {
     type: 'DOWNVOTE',
-    payload: eventData
+    eventId: eventData._id,
+    payload: eventData.vote
+  }
+}
+
+function unVote(eventData) {
+  return {
+    type: 'UNVOTE',
+    eventId: eventData._id,
+    payload: eventData.vote
   }
 }
 
@@ -115,6 +125,15 @@ export const upvote = (eventData, userId) => {
 export const downvote = (eventData, userId) => {
   return dispatch => {
     api.downvote(eventData, userId)
+      .then(res => {
+        dispatch(downVote(res.data))
+      })
+  }
+}
+
+export const unvote = (eventData, userId) => {
+  return dispatch => {
+    api.unvote(eventData, userId)
       .then(res => {
         dispatch(downVote(res.data))
       })

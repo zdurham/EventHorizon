@@ -45,13 +45,17 @@ export default {
   },
 
   //This will toggle the upvotes. id is the User ID. All you need to pass in through the eventData is the ID of the event using "_id" format.
-  upvote: function(eventData, userId) {
-    return axios.post("/api/event/upvote/" + userId, eventData);
+  upvote: function(eventId, userId) {
+    return axios.post("/api/event/upvote/", {eventId, userId});
   },
 
   //Same as the upvote. Just make sure to have the event id formatted with the key "_id".
-  downvote: function(eventData, id) {
-    return axios.post("/api/event/downvote/" + id, eventData);
+  downvote: function(eventId, userId) {
+    return axios.post("/api/event/downvote/", {eventId, userId});
+  },
+
+  unvote: function(eventId, userId) {
+    return axios.post('api/event/unvote', {eventId, userId})
   },
 
   //This function is to attend an event. Similar to upvote. id is the User ID. Pass in through the eventData is the ID of the event using "_id" format.

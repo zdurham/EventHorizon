@@ -7,7 +7,6 @@ import Profile from "../components/Profile";
 import {Container, Row, Col} from 'reactstrap';
 import FontAwesome from 'react-fontawesome';
 
-
 class Dashboard extends Component {
   constructor(props) {
     super(props)

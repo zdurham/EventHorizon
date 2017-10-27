@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import DateCard from "../components/DateCard";
 import TopEvents from "../components/TopEvents";
 import { Container, Row, Col } from 'reactstrap';
-import { getAllEvents } from '../actions/eventActions';
+import { getAllEvents, upvote, downvote } from '../actions/eventActions';
 
 class Events extends Component {
   constructor(props) {
@@ -24,7 +24,11 @@ class Events extends Component {
         <Row>
           <Col xs="12" md="8">
             {this.props.allEvents.map(event => (
-              <DateCard key={event._id} event={event}/>
+              <DateCard
+                downvote={this.props.downvote}
+                upvote={this.props.upvote}
+                key={event._id}
+                event={event}/>
             ))}
           </Col>
           <Col lg="auto">
@@ -43,6 +47,12 @@ class Events extends Component {
 const mapDispatchToProps = dispatch => ({
   getAllEvents() {
     dispatch(getAllEvents())
+  },
+  upvote() {
+    dispatch(upvote())
+  },
+  downvote() {
+    dispatch(downvote())
   }
 })
 
@@ -51,4 +61,4 @@ const mapStateToProps = state => ({
   user: state.authUser.user ? state.authUser : {}
 })
 
-export default connect(mapStateToProps, { getAllEvents })(Events)
+export default connect(mapStateToProps, { getAllEvents, upvote, downvote })(Events)

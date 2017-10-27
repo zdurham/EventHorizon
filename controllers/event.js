@@ -120,16 +120,16 @@ module.exports = {
       })
   },
   upvoteEvent: function(req, res) {
-    var userId = req.params.id;
-    db.Event.findById(req.body._id)
+    var userId = req.body.userId;
+    db.Event.findById({ _id: req.body.eventId })
     .then(dbModel => dbModel.upvoted(userId, function(){
       res.json(dbModel);
     }))
     .catch(err => res.status(422).json(err));
   },
   downvoteEvent: function(req, res) {
-    var userId = req.params.id;
-    db.Event.findById(req.body._id)
+    var userId = req.body.userId;
+    db.Event.findById({_id: req.body.eventId})
     .then(dbModel => dbModel.downvoted(userId, function(){
       res.json(dbModel);
     }))
