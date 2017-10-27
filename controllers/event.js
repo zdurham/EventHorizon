@@ -137,9 +137,13 @@ module.exports = {
   },
   attendEvent: function(req, res) {
     var userId = req.params.id;
-    db.Event.findById(req.body._id)
+    var eventId = req.body._id;
+    db.Event.findById(eventId)
     .then(dbModel => dbModel.attending(userId, function(){
-      res.json(dbModel);
+      db.User.findById(userId)
+      .then(dbModel => dbModel.attending(eventId, function() {
+        res.json(dbModel);
+      }))
     }))
     .catch(err => res.status(422).json(err));
   }

@@ -10,6 +10,11 @@ export default {
     return axios.get("/api/user/" + id);
   },
 
+  //This function returns the User object along with a populated array of their attendingEvents. Pass in the user ID.
+  getUserAttendingEvents: function(id) {
+    return axios.get("/api/user/attending/" + id);
+  },
+
   //------------------------------
   //These are for Event API calls
   //------------------------------

@@ -19,6 +19,19 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false
   },
+  username: {
+    type: String,
+    unique: true
+  },
+  city: {
+    type: String
+  },
+  maritalStatus: {
+    type: String
+  },
+  hasChildren: {
+    type: Boolean
+  },
   profile: {
     firstName: { type: String },
     lastName: { type: String }
@@ -32,8 +45,44 @@ const UserSchema = new Schema({
   createdEvents: [{
     type: Schema.Types.ObjectId,
     ref: 'Event'
+  }],
+  attendingEvents: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Event'
   }]
 })
+
+//Methods for adding events that user is attending
+
+UserSchema.methods.attending = function attending(eventId, cb) {
+  if (this.attendingEvents.indexOf(eventId) >= 0) {
+    this.unattend(eventId, cb);
+  } else {
+    this.attend(eventId, cb);
+  }
+};
+
+UserSchema.methods.unattend = function unattend(eventId, fn) {
+  this.attendingEvents.pull(eventId);
+
+  // If callback fn, save and return
+  if (2 === arguments.length) {
+    this.save(fn);
+  };
+};
+
+UserSchema.methods.attend = function attend(eventId, fn) {
+
+
+  // Attend
+  this.attendingEvents.addToSet(eventId);
+
+  // If callback fn, save and return
+  if (2 === arguments.length) {
+    this.save(fn);
+  };
+};
+
 
 // checking if password is valid
 UserSchema.method('validPassword', function(password) {
@@ -65,4 +114,3 @@ UserSchema.method('sanitize', function() {
 let User = mongoose.model("User", UserSchema)
 
 module.exports = User
-
