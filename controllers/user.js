@@ -12,5 +12,21 @@ module.exports = {
           res.send(doc);
         }
       });
+  },
+  getUserAttendingEvents: function(req, res) {
+    db.User
+      .findById({ _id: req.params.id })
+      .populate(
+        { path: "attendingEvents",
+          match: { date: { $lte: Date.now() } },
+          options: { sort: { date: 1 } }
+        })
+      .exec(function(error, doc) {
+        if (error) {
+          res.send(error);
+        } else {
+          res.send(doc);
+        }
+      });
   }
 };
