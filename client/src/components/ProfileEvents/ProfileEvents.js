@@ -32,7 +32,7 @@ class ProfileEvents extends Component {
       <CardColumns>
           {this.props.userEvents &&
           <Card className="userEvent">
-          }
+          
           {this.props.userEvents && this.props.userEvents.map(event => {
           return(
           <div className='container'>
@@ -53,9 +53,8 @@ class ProfileEvents extends Component {
               </div>
               )
               })}
-        
             </Card>
-            })}
+            }
           </CardColumns> 
         </div>
     )

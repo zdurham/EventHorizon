@@ -3,6 +3,7 @@ import FontAwesome from 'react-fontawesome';
 import './DateCard.css';
 import { Button, Card, CardBody, CardLink, CardTitle, CardSubtitle, CardText, Collapse } from 'reactstrap';
 import moment from 'moment';
+import { connect } from 'react-redux'
 
 class DateCard extends Component {
   constructor(props) {
@@ -29,12 +30,12 @@ class DateCard extends Component {
             <Button size="sm" onClick={this.toggle}>More Info</Button>
             <div className="card-votes">
               <div className="card-vote up">
-                <FontAwesome className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>
-                <span>0</span>
+                <FontAwesome onClick={() => this.props.upvote(this.props.event._id, this.props.user)} className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>
+                <span>{this.props.event.vote.positive.length}</span>
               </div>
               <div className="card-vote down">
-                <FontAwesome className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
-                <span>0</span>
+                <FontAwesome onClick={() => this.props.downvote(this.props.event._id, this.props.user)} className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
+                <span>{this.props.event.vote.negative.length}</span>
               </div>
             </div>
           </div>
@@ -51,4 +52,8 @@ class DateCard extends Component {
   }
 }
 
-export default DateCard;
+const mapStateToProps = state => ({
+  user: state.authUser.user,
+})
+
+export default connect(mapStateToProps)(DateCard)

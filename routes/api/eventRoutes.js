@@ -12,10 +12,10 @@ router.route("/createEvent/:id")
 router.route("/find/:userId")
   .get(reqLogin, eventController.findAllByUser);
 
-router.route("/upvote/:id")
+router.route("/upvote/")
   .post(reqLogin, eventController.upvoteEvent);
 
-router.route("/downvote/:id")
+router.route("/downvote/")
   .post(reqLogin, eventController.downvoteEvent);
 
 router.route("/attend/:id")
