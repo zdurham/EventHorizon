@@ -19,6 +19,19 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false
   },
+  username: {
+    type: String,
+    unique: true
+  },
+  city: {
+    type: String
+  },
+  maritalStatus: {
+    type: String
+  },
+  hasChildren: {
+    type: Boolean
+  },
   profile: {
     firstName: { type: String },
     lastName: { type: String }
@@ -65,4 +78,3 @@ UserSchema.method('sanitize', function() {
 let User = mongoose.model("User", UserSchema)
 
 module.exports = User
-
