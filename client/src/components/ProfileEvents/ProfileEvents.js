@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import { getUserEvents } from '../../actions/eventActions';
 import FontAwesome from 'react-fontawesome';
 import './ProfileEvents.css';
-import { Card, CardColumns, CardTitle, CardText, Collapse } from 'reactstrap';
+import { Button, Card, CardBody, CardLink, CardTitle, CardSubtitle, CardText, Collapse} from 'reactstrap';
+import moment from 'moment';
 
 class ProfileEvents extends Component {
   constructor(props) {
@@ -12,65 +11,44 @@ class ProfileEvents extends Component {
     this.state = { collapse: false };
   }
 
-  componentDidMount() {
-    console.log(this.props.user)
-    this.displayEvents(this.props.user._id)
-  }
-
-  displayEvents = (id) => {
-    this.props.getUserEvents(id)
-  }
-
   toggle() {
     this.setState({ collapse: !this.state.collapse });
   }
 
   render() {
+    console.log('card', this.props);
     return (
-    <div>
-      <h1 className="text-success">Events</h1>
-      <CardColumns>
-          {this.props.userEvents &&
-          <Card className="userEvent">
-          }
-          {this.props.userEvents && this.props.userEvents.map(event => {
-          return(
-          <div className='container'>
-            <CardTitle className="eventName text-left" onClick={this.toggle}>{event.name}</CardTitle> 
-            
-            <CardText>
-            <div className="userName" >Added by:</div>
-            <div className="eventDate">Date: </div>
-            </CardText>
-  
-            <CardText>
-            <Collapse isOpen={this.state.collapse}>
-              <CardText>{event.description}</CardText>
+        <Card key={this.props.event._id}>
+        <CardBody>
+          <CardTitle>{this.props.event.name}</CardTitle>
+          <CardSubtitle tag="h5">{this.props.event.location}</CardSubtitle>
+          <CardText >
+            <span>{moment(this.props.event.date).format('dddd, MMMM Do')} - {moment(this.props.event.startTime, 'HH:mm').format('h:mmA')}</span>
+          </CardText>
+          <div className="card-buttons">
+            <Button size="sm" onClick={this.toggle}>More Info</Button>
+            <div className="card-votes">
+              <div className="card-vote up">
                 <FontAwesome className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>
-                <FontAwesome className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
-              </Collapse>
-            </CardText>
+                <span>0</span>
               </div>
-              )
-              })}
-        
-            </Card>
-            })}
-          </CardColumns> 
-        </div>
-    )
+              <div className="card-vote down">
+                <FontAwesome className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <Collapse isOpen={this.state.collapse}>
+            <div className="line-container">
+              <hr className="line-style" />
+            </div>
+            <CardText>{this.props.event.description}</CardText>
+            <CardLink href={this.props.event.link}>Visit Website</CardLink>
+          </Collapse>
+        </CardBody>
+      </Card>
+    );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getUserEvents() {
-    dispatch(getUserEvents())
-  }
-})
-
-const mapStateToProps = state => ({
-  user: state.authUser.user,
-  userEvents: state.events.events,
-})
-
-export default connect(mapStateToProps, { getUserEvents })(ProfileEvents)
+export default ProfileEvents;
