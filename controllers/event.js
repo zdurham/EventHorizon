@@ -74,7 +74,7 @@ module.exports = {
   findAll: function(req, res) {
     db.Event
       .find()
-      .where('date').gt(Date.now())
+      .where('date').lt(Date.now())
       .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
       .sort({ date: 1 })
       .then(dbModel => res.json(dbModel))
