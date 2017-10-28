@@ -57,7 +57,6 @@ module.exports = {
 
   },
   remove: function(req, res) {
-    console.log(req.body.eventId)
     db.Event
       .remove({ _id: req.body.eventId })
       .exec((err, data) => {
@@ -75,7 +74,7 @@ module.exports = {
     db.Event
       .find()
       .where('date').gte(Date.now())
-      .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
+      .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents -maritalStatus -hasChildren -attendingEvents')
       .sort({ date: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -84,7 +83,6 @@ module.exports = {
   findAllByUser: function(req, res) {
     // checking if user is advertiser
     const userId = req.params.userId
-    console.log(userId)
     db.User
       .findById({ _id: req.params.userId })
       .then(function(dbModel) {
