@@ -33,6 +33,15 @@ button:hover {
   background-color: #9a4299;
 }
 
+.button-secondary {
+  background-color: #637f33;
+  transition: background-color 0.3s ease-out;
+}
+
+.button-secondary:hover {
+  background-color: #80a441;
+}
+
 .close:hover {
   background-color: inherit;
 }
@@ -55,4 +64,8 @@ button:hover {
 
 .btn-twitter, .btn-twitter:hover {
   background-color: #1da1f2;
+}
+
+.text-success {
+  color: #637f33;
 }
