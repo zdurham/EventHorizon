@@ -63,24 +63,18 @@ db.User
 
             eventObj.attendingList = popArray;
 
-            //Another for loop for upvoting
+            //Another for loop for upvoting and downvoting
+            let downvoteArray = [];
             let upvoteArray = [];
             for (let k = 0; k < userIDs.length; k++) {
               if (Math.random() < 0.6 + randomNumber) {
                 upvoteArray.push(userIDs[k]);
+              } else if (Math.random() > 0.8) {
+                downvoteArray.push(userIDs[k]);
               }
             }
-            //End of upvote for loop and now saving the array value
+            //End of upvote and downvote for loop and now saving the array value
             eventObj.vote.positive = upvoteArray;
-
-            //Another for loop for downvoting
-            let downvoteArray = [];
-            for (let l = 0; l < userIDs.length; l++) {
-              if (Math.random() < 0.3 + randomNumber) {
-                downvoteArray.push(userIDs[l]);
-              }
-            }
-            //End of downvote for loop and now saving the array value
             eventObj.vote.negative = downvoteArray;
 
             eventObj.save(function (err, updatedEventObj) {
