@@ -55,8 +55,8 @@ export default {
   },
 
   //This function is to attend an event. Similar to upvote. id is the User ID. Pass in through the eventData is the ID of the event using "_id" format.
-  attendEvent: function(eventData, id) {
-    return axios.post("/api/event/attend/" + id, eventData);
+  attendEvent: function(eventId, userId) {
+    return axios.post("/api/event/attend/", {eventId, userId});
   }
 
 };

@@ -25,20 +25,27 @@ class Profile extends Component {
           size={150}
           textSizeRatio={2.25} />
         <CardBody>
-        <CardTitle
-          className="userName text-center">
-          {this.props.user.username}
+        <CardTitle 
+          className="text-center userName"
+          >
+          User Name {/*Placeholder*/}
+          {this.props.user.userName}
           </CardTitle>
           <hr />
             <CardText className="userLikes">
               Likes:
               {this.props.user.userlikes}
             </CardText>
-            <CardText className="eventsInput">Events:<span className="text-success">#{this.props.user.createdEvents.length}</span></CardText>
-            <CardText className="attendingEvents">
-              Upcoming Events:
-              {this.props.user.attendingEvents}
+            <CardText 
+              className="eventsInput">
+              Events:
+              {this.props.user.createdEvents.length}
             </CardText>
+            <CardText 
+              className="attendingEvents">
+              Upcoming Events: 
+              {this.props.user.attendingEvents.length}
+            </CardText>            
         </CardBody>
       </Card>
     );

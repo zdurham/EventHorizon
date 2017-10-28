@@ -26,7 +26,6 @@ class navbarInstance extends Component {
   login = () => {
     this.closeNavbar();
   }
-
   logout = () => {
     this.props.history.push('/');
     this.props.logoutUser();

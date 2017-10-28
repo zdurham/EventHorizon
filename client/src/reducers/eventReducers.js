@@ -43,6 +43,14 @@ export function events(state = [], action) {
         }
         return event
       })}
+    case "ATTEND":
+      return { ...state, events: state.events.map(event => {
+        if (event._id === action.eventId) {
+          event = action.event
+        }
+
+        return event
+      })}
     default:
       return state
   }    
