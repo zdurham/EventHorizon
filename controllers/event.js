@@ -74,7 +74,7 @@ module.exports = {
   findAll: function(req, res) {
     db.Event
       .find()
-      .where('date').lt(Date.now())
+      .where('date').gte(Date.now())
       .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
       .sort({ date: 1 })
       .then(dbModel => res.json(dbModel))
@@ -107,27 +107,6 @@ module.exports = {
       })
   },
 
-  getSingleEvent: function(req, res) {
-    db.User
-      .findById({ _id: req.body.userId })
-      .then(function(dbModel) {
-        if(dbModel.isAdvertiser) {
-          db.Event
-            .findById({ _id: req.body.eventId })
-            .populate('attendingList', '-_id -__v -email -password')
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-        } else {
-          db.Event
-            .findById({ _id: req.body.eventId })
-            .populate('attendingList', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-        }
-      })
-  },
-
-
   upvoteEvent: function(req, res) {
     var userId = req.body.userId;
     db.User.findOneAndUpdate({ _id: userId }, {$push: { userLikes: req.body.eventId }})
@@ -138,7 +117,7 @@ module.exports = {
           event: event,
           user: user.sanitize()
         })
-      }))  
+      }))
     })
     .catch(err => res.status(422).json(err));
   },
@@ -154,7 +133,7 @@ module.exports = {
           event: event,
           user: user.sanitize()
         })
-      }))  
+      }))
     })
   },
 
@@ -169,7 +148,7 @@ module.exports = {
           event: event,
           user: user.sanitize()
         })
-      }))  
+      }))
     })
   },
 
