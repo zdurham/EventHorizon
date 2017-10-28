@@ -19,7 +19,7 @@ router.route("/downvote/:id")
   .post(reqLogin, eventController.downvoteEvent);
 
 router.route("/attend/:id")
-  .post(reqLogin, eventController.attendEvent);
+  .post(eventController.attendEvent);
 
 router.route("/remove")
   .post(reqLogin, eventController.remove)
