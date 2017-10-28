@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import Avatar from 'react-avatar';
 import { connect } from 'react-redux'
 import './Profile.css';
-import { Card, CardImg, CardBody, CardTitle, CardText} from 'reactstrap';
-
-
+import { Card, CardBody, CardTitle, CardText} from 'reactstrap';
 
 class Profile extends Component {
   constructor(props) {
@@ -25,7 +23,7 @@ class Profile extends Component {
           size={150}
           textSizeRatio={2.25} />
         <CardBody>
-        <CardTitle 
+        <CardTitle
           className="text-center userName"
           >
           User Name {/*Placeholder*/}
@@ -36,16 +34,16 @@ class Profile extends Component {
               Likes:
               {this.props.user.userlikes}
             </CardText>
-            <CardText 
+            <CardText
               className="eventsInput">
               Events:
               {this.props.user.createdEvents.length}
             </CardText>
-            <CardText 
+            <CardText
               className="attendingEvents">
-              Upcoming Events: 
+              Upcoming Events:
               {this.props.user.attendingEvents.length}
-            </CardText>            
+            </CardText>
         </CardBody>
       </Card>
     );
