@@ -70,6 +70,7 @@ EventSchema.methods.attending = function attending(user, cb) {
   EventSchema.methods.upvote = function upvote(user, fn) {
     // Reset vote if existed
     this.vote.negative.pull(user);
+    
 
     // Upvote
     this.vote.positive.addToSet(user);
