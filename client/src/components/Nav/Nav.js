@@ -24,7 +24,7 @@ class navbarInstance extends Component {
       modal: !this.state.modal
     });
   }
-
+  
   logout = () => {
     this.props.history.push('/')
     this.props.logoutUser()
@@ -43,7 +43,7 @@ class navbarInstance extends Component {
         <NavItem>
           <NavLink tag={RRLink} to="/advertise">Advertise</NavLink>
         </NavItem>
-        <LogInBtn />
+        <LogInBtn login={this.login}/>
       </Nav>
     }
     else {

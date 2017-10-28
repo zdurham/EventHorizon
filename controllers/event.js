@@ -74,7 +74,7 @@ module.exports = {
   findAll: function(req, res) {
     db.Event
       .find()
-      .where('date').lt(Date.now())
+      .where('date').gt(Date.now())
       .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
       .sort({ date: 1 })
       .then(dbModel => res.json(dbModel))
@@ -175,15 +175,20 @@ module.exports = {
 
 
   attendEvent: function(req, res) {
-    var userId = req.params.id;
-    var eventId = req.body._id;
-    db.Event.findById(eventId)
-    .then(dbModel => dbModel.attending(userId, function(){
-      db.User.findById(userId)
-      .then(dbModel => dbModel.attending(eventId, function() {
-        res.json(dbModel);
-      }))
-    }))
-    .catch(err => res.status(422).json(err));
+    db.Event.findOne({_id: req.body.eventId})
+    .then(event => {
+      event.attending(req.body.userId, function() {
+        db.User.findOne({ _id: req.body.userId })
+          .then(user => {
+            user.attending(req.body.eventId, function() {
+              res.json({
+                user: user,
+                event: event
+              })
+          })}
+        )
+      })
+    })
+    .catch(err => console.log(err))
   }
 };

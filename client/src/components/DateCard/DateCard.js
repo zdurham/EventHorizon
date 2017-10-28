@@ -4,7 +4,7 @@ import './DateCard.css';
 import { Button, Card, CardBody, CardLink, CardTitle, CardSubtitle, CardText, Collapse } from 'reactstrap';
 import moment from 'moment';
 import { connect } from 'react-redux'
-import { upvote, downvote, unvote } from '../../actions/eventActions'
+import { upvote, downvote, unvote, attendEvent } from '../../actions/eventActions'
 
 class DateCard extends Component {
   constructor(props) {
@@ -31,7 +31,14 @@ class DateCard extends Component {
     this.props.unvote(eventId, userId)
   }
 
+  clickAttend = (eventId, userId) => {
+    this.props.attendEvent(eventId, userId)
+  }
+
   render() {
+
+    // attend button
+    let attend = <Button size="sm" className="button-primary" onClick={() => this.clickAttend(this.props.event._id, this.props.user._id)}> Attend </Button>
 
     // upvote button
     let upvote = <FontAwesome onClick={() => this.clickUpvote(this.props.event._id, this.props.user._id)} className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>;
@@ -39,19 +46,30 @@ class DateCard extends Component {
     // downvote button
     let downvote = <FontAwesome onClick={() => this.clickDownvote(this.props.event._id, this.props.user._id)} className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
 
-    // If no user is logged in, then we do some checks
+    // Do some checks to see if the user is logged in
     if (!this.props.user) {
+      attend = <Button size='sm' className='button-primary disabled'> Attend </Button>
+
       upvote = <FontAwesome disabled='true' className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>;
 
       downvote = <FontAwesome disabled='true' className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
     }
     else {  
+      // If user has already clicked to attend, show unattend
+      if (this.props.event.attendingList.includes(this.props.user._id)) {
+        attend = <Button size="sm" className="button-primary" onClick={() => this.clickAttend(this.props.event._id, this.props.user._id)}> Attending </Button>
+      }
+
+      // if user has upvoted already, sub unvote function, change color
       if (this.props.event.vote.positive.includes(this.props.user._id)) {
         upvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="up-vote-active" name="thumbs-o-up" size="2x"></FontAwesome>
       }
+
+      // if user has downvoted already, sub unvote function, change color
       if (this.props.event.vote.negative.includes(this.props.user._id)) {
         downvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="down-vote-active" name="thumbs-o-down" size="2x"></FontAwesome>
       }
+      
     }
     
     
@@ -100,6 +118,7 @@ class DateCard extends Component {
               className="button-primary" onClick={this.toggle}>
               More Info
             </Button>
+            {attend}
             <div className="card-votes">
               <div className="card-vote up">
                 {upvote}
@@ -129,4 +148,4 @@ const mapStateToProps = state => ({
   user: state.authUser.user
 })
 
-export default connect(mapStateToProps, { upvote, downvote, unvote })(DateCard)
+export default connect(mapStateToProps, { upvote, downvote, unvote, attendEvent })(DateCard)
