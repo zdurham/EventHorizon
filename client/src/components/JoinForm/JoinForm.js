@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import './JoinForm.css';
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
-import { Button, FormGroup, Label } from 'reactstrap';
+import { Button, FormGroup, Label, Row, Col } from 'reactstrap';
 import { registerUser } from '../../actions/authActions'
 import { withRouter } from 'react-router-dom'
 
@@ -39,15 +39,30 @@ class SignUpForm extends Component {
   render() {
     return(
       <AvForm id="join-form" onValidSubmit={this.handleValidSubmit}>
-        <AvGroup>
-          <Label for="join-email">Email</Label>
-          <AvInput
-            type="email"
-            name="email"
-            id="join-email"
-            required />
-          <AvFeedback>Enter a valid email address</AvFeedback>
-        </AvGroup>
+        <Row>
+          <Col xs="12" sm="6">
+            <AvGroup>
+              <Label for="join-firstname">First Name</Label>
+              <AvInput
+                type="text"
+                name="firstname"
+                id="join-firstname"
+                required />
+              <AvFeedback>This field is required</AvFeedback>
+            </AvGroup>
+          </Col>
+          <Col xs="12" sm="6">
+            <AvGroup>
+              <Label for="join-lastname">Last Name</Label>
+              <AvInput
+                type="text"
+                name="lastname"
+                id="join-lastname"
+                required />
+              <AvFeedback>This field is required</AvFeedback>
+            </AvGroup>
+          </Col>
+        </Row>
         <AvGroup>
           <Label for="join-user">Username</Label>
           <AvInput
@@ -57,6 +72,15 @@ class SignUpForm extends Component {
             placeholder="Your community name"
             required />
           <AvFeedback>This field is required</AvFeedback>
+        </AvGroup>
+        <AvGroup>
+          <Label for="join-email">Email</Label>
+          <AvInput
+            type="email"
+            name="email"
+            id="join-email"
+            required />
+          <AvFeedback>Enter a valid email address</AvFeedback>
         </AvGroup>
         <AvGroup>
           <Label for="join-pwd">Password</Label>
