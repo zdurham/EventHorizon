@@ -236,6 +236,312 @@ const userSeed = [
     age: 49,
     sex: "female",
     createdEvents: []
+  },
+  {
+    email: "amber.watson@fakemail.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "Awatts",
+    city: "Holly Springs",
+    maritalStatus: "Divorced",
+    hasChildren: false,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageF16.jpg",
+    profile: {
+      firstName: "Amber",
+      lastName: "Watson"
+    },
+    age: 24,
+    sex: "female",
+    createdEvents: []
+  },
+  {
+    email: "bobby.evans@fakemail.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "BobbyE",
+    city: "Durham",
+    maritalStatus: "Married",
+    hasChildren: true,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageM16.jpg",
+    profile: {
+      firstName: "Bobby",
+      lastName: "Evans"
+    },
+    age: 62,
+    sex: "male",
+    createdEvents: []
+  },
+  {
+    email: "rebecca.crawford@test.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "RebCraw",
+    city: "Clayton",
+    maritalStatus: "Single",
+    hasChildren: false,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageF17.jpg",
+    profile: {
+      firstName: "Rebecca",
+      lastName: "Crawford"
+    },
+    age: 17,
+    sex: "female",
+    createdEvents: []
+  },
+  {
+    email: "matthew.vaughn@test.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "MattV",
+    city: "Cary",
+    maritalStatus: "Married",
+    hasChildren: true,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageM17.jpg",
+    profile: {
+      firstName: "Matthew",
+      lastName: "Vaughn"
+    },
+    age: 51,
+    sex: "male",
+    createdEvents: []
+  },
+  {
+    email: "emily.bell@fakemail.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "Belle",
+    city: "Raleigh",
+    maritalStatus: "Single",
+    hasChildren: true,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageF18.jpg",
+    profile: {
+      firstName: "Emily",
+      lastName: "Bell"
+    },
+    age: 35,
+    sex: "female",
+    createdEvents: []
+  },
+  {
+    email: "jake.boyd@example.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "JakeB",
+    city: "Fuquay Varina",
+    maritalStatus: "Single",
+    hasChildren: false,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageM18.jpg",
+    profile: {
+      firstName: "Jake",
+      lastName: "Boyd"
+    },
+    age: 27,
+    sex: "male",
+    createdEvents: []
+  },
+  {
+    email: "rosie.scott@test.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "RoseS",
+    city: "Garner",
+    maritalStatus: "Married",
+    hasChildren: false,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageF19.jpg",
+    profile: {
+      firstName: "Rosie",
+      lastName: "Scott"
+    },
+    age: 28,
+    sex: "female",
+    createdEvents: []
+  },
+  {
+    email: "jake.barnett@example.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "JakeBarn",
+    city: "Knightdale",
+    maritalStatus: "Single",
+    hasChildren: false,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageM19.jpg",
+    profile: {
+      firstName: "Jake",
+      lastName: "Barnett"
+    },
+    age: 33,
+    sex: "male",
+    createdEvents: []
+  },
+  {
+    email: "emma.price@fakemail.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "EmmaP",
+    city: "Rolesville",
+    maritalStatus: "Married",
+    hasChildren: true,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageF2.jpg",
+    profile: {
+      firstName: "Emma",
+      lastName: "Price"
+    },
+    age: 30,
+    sex: "female",
+    createdEvents: []
+  },
+  {
+    email: "john.barnett@example.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "JBarn",
+    city: "Wake Forest",
+    maritalStatus: "Single",
+    hasChildren: true,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageM2.jpg",
+    profile: {
+      firstName: "John",
+      lastName: "Barnett"
+    },
+    age: 38,
+    sex: "male",
+    createdEvents: []
+  },
+  {
+    email: "paige.nolan@example.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "pNolan",
+    city: "Morrisville",
+    maritalStatus: "Single",
+    hasChildren: false,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageF20.jpg",
+    profile: {
+      firstName: "Paige",
+      lastName: "Nolan"
+    },
+    age: 36,
+    sex: "female",
+    createdEvents: []
+  },
+  {
+    email: "peter.wood@example.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "PeterW",
+    city: "Chapel Hill",
+    maritalStatus: "Married",
+    hasChildren: true,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageM20.jpg",
+    profile: {
+      firstName: "Peter",
+      lastName: "Wood"
+    },
+    age: 61,
+    sex: "male",
+    createdEvents: []
+  },
+  {
+    email: "eva.rogers@test.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "EvaR",
+    city: "Durham",
+    maritalStatus: "Single",
+    hasChildren: false,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageF21.jpg",
+    profile: {
+      firstName: "Eva",
+      lastName: "Rogers"
+    },
+    age: 24,
+    sex: "female",
+    createdEvents: []
+  },
+  {
+    email: "liam.coleman@example.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "LCole",
+    city: "Raleigh",
+    maritalStatus: "Divorced",
+    hasChildren: true,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageM21.jpg",
+    profile: {
+      firstName: "Liam",
+      lastName: "Coleman"
+    },
+    age: 46,
+    sex: "male",
+    createdEvents: []
+  },
+  {
+    email: "ashley.butler@example.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "AshB",
+    city: "Carrboro",
+    maritalStatus: "Single",
+    hasChildren: true,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageF22.jpg",
+    profile: {
+      firstName: "Ashley",
+      lastName: "Butler"
+    },
+    age: 41,
+    sex: "female",
+    createdEvents: []
+  },
+  {
+    email: "jeremy.johnson@example.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "JermJ",
+    city: "Rolesville",
+    maritalStatus: "Single",
+    hasChildren: false,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageM22.jpg",
+    profile: {
+      firstName: "Jeremy",
+      lastName: "Johnson"
+    },
+    age: 33,
+    sex: "male",
+    createdEvents: []
+  },
+  {
+    email: "nicole.fuller@test.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "NicoleF",
+    city: "Garner",
+    maritalStatus: "Married",
+    hasChildren: true,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageF23.jpg",
+    profile: {
+      firstName: "Nicole",
+      lastName: "Fuller"
+    },
+    age: 27,
+    sex: "female",
+    createdEvents: []
+  },
+  {
+    email: "henrik.parker@example.com",
+    password: "xxxxxxxxxx",
+    isAdvertiser: false,
+    username: "HParker",
+    city: "Chapel Hill",
+    maritalStatus: "Married",
+    hasChildren: true,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageM23.jpg",
+    profile: {
+      firstName: "Henrik",
+      lastName: "Parker"
+    },
+    age: 28,
+    sex: "male",
+    createdEvents: []
   }
 ];
 
