@@ -160,7 +160,7 @@ class EventForm extends Component {
           </AvGroup>
           <AvGroup>
             <Label check inline>
-              <AvInput type="checkbox" name="advert" />Advertise this event
+              <AvInput type="checkbox" name="advert" />Advertise event
             </Label>
           </AvGroup>
           <p><em>* Required</em></p>

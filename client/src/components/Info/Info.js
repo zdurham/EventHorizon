@@ -17,7 +17,7 @@ const Info = () =>
       <Col xs="12" md="4">
         <h3>Vote</h3>
         <FontAwesome
-          name="thumbs-up">
+          name="thumbs-o-up">
         </FontAwesome>
         <p>Vote up or down the events in your area to let other users know which events are generating the most interest as well as those that are not.</p>
       </Col>

@@ -18,7 +18,7 @@ module.exports = {
       .findById({ _id: req.params.id })
       .populate(
         { path: "attendingEvents",
-          match: { date: { $lte: Date.now() } },
+          match: { date: { $gte: Date.now() } },
           options: { sort: { date: 1 } }
         })
       .exec(function(error, doc) {

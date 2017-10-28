@@ -26,8 +26,5 @@ router.route("/attend/:id")
 
 router.route("/remove")
   .post(reqLogin, eventController.remove);
-  
-router.route("/singleEvent")
-  .get(eventController.getSingleEvent);
 
 module.exports = router;
