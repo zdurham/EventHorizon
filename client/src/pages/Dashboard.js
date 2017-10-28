@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getUserEvents, getAllEvents, deleteEvent } from '../actions/eventActions';
 import DashboardTabs from "../components/DashboardTabs";
 import Profile from "../components/Profile";
 import { Container, Row, Col } from 'reactstrap';
@@ -27,4 +25,4 @@ class Dashboard extends Component {
 }
 
 
-export default connect(null, { getUserEvents, getAllEvents, deleteEvent })(Dashboard)
+export default Dashboard

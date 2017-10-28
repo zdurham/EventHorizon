@@ -4,7 +4,7 @@ import FontAwesome from 'react-fontawesome';
 import './ProfileEvents.css';
 import { Button, Card, CardBody, CardLink, CardTitle, CardSubtitle, CardText, Collapse } from 'reactstrap';
 import moment from 'moment';
-import { upvote, downvote, unvote, getUserEvents, deleteEvent } from '../../actions/eventActions'
+import { upvote, downvote, unvote, deleteEvent} from '../../actions/eventActions'
 
 class ProfileEvents extends Component {
   constructor(props) {
@@ -14,14 +14,6 @@ class ProfileEvents extends Component {
       collapse: false
    };
   }
-  
-  componentWillMount() {
-    this.displayEvents()
-  }
-
-  displayEvents = () => {
-    this.props.getUserEvents()
-  }
 
   toggle() {
     this.setState({ collapse: !this.state.collapse });
@@ -29,12 +21,10 @@ class ProfileEvents extends Component {
 
   clickUpvote = (eventId, userId) => {
     this.props.upvote(eventId, userId)
-    // insert conditional stuff here
   }
 
   clickDownvote = (eventId, userId) => {
     this.props.downvote(eventId, userId)
-    // insert conditional stuff here
   }
 
   clickUnvote = (eventId, userId) => {
@@ -137,17 +127,10 @@ class ProfileEvents extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getUserEvents() {
-    dispatch(getUserEvents())
-  },
-  deleteEvent() {
-    dispatch(deleteEvent())
-  }
-})
+
 
 const mapStateToProps = state => ({
-  user: state.authUser.user
+  user: state.authUser.user,
 })
 
-export default connect(mapStateToProps, { upvote, downvote, unvote, getUserEvents, deleteEvent })(ProfileEvents)
+export default connect(mapStateToProps, { upvote, downvote, unvote, deleteEvent})(ProfileEvents)

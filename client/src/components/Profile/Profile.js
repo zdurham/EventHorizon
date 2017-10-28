@@ -13,7 +13,7 @@ class Profile extends Component {
 
   render() {
     return (
-    <Card className="profileCard" key={this.props.user._id} >
+      <Card className="profileCard" key={this.props.user._id} >
         <CardImg 
           className="userImg text-center" 
           src={Img} 
@@ -34,13 +34,13 @@ class Profile extends Component {
               Upcoming Events: 
               {this.props.user.attendingEvents}
             </CardText>            
-         </CardBody>
-    </Card>
+        </CardBody>
+      </Card>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  user: state.authUser.user
+  user: state.authUser.user ? state.authUser.user : {}
 })
 export default connect(mapStateToProps)(Profile)

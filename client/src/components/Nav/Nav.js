@@ -5,6 +5,7 @@ import { NavLink as RRLink } from 'react-router-dom'
 import LogInBtn from '../LogInBtn';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions'
+import { withRouter } from 'react-router'
 
 
 class navbarInstance extends Component {
@@ -22,6 +23,11 @@ class navbarInstance extends Component {
       isOpen: !this.state.isOpen,
       modal: !this.state.modal
     });
+  }
+
+  logout = () => {
+    this.props.history.push('/')
+    this.props.logoutUser()
   }
 
   render() {
@@ -51,7 +57,7 @@ class navbarInstance extends Component {
           <NavLink tag={RRLink} to='/dashboard' exact >Dashboard</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink onClick={this.props.logoutUser}>Logout</NavLink>
+          <NavLink onClick={this.logout}>Logout</NavLink>
         </NavItem>
       </Nav>
     }
@@ -79,4 +85,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, { logoutUser })(navbarInstance);
+export default withRouter(connect(mapStateToProps, { logoutUser })(navbarInstance));
