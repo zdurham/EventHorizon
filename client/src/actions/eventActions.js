@@ -94,6 +94,7 @@ export const getUserEvents = (userId) => {
   return dispatch => {
     api.findAllByUser(userId)
       .then(res => {
+        console.log(res.data)
         dispatch(userEvents(res.data))
       })
   }
@@ -150,7 +151,6 @@ export const attendEvent = (eventId, userId) => {
   return dispatch => {
     api.attendEvent(eventId, userId)
       .then(res => {
-        console.log(res.data)
         dispatch(attend(res.data))
       })
   }

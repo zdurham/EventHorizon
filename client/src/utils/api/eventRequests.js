@@ -31,12 +31,12 @@ export default {
 
   //Deletes an event. Pass in event ID.
   deleteEvent: function(eventId) {
-    return axios.post("/api/event/remove", {eventId});
+    return axios.post("/api/event/remove", eventId);
   },
 
   //This call allows you to get all the events posted by a single user. Pass in user ID.
   findAllByUser: function(userId) {
-    return axios.get("/api/event/find/" + userId);
+    return axios.post("/api/event/userEvents/", { userId });
   },
 
   //This will toggle the upvotes. id is the User ID. All you need to pass in through the eventData is the ID of the event using "_id" format.

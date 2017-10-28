@@ -9,8 +9,8 @@ router.route("/")
 router.route("/createEvent/:id")
   .post(reqLogin, eventController.createEvent);
 
-router.route("/find/:userId")
-  .get(reqLogin, eventController.findAllByUser);
+router.route("/userEvents/")
+  .post(reqLogin, eventController.findAllByUser);
 
 router.route("/upvote/")
   .post(reqLogin, eventController.upvoteEvent);

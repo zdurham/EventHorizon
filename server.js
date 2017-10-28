@@ -45,7 +45,6 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   secret: config.secret, // session secret
-  maxAge: 1000 * 60 * 60 * 24,
   store: new MongoStore({ 
     mongooseConnection: mongoose.connection,
     autoRemove: 'interval',

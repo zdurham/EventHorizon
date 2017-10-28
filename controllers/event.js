@@ -59,14 +59,11 @@ module.exports = {
   remove: function(req, res) {
     console.log(req.body.eventId)
     db.Event
-      .remove({ _id: req.body.eventId })
-      .exec((err, data) => {
-        if (err) {
-          console.log(err)
-        }
-        else {
-          res.json(data)
-        }
+      .findOneAndRemove({ _id: req.body.eventId }, (err, data) => {
+        db.Event.find()
+          .then(data => {
+            res.json(data)
+          })
       })
       .catch(err => res.status(422).json(err));
   },
@@ -82,30 +79,36 @@ module.exports = {
   },
   
   findAllByUser: function(req, res) {
+    
+    console.log('req.body', req.body)
+    db.Event.find({ createdBy: req.body.userId })
+    .then((events) => {
+      console.log(events)
+      res.json(events)
+    }) 
+    .catch(err => res.status(422).json(err))
     // checking if user is advertiser
-    const userId = req.params.userId
-    console.log(userId)
-    db.User
-      .findById({ _id: req.params.userId })
-      .then(function(dbModel) {
-        if(dbModel.isAdvertiser) {
-          db.Event
-            .find(req.query)
-            .where('createdBy').equals(req.params.id)
-            .populate('attendingList', '-_id -__v -email -password')
-            .sort({ date: -1 })
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-        } else {
-          db.Event
-            .find(req.query)
-            .where('createdBy').equals(userId)
-            .populate('attendingList', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
-            .sort({ date: -1 })
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-        }
-      })
+    // db.User
+    //   .find({ _id: req.params.userId })
+    //   .then((user) => {
+        // if(dbModel.isAdvertiser) {
+        //   db.Event
+        //     .find(req.query)
+        //     .where('createdBy').equals(req.params.id)
+        //     .populate('attendingList', '-_id -__v -email -password')
+        //     .sort({ date: -1 })
+        //     .then(dbModel => res.json(dbModel))
+        //     .catch(err => res.status(422).json(err));
+        // } else {
+        //   db.Event
+        //     .find(req.query)
+        //     .where('createdBy').equals(userId)
+        //     .populate('attendingList', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
+        //     .sort({ date: -1 })
+        //     .then(dbModel => res.json(dbModel))
+        //     .catch(err => res.status(422).json(err));
+        // }
+      // })
   },
 
   upvoteEvent: function(req, res) {

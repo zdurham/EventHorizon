@@ -43,6 +43,7 @@ export const loginUser = (userData) => {
     // Using an axios post request function from the utils folder
     authRequests.login(userData)
     .then(res => {
+      console.log('response data', res.data)
       dispatch(authUserAction(res.data))
 
     })
