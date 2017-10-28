@@ -7,13 +7,14 @@
 }
 
 .card-extras {
-  font-size: 20px;
-  margin-right: 10px;
+  font-size: 24px;
+  margin-right: 16px;
 }
 
 .card-buttons {
   display: flex;
   justify-content: space-between;
+  margin-top: 40px;
 }
 
 .card .fa {

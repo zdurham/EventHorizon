@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FontAwesome from 'react-fontawesome';
 import './DateCard.css';
-import { Button, Card, CardBody, CardLink, CardTitle, CardSubtitle, CardText, Collapse } from 'reactstrap';
+import { Button, Card, CardBody, CardLink, CardTitle, CardSubtitle, CardText, Collapse, UncontrolledTooltip } from 'reactstrap';
 import moment from 'moment';
 import { connect } from 'react-redux'
 import { upvote, downvote, unvote, attendEvent } from '../../actions/eventActions'
@@ -35,6 +35,18 @@ class DateCard extends Component {
     this.props.attendEvent(eventId, userId)
   }
 
+  eventDateTime = (date, start, end) => {
+    if (end.length !== 0) {
+      end = ' to ' + moment(end, 'HH:mm').format('h:mmA')
+    }
+    return (
+      moment(date).format('ddd, MMMM D')
+      + ' - '
+      + moment(start, 'HH:mm').format('h:mmA')
+      + end
+    );
+  }
+
   render() {
 
     // attend button
@@ -54,7 +66,7 @@ class DateCard extends Component {
 
       downvote = <FontAwesome disabled='true' className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
     }
-    else {  
+    else {
       // If user has already clicked to attend, show unattend
       if (this.props.event.attendingList.includes(this.props.user._id)) {
         attend = <Button size="sm" className="button-primary" onClick={() => this.clickAttend(this.props.event._id, this.props.user._id)}> Attending </Button>
@@ -69,10 +81,8 @@ class DateCard extends Component {
       if (this.props.event.vote.negative.includes(this.props.user._id)) {
         downvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="down-vote-active" name="thumbs-o-down" size="2x"></FontAwesome>
       }
-      
     }
-    
-    
+
     return (
       <Card key={this.props.event._id}>
         <CardBody>
@@ -80,36 +90,57 @@ class DateCard extends Component {
           <CardSubtitle tag="h5">{this.props.event.location}</CardSubtitle>
           <CardText >
             <span>
-              {moment(this.props.event.date).format('ddd, MMMM D')} - {moment(this.props.event.startTime, 'HH:mm').format('h:mmA')}
-              {
-                (this.props.event.endTime.length !== 0) ? ' to ' + moment(this.props.event.endTime, 'HH:mm').format('h:mmA') : ''
-              }
+              {this.eventDateTime(this.props.event.date, this.props.event.startTime, this.props.event.endTime)}
             </span>
           </CardText>
           <CardText>
             {
               (this.props.event.allDay === true) ?
-              <FontAwesome
-                className="card-extras"
-                name="sun-o"
-                title="All Day Event">
-              </FontAwesome> : ''
+              <span>
+                <FontAwesome
+                  id={`all-${this.props.event._id}`}
+                  className="card-extras"
+                  name="sun-o">
+                </FontAwesome>
+                <UncontrolledTooltip
+                  placement="bottom"
+                  delay={0}
+                  target={`all-${this.props.event._id}`}>
+                  All Day Event
+                </UncontrolledTooltip>
+              </span> : ''
             }
             {
             (this.props.event.kidFriendly === true) ?
-              <FontAwesome
-                className="card-extras"
-                name="child"
-                title="Kid Friendly">
-              </FontAwesome> : ''
+              <span>
+                <FontAwesome
+                  id={`kid-${this.props.event._id}`}
+                  className="card-extras"
+                  name="child">
+                </FontAwesome>
+                <UncontrolledTooltip
+                  placement="bottom"
+                  delay={0}
+                  target={`kid-${this.props.event._id}`}>
+                  Kid Friendly
+                </UncontrolledTooltip>
+              </span> : ''
             }
             {
             (this.props.event.petFriendly === true) ?
-              <FontAwesome
-                className="card-extras"
-                name="paw"
-                title="Pet Friendly">
-              </FontAwesome> : ''
+              <span>
+                <FontAwesome
+                  id={`pet-${this.props.event._id}`}
+                  className="card-extras"
+                  name="paw">
+                </FontAwesome>
+                <UncontrolledTooltip
+                  placement="bottom"
+                  delay={0}
+                  target={`pet-${this.props.event._id}`}>
+                  Pet Friendly
+                </UncontrolledTooltip>
+              </span> : ''
             }
           </CardText>
           <div className="card-buttons">
