@@ -130,33 +130,46 @@ module.exports = {
 
   upvoteEvent: function(req, res) {
     var userId = req.body.userId;
-    db.Event.findById({ _id: req.body.eventId })
-    .then(dbModel => dbModel.upvoted(userId, function(){
-      res.json(dbModel);
-    }))
+    db.User.findOneAndUpdate({ _id: userId }, {$push: { userLikes: req.body.eventId }})
+    .then(user => {
+      db.Event.findById({ _id: req.body.eventId })
+      .then(event => event.upvoted(userId, function(){
+        res.json({
+          event: event,
+          user: user.sanitize()
+        })
+      }))  
+    })
     .catch(err => res.status(422).json(err));
   },
 
 
   downvoteEvent: function(req, res) {
-    var userId = req.body.userId;
-    db.Event.findById({_id: req.body.eventId})
-    .then(dbModel => dbModel.downvoted(userId, function(){
-      res.json(dbModel);
-    }))
-    .catch(err => res.status(422).json(err));
+    let userId = req.body.userId;
+    db.User.findOneAndUpdate({ _id: userId }, {$pull: { userLikes: req.body.eventId }})
+    .then(user => {
+      db.Event.findById({ _id: req.body.eventId })
+      .then(event => event.downvoted(userId, function(){
+        res.json({
+          event: event,
+          user: user.sanitize()
+        })
+      }))  
+    })
   },
 
 
   unvoteEvent: function(req, res) {
     let userId = req.body.userId;
-    db.Event.findOne({ _id: req.body.eventId })
-    .then(dbModel => {
-      dbModel.unvoted(userId, function() {
-      res.json(dbModel);
-    })})
-    .catch(err => {
-      res.status(422).json(err)
+    db.User.findOneAndUpdate({ _id: userId }, {$pull: { userLikes: req.body.eventId }})
+    .then(user => {
+      db.Event.findById({ _id: req.body.eventId })
+      .then(event => event.unvoted(userId, function(){
+        res.json({
+          event: event,
+          user: user.sanitize()
+        })
+      }))  
     })
   },
 

@@ -9,7 +9,8 @@ const appReducers = combineReducers({
 
 const rootReducer = (state, action) => {
   if (action.type === 'USER_LOGOUT') {
-    state = {}
+    state.authUser = undefined
+    state.userEvents = undefined
   }
 
   return appReducers(state, action)

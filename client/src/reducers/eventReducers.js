@@ -17,7 +17,7 @@ export function events(state = [], action) {
       const upArray = state.events.map(event => {
         
         if (event._id === action.eventId) {
-          event = action.payload
+          event = action.event
         }
 
           return event
@@ -29,7 +29,7 @@ export function events(state = [], action) {
       // check for matching event by Id
       const downArray = state.events.map(event => {
         if (event._id === action.eventId) {
-          event = action.payload
+          event = action.event
         }
         return event
       })
@@ -39,7 +39,7 @@ export function events(state = [], action) {
       // return state with new array of events
       return { ...state, events: state.events.map(event => {
         if (event._id === action.eventId) {
-          event = action.payload
+          event = action.event
         }
         return event
       })}

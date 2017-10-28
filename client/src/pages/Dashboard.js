@@ -10,7 +10,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 class Dashboard extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.displayEvents()
   }
 
@@ -62,7 +62,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  user: state.authUser.user,
+  user: state.authUser.user ? state.authUser.user : {} ,
   userEvents: state.events.userEvents,
   allEvents: state.events.events
 })
