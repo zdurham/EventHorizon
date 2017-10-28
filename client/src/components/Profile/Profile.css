@@ -1,4 +1,24 @@
 
-.profileCard {
-    margin: 15px 0px 15px 0px;
+/*.profileCard {
+    margin-bottom: 15px;
+    border: 1px solid #cecece;
+}*/
+
+.userImg {
+    display:block;
+    margin:auto;
 }
+
+.profileCard {
+    display:block;
+    margin:auto;
+}
+
+.userName {
+    color: #637f33;
+}
+
+.createdEvents {
+    color: #841983;
+}
+
