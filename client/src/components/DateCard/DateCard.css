@@ -25,6 +25,10 @@
   display: flex;
 }
 
+.card-button-info {
+  margin-right: 10px;
+}
+
 .card-buttons .card-vote {
   display: flex;
   justify-content: space-between;
@@ -37,6 +41,7 @@
 
 .card-vote span {
   display: block;
+  min-width: 16px;
 }
 
 .card-vote span:first-child {
