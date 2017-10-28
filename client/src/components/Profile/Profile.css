@@ -4,21 +4,15 @@
     border: 1px solid #cecece;
 }*/
 
-.userImg {
-    display:block;
-    margin:auto;
-}
-
 .profileCard {
-    display:block;
-    margin:auto;
+  display:block;
+  margin:auto;
 }
 
 .userName {
-    color: #637f33;
+  color: #637f33;
 }
 
 .createdEvents {
-    color: #841983;
+  color: #841983;
 }
-
