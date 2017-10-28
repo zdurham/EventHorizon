@@ -60,7 +60,7 @@ class DateCard extends Component {
 
     // Do some checks to see if the user is logged in
     if (!this.props.user) {
-      attend = <Button size='sm' className='button-primary disabled'> Attend </Button>
+      attend = ''
 
       upvote = <FontAwesome disabled='true' className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>;
 
@@ -144,12 +144,14 @@ class DateCard extends Component {
             }
           </CardText>
           <div className="card-buttons">
-            <Button
-              size="sm"
-              className="button-primary" onClick={this.toggle}>
-              More Info
-            </Button>
-            {attend}
+            <div>
+              <Button
+                size="sm"
+                className="button-primary card-button-info" onClick={this.toggle}>
+                More Info
+              </Button>
+              {attend}
+            </div>
             <div className="card-votes">
               <div className="card-vote up">
                 {upvote}
@@ -158,7 +160,6 @@ class DateCard extends Component {
               <div className="card-vote down">
                 {downvote}
                 <span>{this.props.event.vote.negative && this.props.event.vote.negative.length}</span>
-
               </div>
             </div>
           </div>

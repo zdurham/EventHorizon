@@ -29,7 +29,11 @@ button:hover {
   transition: background-color 0.3s ease-out;
 }
 
-.button-primary:hover {
+.button-primary:active {
+  background-color: #841983 !important;
+}
+
+.button-primary:hover, .button-primary:focus {
   background-color: #9a4299;
 }
 
