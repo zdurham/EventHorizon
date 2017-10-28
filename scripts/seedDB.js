@@ -86,7 +86,7 @@ db.User
             eventObj.save(function (err, updatedEventObj) {
               if (err) return handleError(err);
               console.log("stuff done for event number: ", i + 1);
-              mongoose.disconnect();
+              // mongoose.disconnect();
             });
         })
       }

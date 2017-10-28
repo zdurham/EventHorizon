@@ -80,7 +80,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  
+
   findAllByUser: function(req, res) {
     // checking if user is advertiser
     const userId = req.params.userId
