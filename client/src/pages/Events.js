@@ -18,13 +18,19 @@ class Events extends Component {
     return (
       <Container tag="main">
         <Row>
-          <Col xs="12" md="8">
-            {(this.props.allEvents && this.props.allEvents.length > 1) && this.props.allEvents.map(event => (
-              <DateCard
-                key={event._id}
-                event={event}/>
-            ))}
-          </Col>
+          {!this.props.allEvents ? (
+            <Col xs='12' md='8'>
+              <h2>No Events To Display</h2>
+            </Col>
+          ) : (
+            <Col xs="12" md="8">
+              {this.props.allEvents.map(event => (
+                <DateCard
+                  key={event._id}
+                  event={event}/>
+              ))}
+            </Col>
+          )}
           <Col lg="auto">
           </Col>
         </Row>

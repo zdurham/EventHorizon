@@ -16,11 +16,7 @@ const auth = {
 
   register: (req, res, next) => {
     // if successful passport authentication
-    return res.status(200).json(req.user.sanitize());
-    // if error
-
-      // handle success
-  return res.status(200).json(req.user.sanitize());
+    res.status(200).json(req.user.sanitize());
   },
 
   error: (err, req, res, next) => {

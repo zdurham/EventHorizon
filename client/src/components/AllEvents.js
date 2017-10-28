@@ -29,6 +29,7 @@ class AllEvents extends Component {
   }
 }
 
+
 const mapDispatchToProps = dispatch => ({
   getAllEvents() {
     dispatch(getAllEvents())

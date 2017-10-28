@@ -37,27 +37,36 @@ function getOne(eventData) {
   }
 }
 
-function upVote(eventData) {
+function upVote(data) {
+  console.log(data)
   return {
     type: 'UPVOTE',
-    eventId: eventData._id,
-    payload: eventData
+    eventId: data.event._id,
+    userId: data.user._id,
+    user: data.user,
+    event: data.event
   }
 }
 
-function downVote(eventData) {
+function downVote(data) {
+  console.log(data)
   return {
     type: 'DOWNVOTE',
-    eventId: eventData._id,
-    payload: eventData
+    eventId: data.event._id,
+    userId: data.user._id,
+    user: data.user,
+    event: data.event
   }
 }
 
-function unVote(eventData) {
+function unVote(data) {
+  console.log(data)
   return {
     type: 'UNVOTE',
-    eventId: eventData._id,
-    payload: eventData
+    eventId: data.event._id,
+    userId: data.user._id,
+    user: data.user,
+    event: data.event
   }
 }
 
@@ -75,7 +84,6 @@ export const createEvent = (eventData, userId) => {
 
 // This gathers the events that a specific user has created
 export const getUserEvents = (userId) => {
-  console.log(userId)
   return dispatch => {
     api.findAllByUser(userId)
       .then(res => {
@@ -117,6 +125,7 @@ export const upvote = (eventData, userId) => {
   return dispatch => {
     api.upvote(eventData, userId)
       .then(res => {
+        console.log(res.data)
         dispatch(upVote(res.data))
       })
   }
@@ -126,6 +135,7 @@ export const downvote = (eventData, userId) => {
   return dispatch => {
     api.downvote(eventData, userId)
       .then(res => {
+        console.log(res.data)
         dispatch(downVote(res.data))
       })
   }
@@ -135,7 +145,8 @@ export const unvote = (eventData, userId) => {
   return dispatch => {
     api.unvote(eventData, userId)
       .then(res => {
-        dispatch(downVote(res.data))
+        console.log(res.data)
+        dispatch(unVote(res.data))
       })
   }
 }

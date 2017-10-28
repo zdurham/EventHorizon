@@ -39,14 +39,21 @@ class DateCard extends Component {
     // downvote button
     let downvote = <FontAwesome onClick={() => this.clickDownvote(this.props.event._id, this.props.user._id)} className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
 
-    // if the buttons have been clicked, the click function is removed
-    // NOTE THIS WILL BE REPLACED WITH UNVOTE FUNCTION WHEN UNVOTE IS ENABLED
-    if (this.props.event.vote.positive.includes(this.props.user._id)) {
-      upvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="up-vote-active" name="thumbs-o-up" size="2x"></FontAwesome>
+    // If no user is logged in, then we do some checks
+    if (!this.props.user) {
+      upvote = <FontAwesome disabled='true' className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>;
+
+      downvote = <FontAwesome disabled='true' className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
     }
-    if (this.props.event.vote.negative.includes(this.props.user._id)) {
-      downvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="down-vote-active" name="thumbs-o-down" size="2x"></FontAwesome>
+    else {  
+      if (this.props.event.vote.positive.includes(this.props.user._id)) {
+        upvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="up-vote-active" name="thumbs-o-up" size="2x"></FontAwesome>
+      }
+      if (this.props.event.vote.negative.includes(this.props.user._id)) {
+        downvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="down-vote-active" name="thumbs-o-down" size="2x"></FontAwesome>
+      }
     }
+    
     
     return (
       <Card key={this.props.event._id}>
@@ -96,11 +103,11 @@ class DateCard extends Component {
             <div className="card-votes">
               <div className="card-vote up">
                 {upvote}
-                <span>{this.props.event.vote.positive.length}</span>
+                <span>{this.props.event.vote.positive && this.props.event.vote.positive.length}</span>
               </div>
               <div className="card-vote down">
                 {downvote}
-                <span>{this.props.event.vote.negative.length}</span>
+                <span>{this.props.event.vote.negative && this.props.event.vote.negative.length}</span>
 
               </div>
             </div>

@@ -45,7 +45,12 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   secret: config.secret, // session secret
-  store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  maxAge: 1000 * 60 * 60 * 24,
+  store: new MongoStore({ 
+    mongooseConnection: mongoose.connection,
+    autoRemove: 'interval',
+    autoRemoveInterval: 10 // In minutes. Default
+   }),
 }));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
