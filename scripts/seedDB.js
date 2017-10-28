@@ -37,9 +37,6 @@ db.User
           randomNumber = 0;
         }
 
-        //This is updating the User with the event they just created
-        db.User.update({ _id: idString }, { $push: { createdEvents: ObjectId(eventString) }}, function(){});
-
         //Now going to update the Event
         db.Event
         .findById(
@@ -48,6 +45,9 @@ db.User
             if (err) return handleError(err);
 
             eventObj.createdBy = ObjectId(idString);
+
+            //This is updating the User with the event they just created
+            db.User.update({ _id: idString }, { $push: { createdEvents: ObjectId(eventString) }}, function(){});
 
             //Another for loop for populating attendingList
 
@@ -86,7 +86,7 @@ db.User
             eventObj.save(function (err, updatedEventObj) {
               if (err) return handleError(err);
               console.log("stuff done for event number: ", i + 1);
-              mongoose.connection.close();
+              mongoose.disconnect();
             });
         })
       }

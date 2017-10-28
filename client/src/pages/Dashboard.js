@@ -4,6 +4,7 @@ import { getUserEvents, getAllEvents, deleteEvent } from '../actions/eventAction
 import ProfileEvents from "../components/ProfileEvents";
 // import AllEvents from "../components/AllEvents";
 import DateCard from '../components/DateCard'
+import DashboardTabs from "../components/DashboardTabs";
 import Profile from "../components/Profile";
 import { Container, Row, Col } from 'reactstrap';
 // import FontAwesome from 'react-fontawesome';
@@ -22,28 +23,14 @@ class Dashboard extends Component {
   render() {
     return(
       <main>
-        <Container>
-         <Row>
-          <Col>
-            <Profile user={this.props.user} classname="float-left"/>
+
+        <Container >
+         <Row >
+          <Col xs="6" sm="6" md="3" >
+          <Profile />
           </Col>
-          {/*  Conditional Statement for Rendering  */}
-          {!this.props.userEvents ? (
-            <Col className="text-center">
-              <h2>You haven't made any events</h2>
-              {/*<FontAwesome className="refresh" name="refresh" spin="false" size="5x" color="gray"></FontAwesome>*/}
-            </Col>
-          ) : (
-            <Col className="text-center">
-              {this.props.userEvents.map(event => (
-                <ProfileEvents key={event._id} event={event}/>
-              ))}
-            </Col>
-          )}
-          <Col>
-            {this.props.allEvents && this.props.allEvents.map(event => (
-              <DateCard key={event._id} event={event}/>
-            ))}
+          <Col xs="12" sm="12" md="8"  >
+            <DashboardTabs />
           </Col>
         </Row>
         </Container>
@@ -51,6 +38,7 @@ class Dashboard extends Component {
     )
   }
 }
+
 
 const mapDispatchToProps = dispatch => ({
   getUserEvents() {
