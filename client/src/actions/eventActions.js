@@ -119,15 +119,6 @@ export const deleteEvent = (eventId) => {
   }
 }
 
-export const getOneEvent = (eventId) => {
-  return dispatch => {
-    api.getSingleEvent(eventId)
-      .then(res => {
-        dispatch(getOne(res.data))
-      })
-  }
-}
-
 export const upvote = (eventData, userId) => {
   return dispatch => {
     api.upvote(eventData, userId)
@@ -164,4 +155,3 @@ export const attendEvent = (eventId, userId) => {
       })
   }
 }
-

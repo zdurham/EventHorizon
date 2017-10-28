@@ -17,6 +17,7 @@ class LogInBtn extends Component {
   }
 
   toggle() {
+    this.props.login();
     this.setState({
       modal: !this.state.modal
     });
