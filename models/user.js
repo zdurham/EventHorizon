@@ -76,6 +76,7 @@ UserSchema.methods.unattend = function unattend(eventId, fn) {
   if (2 === arguments.length) {
     this.save(fn);
   };
+
 };
 
 UserSchema.methods.attend = function attend(eventId, fn) {
