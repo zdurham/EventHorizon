@@ -14,36 +14,45 @@ class navbarInstance extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
-      modal: false
     };
   }
 
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen,
-      modal: !this.state.modal
     });
   }
 
+  login = () => {
+    this.closeNavbar();
+  }
+
   logout = () => {
-    this.props.history.push('/')
-    this.props.logoutUser()
+    this.props.history.push('/');
+    this.props.logoutUser();
+    this.closeNavbar();
+  }
+
+  closeNavbar = () => {
+    if (this.state.isOpen) {
+      this.toggle();
+    }
   }
 
   render() {
     let dynamicNav;
     let viewEvents =
       <NavItem>
-        <NavLink tag={RRLink} to="/events">View Events</NavLink>
+        <NavLink onClick={this.closeNavbar} tag={RRLink} to="/events">View Events</NavLink>
       </NavItem>
     if (!this.props.authenticated) {
       dynamicNav =
       <Nav className="ml-auto" navbar>
         {viewEvents}
         <NavItem>
-          <NavLink tag={RRLink} to="/advertise">Advertise</NavLink>
+          <NavLink onClick={this.closeNavbar} tag={RRLink} to="/advertise">Advertise</NavLink>
         </NavItem>
-        <LogInBtn />
+        <LogInBtn login={this.closeNavbar} />
       </Nav>
     }
     else {
@@ -51,10 +60,10 @@ class navbarInstance extends Component {
       <Nav className="ml-auto" navbar>
         {viewEvents}
         <NavItem>
-          <NavLink tag={RRLink} to="/new_event">Add Event</NavLink>
+          <NavLink onClick={this.closeNavbar} tag={RRLink} to="/new_event">Add Event</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink tag={RRLink} to='/dashboard' exact >Dashboard</NavLink>
+          <NavLink onClick={this.closeNavbar} tag={RRLink} to='/dashboard' exact >Dashboard</NavLink>
         </NavItem>
         <NavItem>
           <NavLink onClick={this.logout}>Logout</NavLink>
