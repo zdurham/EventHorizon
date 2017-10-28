@@ -32,6 +32,9 @@ const UserSchema = new Schema({
   hasChildren: {
     type: Boolean
   },
+  profilePicUrl: {
+    type: String
+  },
   profile: {
     firstName: { type: String },
     lastName: { type: String }
