@@ -6,7 +6,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, Ca
 import classnames from 'classnames';
 import ProfileEvents from "../ProfileEvents";
 import AllEvents from "../AllEvents";
-import { getUserEvents, deleteEvent } from '../../actions/eventActions';
+import { getUserEvents, deleteEvent, getAllEvents } from '../../actions/eventActions';
 
 class DashboardTabs extends Component {
   constructor(props) {
@@ -59,9 +59,14 @@ class DashboardTabs extends Component {
                 <div className="tabTitle">
                 {/*<h4>Your Event Posts</h4>*/}
                 </div>
-                {this.props.userEvents.map(event => (
-                <ProfileEvents key={event._id} event={event}/>
-                ))}
+                {!this.props.userEvents ? (
+                  <h2>You haven't created any events</h2>
+                ) : (
+                  this.props.userEvents.map(event => (
+                    <ProfileEvents key={event._id} event={event}/>
+                    ))
+                )
+                }
               </Col>
             </Row>
           </TabPane>
@@ -85,14 +90,15 @@ const mapDispatchToProps = dispatch => ({
   getUserEvents() {
     dispatch(getUserEvents())
   },
-  deleteEvent() {
-    dispatch(deleteEvent())
+  getAllEvents() {
+    dispatch(getAllEvents())
   }
 })
 
 const mapStateToProps = state => ({
   user: state.authUser.user,
-  userEvents: state.events.events,
+  userEvents: state.events.userEvents,
+  events: state.events.events
 })
 
-export default connect(mapStateToProps, { getUserEvents, deleteEvent })(DashboardTabs)
+export default connect(mapStateToProps, { getUserEvents, getAllEvents })(DashboardTabs)
