@@ -39,6 +39,7 @@ class Events extends Component {
             </Col>
           ) : (
             <Col xs="12" md="8">
+              {/* this form needs replacing */}
               <form onSubmit={this.search}>
                 <label htmlFor='search'>Search</label>
                 <input name='search' value={this.state.search} onChange={this.onChange} type='text' />
