@@ -1,10 +1,12 @@
 import { authUser } from './authReducers'
 import { events } from './eventReducers'
+import { search } from './searchReducers'
 import { combineReducers } from 'redux'
 
 const appReducers = combineReducers({
   authUser,
-  events
+  events,
+  search
 })
 
 const rootReducer = (state, action) => {
