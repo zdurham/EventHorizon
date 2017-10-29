@@ -16,12 +16,8 @@ class DashboardTabs extends Component {
       activeTab: '1'
     };
   }
-  componentWillMount() {
-    this.displayEvents()
-  }
-
-  displayEvents = () => {
-    this.props.getUserEvents()
+  componentDidMount = () => {
+    this.props.getUserEvents(this.props.user._id)
   }
 
   toggle(tab) {
@@ -62,9 +58,10 @@ class DashboardTabs extends Component {
                 {!this.props.userEvents ? (
                   <h2>You haven't created any events</h2>
                 ) : (
-                  this.props.userEvents.map(event => (
-                    <ProfileEvents key={event._id} event={event}/>
-                    ))
+                    this.props.userEvents.map(event => (
+                      <ProfileEvents key={event._id} event={event}/>
+                      )
+                  )
                 )
                 }
               </Col>
@@ -87,11 +84,8 @@ class DashboardTabs extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getUserEvents() {
-    dispatch(getUserEvents())
-  },
-  getAllEvents() {
-    dispatch(getAllEvents())
+  getUserEvents(userId) {
+    dispatch(getUserEvents(userId))
   }
 })
 

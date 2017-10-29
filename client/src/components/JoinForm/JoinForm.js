@@ -14,7 +14,10 @@ class SignUpForm extends Component {
       email: '',
       username: '',
       password: '',
-      confPassword: ''
+      confPassword: '',
+      firstName: '',
+      lastName: '',
+
     }
   }
 
@@ -26,7 +29,9 @@ class SignUpForm extends Component {
       this.props.registerUser({
         email: this.state.values.email,
         username: this.state.values.username,
-        password: this.state.values.password
+        password: this.state.values.password,
+        firstName: this.state.values.firstName,
+        lastName: this.state.values.lastName
       })
       this.props.toggle()
     }

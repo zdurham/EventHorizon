@@ -61,10 +61,10 @@ class LogInForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  loginUser() {
-    dispatch(loginUser())
-  }
-})
+// const mapDispatchToProps = dispatch => ({
+//   loginUser() {
+//     dispatch(loginUser())
+//   }
+// })
 
 export default withRouter(connect(null,  { loginUser })(LogInForm));

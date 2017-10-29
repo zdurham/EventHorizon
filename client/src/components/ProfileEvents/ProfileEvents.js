@@ -31,6 +31,11 @@ class ProfileEvents extends Component {
     this.props.unvote(eventId, userId)
   }
 
+  remove = (eventId) => {
+    console.log(eventId)
+    this.props.deleteEvent(eventId)
+  }
+
   render() {
     let upvote = <FontAwesome onClick={() => this.clickUpvote(this.props.event._id, this.props.user._id)} className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>;
 
@@ -38,13 +43,15 @@ class ProfileEvents extends Component {
     let downvote = <FontAwesome onClick={() => this.clickDownvote(this.props.event._id, this.props.user._id)} className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
 
     // if the buttons have been clicked, the click function is removed
-    // NOTE THIS WILL BE REPLACED WITH UNVOTE FUNCTION WHEN UNVOTE IS ENABLED
-    if (this.props.event.vote.positive.includes(this.props.user._id)) {
-      upvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="up-vote-active" name="thumbs-o-up" size="2x"></FontAwesome>
+    if (this.props.event) {
+      if (this.props.event.vote.positive.includes(this.props.user._id)) {
+        upvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="up-vote-active" name="thumbs-o-up" size="2x"></FontAwesome>
+      }
+      if (this.props.event.vote.negative.includes(this.props.user._id)) {
+        downvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="down-vote-active" name="thumbs-o-down" size="2x"></FontAwesome>
+      }
     }
-    if (this.props.event.vote.negative.includes(this.props.user._id)) {
-      downvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="down-vote-active" name="thumbs-o-down" size="2x"></FontAwesome>
-    }
+    
 
     return (
         <Card key={this.props.event._id}>
@@ -114,8 +121,7 @@ class ProfileEvents extends Component {
               size="sm" 
               className="button-delete"
               color="danger"
-              onClick={() => 
-              this.props.deleteEvent(this.props.userEvents._id)}
+              onClick={() => this.remove(this.props.event._id)}
               >
               Delete Event
             </Button>

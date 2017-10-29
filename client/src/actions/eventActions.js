@@ -23,10 +23,10 @@ function allEvents(events) {
   }
 }
 
-function deleteOne(eventData) {
+function deleteOne(eventId) {
   return {
     type: 'DELETE_EVENT',
-    payload: eventData
+    eventId: eventId
   }
 }
 
@@ -114,7 +114,7 @@ export const deleteEvent = (eventId) => {
   return dispatch => {
     api.deleteEvent(eventId)
       .then(res => {
-        dispatch(deleteOne(res.data))
+        dispatch(deleteOne(eventId))
       })
   }
 }
@@ -150,7 +150,6 @@ export const attendEvent = (eventId, userId) => {
   return dispatch => {
     api.attendEvent(eventId, userId)
       .then(res => {
-        console.log(res.data)
         dispatch(attend(res.data))
       })
   }
