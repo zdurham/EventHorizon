@@ -9,10 +9,17 @@
   margin:auto;
 }
 
+.avatarImg {
+  display:block;
+  margin:auto;
+}
+
 .userName {
   color: #637f33;
 }
 
 .eventsInput {
-  color: #841983;
+     color: #841983;
 }
+
+
