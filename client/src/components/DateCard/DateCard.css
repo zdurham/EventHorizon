@@ -2,6 +2,10 @@
   margin-bottom: 20px;
 }
 
+.card-body {
+  background-color: rgba(33, 37, 41, 0.05);
+}
+
 .card-text {
   margin-top: 10px;
 }
