@@ -21,6 +21,10 @@
   color: rgba(33, 37, 41, 0.7);
 }
 
+.card-votes .fa:hover {
+  cursor: pointer;
+}
+
 .card-buttons .card-votes {
   display: flex;
 }
