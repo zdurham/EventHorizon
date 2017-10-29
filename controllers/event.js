@@ -86,7 +86,6 @@ module.exports = {
     db.User
       .findById({ _id: req.params.userId })
       .then(function(dbModel) {
-        console.log("asdf",dbModel);
         if(dbModel.isAdvertiser) {
           db.Event
             .find(req.query)
@@ -173,8 +172,9 @@ module.exports = {
   searchEvent: function(req, res) {
     db.Event
       .find(
-        { $text: { $search: req.params.searchedTerms } },
+        { $text: { $search: req.params.searchTerms } },
         { score: { $meta: "textScore" } } )
+      .where('genre').equals(req.params.searchGenre)
       .sort( { score: { $meta: "textScore" } } )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

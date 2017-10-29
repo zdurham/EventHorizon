@@ -27,7 +27,7 @@ router.route("/attend/")
 router.route("/remove")
   .post(reqLogin, eventController.remove);
 
-router.route("/search/:searchedTerms")
+router.route("/search/:searchTerms/:searchGenre")
   .get(eventController.searchEvent);
 
 module.exports = router;
