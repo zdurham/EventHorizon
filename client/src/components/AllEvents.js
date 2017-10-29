@@ -3,25 +3,28 @@ import { connect } from 'react-redux';
 import DateCard from "../components/DateCard";
 import TopEvents from "../components/TopEvents";
 import { Container, Row, Col } from 'reactstrap';
-import { getAllEvents } from '../actions/eventActions';
+import { getUserAttending } from '../actions/eventActions';
 
+
+// This now only collects user attending stuff
 class AllEvents extends Component {
   constructor(props) {
     super(props)
   }
 
-  componentWillMount() {
+  componentWillMount = () => {
     this.displayEvents()
   }
 
   displayEvents = () => {
-    this.props.getAllEvents()
+    this.props.getUserAttending(this.props.user._id)
   }
 
   render() {
+    console.log(this.props.userAttendingEvents)
     return (
         <div>
-            {this.props.allEvents.map(event => (
+            {this.props.userAttendingEvents && this.props.userAttendingEvents.map(event => (
               <DateCard key={event._id} event={event}/>
             ))}
         </div>
@@ -30,15 +33,9 @@ class AllEvents extends Component {
 }
 
 
-const mapDispatchToProps = dispatch => ({
-  getAllEvents() {
-    dispatch(getAllEvents())
-  }
-})
-
 const mapStateToProps = state => ({
-  allEvents: state.events.events,
-  user: state.authUser.user ? state.authUser : {}
+  userAttendingEvents: state.events.userAttendingEvents,
+  user: state.authUser.user 
 })
 
-export default connect(mapStateToProps, { getAllEvents })(AllEvents)
+export default connect(mapStateToProps, { getUserAttending })(AllEvents)

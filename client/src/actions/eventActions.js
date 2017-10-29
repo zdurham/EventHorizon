@@ -77,6 +77,13 @@ function attend(data) {
   }
 }
 
+function attendingEvents(data) {
+  return {
+    type: 'USER_ATTENDING',
+    payload: data
+  }
+}
+
 /// ------------------------------------
 // ACTIONS
 // This is for creating an event
@@ -95,6 +102,15 @@ export const getUserEvents = (userId) => {
     api.findAllByUser(userId)
       .then(res => {
         dispatch(userEvents(res.data))
+      })
+  }
+}
+
+export const getUserAttending = (userId) => {
+  return dispatch => {
+    api.getUserAttendingEvents(userId)
+      .then(res => {
+        dispatch(attendingEvents(res.data))
       })
   }
 }

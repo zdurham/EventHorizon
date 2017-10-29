@@ -14,6 +14,7 @@ module.exports = {
       });
   },
   getUserAttendingEvents: function(req, res) {
+    console.log(req.params)
     db.User
       .findById({ _id: req.params.id })
       .populate(
@@ -25,7 +26,7 @@ module.exports = {
         if (error) {
           res.send(error);
         } else {
-          res.send(doc);
+          res.send(doc.attendingEvents);
         }
       });
   }
