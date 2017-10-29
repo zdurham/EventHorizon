@@ -60,10 +60,11 @@ module.exports = {
     console.log(req.body.eventId)
     db.Event
       .findOneAndRemove({ _id: req.body.eventId }, (err, data) => {
-        db.Event.find()
-          .then(data => {
+        // db.Event.find()
+          // .then(data => {
+            
             res.json(data)
-          })
+          // })
       })
       .catch(err => res.status(422).json(err));
   },

@@ -16,7 +16,7 @@ class DashboardTabs extends Component {
       activeTab: '1'
     };
   }
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.props.getUserEvents(this.props.user._id)
   }
 
@@ -58,12 +58,9 @@ class DashboardTabs extends Component {
                 {!this.props.userEvents ? (
                   <h2>You haven't created any events</h2>
                 ) : (
-                  !this.props.userEvents.length > 1 ? (
-                    <ProfileEvents key={this.props.userEvents[0]._id} event={this.props.userEvents[0]} />
-                  ) : (
                     this.props.userEvents.map(event => (
                       <ProfileEvents key={event._id} event={event}/>
-                      ))
+                      )
                   )
                 )
                 }

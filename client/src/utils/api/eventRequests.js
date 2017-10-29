@@ -31,7 +31,7 @@ export default {
 
   //Deletes an event. Pass in event ID.
   deleteEvent: function(eventId) {
-    return axios.post("/api/event/remove", eventId);
+    return axios.post("/api/event/remove", { eventId });
   },
 
   //This call allows you to get all the events posted by a single user. Pass in user ID.

@@ -10,7 +10,7 @@ class Events extends Component {
     super(props)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getAllEvents()
   }
 
