@@ -57,7 +57,6 @@ module.exports = {
 
   },
   remove: function(req, res) {
-    console.log(req.body.eventId)
     db.Event
       .findOneAndRemove({ _id: req.body.eventId }, (err, data) => {
         // db.Event.find()
@@ -73,12 +72,12 @@ module.exports = {
     db.Event
       .find()
       .where('date').gte(Date.now())
-      .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
-      .sort({ date: 1 })
+      .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents -maritalStatus -hasChildren -attendingEvents')
+      .sort({ date: 1, startTime: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  
+
   findAllByUser: function(req, res) {
     
     console.log('req.body', req.body)
@@ -157,7 +156,6 @@ module.exports = {
     })
   },
 
-
   attendEvent: function(req, res) {
     db.Event.findOne({_id: req.body.eventId})
     .then(event => {
@@ -174,5 +172,16 @@ module.exports = {
       })
     })
     .catch(err => console.log(err))
+  },
+
+  searchEvent: function(req, res) {
+    db.Event
+      .find(
+        { $text: { $search: req.params.searchTerms } },
+        { score: { $meta: "textScore" } } )
+      .where('genre').equals(req.params.searchGenre)
+      .sort( { score: { $meta: "textScore" } } )
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };

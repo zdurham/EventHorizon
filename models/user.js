@@ -15,6 +15,10 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  control: {
+    type: Boolean,
+    default: false
+  },
   isAdvertiser: {
     type: Boolean,
     default: false
@@ -35,9 +39,11 @@ const UserSchema = new Schema({
   profilePicUrl: {
     type: String
   },
-  profile: {
-    firstName: { type: String },
-    lastName: { type: String }
+  firstName: {
+    type: String
+  },
+  lastName: {
+    type: String
   },
   age: {
     type: Number

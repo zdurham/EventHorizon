@@ -3,6 +3,17 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+/* Sticky footer */
+[data-reactroot] {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 /* Offset the height of the fixed navbar */
 main {
   margin-top: 56px;
@@ -29,7 +40,11 @@ button:hover {
   transition: background-color 0.3s ease-out;
 }
 
-.button-primary:hover {
+.button-primary:active {
+  background-color: #841983 !important;
+}
+
+.button-primary:hover, .button-primary:focus {
   background-color: #9a4299;
 }
 
@@ -68,4 +83,8 @@ button:hover {
 
 .text-success {
   color: #637f33;
+}
+
+.section-title {
+  margin-bottom: 40px;
 }

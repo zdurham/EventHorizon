@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
 import './Profile.css';
-import Img from './Profile.png' 
 import { Card, CardImg, CardBody, CardTitle, CardText} from 'reactstrap';
-
-
 
 class Profile extends Component {
   constructor(props) {
@@ -14,26 +11,32 @@ class Profile extends Component {
   render() {
     return (
       <Card className="profileCard" key={this.props.user._id} >
-        <CardImg 
-          className="userImg text-center" 
-          src={Img} 
-          alt="Profile Image" 
-          />
+        <CardImg
+          className="userImg text-center"
+          src={this.props.user.profilePicUrl}
+          alt="Profile Image"
+        />
         <CardBody>
-        <CardTitle 
-          className="userName text-center">
+        <CardTitle
+          className="text-center userName"
+          >
           {this.props.user.username}
-          </CardTitle>
+        </CardTitle>
           <hr />
             <CardText className="userLikes">
-              Likes: 
+              Likes:
               {this.props.user.userlikes}
             </CardText>
-            <CardText className="eventsInput">Events:<span className="text-success">#{this.props.user.createdEvents.length}</span></CardText>
-            <CardText className="attendingEvents">
-              Upcoming Events: 
-              {this.props.user.attendingEvents}
-            </CardText>            
+            <CardText
+              className="eventsInput">
+              Events:
+              {this.props.user.createdEvents.length}
+            </CardText>
+            <CardText
+              className="attendingEvents">
+              Upcoming Events:
+              {this.props.user.attendingEvents.length}
+            </CardText>
         </CardBody>
       </Card>
     );

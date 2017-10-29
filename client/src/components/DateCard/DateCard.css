@@ -2,26 +2,39 @@
   margin-bottom: 20px;
 }
 
+.card-body {
+  background-color: rgba(33, 37, 41, 0.05);
+}
+
 .card-text {
   margin-top: 10px;
 }
 
 .card-extras {
-  font-size: 20px;
-  margin-right: 10px;
+  font-size: 24px;
+  margin-right: 16px;
 }
 
 .card-buttons {
   display: flex;
   justify-content: space-between;
+  margin-top: 40px;
 }
 
 .card .fa {
   color: rgba(33, 37, 41, 0.7);
 }
 
+.card-votes .fa:hover {
+  cursor: pointer;
+}
+
 .card-buttons .card-votes {
   display: flex;
+}
+
+.card-button-info {
+  margin-right: 10px;
 }
 
 .card-buttons .card-vote {
@@ -36,6 +49,7 @@
 
 .card-vote span {
   display: block;
+  min-width: 16px;
 }
 
 .card-vote span:first-child {

@@ -8,10 +8,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF13.jpg",
-    profile: {
-      firstName: "Brooke",
-      lastName: "Goodwin"
-    },
+    firstName: "Brooke",
+    lastName: "Goodwin",
     age: 32,
     sex: "female",
     createdEvents: []
@@ -25,10 +23,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM1.jpg",
-    profile: {
-      firstName: "William",
-      lastName: "Bell"
-    },
+    firstName: "William",
+    lastName: "Bell",
     age: 29,
     sex: "male",
     createdEvents: []
@@ -42,10 +38,8 @@ const userSeed = [
     maritalStatus: "Married",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF1.jpg",
-    profile: {
-      firstName: "Kelly",
-      lastName: "Powell"
-    },
+    firstName: "Kelly",
+    lastName: "Powell",
     age: 32,
     sex: "female",
     createdEvents: []
@@ -59,10 +53,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM10.jpg",
-    profile: {
-      firstName: "Freddie",
-      lastName: "Martinez"
-    },
+    firstName: "Freddie",
+    lastName: "Martinez",
     age: 32,
     sex: "male",
     createdEvents: []
@@ -76,10 +68,8 @@ const userSeed = [
     maritalStatus: "Married",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM11.jpg",
-    profile: {
-      firstName: "Lucas",
-      lastName: "Hall"
-    },
+    firstName: "Lucas",
+    lastName: "Hall",
     age: 27,
     sex: "male",
     createdEvents: []
@@ -93,10 +83,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF10.jpg",
-    profile: {
-      firstName: "Olivia",
-      lastName: "Butler"
-    },
+    firstName: "Olivia",
+    lastName: "Butler",
     age: 30,
     sex: "female",
     createdEvents: []
@@ -110,10 +98,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF11.jpg",
-    profile: {
-      firstName: "Samantha",
-      lastName: "King"
-    },
+    firstName: "Samantha",
+    lastName: "King",
     age: 29,
     sex: "female",
     createdEvents: []
@@ -127,10 +113,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM12.jpg",
-    profile: {
-      firstName: "Richard",
-      lastName: "Hopkins"
-    },
+    firstName: "Richard",
+    lastName: "Hopkins",
     age: 25,
     sex: "male",
     createdEvents: []
@@ -144,10 +128,8 @@ const userSeed = [
     maritalStatus: "Married",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM13.jpg",
-    profile: {
-      firstName: "Freddie",
-      lastName: "Cox"
-    },
+    firstName: "Freddie",
+    lastName: "Cox",
     age: 42,
     sex: "male",
     createdEvents: []
@@ -161,10 +143,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF12.jpg",
-    profile: {
-      firstName: "Samantha",
-      lastName: "Jones"
-    },
+    firstName: "Samantha",
+    lastName: "Jones",
     age: 24,
     sex: "female",
     createdEvents: []
@@ -178,10 +158,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF14.jpg",
-    profile: {
-      firstName: "Shannon",
-      lastName: "Coleman"
-    },
+    firstName: "Shannon",
+    lastName: "Coleman",
     age: 45,
     sex: "female",
     createdEvents: []
@@ -195,10 +173,8 @@ const userSeed = [
     maritalStatus: "Married",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM14.jpg",
-    profile: {
-      firstName: "Mike",
-      lastName: "Bell"
-    },
+    firstName: "Mike",
+    lastName: "Bell",
     age: 38,
     sex: "male",
     createdEvents: []
@@ -212,10 +188,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM15.jpg",
-    profile: {
-      firstName: "Edward",
-      lastName: "Nolan"
-    },
+    firstName: "Edward",
+    lastName: "Nolan",
     age: 22,
     sex: "male",
     createdEvents: []
@@ -229,10 +203,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF15.jpg",
-    profile: {
-      firstName: "Emma",
-      lastName: "Robinson"
-    },
+    firstName: "Emma",
+    lastName: "Robinson",
     age: 49,
     sex: "female",
     createdEvents: []
@@ -246,10 +218,8 @@ const userSeed = [
     maritalStatus: "Divorced",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF16.jpg",
-    profile: {
-      firstName: "Amber",
-      lastName: "Watson"
-    },
+    firstName: "Amber",
+    lastName: "Watson",
     age: 24,
     sex: "female",
     createdEvents: []
@@ -263,10 +233,8 @@ const userSeed = [
     maritalStatus: "Married",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM16.jpg",
-    profile: {
-      firstName: "Bobby",
-      lastName: "Evans"
-    },
+    firstName: "Bobby",
+    lastName: "Evans",
     age: 62,
     sex: "male",
     createdEvents: []
@@ -280,10 +248,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF17.jpg",
-    profile: {
-      firstName: "Rebecca",
-      lastName: "Crawford"
-    },
+    firstName: "Rebecca",
+    lastName: "Crawford",
     age: 17,
     sex: "female",
     createdEvents: []
@@ -297,10 +263,8 @@ const userSeed = [
     maritalStatus: "Married",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM17.jpg",
-    profile: {
-      firstName: "Matthew",
-      lastName: "Vaughn"
-    },
+    firstName: "Matthew",
+    lastName: "Vaughn",
     age: 51,
     sex: "male",
     createdEvents: []
@@ -314,10 +278,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF18.jpg",
-    profile: {
-      firstName: "Emily",
-      lastName: "Bell"
-    },
+    firstName: "Emily",
+    lastName: "Bell",
     age: 35,
     sex: "female",
     createdEvents: []
@@ -331,10 +293,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM18.jpg",
-    profile: {
-      firstName: "Jake",
-      lastName: "Boyd"
-    },
+    firstName: "Jake",
+    lastName: "Boyd",
     age: 27,
     sex: "male",
     createdEvents: []
@@ -348,10 +308,8 @@ const userSeed = [
     maritalStatus: "Married",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF19.jpg",
-    profile: {
-      firstName: "Rosie",
-      lastName: "Scott"
-    },
+    firstName: "Rosie",
+    lastName: "Scott",
     age: 28,
     sex: "female",
     createdEvents: []
@@ -365,10 +323,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM19.jpg",
-    profile: {
-      firstName: "Jake",
-      lastName: "Barnett"
-    },
+    firstName: "Jake",
+    lastName: "Barnett",
     age: 33,
     sex: "male",
     createdEvents: []
@@ -382,10 +338,8 @@ const userSeed = [
     maritalStatus: "Married",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF2.jpg",
-    profile: {
-      firstName: "Emma",
-      lastName: "Price"
-    },
+    firstName: "Emma",
+    lastName: "Price",
     age: 30,
     sex: "female",
     createdEvents: []
@@ -399,10 +353,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM2.jpg",
-    profile: {
-      firstName: "John",
-      lastName: "Barnett"
-    },
+    firstName: "John",
+    lastName: "Barnett",
     age: 38,
     sex: "male",
     createdEvents: []
@@ -416,10 +368,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF20.jpg",
-    profile: {
-      firstName: "Paige",
-      lastName: "Nolan"
-    },
+    firstName: "Paige",
+    lastName: "Nolan",
     age: 36,
     sex: "female",
     createdEvents: []
@@ -433,10 +383,8 @@ const userSeed = [
     maritalStatus: "Married",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM20.jpg",
-    profile: {
-      firstName: "Peter",
-      lastName: "Wood"
-    },
+    firstName: "Peter",
+    lastName: "Wood",
     age: 61,
     sex: "male",
     createdEvents: []
@@ -450,10 +398,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF21.jpg",
-    profile: {
-      firstName: "Eva",
-      lastName: "Rogers"
-    },
+    firstName: "Eva",
+    lastName: "Rogers",
     age: 24,
     sex: "female",
     createdEvents: []
@@ -467,10 +413,8 @@ const userSeed = [
     maritalStatus: "Divorced",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM21.jpg",
-    profile: {
-      firstName: "Liam",
-      lastName: "Coleman"
-    },
+    firstName: "Liam",
+    lastName: "Coleman",
     age: 46,
     sex: "male",
     createdEvents: []
@@ -484,10 +428,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF22.jpg",
-    profile: {
-      firstName: "Ashley",
-      lastName: "Butler"
-    },
+    firstName: "Ashley",
+    lastName: "Butler",
     age: 41,
     sex: "female",
     createdEvents: []
@@ -501,10 +443,8 @@ const userSeed = [
     maritalStatus: "Single",
     hasChildren: false,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM22.jpg",
-    profile: {
-      firstName: "Jeremy",
-      lastName: "Johnson"
-    },
+    firstName: "Jeremy",
+    lastName: "Johnson",
     age: 33,
     sex: "male",
     createdEvents: []
@@ -518,10 +458,8 @@ const userSeed = [
     maritalStatus: "Married",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageF23.jpg",
-    profile: {
-      firstName: "Nicole",
-      lastName: "Fuller"
-    },
+    firstName: "Nicole",
+    lastName: "Fuller",
     age: 27,
     sex: "female",
     createdEvents: []
@@ -535,12 +473,37 @@ const userSeed = [
     maritalStatus: "Married",
     hasChildren: true,
     profilePicUrl: "http://www.designskilz.com/random-users/images/imageM23.jpg",
-    profile: {
-      firstName: "Henrik",
-      lastName: "Parker"
-    },
+    firstName: "Henrik",
+    lastName: "Parker",
     age: 28,
     sex: "male",
+    createdEvents: []
+  },
+  {
+    email: "carrboro@city.com",
+    password: "$2a$10$tGB8mZJ0ZgqixpPZf9eKl.gkxhOs8QU1DSOB5nXpu2U.MIIM0gkHS",
+    isAdvertiser: true,
+    username: "Town of Carrboro",
+    city: "Carrboro",
+    profilePicUrl: "http://www.townofcarrboro.org/ImageRepository/Document?documentID=8",
+    firstName: "Town of",
+    lastName: "Carrboro",
+    createdEvents: []
+  },
+  {
+    email: "tiffany.barnett@example.com",
+    password: "$2a$10$tGB8mZJ0ZgqixpPZf9eKl.gkxhOs8QU1DSOB5nXpu2U.MIIM0gkHS",
+    isAdvertiser: false,
+    control: true,
+    username: "TiffanyB",
+    city: "Raleigh",
+    maritalStatus: "Single",
+    hasChildren: false,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageF25.jpg",
+    firstName: "Tiffany",
+    lastName: "Barnett",
+    age: 28,
+    sex: "female",
     createdEvents: []
   }
 ];
