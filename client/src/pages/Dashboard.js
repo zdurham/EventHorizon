@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import DashboardTabs from "../components/DashboardTabs";
 import Profile from "../components/Profile";
 import { Container, Row, Col } from 'reactstrap';
-// import FontAwesome from 'react-fontawesome';
 
 class Dashboard extends Component {
 
