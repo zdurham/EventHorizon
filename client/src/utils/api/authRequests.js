@@ -8,7 +8,6 @@ const authRequests = {
 
   // Login request
   login(data) {
-    console.log('data before axios post', data)
     return axios.post('/login', data)
   },
 

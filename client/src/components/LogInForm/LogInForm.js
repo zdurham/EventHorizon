@@ -8,9 +8,7 @@ import { loginUser } from '../../actions/authActions';
 
 class LogInForm extends Component {
   constructor(props) {
-    super(props)
-
-    
+    super(props) 
     this.state = {
       email: '',
       password: ''
@@ -60,11 +58,5 @@ class LogInForm extends Component {
     )
   }
 }
-
-// const mapDispatchToProps = dispatch => ({
-//   loginUser() {
-//     dispatch(loginUser())
-//   }
-// })
 
 export default withRouter(connect(null,  { loginUser })(LogInForm));

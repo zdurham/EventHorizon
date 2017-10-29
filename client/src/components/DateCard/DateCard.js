@@ -60,7 +60,6 @@ class DateCard extends Component {
 
     // Do some checks to see if the user is logged in
     if (!this.props.user) {
-      attend = ''
 
       upvote = <FontAwesome disabled='true' className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>;
 

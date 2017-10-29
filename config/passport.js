@@ -75,9 +75,8 @@ passport.use('local-login', new LocalStrategy({
   function(req, email, password, done) {
     console.log('email:', email)
     console.log('password:', password)
-    User.findOne({email: email}, function(err, user) {
+    User.findOne({ 'email': email}, function(err, user) {
         if(err) {
-          console.log(err)
           return errHandler(err);
           }
         if(!user) {
@@ -91,6 +90,4 @@ passport.use('local-login', new LocalStrategy({
     });
 
   }));
-
 }
-

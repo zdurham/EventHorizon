@@ -2,8 +2,9 @@
 const auth = {
 
   login: (req, res, next) => {
-    res.status(200).json(req.user.sanitize())
+    return res.status(200).json(req.user.sanitize())
   },
+
 
   logout: (req, res, next) => {
     req.session.destroy(function() {
@@ -21,7 +22,7 @@ const auth = {
 
   error: (err, req, res, next) => {
     //handle error
-    res.status(401).json({error: 'Authentication failed.'})
+    res.status(401).send({success: false, message: err})
   }
 }
 

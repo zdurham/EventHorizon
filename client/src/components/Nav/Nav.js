@@ -87,10 +87,4 @@ const mapStateToProps = state => ({
   authenticated: state.authUser.isAuthenticated
 })
 
-const mapDispatchToProps = dispatch => ({
-  logoutUser() {
-    dispatch(logoutUser())
-  }
-})
-
 export default withRouter(connect(mapStateToProps, { logoutUser })(navbarInstance));

@@ -99,9 +99,9 @@ UserSchema.methods.attend = function attend(eventId, fn) {
 
 
 // checking if password is valid
-UserSchema.method('validPassword', function(password) {
-  return bcrypt.compareSync(password, this.password);
-});
+UserSchema.methods.validPassword = function(password) {
+  return bcrypt.compare(password, this.password);
+};
 
 // This method hashes the password before saving it to Mongo
 UserSchema.pre('save', function(next) {
