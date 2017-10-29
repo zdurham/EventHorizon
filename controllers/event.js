@@ -175,13 +175,17 @@ module.exports = {
   },
 
   searchEvent: function(req, res) {
+    console.log(req.body)
     db.Event
       .find(
-        { $text: { $search: req.params.searchTerms } },
+        { $text: { $search: req.body.searchTerms } },
         { score: { $meta: "textScore" } } )
-      .where('genre').equals(req.params.searchGenre)
+      .where('genre').equals(req.body.searchGenre)
       .sort( { score: { $meta: "textScore" } } )
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => {
+        console.log(dbModel)
+        res.json(dbModel)
+      })
       .catch(err => res.status(422).json(err));
   }
 };

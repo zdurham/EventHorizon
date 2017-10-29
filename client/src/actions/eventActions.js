@@ -84,6 +84,13 @@ function attendingEvents(data) {
   }
 }
 
+function searchAction(data) {
+  return {
+    type: "SEARCH",
+    payload: data
+  }
+}
+
 /// ------------------------------------
 // ACTIONS
 // This is for creating an event
@@ -167,6 +174,15 @@ export const attendEvent = (eventId, userId) => {
     api.attendEvent(eventId, userId)
       .then(res => {
         dispatch(attend(res.data))
+      })
+  }
+}
+
+export const search = (searchTerms, searchGenre) => {
+  return dispatch => {
+    api.searchEvents(searchTerms, searchGenre)
+      .then(res => {
+        dispatch(searchAction(res.data))
       })
   }
 }

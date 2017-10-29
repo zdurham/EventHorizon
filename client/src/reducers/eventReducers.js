@@ -12,6 +12,9 @@ export function events(state = [], action) {
       return {...state, events: action.payload }
     case "USER_ATTENDING":
       return {...state, userAttendingEvents: action.payload}
+    case "SEARCH": {
+      return {...state, searchResult: action.payload}
+    }
     case "DELETE_EVENT":
       return {...state, events: state.events.filter(event => event._id !== action.eventId), userEvents: state.userEvents.filter(event => event._id !== action.eventId) }
     case "UPVOTE":
@@ -52,7 +55,11 @@ export function events(state = [], action) {
         }
 
         return event
-      })}
+      }),
+      userAttendingEvents: state.userAttendingEvents.filter(event => {
+        return event._id !== action.eventId
+      })
+    }
     default:
       return state
   }    

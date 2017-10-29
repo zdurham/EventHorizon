@@ -61,7 +61,7 @@ export default {
 
   //This function is to search through all the events in the database. Case doesn't matter for search terms, but matters for genre. Pass in searchTerms and searchGenre as req.params.
   searchEvents: function(searchTerms, searchGenre) {
-    return axios.get("/api/event/search/" + searchTerms + "/" + searchGenre);
+    return axios.post("/api/event/search/", {searchTerms, searchGenre});
   }
 
 };

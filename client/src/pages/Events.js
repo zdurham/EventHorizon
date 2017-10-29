@@ -3,15 +3,30 @@ import { connect } from 'react-redux';
 import DateCard from "../components/DateCard";
 import TopEvents from "../components/TopEvents";
 import { Container, Row, Col } from 'reactstrap';
-import { getAllEvents } from '../actions/eventActions';
+import { getAllEvents, search } from '../actions/eventActions';
 
 class Events extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      search: '',
+      genre: ''
+    }
   }
 
   componentDidMount() {
     this.props.getAllEvents()
+  }
+
+  onChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+  search = (e) => {
+    e.preventDefault()
+    this.props.search(this.state.search, this.state.genre)
+
   }
 
   render() {
@@ -24,6 +39,20 @@ class Events extends Component {
             </Col>
           ) : (
             <Col xs="12" md="8">
+              {/* this form needs replacing */}
+              <form onSubmit={this.search}>
+                <label htmlFor='search'>Search</label>
+                <input name='search' value={this.state.search} onChange={this.onChange} type='text' />
+                <label htmlFor='genre'>Genre</label>
+                <input name='genre' value={this.state.genre} onChange={this.onChange} type='text' />
+                <button>Submit</button>
+              </form>
+              <h4> Search Results </h4>
+              {this.props.searchResult.length > 0 && this.props.searchResult.map(event => (
+                <DateCard
+                  key={event._id}
+                  event={event}/>
+              ))}
               <h4 className="section-title">Upcoming events...</h4>
               {this.props.allEvents.map(event => (
                 <DateCard
@@ -52,8 +81,9 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
+  searchResult: state.events.searchResult,
   allEvents: state.events.events,
-  user: state.authUser.user ? state.authUser : {}
+  user: state.authUser.user 
 })
 
-export default connect(mapStateToProps, { getAllEvents })(Events)
+export default connect(mapStateToProps, { getAllEvents, search })(Events)
