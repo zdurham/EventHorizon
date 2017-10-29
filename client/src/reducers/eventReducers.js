@@ -1,7 +1,7 @@
 // EVENT REDUCERS
 // AUTHENTICATION REDUCERS
 
-export function events(state = [], action) {
+export function events(state = {events: [], searchResult: [], userAttendingEvents: [], userEvents: []} , action) {
   
   switch(action.type) {
     case "EVENT_CREATED":
