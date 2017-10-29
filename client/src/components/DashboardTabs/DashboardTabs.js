@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import FontAwesome from 'react-fontawesome';
+// import FontAwesome from 'react-fontawesome';
 import './DashboardTabs.css';
+import DateCard from '../DateCard'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';import moment from 'moment';
 import classnames from 'classnames';
 import ProfileEvents from "../ProfileEvents";
-import AllEvents from "../AllEvents";
-import { getUserEvents, deleteEvent, getAllEvents } from '../../actions/eventActions';
+import { getUserEvents, deleteEvent, getAllEvents, getUserAttending } from '../../actions/eventActions';
 
 class DashboardTabs extends Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class DashboardTabs extends Component {
   }
   componentDidMount = () => {
     this.props.getUserEvents(this.props.user._id)
+    this.props.getUserAttending(this.props.user._id)
   }
 
   toggle(tab) {
@@ -71,9 +72,13 @@ class DashboardTabs extends Component {
             <Row>
               <Col sm="12">
                 <div className="tabTitle">
-                {/*<h3>Upcoming Events</h3>*/}
+                {/*<h3>Upcoming Attended Events</h3>*/}
                 </div>
-                <AllEvents />
+                <div>
+                  {this.props.attendingEvents && this.props.attendingEvents.map(event => (
+                    <DateCard key={event._id} event={event}/>
+                  ))}
+                </div>
               </Col>
             </Row>
           </TabPane>
@@ -92,7 +97,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   user: state.authUser.user,
   userEvents: state.events.userEvents,
-  events: state.events.events
+  attendingEvents: state.events.userAttendingEvents
 })
 
-export default connect(mapStateToProps, { getUserEvents, getAllEvents })(DashboardTabs)
+export default connect(mapStateToProps, { getUserEvents, getUserAttending })(DashboardTabs)
