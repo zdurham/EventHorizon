@@ -57,6 +57,11 @@ export default {
   //This function is to attend an event. Similar to upvote. id is the User ID. Pass in through the eventData is the ID of the event using "_id" format.
   attendEvent: function(eventId, userId) {
     return axios.post("/api/event/attend/", {eventId, userId});
+  },
+
+  //This function is to search through all the events in the database. Case doesn't matter.
+  searchEvents: function(searchTerms) {
+    return axios.get("/api/event/search/" + searchTerms);
   }
 
 };

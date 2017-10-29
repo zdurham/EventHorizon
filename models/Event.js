@@ -19,6 +19,7 @@ const EventSchema = new Schema({
   zipCode: { type: String },
   cost: { type: String },
   link: { type: String },
+  control: {type: Boolean, default: false},
   petFriendly: { type: Boolean },
   kidFriendly: { type: Boolean},
   attendingList: [{
@@ -27,6 +28,7 @@ const EventSchema = new Schema({
   }]
 });
 
+EventSchema.index( { name: "text", description: "text" } );
 
 //This is for attending an event
 
@@ -70,7 +72,7 @@ EventSchema.methods.attending = function attending(user, cb) {
   EventSchema.methods.upvote = function upvote(user, fn) {
     // Reset vote if existed
     this.vote.negative.pull(user);
-    
+
     // Upvote
     this.vote.positive.addToSet(user);
     User.findOneAndUpdate({ _id: user}, {$push: { userLikes: this._id }})
