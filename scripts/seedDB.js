@@ -19,6 +19,7 @@ var controlID = [];
 const businessLogic = (num) => {
 
   if (num == events.length) {
+    console.log(`Seeding complete with a total of ${num} events and ${userIDs.length+1} users seeded.`)
     return mongoose.disconnect();
   }
 
@@ -89,7 +90,6 @@ const businessLogic = (num) => {
 
               eventObj.save(function (err, updatedEventObj) {
                 if (err) return handleError(err);
-                console.log(`Event entry number ${num+1} successfully seeded`);
                 businessLogic(num+1);
               });
           });
@@ -100,6 +100,7 @@ const businessLogic = (num) => {
 
 }
 
+console.log("Seeding...");
 db.User
   .remove({})
   .then(() => db.User.insertMany(seed.userSeed))

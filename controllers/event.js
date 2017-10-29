@@ -75,7 +75,7 @@ module.exports = {
       .find()
       .where('date').gte(Date.now())
       .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents -maritalStatus -hasChildren -attendingEvents')
-      .sort({ date: 1 })
+      .sort({ date: 1, startTime: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -91,7 +91,7 @@ module.exports = {
             .find(req.query)
             .where('createdBy').equals(req.params.id)
             .populate('attendingList', '-_id -__v -email -password')
-            .sort({ date: -1 })
+            .sort({ date: 1, startTime: 1 })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
         } else {
@@ -99,7 +99,7 @@ module.exports = {
             .find(req.query)
             .where('createdBy').equals(userId)
             .populate('attendingList', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents')
-            .sort({ date: -1 })
+            .sort({ date: 1, startTime: 1 })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
         }
