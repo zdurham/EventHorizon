@@ -55,7 +55,11 @@ export function events(state = [], action) {
         }
 
         return event
-      })}
+      }),
+      userAttendingEvents: state.userAttendingEvents.filter(event => {
+        return event._id !== action.eventId
+      })
+    }
     default:
       return state
   }    
