@@ -3,17 +3,6 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
-/* Sticky footer */
-[data-reactroot] {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
 /* Offset the height of the fixed navbar */
 main {
   margin-top: 56px;
