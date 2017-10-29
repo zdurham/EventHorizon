@@ -86,10 +86,11 @@ module.exports = {
     db.User
       .findById({ _id: req.params.userId })
       .then(function(dbModel) {
+        console.log("asdf",dbModel);
         if(dbModel.isAdvertiser) {
           db.Event
             .find(req.query)
-            .where('createdBy').equals(req.params.id)
+            .where('createdBy').equals(dbModel._id)
             .populate('attendingList', '-_id -__v -email -password')
             .sort({ date: 1, startTime: 1 })
             .then(dbModel => res.json(dbModel))
