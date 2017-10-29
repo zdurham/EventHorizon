@@ -84,3 +84,7 @@ button:hover {
 .text-success {
   color: #637f33;
 }
+
+.section-title {
+  margin-bottom: 40px;
+}

@@ -20,10 +20,11 @@ class Events extends Component {
         <Row>
           {!this.props.allEvents ? (
             <Col xs='12' md='8'>
-              <h2>No Events To Display</h2>
+              <h3>No Events To Display</h3>
             </Col>
           ) : (
             <Col xs="12" md="8">
+              <h4 className="section-title">Upcoming events...</h4>
               {this.props.allEvents.map(event => (
                 <DateCard
                   key={event._id}
