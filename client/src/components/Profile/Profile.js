@@ -16,18 +16,17 @@ class Profile extends Component {
   render() {
     return (
       <Card className="profileCard" key={this.props.user._id} >
-        <Avatar
-          name={this.fullName(this.props.user.profile.firstName, this.props.user.profile.lastName)}
+        <Avatar className="avatarImg"
+          name={this.props.user.fullName}
           fgColor="rgba(245, 245, 245, 0.7)"
           color="#841983"
-          size={150}
+          size={210}
           textSizeRatio={2.25} />
         <CardBody>
         <CardTitle
           className="text-center userName"
           >
-          User Name {/*Placeholder*/}
-          {this.props.user.userName}
+          {this.props.user.username}
           </CardTitle>
           <hr />
             <CardText className="userLikes">
