@@ -39,9 +39,11 @@ const UserSchema = new Schema({
   profilePicUrl: {
     type: String
   },
-  profile: {
-    firstName: { type: String },
-    lastName: { type: String }
+  firstName: {
+    type: String
+  },
+  lastName: {
+    type: String
   },
   age: {
     type: Number
