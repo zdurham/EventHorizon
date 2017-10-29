@@ -15,6 +15,10 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  control: {
+    type: Boolean,
+    default: false
+  },
   isAdvertiser: {
     type: Boolean,
     default: false

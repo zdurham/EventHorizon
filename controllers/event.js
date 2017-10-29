@@ -82,7 +82,7 @@ module.exports = {
 
   findAllByUser: function(req, res) {
     // checking if user is advertiser
-    const userId = req.params.userId
+    const userId = req.params.userId;
     db.User
       .findById({ _id: req.params.userId })
       .then(function(dbModel) {
@@ -151,7 +151,6 @@ module.exports = {
     })
   },
 
-
   attendEvent: function(req, res) {
     db.Event.findOne({_id: req.body.eventId})
     .then(event => {
@@ -168,5 +167,15 @@ module.exports = {
       })
     })
     .catch(err => console.log(err))
+  },
+
+  searchEvent: function(req, res) {
+    db.Event
+      .find(
+        { $text: { $search: req.params.searchedTerms } },
+        { score: { $meta: "textScore" } } )
+      .sort( { score: { $meta: "textScore" } } )
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };

@@ -542,6 +542,37 @@ const userSeed = [
     age: 28,
     sex: "male",
     createdEvents: []
+  },
+  {
+    email: "carrboro@city.com",
+    password: "$2a$10$tGB8mZJ0ZgqixpPZf9eKl.gkxhOs8QU1DSOB5nXpu2U.MIIM0gkHS",
+    isAdvertiser: true,
+    username: "Town of Carrboro",
+    city: "Carrboro",
+    profilePicUrl: "http://www.townofcarrboro.org/ImageRepository/Document?documentID=8",
+    profile: {
+      firstName: "Town of",
+      lastName: "Carrboro"
+    },
+    createdEvents: []
+  },
+  {
+    email: "tiffany.barnett@example.com",
+    password: "$2a$10$tGB8mZJ0ZgqixpPZf9eKl.gkxhOs8QU1DSOB5nXpu2U.MIIM0gkHS",
+    isAdvertiser: false,
+    control: true,
+    username: "TiffanyB",
+    city: "Raleigh",
+    maritalStatus: "Single",
+    hasChildren: false,
+    profilePicUrl: "http://www.designskilz.com/random-users/images/imageF25.jpg",
+    profile: {
+      firstName: "Tiffany",
+      lastName: "Barnett"
+    },
+    age: 28,
+    sex: "female",
+    createdEvents: []
   }
 ];
 
