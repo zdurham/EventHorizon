@@ -1,33 +1,27 @@
 import React, { Component } from "react";
-import Avatar from 'react-avatar';
 import { connect } from 'react-redux'
 import './Profile.css';
-import { Card, CardBody, CardTitle, CardText} from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle, CardText} from 'reactstrap';
 
 class Profile extends Component {
   constructor(props) {
     super(props);
   }
 
-  fullName = (firstName, lastName) => {
-    return `${firstName} ${lastName}`;
-  }
-
   render() {
     return (
       <Card className="profileCard" key={this.props.user._id} >
-        <Avatar className="avatarImg"
-          name={this.props.user.fullName}
-          fgColor="rgba(245, 245, 245, 0.7)"
-          color="#841983"
-          size={210}
-          textSizeRatio={2.25} />
+        <CardImg
+          className="userImg text-center"
+          src={this.props.user.profilePicUrl}
+          alt="Profile Image"
+        />
         <CardBody>
         <CardTitle
           className="text-center userName"
           >
           {this.props.user.username}
-          </CardTitle>
+        </CardTitle>
           <hr />
             <CardText className="userLikes">
               Likes:
