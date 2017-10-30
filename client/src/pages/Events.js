@@ -98,7 +98,7 @@ class Events extends Component {
               <h4 className="section-title">Upcoming events...</h4>
               <p>{this.state.search}</p>
               <p>{this.state.genre}</p>
-              {this.props.searchResult.length > 0 && this.props.searchResult.map(event => (
+              {this.props.searchResult.map(event => (
                 <DateCard
                   key={event._id}
                   event={event}/>
