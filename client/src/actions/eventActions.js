@@ -1,4 +1,5 @@
 import api from '../utils/api/eventRequests'
+import _ from 'lodash'
 
 /// ------------------------------------
 // EVENT ACTION HANDLERS
@@ -178,11 +179,18 @@ export const attendEvent = (eventId, userId) => {
   }
 }
 
-export const search = (searchTerms, searchGenre) => {
+export const search = (searchTerms, searchGenre, events ) => {
   return dispatch => {
-    api.searchEvents(searchTerms, searchGenre)
-      .then(res => {
-        dispatch(searchAction(res.data))
-      })
+    // filter the array by search term
+    let data = events.filter(event => {
+      if (event.name.search(searchTerms) > -1  || event.description.search(searchTerms) > -1 ) {
+        return true
+      }
+      return false
+    })
+
+    // dispatch the action
+    dispatch(searchAction(data))
+      
   }
 }

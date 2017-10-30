@@ -11,7 +11,8 @@ class Events extends Component {
     super(props)
     this.state = {
       search: '',
-      genre: ''
+      genre: '',
+      showAll: true
     }
   }
 
@@ -21,13 +22,22 @@ class Events extends Component {
 
   onChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      showAll: false
     })
+    this.props.search(this.state.search, this.state.genre, this.props.allEvents)
   }
   search = (e) => {
     e.preventDefault()
     this.props.search(this.state.search, this.state.genre)
+  }
 
+  toggleEvents = (e) => {
+    this.setState({
+      showAll: true,
+      search: '',
+      genre: ''
+    })
   }
 
   // {/* this form needs replacing */}
@@ -85,12 +95,10 @@ class Events extends Component {
                 </AvField>
                 <FormGroup>
                   <Button
-                    className="button-primary btn-search">
-                    Search
-                  </Button>
-                  <Button
                     type="button"
-                    className="button-primary">
+                    className="button-primary"
+                    onClick={() => this.toggleEvents()}                
+                    >
                     Show All
                   </Button>
                 </FormGroup>
@@ -98,11 +106,19 @@ class Events extends Component {
               <h4 className="section-title">Upcoming events...</h4>
               <p>{this.state.search}</p>
               <p>{this.state.genre}</p>
-              {this.props.searchResult.map(event => (
-                <DateCard
-                  key={event._id}
-                  event={event}/>
-              ))}
+              {this.state.showAll ? (
+                (this.props.allEvents.length > 0 && this.props.allEvents.map(event => (
+                  <DateCard
+                    key={event._id}
+                    event={event}/>
+                )))
+              ) : (
+                this.props.searchResult.length > 0 && this.props.searchResult.map(event => (
+                  <DateCard
+                    key={event._id}
+                    event={event}/>
+                )))
+              }
             </Col>
           )}
           <Col lg="auto">
@@ -117,12 +133,6 @@ class Events extends Component {
     )
   }
 }
-
-const mapDispatchToProps = dispatch => ({
-  getAllEvents() {
-    dispatch(getAllEvents())
-  }
-})
 
 const mapStateToProps = state => ({
   searchResult: state.events.searchResult,
