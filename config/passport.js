@@ -36,7 +36,7 @@ module.exports = function(passport) {
   function(req, email, password, done) {
     // asynchronous
     // User.findOne wont fire unless data is sent back
-   
+
 
     // First, check to see if the user exists by matching email.
     User.findOne({ 'email' :  email }, function(err, user) {
@@ -65,7 +65,7 @@ module.exports = function(passport) {
                 return done(null, newUser);
             });
         }
-    });    
+    });
 }));
 
 passport.use('local-login', new LocalStrategy({
@@ -74,8 +74,8 @@ passport.use('local-login', new LocalStrategy({
   passReqToCallback : true
 },
   function(req, email, password, done) {
-    console.log('email:', email)
-    console.log('password:', password)
+    // console.log('email:', email)
+    // console.log('password:', password)
     User.findOne({ 'email': email}, function(err, user) {
         if(err) {
           return errHandler(err);
@@ -86,7 +86,7 @@ passport.use('local-login', new LocalStrategy({
           }
         (bcrypt.compare(password, user.password, function(err, res) {
           if (res === true) {
-            return done(null, user)    
+            return done(null, user)
            } else {
             return done(null, false, {errMsg: 'Invalid password try again'});
            }

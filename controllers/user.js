@@ -14,7 +14,6 @@ module.exports = {
       });
   },
   getUserAttendingEvents: function(req, res) {
-    console.log(req.params)
     db.User
       .findById({ _id: req.params.id })
       .populate(

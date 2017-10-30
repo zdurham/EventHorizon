@@ -4,7 +4,7 @@ export function authUser(state = {}, action) {
   switch(action.type) {
     case "AUTH_USER":
     case "GET_USER":
-      console.log('get and auth user', state)
+      // console.log('get and auth user', state)
       return { ...state, user: action.payload, isAuthenticated: true}
     // These reducers are getting their actions from the eventActions folder
     case "UPVOTE":
@@ -17,6 +17,5 @@ export function authUser(state = {}, action) {
       return {...state, user: action.user}
     default:
       return state
-  }    
+  }
 }
-

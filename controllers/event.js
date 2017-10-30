@@ -61,7 +61,7 @@ module.exports = {
       .findOneAndRemove({ _id: req.body.eventId }, (err, data) => {
         // db.Event.find()
           // .then(data => {
-            
+
             res.json(data)
           // })
       })
@@ -79,13 +79,11 @@ module.exports = {
   },
 
   findAllByUser: function(req, res) {
-    
-    console.log('req.body', req.body)
+
     db.Event.find({ createdBy: req.body.userId })
     .then((events) => {
-      console.log(events)
       res.json(events)
-    }) 
+    })
     .catch(err => res.status(422).json(err))
     // checking if user is advertiser
     // db.User
@@ -175,7 +173,6 @@ module.exports = {
   },
 
   searchEvent: function(req, res) {
-    console.log(req.body)
     db.Event
       .find(
         { $text: { $search: req.body.searchTerms } },
@@ -183,7 +180,6 @@ module.exports = {
       .where('genre').equals(req.body.searchGenre)
       .sort( { score: { $meta: "textScore" } } )
       .then(dbModel => {
-        console.log(dbModel)
         res.json(dbModel)
       })
       .catch(err => res.status(422).json(err));
