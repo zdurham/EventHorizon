@@ -3531,7 +3531,8 @@ tbody.collapse.show {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #ddd;
+  /*border-bottom: 1px solid #ddd;*/
+  border-bottom: none;
 }
 
 .nav-tabs .nav-item {
@@ -3539,13 +3540,15 @@ tbody.collapse.show {
 }
 
 .nav-tabs .nav-link {
+  background-color: #9cb672; /* new */
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
 
 .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
-  border-color: #e9ecef #e9ecef #ddd;
+  /*border-color: #e9ecef #e9ecef #ddd;*/
+  border-color: transparent;
 }
 
 .nav-tabs .nav-link.disabled {
@@ -3556,9 +3559,12 @@ tbody.collapse.show {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #495057;
-  background-color: #fff;
-  border-color: #ddd #ddd #fff;
+  /*color: #495057;*/
+  color: whitesmoke;
+  /*background-color: #fff;*/
+  background-color: #789b3e;
+  /*border-color: #ddd #ddd #fff;*/
+  border-color: transparent;
 }
 
 .nav-tabs .dropdown-menu {

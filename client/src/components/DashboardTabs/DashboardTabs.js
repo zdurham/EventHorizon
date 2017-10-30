@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-// import FontAwesome from 'react-fontawesome';
 import './DashboardTabs.css';
 import DateCard from '../DateCard'
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';import moment from 'moment';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
-import ProfileEvents from "../ProfileEvents";
-import { getUserEvents, deleteEvent, getAllEvents, getUserAttending } from '../../actions/eventActions';
+import { getUserEvents, deleteEvent, getUserAttending } from '../../actions/eventActions';
 
 class DashboardTabs extends Component {
   constructor(props) {
@@ -30,14 +28,14 @@ class DashboardTabs extends Component {
   }
   render() {
     return (
-      <div className="dashTabs">
+      <div>
         <Nav tabs>
           <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggle('1'); }}
             >
-              Your Event Posts
+              Attending
             </NavLink>
           </NavItem>
           <NavItem>
@@ -45,7 +43,7 @@ class DashboardTabs extends Component {
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggle('2'); }}
             >
-            Upcoming Events
+              Added
             </NavLink>
           </NavItem>
         </Nav>
@@ -53,15 +51,12 @@ class DashboardTabs extends Component {
           <TabPane tabId="1">
             <Row>
               <Col sm="12">
-                <div className="tabTitle">
-                {/*<h4>Your Event Posts</h4>*/}
-                </div>
-                {!this.props.userEvents ? (
-                  <h2>You haven't created any events</h2>
+                {(!this.props.attendingEvents || this.props.attendingEvents.length === 0) ? (
+                  <h5 className="tab-message">You're not attending any events</h5>
                 ) : (
-                    this.props.userEvents.map(event => (
-                      <ProfileEvents key={event._id} event={event}/>
-                      )
+                    this.props.attendingEvents.map(event => (
+                      <DateCard key={event._id} event={event} deleteBtn={false}/>
+                    )
                   )
                 )
                 }
@@ -71,14 +66,15 @@ class DashboardTabs extends Component {
           <TabPane tabId="2">
             <Row>
               <Col sm="12">
-                <div className="tabTitle">
-                {/*<h3>Upcoming Attended Events</h3>*/}
-                </div>
-                <div>
-                  {this.props.attendingEvents && this.props.attendingEvents.map(event => (
-                    <DateCard key={event._id} event={event}/>
-                  ))}
-                </div>
+                {(!this.props.userEvents || this.props.userEvents.length === 0)? (
+                  <h5 className="tab-message">You haven't added any events</h5>
+                ) : (
+                    this.props.userEvents.map(event => (
+                      <DateCard key={event._id} event={event} deleteBtn={true} />
+                    )
+                  )
+                )
+                }
               </Col>
             </Row>
           </TabPane>

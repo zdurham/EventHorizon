@@ -4,7 +4,7 @@ import './DateCard.css';
 import { Button, Card, CardBody, CardLink, CardTitle, CardSubtitle, CardText, Collapse, UncontrolledTooltip } from 'reactstrap';
 import moment from 'moment';
 import { connect } from 'react-redux'
-import { upvote, downvote, unvote, attendEvent } from '../../actions/eventActions'
+import { upvote, downvote, unvote, attendEvent, deleteEvent } from '../../actions/eventActions'
 
 class DateCard extends Component {
   constructor(props) {
@@ -35,6 +35,11 @@ class DateCard extends Component {
     this.props.attendEvent(eventId, userId)
   }
 
+  remove = (eventId) => {
+    console.log(eventId)
+    this.props.deleteEvent(eventId)
+  }
+
   eventDateTime = (date, start, end) => {
     if (end.length !== 0) {
       end = ' to ' + moment(end, 'HH:mm').format('h:mmA')
@@ -48,22 +53,26 @@ class DateCard extends Component {
   }
 
   render() {
+    console.log(this.props.deleteBtn);
 
     // attend button
-    let attend = <Button size="sm" className="button-primary" onClick={() => this.clickAttend(this.props.event._id, this.props.user._id)}> Attend </Button>
+    let attend = <Button size="sm" className="button-primary" onClick={() => this.clickAttend(this.props.event._id, this.props.user._id)}> Attend </Button>;
+
+    // delete button
+    let deletes = <Button size="sm" className="button-delete" onClick={() => this.remove(this.props.event._id)}> Delete </Button>;
 
     // upvote button
-    let upvote = <FontAwesome onClick={() => this.clickUpvote(this.props.event._id, this.props.user._id)} className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>;
+    let upvote = <FontAwesome onClick={() => this.clickUpvote(this.props.event._id, this.props.user._id)} className="up-vote" name="thumbs-o-up"></FontAwesome>;
 
     // downvote button
-    let downvote = <FontAwesome onClick={() => this.clickDownvote(this.props.event._id, this.props.user._id)} className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
+    let downvote = <FontAwesome onClick={() => this.clickDownvote(this.props.event._id, this.props.user._id)} className="down-vote" name="thumbs-o-down"></FontAwesome>;
 
     // Do some checks to see if the user is logged in
     if (!this.props.user) {
 
-      upvote = <FontAwesome disabled='true' className="up-vote" name="thumbs-o-up" size="2x" color="gray"></FontAwesome>;
+      upvote = <FontAwesome disabled='true' className="up-vote" name="thumbs-o-up" style={{cursor: "default"}}></FontAwesome>;
 
-      downvote = <FontAwesome disabled='true' className="down-vote" name="thumbs-o-down" size="2x" color="gray"></FontAwesome>
+      downvote = <FontAwesome disabled='true' className="down-vote" name="thumbs-o-down" style={{cursor: "default"}}></FontAwesome>
     }
     else {
       // If user has already clicked to attend, show unattend
@@ -73,12 +82,12 @@ class DateCard extends Component {
 
       // if user has upvoted already, sub unvote function, change color
       if (this.props.event.vote.positive.includes(this.props.user._id)) {
-        upvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="up-vote-active" name="thumbs-o-up" size="2x"></FontAwesome>
+        upvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="up-vote-active" name="thumbs-o-up"></FontAwesome>
       }
 
       // if user has downvoted already, sub unvote function, change color
       if (this.props.event.vote.negative.includes(this.props.user._id)) {
-        downvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="down-vote-active" name="thumbs-o-down" size="2x"></FontAwesome>
+        downvote = <FontAwesome onClick={() => this.clickUnvote(this.props.event._id, this.props.user._id)} className="down-vote-active" name="thumbs-o-down"></FontAwesome>
       }
     }
 
@@ -102,7 +111,7 @@ class DateCard extends Component {
                   name="sun-o">
                 </FontAwesome>
                 <UncontrolledTooltip
-                  placement="bottom"
+                  placement="top"
                   delay={0}
                   target={`all-${this.props.event._id}`}>
                   All Day Event
@@ -118,7 +127,7 @@ class DateCard extends Component {
                   name="child">
                 </FontAwesome>
                 <UncontrolledTooltip
-                  placement="bottom"
+                  placement="top"
                   delay={0}
                   target={`kid-${this.props.event._id}`}>
                   Kid Friendly
@@ -134,7 +143,7 @@ class DateCard extends Component {
                   name="paw">
                 </FontAwesome>
                 <UncontrolledTooltip
-                  placement="bottom"
+                  placement="top"
                   delay={0}
                   target={`pet-${this.props.event._id}`}>
                   Pet Friendly
@@ -146,10 +155,12 @@ class DateCard extends Component {
             <div>
               <Button
                 size="sm"
-                className="button-primary" onClick={this.toggle}>
+                className="button-primary"
+                onClick={this.toggle}>
                 More Info
               </Button>
               {attend}
+              {(this.props.deleteBtn === true) ? deletes : ''}
             </div>
             <div className="card-votes">
               <div className="card-vote up">
@@ -167,7 +178,7 @@ class DateCard extends Component {
               <hr className="line-style" />
             </div>
             <CardText>{this.props.event.description}</CardText>
-            <CardLink href={this.props.event.link}>Visit Website</CardLink>
+            <CardLink href={this.props.event.link} target="_blank">Visit Website</CardLink>
           </Collapse>
         </CardBody>
       </Card>
@@ -179,4 +190,4 @@ const mapStateToProps = state => ({
   user: state.authUser.user
 })
 
-export default connect(mapStateToProps, { upvote, downvote, unvote, attendEvent })(DateCard)
+export default connect(mapStateToProps, { upvote, downvote, unvote, attendEvent, deleteEvent })(DateCard)
