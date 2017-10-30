@@ -119,7 +119,6 @@ class Events extends Component {
                     event={event}/>
                 )))
               }
-              
             </Col>
           )}
           <Col lg="auto">
