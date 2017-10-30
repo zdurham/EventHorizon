@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import DateCard from "../components/DateCard";
 import TopEvents from "../components/TopEvents";
-import { Container, Row, Col } from 'reactstrap';
+import { AvForm, AvGroup, AvField, AvInput, AvFeedback } from 'availity-reactstrap-validation';
+import { Container, Row, Col, Label, FormGroup, Button } from 'reactstrap';
 import { getAllEvents, search } from '../actions/eventActions';
 
 class Events extends Component {
@@ -29,6 +30,21 @@ class Events extends Component {
 
   }
 
+  // {/* this form needs replacing */}
+  // <form onSubmit={this.search}>
+  //   <label htmlFor='search'>Search</label>
+  //   <input name='search' value={this.state.search} onChange={this.onChange} type='text' />
+  //   <label htmlFor='genre'>Genre</label>
+  //   <input name='genre' value={this.state.genre} onChange={this.onChange} type='text' />
+  //   <button>Submit</button>
+  // </form>
+  // <h4> Search Results </h4>
+  // {this.props.searchResult.length > 0 && this.props.searchResult.map(event => (
+  //   <DateCard
+  //     key={event._id}
+  //     event={event}/>
+  // ))}
+
   render() {
     return (
       <Container tag="main">
@@ -39,22 +55,50 @@ class Events extends Component {
             </Col>
           ) : (
             <Col xs="12" md="8">
-              {/* this form needs replacing */}
-              <form onSubmit={this.search}>
-                <label htmlFor='search'>Search</label>
-                <input name='search' value={this.state.search} onChange={this.onChange} type='text' />
-                <label htmlFor='genre'>Genre</label>
-                <input name='genre' value={this.state.genre} onChange={this.onChange} type='text' />
-                <button>Submit</button>
-              </form>
-              <h4> Search Results </h4>
-              {this.props.searchResult.length > 0 && this.props.searchResult.map(event => (
-                <DateCard
-                  key={event._id}
-                  event={event}/>
-              ))}
+              <AvForm id="search-form" onSubmit={this.search}>
+                <AvGroup>
+                  <Label for="search-term">Search Term</Label>
+                  <AvInput
+                    type="text"
+                    name="search"
+                    id="search-term"
+                    value={this.state.search}
+                    onChange={this.onChange}
+                    required />
+                  <AvFeedback>This field is required</AvFeedback>
+                </AvGroup>
+                <AvField
+                  type="select"
+                  name="genre"
+                  value={this.state.genre}
+                  onChange={this.onChange}
+                  label="Category"
+                  required>
+                  <option value="NA" disabled>Select Category</option>
+                  <option value="Arts">Arts</option>
+                  <option value="Concerts">Concerts</option>
+                  <option value="Community">Community</option>
+                  <option value="Festival">Festival</option>
+                  <option value="Outdoors">Outdoors</option>
+                  <option value="Social">Social</option>
+                  <option value="Sports">Sports</option>
+                </AvField>
+                <FormGroup>
+                  <Button
+                    className="button-primary btn-search">
+                    Search
+                  </Button>
+                  <Button
+                    type="button"
+                    className="button-primary">
+                    Show All
+                  </Button>
+                </FormGroup>
+              </AvForm>
               <h4 className="section-title">Upcoming events...</h4>
-              {this.props.allEvents.map(event => (
+              <p>{this.state.search}</p>
+              <p>{this.state.genre}</p>
+              {this.props.searchResult.length > 0 && this.props.searchResult.map(event => (
                 <DateCard
                   key={event._id}
                   event={event}/>
@@ -83,7 +127,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   searchResult: state.events.searchResult,
   allEvents: state.events.events,
-  user: state.authUser.user 
+  user: state.authUser.user
 })
 
 export default connect(mapStateToProps, { getAllEvents, search })(Events)

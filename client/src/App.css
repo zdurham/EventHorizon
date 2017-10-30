@@ -77,3 +77,7 @@ button:hover {
 .section-title {
   margin-bottom: 40px;
 }
+
+#search-form .btn-search {
+  margin-right: 10px;
+}

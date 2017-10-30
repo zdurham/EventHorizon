@@ -146,7 +146,7 @@ class DateCard extends Component {
             <div>
               <Button
                 size="sm"
-                className="button-primary card-button-info" onClick={this.toggle}>
+                className="button-primary" onClick={this.toggle}>
                 More Info
               </Button>
               {attend}
