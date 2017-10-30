@@ -7,18 +7,24 @@ class Dashboard extends Component {
 
   render() {
     return(
-      <main>
-        <Container >
-         <Row >
-          <Col xs="9" sm="9" md="3" >
-          <Profile />
+      <Container tag="main">
+        <Row >
+          <Col
+            xs={{ size: 8, offset: 2 }}
+            sm={{ size: 12, offset: 0 }}
+            md="4"
+            lg="3" >
+            <Profile />
           </Col>
-          <Col xs="12" sm="12" md="8"  >
+          <Col
+            xs="12"
+            sm="12"
+            md="8"
+            lg="9">
             <DashboardTabs />
           </Col>
         </Row>
-        </Container>
-      </main>
+      </Container>
     )
   }
 }

@@ -10,33 +10,31 @@ class Profile extends Component {
 
   render() {
     return (
-      <Card className="profileCard" key={this.props.user._id} >
+      <Card className="profile-card" key={this.props.user._id} >
         <CardImg
-          className="userImg text-center"
+          className="text-center"
           src={this.props.user.profilePicUrl}
           alt="Profile Image"
         />
-        <CardBody>
-        <CardTitle
-          className="text-center userName"
-          >
-          {this.props.user.username}
-        </CardTitle>
-          <hr />
-            <CardText className="userLikes">
-              Likes:
-              {this.props.user.userlikes}
-            </CardText>
-            <CardText
-              className="eventsInput">
-              Events:
-              {this.props.user.createdEvents.length}
-            </CardText>
-            <CardText
-              className="attendingEvents">
-              Upcoming Events:
-              {this.props.user.attendingEvents.length}
-            </CardText>
+        <CardBody className="profile-body">
+          <CardTitle
+            className="text-center"
+            >
+            {this.props.user.username}
+          </CardTitle>
+          <hr className="line-style"/>
+          <CardText>
+            Events Attending
+            <span className="card-stats">- {!this.props.user.attendingEvents ? 0 : this.props.user.attendingEvents.length} -</span>
+          </CardText>
+          <CardText>
+            Events Added
+            <span className="card-stats">- {!this.props.user.createdEvents ? 0 : this.props.user.createdEvents.length} -</span>
+          </CardText>
+          <CardText>
+            User Likes
+            <span className="card-stats">- {!this.props.user.userlikes ? 0 : this.props.user.userlikes.length} -</span>
+          </CardText>
         </CardBody>
       </Card>
     );
@@ -45,5 +43,6 @@ class Profile extends Component {
 
 const mapStateToProps = state => ({
   user: state.authUser.user ? state.authUser.user : {}
-})
-export default connect(mapStateToProps)(Profile)
+});
+
+export default connect(mapStateToProps)(Profile);

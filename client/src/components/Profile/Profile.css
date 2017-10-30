@@ -1,25 +1,35 @@
-
-/*.profileCard {
-    margin-bottom: 15px;
-    border: 1px solid #cecece;
-}*/
-
-.profileCard {
-  display:block;
-  margin:auto;
+.profile-card .card-title {
+  color: #841983;
 }
 
-.avatarImg {
-  display:block;
-  margin:auto;
+.profile-body {
+  padding: 10px 12px;
 }
 
-.userName {
-  color: #637f33;
+.profile-body h4 {
+  margin-bottom: 0;
 }
 
-.eventsInput {
-     color: #841983;
+.profile-body .card-text {
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 0;
 }
 
+.profile-body .card-stats {
+  display: block;
+  font-size: 20px;
+  color: #841983;
+}
 
+@media (min-width: 576px) and (max-width: 767px) {
+  .profile-card {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .profile-card img {
+    max-width: 50%;
+    height: 50%;
+  }
+}

@@ -60,11 +60,11 @@ class Events extends Component {
       <Container tag="main">
         <Row>
           {!this.props.allEvents ? (
-            <Col xs='12' md='8'>
+            <Col xs='12' md='9'>
               <h3>No Events To Display</h3>
             </Col>
           ) : (
-            <Col xs="12" md="8">
+            <Col xs="12" md="9">
               <AvForm id="search-form" onSubmit={this.search}>
                 <AvGroup>
                   <Label for="search-term">Search Term</Label>
@@ -97,15 +97,13 @@ class Events extends Component {
                   <Button
                     type="button"
                     className="button-primary"
-                    onClick={() => this.toggleEvents()}                
+                    onClick={() => this.toggleEvents()}
                     >
                     Show All
                   </Button>
                 </FormGroup>
               </AvForm>
               <h4 className="section-title">Upcoming events...</h4>
-              <p>{this.state.search}</p>
-              <p>{this.state.genre}</p>
               {this.state.showAll ? (
                 (this.props.allEvents.length > 0 && this.props.allEvents.map(event => (
                   <DateCard

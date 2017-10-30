@@ -37,13 +37,17 @@ button:hover {
   background-color: #9a4299;
 }
 
-.button-secondary {
-  background-color: #637f33;
+.button-delete {
+  background-color: #841983;
   transition: background-color 0.3s ease-out;
 }
 
-.button-secondary:hover {
-  background-color: #80a441;
+.button-delete:hover, .button-delete:focus {
+  background-color: #e23e5f;
+}
+
+.button-delete:active {
+  background-color: #Dc143c !important;
 }
 
 .close:hover {
