@@ -1,6 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy
 const BasicStrategy = require('passport-http').BasicStrategy
 const User = require('../models/User')
+const bcrypt = require('bcrypt')
 
 module.exports = function(passport) {
 
@@ -83,11 +84,13 @@ passport.use('local-login', new LocalStrategy({
           return done(null, false, {errMsg: 'User does not exist, please' +
           ' <a class="errMsg" href="/signup">signup</a>'});
           }
-        if(!user.validPassword(password)) {
-          return done(null, false, {errMsg: 'Invalid password try again'});
-          }
-        return done(null, user);
+        (bcrypt.compare(password, user.password, function(err, res) {
+          if (res === true) {
+            return done(null, user)    
+           } else {
+            return done(null, false, {errMsg: 'Invalid password try again'});
+           }
+        }))
     });
-
   }));
 }
