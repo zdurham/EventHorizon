@@ -4,7 +4,7 @@ import './DashboardTabs.css';
 import DateCard from '../DateCard'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
-import { getUserEvents, deleteEvent, getUserAttending } from '../../actions/eventActions';
+import { getUserEvents, getUserAttending } from '../../actions/eventActions';
 import Analytics from '../Analytics';
 
 class DashboardTabs extends Component {
