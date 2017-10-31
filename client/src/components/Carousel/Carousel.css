@@ -2,6 +2,20 @@
   margin-top: -40px; /* Needed to offset padding added to main element */
 }
 
+/* Used to keep the images centered and maintain a minimum height */
+.carousel-inner > .carousel-item {
+  min-height: 450px;
+}
+
+.carousel-inner > .carousel-item > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 450px;
+  min-width: 1200px;
+}
+
 .carousel-caption {
   left: 0%;
   right: 0%;
@@ -24,5 +38,16 @@
 @media (max-width: 767px) {
   .carousel {
     display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .carousel-inner > .carousel-item {
+    min-height: 500px;
+  }
+
+  .carousel-inner > .carousel-item > img {
+    min-height: 500px;
+    min-width: 1333.3333px;
   }
 }

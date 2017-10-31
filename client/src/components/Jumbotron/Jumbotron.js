@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Jumbotron.css';
-import { Jumbotron, Button } from 'reactstrap';
+import { Jumbotron, Button, Container } from 'reactstrap';
 import JoinBtn from "../../components/JoinBtn";
 import { withRouter } from 'react-router';
 
@@ -18,7 +18,7 @@ class JumboPanel extends Component {
   render() {
     return (
       <Jumbotron>
-        <div className="jumbo-overlay">
+        <Container className="jumbo-overlay">
           <h2>Events...</h2>
           <hr />
           <p className="lead">Whether you're looking for a performance, to connect with others in your profession, or to just get outdoors...</p>
@@ -32,7 +32,7 @@ class JumboPanel extends Component {
               View My Dashboard
             </Button>
           )}
-        </div>
+        </Container>
       </Jumbotron>
     );
   }
