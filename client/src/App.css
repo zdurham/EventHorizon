@@ -82,6 +82,6 @@ button:hover {
   margin-bottom: 40px;
 }
 
-#search-form .btn-search {
-  margin-right: 10px;
+#search-form .button-primary {
+  margin-bottom: 4px;
 }
