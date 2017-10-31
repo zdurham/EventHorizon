@@ -12,12 +12,12 @@ class SignUpForm extends Component {
 
     this.state = {
       email: '',
+      profilePicUrl: '',
       username: '',
       password: '',
       confPassword: '',
       firstName: '',
       lastName: '',
-
     }
   }
 
@@ -27,6 +27,7 @@ class SignUpForm extends Component {
     if (this.state.password === this.state.confPassword) {
       this.props.registerUser({
         email: this.state.values.email,
+        profilePicUrl: this.state.values.profilePicUrl,
         username: this.state.values.username,
         password: this.state.values.password,
         firstName: this.state.values.firstName,
@@ -37,7 +38,6 @@ class SignUpForm extends Component {
     else {
       console.log("The passwords don't match")
     }
-
   }
 
   render() {
@@ -49,7 +49,7 @@ class SignUpForm extends Component {
               <Label for="join-firstname">First Name</Label>
               <AvInput
                 type="text"
-                name="firstname"
+                name="firstName"
                 id="join-firstname"
                 required />
               <AvFeedback>This field is required</AvFeedback>
@@ -60,7 +60,7 @@ class SignUpForm extends Component {
               <Label for="join-lastname">Last Name</Label>
               <AvInput
                 type="text"
-                name="lastname"
+                name="lastName"
                 id="join-lastname"
                 required />
               <AvFeedback>This field is required</AvFeedback>
@@ -76,6 +76,16 @@ class SignUpForm extends Component {
             placeholder="Your community name"
             required />
           <AvFeedback>This field is required</AvFeedback>
+        </AvGroup>
+        <AvGroup>
+          <Label for="join-url">Profile Picture Link</Label>
+          <AvInput
+            type="url"
+            name="profilePicUrl"
+            id="join-url"
+            pattern="https?://.+"
+            placeholder="http://www.myimage.com"/>
+            <AvFeedback>This field is invalid.</AvFeedback>
         </AvGroup>
         <AvGroup>
           <Label for="join-email">Email</Label>

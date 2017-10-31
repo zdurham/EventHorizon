@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import DateCard from "../components/DateCard";
-import { AvForm, AvGroup, AvField, AvInput, AvFeedback } from 'availity-reactstrap-validation';
+import { AvForm, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { Container, Row, Col, Label, FormGroup, Button } from 'reactstrap';
 import { getAllEvents, search } from '../actions/eventActions';
 
