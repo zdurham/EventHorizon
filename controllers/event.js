@@ -26,7 +26,8 @@ module.exports = {
               if (err) {
                 res.send(err);
               } else {
-                res.send(newdoc);
+                console.log(doc)
+                res.json(doc);
               }
             });
             }
@@ -46,7 +47,8 @@ module.exports = {
               if (err) {
                 res.send(err);
               } else {
-                res.send(newdoc);
+                console.log(doc)
+                res.json(doc);
               }
             });
             }

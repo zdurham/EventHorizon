@@ -5,7 +5,7 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
   
   switch(action.type) {
     case "EVENT_CREATED":
-      return {...state, userEvents: action.payload }
+      return {...state, userEvents: [...state.userEvents, action.payload] }
     case "USER_EVENTS":
       return {...state, userEvents: action.payload }
     case "ALL_EVENTS":
@@ -90,10 +90,18 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
         return event
       }),
       userAttendingEvents: state.userAttendingEvents.filter(event => {
-        return event._id === action.eventId
+        if (event._id === action.eventId) {
+          event = action.event
+          
+        }
+        return event
       }),
       userEvents: state.userEvents.map(event => {
-        return event._id === action.eventId
+        if (event._id === action.eventId) {
+          event = action.event
+        }
+        
+        return event
       })
     }
     default:
