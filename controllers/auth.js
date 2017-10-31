@@ -7,11 +7,14 @@ const auth = {
 
 
   logout: (req, res, next) => {
-    req.session.destroy(function() {
-      req.logout();
-      res.clearCookie('connect.sid')
-      res.send(console.log('user logged out'))
-    }) 
+    req.session.destroy((err) => {
+      if (err) {
+        return next(err)
+      }
+      else {
+        return res.send(console.log('user is logged out'))
+      }
+    })
   },
   
 

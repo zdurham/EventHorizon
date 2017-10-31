@@ -99,6 +99,7 @@ export const createEvent = (eventData, userId) => {
   return dispatch => {
     api.createEvent(eventData, userId)
       .then(res => {
+        console.log(res.data)
         dispatch(event(res.data))
       })
   }
