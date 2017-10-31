@@ -97,37 +97,14 @@ UserSchema.methods.attend = function attend(eventId, fn) {
   };
 };
 
-
-// THIS HAS BEEN REPLACED
-// UserSchema.methods.validPassword = function(password) {
-//   const user = this
-//   bcrypt.compare(password, user.password, (err, data) => {
-//     if (err) {
-//       console.log(err)
-//     }
-//     else {
-//       console.log('this is the respose', data)
-//       if (data === true ) {
-//         return true
-//       }
-//       else {
-//         return false
-//       }
-//     }
-//   });
-// };
-
-// This method hashes the password before saving it to Mongo
-UserSchema.pre('save', function(next) {
-  const user = this;
-  bcrypt.hash(user.password, 10, function(err, hash) {
-    if (err) {
-      return next(err)
-    }
-    user.password = hash;
-    next();
-  })
-})
+// Method exported to generateHash
+UserSchema.methods.generateHash = function(password) {
+  return bcrypt.hash(password, bcrypt.genSaltSync(10), null);
+};
+// Checks password using bcrypt
+UserSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.password);
+};
 
 UserSchema.method('sanitize', function() {
   let omittedFields = [

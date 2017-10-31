@@ -36,7 +36,7 @@ class DateCard extends Component {
   }
 
   remove = (eventId) => {
-    console.log(eventId)
+    // console.log(eventId)
     this.props.deleteEvent(eventId)
   }
 
@@ -53,7 +53,6 @@ class DateCard extends Component {
   }
 
   render() {
-    console.log(this.props.deleteBtn);
 
     // attend button
     let attend = <Button size="sm" className="button-primary" onClick={() => this.clickAttend(this.props.event._id, this.props.user._id)}> Attend </Button>;

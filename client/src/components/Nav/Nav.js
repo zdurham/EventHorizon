@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import './Nav.css';
 import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-import { NavLink as RRLink } from 'react-router-dom'
+import { NavLink as RRLink } from 'react-router-dom';
 import LogInBtn from '../LogInBtn';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../actions/authActions'
-import { withRouter } from 'react-router'
+import { logoutUser } from '../../actions/authActions';
+import { withRouter } from 'react-router';
 
 
 class navbarInstance extends Component {
@@ -26,6 +26,7 @@ class navbarInstance extends Component {
   login = () => {
     this.closeNavbar();
   }
+
   logout = () => {
     this.props.history.push('/');
     this.props.logoutUser();

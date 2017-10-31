@@ -26,7 +26,8 @@ module.exports = {
               if (err) {
                 res.send(err);
               } else {
-                res.send(newdoc);
+                console.log(doc)
+                res.json(doc);
               }
             });
             }
@@ -46,7 +47,8 @@ module.exports = {
               if (err) {
                 res.send(err);
               } else {
-                res.send(newdoc);
+                console.log(doc)
+                res.json(doc);
               }
             });
             }
@@ -79,6 +81,7 @@ module.exports = {
   },
 
   findAllByUser: function(req, res) {
+
     let userId = req.body.userId;
     // console.log('req.body', req.body)
     // db.Event.find({ createdBy: req.body.userId })
@@ -87,6 +90,7 @@ module.exports = {
     //   res.json(events)
     // })
     // .catch(err => res.status(422).json(err))
+
     // checking if user is advertiser
     db.User
       .findOne({ _id: userId })
@@ -173,7 +177,6 @@ module.exports = {
   },
 
   searchEvent: function(req, res) {
-    console.log(req.body)
     db.Event
       .find(
         { $text: { $search: req.body.searchTerms } },
@@ -181,7 +184,6 @@ module.exports = {
       .where('genre').equals(req.body.searchGenre)
       .sort( { score: { $meta: "textScore" } } )
       .then(dbModel => {
-        console.log(dbModel)
         res.json(dbModel)
       })
       .catch(err => res.status(422).json(err));

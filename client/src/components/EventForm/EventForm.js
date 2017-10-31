@@ -5,6 +5,7 @@ import { Container, Row, Col, FormGroup, Label, Button } from 'reactstrap';
 import { AvForm, AvField, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
 import { connect } from 'react-redux'
 import { createEvent } from '../../actions/eventActions'
+import { withRouter } from 'react-router'
 
 class EventForm extends Component {
   constructor(props) {
@@ -13,8 +14,10 @@ class EventForm extends Component {
   }
 
   handleValidSubmit = (event, values) => {
+    console.log(values)
     this.setState({values});
     this.props.createEvent(values, this.props.userId)
+    this.props.history.push('/events')
   }
 
   render() {
@@ -187,4 +190,4 @@ const mapStateToProps = state => ({
   userId: state.authUser.user._id
 })
 
-export default connect(mapStateToProps, { createEvent })(EventForm);
+export default withRouter(connect(mapStateToProps, { createEvent })(EventForm));

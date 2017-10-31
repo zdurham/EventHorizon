@@ -24,7 +24,6 @@ class SignUpForm extends Component {
   handleValidSubmit = (event, values) => {
     event.preventDefault()
     this.setState({values});
-    console.log(this.state)
     if (this.state.password === this.state.confPassword) {
       this.props.registerUser({
         email: this.state.values.email,
