@@ -38,6 +38,17 @@ class Events extends Component {
   }
 
   render() {
+    let dates = []
+    if (this.props.allEvents) {
+      this.props.allEvents.forEach(event => {
+        if (dates.indexOf(event.date) === -1) {
+          dates.push(event.date)
+        }
+      })
+    }
+    console.log(dates)
+  
+    
     return (
       <Container tag="main">
         <Row>
@@ -69,7 +80,37 @@ class Events extends Component {
                 </FormGroup>
               </AvForm>
               <h4 className="section-title">Upcoming events...</h4>
-              {this.state.showAll ? (
+
+              {dates.map(date => {
+                return(
+                  <div>
+                    <h4>{date}</h4>
+                    <hr/>
+                    <div>
+                      <h5>Pinned Events</h5>
+                        {this.props.allEvents.map(event => {
+                          if (event.date === date && event.createdBy.isAdvertiser === true) {
+                            return (
+                              <DateCard key={event._id} event={event}/>
+                            )
+                          }
+                        })}
+                      <hr/>
+                    </div>
+                    <div>
+                      <h5>Events</h5>
+                      {this.props.allEvents.map(event => {
+                        if (event.date === date && event.createdBy.isAdvertiser === false) {
+                          return (
+                            <DateCard key={event._id} event={event}/>
+                          )
+                        }
+                      })}
+                    </div>
+                  </div>
+                )
+              })}
+              {/*this.state.showAll ? (
                 (this.props.allEvents.length > 0 && this.props.allEvents.map(event => (
                   <DateCard
                     key={event._id}
@@ -81,7 +122,7 @@ class Events extends Component {
                     key={event._id}
                     event={event}/>
                 )))
-              }
+              */}
             </Col>
           )}
           <Col lg="auto">

@@ -99,8 +99,10 @@ UserSchema.methods.attend = function attend(eventId, fn) {
 
 // Method exported to generateHash
 UserSchema.methods.generateHash = function(password) {
-  return bcrypt.hash(password, bcrypt.genSaltSync(10), null);
-};
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(10), function(err, hash) {
+    return hash
+  });
+}
 // Checks password using bcrypt
 UserSchema.methods.validPassword = function(password) {
   return bcrypt.compareSync(password, this.password);

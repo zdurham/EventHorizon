@@ -96,7 +96,7 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
         }
         return event
       }),
-      userEvents: state.userEvents.map(event => {
+      userEvents: state.userEvents && state.userEvents.map(event => {
         if (event._id === action.eventId) {
           event = action.event
         }

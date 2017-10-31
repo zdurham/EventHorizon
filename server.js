@@ -32,6 +32,10 @@ mongoose.connect(
   config.db,
   {
     useMongoClient: true
+  }, function(err) {
+    if (err) {
+      console.log(err)
+    }
   }
 );
 ///
