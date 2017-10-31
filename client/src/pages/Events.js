@@ -55,7 +55,8 @@ class Events extends Component {
                     name="search"
                     id="search-term"
                     value={this.state.search}
-                    onChange={this.onChange} />
+                    onChange={this.onChange}
+                    placeholder="based on name &amp; description"/>
                 </AvGroup>
                 <FormGroup>
                   <Button

@@ -6,19 +6,19 @@ const items = [
   {
     src: '/img/carousel-1.jpg',
     altText: 'Fans at a concert',
-    heading: "Concerts",
+    heading: "CONCERTS",
     caption: "Whether you're looking for a performance..."
   },
   {
     src: '/img/carousel-2.jpg',
     altText: 'Business professionals at a meetup',
-    heading: 'Meet Ups',
+    heading: 'MEET UPS',
     caption: "or to connect with others in your profession..."
   },
   {
     src: '/img/carousel-3.jpg',
     altText: 'Bicyclists cycling in a pack',
-    heading: 'Activities',
+    heading: 'ACTIVITIES',
     caption: "or to just get outdoors...We've got you covered."
   }
 ];

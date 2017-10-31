@@ -29,6 +29,7 @@ class JoinBtn extends Component {
     return (
       <div>
         <Button
+          size={this.props.size}
           className="button-primary"
           onClick={this.toggle}>
           Join Community

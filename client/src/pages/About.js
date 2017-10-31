@@ -25,7 +25,7 @@ class About extends Component {
         <Info />
         <Container className="text-center">
           {!this.props.user ? (
-            <JoinBtn />
+            <JoinBtn size="lg"/>
           ) : (
             <Button
               size="lg"
