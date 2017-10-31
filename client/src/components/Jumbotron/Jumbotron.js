@@ -1,13 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Container } from 'reactstrap';
-import Jumbotron from "../components/Jumbotron";
-import Carousel from "../components/Carousel";
-import Info from "../components/Info";
-import JoinBtn from "../components/JoinBtn";
+import './Jumbotron.css';
+import { Jumbotron, Button } from 'reactstrap';
+import JoinBtn from "../../components/JoinBtn";
 import { withRouter } from 'react-router';
 
-class About extends Component {
+class JumboPanel extends Component {
   constructor(props) {
     super(props);
   }
@@ -19,23 +17,23 @@ class About extends Component {
 
   render() {
     return (
-      <main>
-        <Jumbotron />
-        <Carousel />
-        <Info />
-        <Container className="text-center">
+      <Jumbotron>
+        <div className="jumbo-overlay">
+          <h2>Events...</h2>
+          <hr />
+          <p className="lead">Whether you're looking for a performance, to connect with others in your profession, or to just get outdoors...</p>
+          <p>WE'VE GOT YOU COVERED!</p>
           {!this.props.user ? (
             <JoinBtn />
           ) : (
             <Button
-              size="lg"
               className="button-primary"
               onClick={this.handleOnClick}>
               View My Dashboard
             </Button>
           )}
-        </Container>
-      </main>
+        </div>
+      </Jumbotron>
     );
   }
 }
@@ -44,4 +42,4 @@ const mapStateToProps = state => ({
   user: state.authUser ? state.authUser.user : undefined
 });
 
-export default withRouter(connect(mapStateToProps)(About));
+export default withRouter(connect(mapStateToProps)(JumboPanel));

@@ -40,21 +40,6 @@ class Events extends Component {
     })
   }
 
-  // {/* this form needs replacing */}
-  // <form onSubmit={this.search}>
-  //   <label htmlFor='search'>Search</label>
-  //   <input name='search' value={this.state.search} onChange={this.onChange} type='text' />
-  //   <label htmlFor='genre'>Genre</label>
-  //   <input name='genre' value={this.state.genre} onChange={this.onChange} type='text' />
-  //   <button>Submit</button>
-  // </form>
-  // <h4> Search Results </h4>
-  // {this.props.searchResult.length > 0 && this.props.searchResult.map(event => (
-  //   <DateCard
-  //     key={event._id}
-  //     event={event}/>
-  // ))}
-
   render() {
     return (
       <Container tag="main">
@@ -120,11 +105,6 @@ class Events extends Component {
             </Col>
           )}
           <Col lg="auto">
-          </Col>
-        </Row>
-        <Row>
-          <Col lg="auto">
-            <TopEvents />
           </Col>
         </Row>
       </Container>
