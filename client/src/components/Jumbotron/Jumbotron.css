@@ -1,0 +1,25 @@
+.jumbotron {
+  color: whitesmoke;
+  text-shadow: 2px 2px #4a4a4a;
+  background: #841983 url("/img/panel-1.jpg") center center;
+  background-size: cover;
+  overflow: hidden;
+  margin-top: -40px; /* Needed to offset padding added to main element */
+  border-radius: 0;
+}
+
+hr {
+  border: 0;
+  height: 4px;
+  border-top: 3px solid rgba(120, 155, 62, 0.5);
+}
+
+.jumbotron .button-primary {
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .jumbotron {
+    display: none;
+  }
+}

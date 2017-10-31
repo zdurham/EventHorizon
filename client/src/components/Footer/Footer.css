@@ -28,3 +28,9 @@ footer a {
     font-size: 18px;
   }
 }
+
+@media (max-width: 575px) {
+  footer {
+    margin-top: 50px;
+  }
+}
