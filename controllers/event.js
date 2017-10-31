@@ -74,7 +74,7 @@ module.exports = {
     db.Event
       .find()
       .where('date').gte(Date.now())
-      .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents -maritalStatus -hasChildren -attendingEvents')
+      .populate('createdBy', '-_id -__v -email -password -profile -age -sex -createdEvents -maritalStatus -hasChildren -attendingEvents')
       .sort({ date: 1, startTime: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

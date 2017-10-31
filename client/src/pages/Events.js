@@ -12,7 +12,7 @@ class Events extends Component {
     this.state = {
       search: '',
       genre: '',
-      showAll: true
+      showAll: true,
     }
   }
 
@@ -36,26 +36,25 @@ class Events extends Component {
     this.setState({
       showAll: true,
       search: '',
-      genre: ''
+      genre: '',
     })
   }
 
-  // {/* this form needs replacing */}
-  // <form onSubmit={this.search}>
-  //   <label htmlFor='search'>Search</label>
-  //   <input name='search' value={this.state.search} onChange={this.onChange} type='text' />
-  //   <label htmlFor='genre'>Genre</label>
-  //   <input name='genre' value={this.state.genre} onChange={this.onChange} type='text' />
-  //   <button>Submit</button>
-  // </form>
-  // <h4> Search Results </h4>
-  // {this.props.searchResult.length > 0 && this.props.searchResult.map(event => (
-  //   <DateCard
-  //     key={event._id}
-  //     event={event}/>
-  // ))}
+  
+    
 
   render() {
+    let dates = []
+    if (this.props.allEvents) {
+      this.props.allEvents.forEach(event => {
+        if (dates.indexOf(event.date) === -1) {
+          dates.push(event.date)
+        }
+      })
+    }
+    console.log(dates)
+  
+    
     return (
       <Container tag="main">
         <Row>
@@ -104,7 +103,37 @@ class Events extends Component {
                 </FormGroup>
               </AvForm>
               <h4 className="section-title">Upcoming events...</h4>
-              {this.state.showAll ? (
+
+              {dates.map(date => {
+                return(
+                  <div>
+                    <h4>{date}</h4>
+                    <hr/>
+                    <div>
+                      <h5>Pinned Events</h5>
+                        {this.props.allEvents.map(event => {
+                          if (event.date === date && event.createdBy.isAdvertiser === true) {
+                            return (
+                              <DateCard key={event._id} event={event}/>
+                            )
+                          }
+                        })}
+                      <hr/>
+                    </div>
+                    <div>
+                      <h5>Events</h5>
+                      {this.props.allEvents.map(event => {
+                        if (event.date === date && event.createdBy.isAdvertiser === false) {
+                          return (
+                            <DateCard key={event._id} event={event}/>
+                          )
+                        }
+                      })}
+                    </div>
+                  </div>
+                )
+              })}
+              {/*this.state.showAll ? (
                 (this.props.allEvents.length > 0 && this.props.allEvents.map(event => (
                   <DateCard
                     key={event._id}
@@ -116,7 +145,7 @@ class Events extends Component {
                     key={event._id}
                     event={event}/>
                 )))
-              }
+              */}
             </Col>
           )}
           <Col lg="auto">
