@@ -4,7 +4,7 @@ import './DateCard.css';
 import { Button, Card, CardBody, CardLink, CardTitle, CardSubtitle, CardText, Collapse, UncontrolledTooltip } from 'reactstrap';
 import moment from 'moment';
 import { connect } from 'react-redux'
-import { upvote, downvote, unvote, attendEvent, deleteEvent } from '../../actions/eventActions'
+import { upvote, downvote, unvote, attendEvent, unAttendEvent, deleteEvent } from '../../actions/eventActions'
 
 class DateCard extends Component {
   constructor(props) {
@@ -33,6 +33,10 @@ class DateCard extends Component {
 
   clickAttend = (eventId, userId) => {
     this.props.attendEvent(eventId, userId)
+  }
+
+  clickUnAttend = (eventId, userId) => {
+    this.props.unAttendEvent(eventId, userId)
   }
 
   remove = (eventId) => {
@@ -76,7 +80,7 @@ class DateCard extends Component {
     else {
       // If user has already clicked to attend, show unattend
       if (this.props.event.attendingList.includes(this.props.user._id)) {
-        attend = <Button size="sm" className="button-primary" onClick={() => this.clickAttend(this.props.event._id, this.props.user._id)}> Attending </Button>
+        attend = <Button size="sm" className="button-primary" onClick={() => this.clickUnAttend(this.props.event._id, this.props.user._id)}> Attending </Button>
       }
 
       // if user has upvoted already, sub unvote function, change color
@@ -189,4 +193,4 @@ const mapStateToProps = state => ({
   user: state.authUser.user
 })
 
-export default connect(mapStateToProps, { upvote, downvote, unvote, attendEvent, deleteEvent })(DateCard)
+export default connect(mapStateToProps, { upvote, downvote, unvote, attendEvent, unAttendEvent, deleteEvent })(DateCard)
