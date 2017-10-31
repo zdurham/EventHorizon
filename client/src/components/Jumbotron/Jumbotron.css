@@ -1,6 +1,7 @@
 .jumbotron {
+  min-height: 400px;
   color: whitesmoke;
-  text-shadow: 2px 2px #4a4a4a;
+  text-shadow: 1px 1px #4a4a4a;
   background: #841983 url("/img/panel-1.jpg") center center;
   background-size: cover;
   overflow: hidden;
@@ -8,7 +9,11 @@
   border-radius: 0;
 }
 
-hr {
+.jumbotron .container {
+  padding: 0;
+}
+
+.jumbotron hr {
   border: 0;
   height: 4px;
   border-top: 3px solid rgba(120, 155, 62, 0.5);

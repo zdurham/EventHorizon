@@ -9,7 +9,7 @@ const Footer = () =>
       <Row>
         <Col xs="12" md="4">
           <h5>Contributors</h5>
-          <hr />
+          <hr className="line-style"/>
           <a href="https://github.com/MitHipster" target="_blank" rel="noopener noreferrer">Tim Acker</a>
           <a href="https://github.com/cbaddeley" target="_blank" rel="noopener noreferrer">Cory Baddeley</a>
           <a href="https://github.com/zdurham" target="_blank" rel="noopener noreferrer">Zach Durham</a>
@@ -17,7 +17,7 @@ const Footer = () =>
         </Col>
         <Col xs="12" md="4">
           <h5>Site Map</h5>
-          <hr />
+          <hr className="line-style"/>
           <a href="/">About</a>
           <a href="/events">Events</a>
           <a href="/dashboard">Dashboard</a>
@@ -25,7 +25,7 @@ const Footer = () =>
         </Col>
         <Col xs="12" md="4">
           <h5>Social</h5>
-          <hr />
+          <hr className="line-style"/>
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
           <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
           <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
