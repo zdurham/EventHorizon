@@ -89,13 +89,7 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
 
         return event
       }),
-      userAttendingEvents: state.userAttendingEvents.filter(event => {
-        if (event._id === action.eventId) {
-          event = action.event
-          
-        }
-        return event
-      }),
+      userAttendingEvents: [...state.userAttendingEvents, action.event],
       userEvents: state.userEvents && state.userEvents.map(event => {
         if (event._id === action.eventId) {
           event = action.event

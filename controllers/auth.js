@@ -25,7 +25,8 @@ const auth = {
 
   error: (err, req, res, next) => {
     //handle error
-    res.status(401).send({success: false, message: err})
+    console.log('auth error', err)
+    res.status(401).send({message: err})
   }
 }
 
