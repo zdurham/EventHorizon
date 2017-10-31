@@ -5,6 +5,7 @@ import DateCard from '../DateCard'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 import { getUserEvents, deleteEvent, getUserAttending } from '../../actions/eventActions';
+import Analytics from '../Analytics';
 
 class DashboardTabs extends Component {
   constructor(props) {
@@ -46,6 +47,14 @@ class DashboardTabs extends Component {
               Added
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: this.state.activeTab === '3' })}
+              onClick={() => { this.toggle('3'); }}
+            >
+              Analytics
+            </NavLink>
+          </NavItem>
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
@@ -73,6 +82,18 @@ class DashboardTabs extends Component {
                       <DateCard key={event._id} event={event} deleteBtn={true} />
                     )
                   )
+                )
+                }
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane tabId="3">
+            <Row>
+              <Col sm="12">
+                {(!this.props.userEvents || this.props.userEvents.length === 0)? (
+                  <h5 className="tab-message">You haven't added any events</h5>
+                ) : (
+                    <Analytics />
                 )
                 }
               </Col>
