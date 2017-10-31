@@ -10,7 +10,6 @@ class Events extends Component {
     super(props)
     this.state = {
       search: '',
-      genre: '',
       showAll: true
     }
   }
@@ -24,18 +23,17 @@ class Events extends Component {
       [e.target.name]: e.target.value,
       showAll: false
     })
-    this.props.search(this.state.search, this.state.genre, this.props.allEvents)
+    this.props.search(this.state.search, this.props.allEvents)
   }
   search = (e) => {
     e.preventDefault()
-    this.props.search(this.state.search, this.state.genre)
+    this.props.search(this.state.search)
   }
 
   toggleEvents = (e) => {
     this.setState({
       showAll: true,
-      search: '',
-      genre: ''
+      search: ''
     })
   }
 
@@ -51,35 +49,17 @@ class Events extends Component {
             <Col xs="12" md="9">
               <AvForm id="search-form" onSubmit={this.search}>
                 <AvGroup>
-                  <Label for="search-term">Search Term</Label>
+                  <Label for="search-term">Search for Events</Label>
                   <AvInput
                     type="text"
                     name="search"
                     id="search-term"
                     value={this.state.search}
-                    onChange={this.onChange}
-                    required />
-                  <AvFeedback>This field is required</AvFeedback>
+                    onChange={this.onChange} />
                 </AvGroup>
-                <AvField
-                  type="select"
-                  name="genre"
-                  value={this.state.genre}
-                  onChange={this.onChange}
-                  label="Category"
-                  required>
-                  <option value="NA" disabled>Select Category</option>
-                  <option value="Arts">Arts</option>
-                  <option value="Concerts">Concerts</option>
-                  <option value="Community">Community</option>
-                  <option value="Festival">Festival</option>
-                  <option value="Outdoors">Outdoors</option>
-                  <option value="Social">Social</option>
-                  <option value="Sports">Sports</option>
-                </AvField>
                 <FormGroup>
                   <Button
-                    type="button"
+                    type="reset"
                     className="button-primary"
                     onClick={() => this.toggleEvents()}
                     >
