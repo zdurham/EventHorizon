@@ -88,6 +88,7 @@ passport.use('local-login', new LocalStrategy({
           if (res === true) {
             return done(null, user)
            } else {
+            console.log('hey its me again ruining your day')
             return done(null, false, {errMsg: 'Invalid password try again'});
            }
         }))
