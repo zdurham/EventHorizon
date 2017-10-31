@@ -24,3 +24,10 @@
 .info p {
   font-size: 18px;
 }
+
+@media (max-width: 575px) {
+  .info-bar {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}

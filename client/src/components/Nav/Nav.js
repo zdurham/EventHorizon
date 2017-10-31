@@ -49,9 +49,9 @@ class navbarInstance extends Component {
       dynamicNav =
       <Nav className="ml-auto" navbar>
         {viewEvents}
-        <NavItem>
+        {/* <NavItem>
           <NavLink onClick={this.closeNavbar} tag={RRLink} to="/advertise">Advertise</NavLink>
-        </NavItem>
+        </NavItem> */}
         <LogInBtn login={this.closeNavbar} />
       </Nav>
     }

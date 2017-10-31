@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import DateCard from "../components/DateCard";
-import TopEvents from "../components/TopEvents";
-import { AvForm, AvGroup, AvField, AvInput, AvFeedback } from 'availity-reactstrap-validation';
+import { AvForm, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { Container, Row, Col, Label, FormGroup, Button } from 'reactstrap';
 import { getAllEvents, search } from '../actions/eventActions';
 
@@ -11,8 +10,7 @@ class Events extends Component {
     super(props)
     this.state = {
       search: '',
-      genre: '',
-      showAll: true,
+      showAll: true
     }
   }
 
@@ -25,23 +23,19 @@ class Events extends Component {
       [e.target.name]: e.target.value,
       showAll: false
     })
-    this.props.search(this.state.search, this.state.genre, this.props.allEvents)
+    this.props.search(this.state.search, this.props.allEvents)
   }
   search = (e) => {
     e.preventDefault()
-    this.props.search(this.state.search, this.state.genre)
+    this.props.search(this.state.search)
   }
 
   toggleEvents = (e) => {
     this.setState({
       showAll: true,
-      search: '',
-      genre: '',
+      search: ''
     })
   }
-
-  
-    
 
   render() {
     let dates = []
@@ -66,35 +60,18 @@ class Events extends Component {
             <Col xs="12" md="9">
               <AvForm id="search-form" onSubmit={this.search}>
                 <AvGroup>
-                  <Label for="search-term">Search Term</Label>
+                  <Label for="search-term">Search for Events</Label>
                   <AvInput
                     type="text"
                     name="search"
                     id="search-term"
                     value={this.state.search}
                     onChange={this.onChange}
-                    required />
-                  <AvFeedback>This field is required</AvFeedback>
+                    placeholder="based on name &amp; description"/>
                 </AvGroup>
-                <AvField
-                  type="select"
-                  name="genre"
-                  value={this.state.genre}
-                  onChange={this.onChange}
-                  label="Category"
-                  required>
-                  <option value="NA" disabled>Select Category</option>
-                  <option value="Arts">Arts</option>
-                  <option value="Concerts">Concerts</option>
-                  <option value="Community">Community</option>
-                  <option value="Festival">Festival</option>
-                  <option value="Outdoors">Outdoors</option>
-                  <option value="Social">Social</option>
-                  <option value="Sports">Sports</option>
-                </AvField>
                 <FormGroup>
                   <Button
-                    type="button"
+                    type="reset"
                     className="button-primary"
                     onClick={() => this.toggleEvents()}
                     >
@@ -149,11 +126,6 @@ class Events extends Component {
             </Col>
           )}
           <Col lg="auto">
-          </Col>
-        </Row>
-        <Row>
-          <Col lg="auto">
-            <TopEvents />
           </Col>
         </Row>
       </Container>

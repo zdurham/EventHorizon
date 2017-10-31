@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import './LogInBtn.css';
 import LogInForm from '../LogInForm';
-import SocialBtns from '../SocialBtns';
-import { Modal, ModalHeader, ModalBody, ModalFooter, NavItem, NavLink } from 'reactstrap';
+// import SocialBtns from '../SocialBtns';
+import { Modal, ModalHeader, ModalBody, NavItem, NavLink } from 'reactstrap';
 
 class LogInBtn extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class LogInBtn extends Component {
           toggle={this.toggle}>
           <ModalHeader
             toggle={this.toggle}>
-            Sign In Options
+            Sign In
           </ModalHeader>
           <ModalBody>
             <LogInForm
@@ -49,9 +49,9 @@ class LogInBtn extends Component {
               toggle={this.toggle}
             />
           </ModalBody>
-          <ModalFooter>
+          {/* <ModalFooter>
             <SocialBtns />
-          </ModalFooter>
+          </ModalFooter> */}
         </Modal>
       </NavItem>
     );

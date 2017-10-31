@@ -180,11 +180,12 @@ export const attendEvent = (eventId, userId) => {
   }
 }
 
-export const search = (searchTerms, searchGenre, events ) => {
+export const search = (searchTerms, events ) => {
+  searchTerms = searchTerms.toLowerCase();
   return dispatch => {
     // filter the array by search term
     let data = events.filter(event => {
-      if (event.name.search(searchTerms) > -1  || event.description.search(searchTerms) > -1 ) {
+      if (event.name.toLowerCase().search(searchTerms) > -1  || event.description.toLowerCase().search(searchTerms) > -1 ) {
         return true
       }
       return false
@@ -192,6 +193,6 @@ export const search = (searchTerms, searchGenre, events ) => {
 
     // dispatch the action
     dispatch(searchAction(data))
-      
+
   }
 }

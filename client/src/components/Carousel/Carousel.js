@@ -1,30 +1,24 @@
 import React, { Component } from 'react';
 import './Carousel.css';
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption
-} from 'reactstrap';
+import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
 
 const items = [
   {
     src: '/img/carousel-1.jpg',
     altText: 'Fans at a concert',
-    heading: "Concerts",
+    heading: "CONCERTS",
     caption: "Whether you're looking for a performance..."
   },
   {
     src: '/img/carousel-2.jpg',
     altText: 'Business professionals at a meetup',
-    heading: 'Meet Ups',
+    heading: 'MEET UPS',
     caption: "or to connect with others in your profession..."
   },
   {
     src: '/img/carousel-3.jpg',
     altText: 'Bicyclists cycling in a pack',
-    heading: 'Activities',
+    heading: 'ACTIVITIES',
     caption: "or to just get outdoors...We've got you covered."
   }
 ];
@@ -33,34 +27,29 @@ class CarouselPanel extends Component {
   constructor(props) {
     super(props);
     this.state = { activeIndex: 0 };
-    this.next = this.next.bind(this);
-    this.previous = this.previous.bind(this);
-    this.goToIndex = this.goToIndex.bind(this);
-    this.onExiting = this.onExiting.bind(this);
-    this.onExited = this.onExited.bind(this);
   }
 
-  onExiting() {
+  onExiting = () => {
     this.animating = true;
   }
 
-  onExited() {
+  onExited = () => {
     this.animating = false;
   }
 
-  next() {
+  next = () => {
     if (this.animating) return;
     const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
   }
 
-  previous() {
+  previous = () => {
     if (this.animating) return;
     const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
   }
 
-  goToIndex(newIndex) {
+  goToIndex = (newIndex) => {
     if (this.animating) return;
     this.setState({ activeIndex: newIndex });
   }

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import './JoinBtn.css';
 import JoinForm from '../JoinForm';
-import SocialBtns from '../SocialBtns';
-import { Container, Modal, ModalFooter, ModalHeader, ModalBody, Button } from 'reactstrap';
+// import SocialBtns from '../SocialBtns';
+import { Modal, ModalHeader, ModalBody, Button } from 'reactstrap';
 
 class JoinBtn extends Component {
   constructor(props) {
@@ -27,9 +27,9 @@ class JoinBtn extends Component {
 
   render() {
     return (
-      <Container className="text-center">
+      <div>
         <Button
-          size="lg"
+          size={this.props.size}
           className="button-primary"
           onClick={this.toggle}>
           Join Community
@@ -40,7 +40,7 @@ class JoinBtn extends Component {
           className={this.props.className}>
           <ModalHeader
             toggle={this.toggle}>
-            Sign Up Options
+            Sign Up
           </ModalHeader>
           <ModalBody>
             <JoinForm
@@ -50,11 +50,11 @@ class JoinBtn extends Component {
               toggle={this.toggle}
             />
           </ModalBody>
-          <ModalFooter>
+          {/* <ModalFooter>
             <SocialBtns />
-          </ModalFooter>
+          </ModalFooter> */}
         </Modal>
-      </Container>
+      </div>
     );
   }
 }
