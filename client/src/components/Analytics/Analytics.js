@@ -29,7 +29,8 @@ class Analytics extends Component {
       cSelected: [],
       eventSelected: this.props.userEvents ? this.props.userEvents[0]._id : '',
       eventData: [],
-      chartData: {}
+      chartData: {},
+      rSelected: 'sex'
     };
     this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
   }
@@ -41,7 +42,9 @@ class Analytics extends Component {
       attendingArray = this.props.userEvents[0].attendingList;
       this.setState({
         eventData: attendingArray
-        })
+      },
+      this.collectChartData(this.state.rSelected, attendingArray)
+      )
     }
   }
 
@@ -57,22 +60,23 @@ class Analytics extends Component {
       if (event._id === e.target.value) {
         attendingArray = event.attendingList;
       }
+    })
     this.setState({
       eventSelected: e.target.value,
       eventData: attendingArray
-      })
-    })
+    }, this.collectChartData(this.state.rSelected, attendingArray))
   }
 
-  collectChartData = (param) => {
+  collectChartData = (param, eventData) => {
     const labels = [];
     const data = [];
     let prev = '';
 
-    let arr = this.state.eventData;
+    let arr = eventData || this.state.eventData;
     if (param == 'age') {
       arr = arr.sort(sort_by(param, false, parseInt));
-      console.log(arr);
+    } else if (param == 'hasChildren') {
+      arr.sort(sort_by(param, true));
     } else {
       arr = arr.sort(sort_by(param, false, function(a){return a.toUpperCase()}));
     }
@@ -138,6 +142,13 @@ class Analytics extends Component {
           }
           prev = arr[i][param];
       }
+      if (labels[0] == true) {
+        labels[0] = 'Yes';
+        labels[1] = 'No';
+      } else if (labels[0] == false) {
+        labels[0] = 'No';
+        labels[1] = 'Yes';
+      }
     }
 
 
@@ -157,7 +168,8 @@ class Analytics extends Component {
           '#B276B2',
           '#DECF3F',
           '#F15854',
-          '#63E7D8'
+          '#63E7D8',
+          '#191970'
           ],
           hoverBackgroundColor: [
             '#4D4D4D',
@@ -169,7 +181,8 @@ class Analytics extends Component {
             '#B276B2',
             '#DECF3F',
             '#F15854',
-            '#63E7D8'
+            '#63E7D8',
+            '#191970'
           ]
         }]
       }
@@ -177,7 +190,6 @@ class Analytics extends Component {
   }
 
   render() {
-
     return (
       <div>
         <Row>
@@ -205,6 +217,7 @@ class Analytics extends Component {
             <Button color="primary" onClick={() => this.onRadioBtnClick('age')} active={this.state.rSelected === 'age'}>Age</Button>
             <Button color="primary" onClick={() => this.onRadioBtnClick('city')} active={this.state.rSelected === 'city'}>Location</Button>
             <Button color="primary" onClick={() => this.onRadioBtnClick('maritalStatus')} active={this.state.rSelected === 'maritalStatus'}>Marital Status</Button>
+            <Button color="primary" onClick={() => this.onRadioBtnClick('hasChildren')} active={this.state.rSelected === 'hasChildren'}>Parent</Button>
           </ButtonGroup>
         </Row>
         <Row>

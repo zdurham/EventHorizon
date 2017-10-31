@@ -11,7 +11,7 @@ const userSeed = [
     firstName: "Brooke",
     lastName: "Goodwin",
     age: 32,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -26,7 +26,7 @@ const userSeed = [
     firstName: "William",
     lastName: "Bell",
     age: 29,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -41,7 +41,7 @@ const userSeed = [
     firstName: "Kelly",
     lastName: "Powell",
     age: 32,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -56,7 +56,7 @@ const userSeed = [
     firstName: "Freddie",
     lastName: "Martinez",
     age: 32,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -71,7 +71,7 @@ const userSeed = [
     firstName: "Lucas",
     lastName: "Hall",
     age: 27,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -86,7 +86,7 @@ const userSeed = [
     firstName: "Olivia",
     lastName: "Butler",
     age: 30,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -101,7 +101,7 @@ const userSeed = [
     firstName: "Samantha",
     lastName: "King",
     age: 29,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -116,7 +116,7 @@ const userSeed = [
     firstName: "Richard",
     lastName: "Hopkins",
     age: 25,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -131,7 +131,7 @@ const userSeed = [
     firstName: "Freddie",
     lastName: "Cox",
     age: 42,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -146,7 +146,7 @@ const userSeed = [
     firstName: "Samantha",
     lastName: "Jones",
     age: 24,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -161,7 +161,7 @@ const userSeed = [
     firstName: "Shannon",
     lastName: "Coleman",
     age: 45,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -176,7 +176,7 @@ const userSeed = [
     firstName: "Mike",
     lastName: "Bell",
     age: 38,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -191,7 +191,7 @@ const userSeed = [
     firstName: "Edward",
     lastName: "Nolan",
     age: 22,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -206,7 +206,7 @@ const userSeed = [
     firstName: "Emma",
     lastName: "Robinson",
     age: 49,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -221,7 +221,7 @@ const userSeed = [
     firstName: "Amber",
     lastName: "Watson",
     age: 24,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -236,7 +236,7 @@ const userSeed = [
     firstName: "Bobby",
     lastName: "Evans",
     age: 62,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -251,7 +251,7 @@ const userSeed = [
     firstName: "Rebecca",
     lastName: "Crawford",
     age: 17,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -266,7 +266,7 @@ const userSeed = [
     firstName: "Matthew",
     lastName: "Vaughn",
     age: 51,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -281,7 +281,7 @@ const userSeed = [
     firstName: "Emily",
     lastName: "Bell",
     age: 35,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -296,7 +296,7 @@ const userSeed = [
     firstName: "Jake",
     lastName: "Boyd",
     age: 27,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -311,7 +311,7 @@ const userSeed = [
     firstName: "Rosie",
     lastName: "Scott",
     age: 28,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -326,7 +326,7 @@ const userSeed = [
     firstName: "Jake",
     lastName: "Barnett",
     age: 33,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -341,7 +341,7 @@ const userSeed = [
     firstName: "Emma",
     lastName: "Price",
     age: 30,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -356,7 +356,7 @@ const userSeed = [
     firstName: "John",
     lastName: "Barnett",
     age: 38,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -371,7 +371,7 @@ const userSeed = [
     firstName: "Paige",
     lastName: "Nolan",
     age: 36,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -386,7 +386,7 @@ const userSeed = [
     firstName: "Peter",
     lastName: "Wood",
     age: 61,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -401,7 +401,7 @@ const userSeed = [
     firstName: "Eva",
     lastName: "Rogers",
     age: 24,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -416,7 +416,7 @@ const userSeed = [
     firstName: "Liam",
     lastName: "Coleman",
     age: 46,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -431,7 +431,7 @@ const userSeed = [
     firstName: "Ashley",
     lastName: "Butler",
     age: 41,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -446,7 +446,7 @@ const userSeed = [
     firstName: "Jeremy",
     lastName: "Johnson",
     age: 33,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -461,7 +461,7 @@ const userSeed = [
     firstName: "Nicole",
     lastName: "Fuller",
     age: 27,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   },
   {
@@ -476,7 +476,7 @@ const userSeed = [
     firstName: "Henrik",
     lastName: "Parker",
     age: 28,
-    sex: "male",
+    sex: "Male",
     createdEvents: []
   },
   {
@@ -503,7 +503,7 @@ const userSeed = [
     firstName: "Tiffany",
     lastName: "Barnett",
     age: 28,
-    sex: "female",
+    sex: "Female",
     createdEvents: []
   }
 ];
