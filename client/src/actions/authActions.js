@@ -39,7 +39,13 @@ export const registerUser = (userData) => {
     // Using an axios post request function from the utils folder
     authRequests.register(userData)
     .then(res => {
-      dispatch(authUserAction(res.data))
+      if (res.data.error) {
+        dispatch(authError(res.data.error))
+      }
+      else {
+        dispatch(authUserAction(res.data))  
+      }
+      
     })
   }
 }

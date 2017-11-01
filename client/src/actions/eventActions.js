@@ -157,7 +157,6 @@ export const upvote = (eventData, userId) => {
   return dispatch => {
     api.upvote(eventData, userId)
       .then(res => {
-        console.log('upvote response', res.data)
         dispatch(upVote(res.data))
       })
   }
@@ -176,7 +175,6 @@ export const unvote = (eventData, userId) => {
   return dispatch => {
     api.unvote(eventData, userId)
       .then(res => {
-        console.log('unvote response', res.data)
         dispatch(unVote(res.data))
       })
   }
