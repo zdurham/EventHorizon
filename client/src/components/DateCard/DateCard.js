@@ -76,6 +76,8 @@ class DateCard extends Component {
       upvote = <FontAwesome disabled='true' className="up-vote" name="thumbs-o-up" style={{cursor: "default"}}></FontAwesome>;
 
       downvote = <FontAwesome disabled='true' className="down-vote" name="thumbs-o-down" style={{cursor: "default"}}></FontAwesome>
+
+      attend = <Button size="sm" className="button-primary" disabled="true"> Attend </Button>;
     }
     else {
       // If user has already clicked to attend, show unattend

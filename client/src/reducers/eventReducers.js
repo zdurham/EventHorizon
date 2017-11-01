@@ -22,7 +22,7 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
       const upArray = state.events.map(event => {
         
         if (event._id === action.eventId) {
-          return action.event
+          event = action.event
         }
 
           return event
@@ -43,7 +43,7 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
     case "DOWNVOTE":
       return { ...state, events: state.events.map(event => {
         if (event._id === action.eventId) {
-           return action.event
+           event = action.event
         }
         return event
       }), userEvents: state.userEvents.map(event => {

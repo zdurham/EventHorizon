@@ -111,7 +111,7 @@ module.exports = {
 
   upvoteEvent: function(req, res) {
     var userId = req.body.userId;
-    db.User.findOneAndUpdate({ _id: userId }, {$push: { userLikes: req.body.eventId }})
+    db.User.findOneAndUpdate({ _id: userId }, {$addToSet: { userLikes: req.body.eventId }})
     .then(user => {
       db.Event.findById({ _id: req.body.eventId })
       .then(event => event.upvoted(userId, function(){
@@ -146,8 +146,6 @@ module.exports = {
     .then(user => {
       db.Event.findById({ _id: req.body.eventId })
       .then(event => event.unvoted(userId, function(){
-          console.log('event', event)
-          console.log('user', user)
         res.json({
           event: event,
           user: user.sanitize()
@@ -164,7 +162,7 @@ module.exports = {
           .then(user => {
             user.attending(req.body.eventId, function() {
               res.json({
-                user: user,
+                user: user.sanitize(),
                 event: event
               })
           })}
