@@ -70,14 +70,59 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
+  // findAll: function(req, res) {
+  //   db.Event
+  //     .find()
+  //     .where('date').gte(Date.now())
+  //     .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents -maritalStatus -hasChildren -attendingEvents')
+  //     .sort({ date: 1, startTime: 1 })
+  //     .then(dbModel => {
+  //       console.log(dbModel);
+  //       res.json(dbModel);
+  //     })
+  //     .catch(err => res.status(422).json(err));
+  // },
+
   findAll: function(req, res) {
     db.Event
-      .find()
-      .where('date').gte(Date.now())
-      .populate('createdBy', '-_id -__v -email -password -isAdvertiser -profile -age -sex -createdEvents -maritalStatus -hasChildren -attendingEvents')
-      .sort({ date: 1, startTime: 1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    .aggregate([
+      { $match : { date : { $gte: Date.now() } } },
+      { $group: {
+        _id: {
+          year: { $year: "$date" },
+          month: { $month: "$date" },
+          day: { $dayOfMonth: "$date" }
+        },
+        events: {
+          $push: {
+            _id: "$_id",
+            name: "$name",
+            genre: "$genre",
+            description: "$description",
+            link: "$link",
+            startTime: "$startTime",
+            endTime: "$endTime",
+            allDay: "$allDay",
+            location: "$location",
+            address: "$address",
+            city: "$city",
+            zipCode: "$zipCode",
+            kidFriendly: "$kidFriendly",
+            petFriendly: "$petFriendly",
+            advert: "$advert",
+            createdBy: "$createdBy",
+            vote: "$vote",
+            attendingList: "$attendingList",
+            control: "$control",
+            state: "$state",
+          }
+        }
+      }
+    }])
+    .then(dbModel => {
+      console.log(JSON.stringify(dbModel, null, 2));
+      res.end();
+    });
   },
 
   findAllByUser: function(req, res) {
