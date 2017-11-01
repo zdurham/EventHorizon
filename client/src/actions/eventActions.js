@@ -78,6 +78,16 @@ function attend(data) {
   }
 }
 
+function unattend(data) {
+  return {
+    type: 'UNATTEND',
+    eventId: data.event._id,
+    userId: data.user._id,
+    user: data.user,
+    event: data.event
+  }
+}
+
 function attendingEvents(data) {
   return {
     type: 'USER_ATTENDING',
@@ -176,6 +186,15 @@ export const attendEvent = (eventId, userId) => {
     api.attendEvent(eventId, userId)
       .then(res => {
         dispatch(attend(res.data))
+      })
+  }
+}
+
+export const unAttendEvent = (eventId, userId) => {
+  return dispatch => {
+    api.attendEvent(eventId, userId)
+      .then(res => {
+        dispatch(unattend(res.data))
       })
   }
 }

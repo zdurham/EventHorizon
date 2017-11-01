@@ -33,7 +33,7 @@ class Profile extends Component {
           </CardText>
           <CardText>
             User Likes
-            <span className="card-stats">- {!this.props.user.userlikes ? 0 : this.props.user.userlikes.length} -</span>
+            <span className="card-stats">- {!this.props.user.userLikes ? 0 : this.props.user.userLikes.length} -</span>
           </CardText>
         </CardBody>
       </Card>

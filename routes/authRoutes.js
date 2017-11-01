@@ -9,11 +9,11 @@ const reqLogin = require('../middleware/reqLogin')
 module.exports = (app, passport) => {
 
   // Login
-  app.post('/login', passport.authenticate('local-login', { failWithError: true }), authControl.login, authControl.error)
+  app.post('/login', passport.authenticate('local-login'), authControl.login, authControl.error)
 
   // Logout
   app.post('/logout', authControl.logout)
 
   // Registration
-  app.post('/register', passport.authenticate('local-signup', { failWithError: true }), authControl.register, authControl.error)
+  app.post('/register', passport.authenticate('local-signup'), authControl.register, authControl.error)
 }

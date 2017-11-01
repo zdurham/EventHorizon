@@ -22,12 +22,12 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
       const upArray = state.events.map(event => {
         
         if (event._id === action.eventId) {
-          event = action.event
+          return action.event
         }
 
           return event
         })
-
+        console.log('upArrar:', upArray);
       // return state with new array
       return { ...state, events: upArray, userEvents: state.userEvents.map(event => {
         if (event._id === action.eventId) {
@@ -41,16 +41,12 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
         return event
       }) }
     case "DOWNVOTE":
-      // check for matching event by Id
-      const downArray = state.events.map(event => {
+      return { ...state, events: state.events.map(event => {
         if (event._id === action.eventId) {
-          event = action.event
+           return action.event
         }
         return event
-      })
-      
-      // return state with new array
-      return { ...state, events: downArray, userEvents: state.userEvents.map(event => {
+      }), userEvents: state.userEvents.map(event => {
         if (event._id === action.eventId) {
           event = action.event
         }
@@ -65,7 +61,7 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
       // return state with new array of events
       return { ...state, events: state.events.map(event => {
         if (event._id === action.eventId) {
-          event = action.event
+          return action.event
         }
         return event
       }),
@@ -90,7 +86,7 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
         return event
       }),
       userAttendingEvents: [...state.userAttendingEvents, action.event],
-      userEvents: state.userEvents && state.userEvents.map(event => {
+      userEvents: state.userEvents.map(event => {
         if (event._id === action.eventId) {
           event = action.event
         }
@@ -98,6 +94,25 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
         return event
       })
     }
+    case "UNATTEND":
+    return { ...state, events: state.events.map(event => {
+      if (event._id === action.eventId) {
+        event = action.event
+      }
+
+      return event
+    }),
+    userAttendingEvents: state.userAttendingEvents.filter(event => {
+      return event._id !== action.eventId
+    }),
+    userEvents: state.userEvents.map(event => {
+      if (event._id === action.eventId) {
+        event = action.event
+      }
+      
+      return event
+    })
+  }
     default:
       return state
   }    

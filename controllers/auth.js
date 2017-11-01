@@ -25,8 +25,8 @@ const auth = {
 
   error: (err, req, res, next) => {
     //handle error
-    console.log('auth error', err)
-    res.status(401).send({message: err})
+    // console.log('auth error', err)
+    res.status(401).send({message: 'You are unauthorized'})
   }
 }
 
