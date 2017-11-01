@@ -23,9 +23,16 @@ function getUser(data) {
   }
 }
 
-function authError(data) {
+function logError(data) {
   return {
-    type: 'AUTH_ERROR',
+    type: 'LOG_ERROR',
+    payload: data
+  }
+}
+
+function regError(data) {
+  return {
+    type: 'REG_ERROR',
     payload: data
   }
 }
@@ -40,7 +47,7 @@ export const registerUser = (userData) => {
     authRequests.register(userData)
     .then(res => {
       if (res.data.error) {
-        dispatch(authError(res.data.error))
+        dispatch(regError(res.data.error))
       }
       else {
         dispatch(authUserAction(res.data))  
@@ -57,7 +64,7 @@ export const loginUser = (userData) => {
     authRequests.login(userData)
     .then(res => {
       if (res.data.error) {
-        dispatch(authError(res.data.error))
+        dispatch(logError(res.data.error))
       }
       else {
         dispatch(authUserAction(res.data))
@@ -84,7 +91,7 @@ export const logoutUser = () => {
 // Get User Action
 export const getAuthUser = () => {
   return dispatch => {
-
+    
   }
 
 };
