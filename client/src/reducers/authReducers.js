@@ -15,6 +15,8 @@ export function authUser(state = {}, action) {
       return {...state, user: action.user}
     case "ATTEND":
       return {...state, user: action.user}
+    case "UNATTEND":
+      return {...state, user: action.user}
     default:
       return state
   }
