@@ -22,12 +22,19 @@ class LogInForm extends Component {
       email: this.state.values.email,
       password: this.state.values.password
     })
-    this.props.toggle()
+    
+    if (this.props.user) {
+      this.props.toggle()  
+    }
+    else {
+      return
+    }
   }
 
   render() {
     return (
       <AvForm id="login-form" onValidSubmit={this.handleValidSubmit}>
+      {this.props.error && <p className='error' >{this.props.error}</p>}
         <AvGroup>
           <Label for="login-email">Email</Label>
           <AvInput
@@ -59,4 +66,9 @@ class LogInForm extends Component {
   }
 }
 
-export default withRouter(connect(null,  { loginUser })(LogInForm));
+const mapStateToProps = state => ({
+  error: state.errors ? state.errors.authError : undefined,
+  isAuth: state.authUser ? state.authUser.isAuthenticated : undefined
+})
+
+export default withRouter(connect(mapStateToProps,  { loginUser})(LogInForm));

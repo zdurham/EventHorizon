@@ -61,11 +61,7 @@ module.exports = {
   remove: function(req, res) {
     db.Event
       .findOneAndRemove({ _id: req.body.eventId }, (err, data) => {
-        // db.Event.find()
-          // .then(data => {
-
-            res.json(data)
-          // })
+        res.json(data)
       })
       .catch(err => res.status(422).json(err));
   },
@@ -115,7 +111,7 @@ module.exports = {
 
   upvoteEvent: function(req, res) {
     var userId = req.body.userId;
-    db.User.findOneAndUpdate({ _id: userId }, {$push: { userLikes: req.body.eventId }})
+    db.User.findOneAndUpdate({ _id: userId }, {$addToSet: { userLikes: req.body.eventId }})
     .then(user => {
       db.Event.findById({ _id: req.body.eventId })
       .then(event => event.upvoted(userId, function(){
@@ -166,7 +162,7 @@ module.exports = {
           .then(user => {
             user.attending(req.body.eventId, function() {
               res.json({
-                user: user,
+                user: user.sanitize(),
                 event: event
               })
           })}

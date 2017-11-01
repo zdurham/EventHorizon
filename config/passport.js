@@ -79,10 +79,10 @@ passport.use('local-login', new LocalStrategy({
           return errHandler(err);
           }
         if(!user) {
-          return done(null, false, {errMessage: 'Email not found, user does not exist. Please signup on the main page.'});
+          return done(null, false, { message: 'Email not found.'});
           }
         if (!user.validPassword(password)) {
-          return done(null, false, err = 'Your password is invalid');          
+          return done(null, false, { message: 'Your password is invalid.'}); 
           
         }
       return done(null, user)

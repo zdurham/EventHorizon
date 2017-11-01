@@ -42,7 +42,7 @@ class Profile extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.authUser.user ? state.authUser.user : {}
+  user: state.authUser ? state.authUser.user : {}
 });
 
 export default connect(mapStateToProps)(Profile);

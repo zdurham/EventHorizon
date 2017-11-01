@@ -1,18 +1,17 @@
 import { authUser } from './authReducers'
 import { events } from './eventReducers'
+import { errors } from './errReducers'
 import { combineReducers } from 'redux'
 
 const appReducers = combineReducers({
   authUser,
-  events
+  events,
+  errors
 })
 
 const rootReducer = (state, action) => {
   if (action.type === 'USER_LOGOUT') {
-    state.authUser = undefined
-    state.events.userEvents = []
-    state.events.userAttendingEvents = []
-    state.events.userCreatedEvents = []
+    state = undefined
   }
 
   return appReducers(state, action)
