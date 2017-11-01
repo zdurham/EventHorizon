@@ -23,6 +23,13 @@ function getUser(data) {
   }
 }
 
+function authError(data) {
+  return {
+    type: 'AUTH_ERROR',
+    payload: data
+  }
+}
+
 /// ------------------------------------
 // ACTIONS
 
@@ -43,8 +50,14 @@ export const loginUser = (userData) => {
     // Using an axios post request function from the utils folder
     authRequests.login(userData)
     .then(res => {
+      if (res.data.error) {
+        dispatch(authError(res.data.error))
+      }
+      else {
+        dispatch(authUserAction(res.data))
+      }
       // console.log('response data', res.data)
-      dispatch(authUserAction(res.data))
+      
 
     })
   }

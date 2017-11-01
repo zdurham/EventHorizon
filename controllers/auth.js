@@ -12,7 +12,8 @@ const auth = {
         return next(err)
       }
       else {
-        return res.send(console.log('user is logged out'))
+        req.logout()
+        res.end()
       }
     })
   },

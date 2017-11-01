@@ -61,11 +61,7 @@ module.exports = {
   remove: function(req, res) {
     db.Event
       .findOneAndRemove({ _id: req.body.eventId }, (err, data) => {
-        // db.Event.find()
-          // .then(data => {
-
-            res.json(data)
-          // })
+        res.json(data)
       })
       .catch(err => res.status(422).json(err));
   },
@@ -150,6 +146,8 @@ module.exports = {
     .then(user => {
       db.Event.findById({ _id: req.body.eventId })
       .then(event => event.unvoted(userId, function(){
+          console.log('event', event)
+          console.log('user', user)
         res.json({
           event: event,
           user: user.sanitize()

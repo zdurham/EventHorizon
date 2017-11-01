@@ -1,1 +1,6 @@
-
+.error {
+  text-align: center;
+  background-color: #ffcccc;
+  color: red;
+  border-radius: 4px; 
+}
