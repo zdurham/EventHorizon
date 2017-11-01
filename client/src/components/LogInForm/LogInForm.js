@@ -67,7 +67,7 @@ class LogInForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  error: state.errors ? state.errors.authError : undefined,
+  error: state.errors ? state.errors.logError : undefined,
   isAuth: state.authUser ? state.authUser.isAuthenticated : undefined
 })
 

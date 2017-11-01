@@ -136,7 +136,7 @@ class SignUpForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  error: state.errors ? state.errors.authError : undefined,
+  error: state.errors ? state.errors.regError : undefined,
   isAuth: state.authUser ? state.authUser.isAuthenticated : undefined
 })
 
