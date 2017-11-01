@@ -27,7 +27,6 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
 
           return event
         })
-        console.log('upArrar:', upArray);
       // return state with new array
       return { ...state, events: upArray, userEvents: state.userEvents.map(event => {
         if (event._id === action.eventId) {
