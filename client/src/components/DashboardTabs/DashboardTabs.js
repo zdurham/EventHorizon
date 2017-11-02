@@ -16,8 +16,13 @@ class DashboardTabs extends Component {
     };
   }
   componentDidMount = () => {
-    this.props.getUserEvents(this.props.user._id)
-    this.props.getUserAttending(this.props.user._id)
+    if (this.props.user.isAdvertiser) {
+      this.setState({
+        activeTab: '3'
+      });
+    };
+    this.props.getUserEvents(this.props.user._id);
+    this.props.getUserAttending(this.props.user._id);
   }
 
   toggle(tab) {
@@ -31,6 +36,7 @@ class DashboardTabs extends Component {
     return (
       <div>
         <Nav tabs>
+          {!this.props.user.isAdvertiser ? (
           <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '1' })}
@@ -39,6 +45,9 @@ class DashboardTabs extends Component {
               Attending
             </NavLink>
           </NavItem>
+          ) : (
+            null
+          )}
           <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '2' })}
@@ -48,7 +57,7 @@ class DashboardTabs extends Component {
             </NavLink>
           </NavItem>
           {this.props.user.isAdvertiser ? (
-            <NavItem>
+          <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '3' })}
               onClick={() => { this.toggle('3'); }}
@@ -59,9 +68,9 @@ class DashboardTabs extends Component {
           ) : (
             null
           )}
-          
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
+          {!this.props.user.isAdvertiser ? (
           <TabPane tabId="1">
             <Row>
               <Col sm="12">
@@ -77,6 +86,9 @@ class DashboardTabs extends Component {
               </Col>
             </Row>
           </TabPane>
+          ) : (
+            null
+          )}
           <TabPane tabId="2">
             <Row>
               <Col sm="12">
@@ -93,13 +105,13 @@ class DashboardTabs extends Component {
             </Row>
           </TabPane>
           {this.props.user.isAdvertiser ? (
-            <TabPane tabId="3">
+          <TabPane tabId="3">
             <Row>
               <Col sm="12">
                 {(!this.props.userEvents || this.props.userEvents.length === 0)? (
                   <h5 className="tab-message">You haven't added any events</h5>
                 ) : (
-                    <Analytics />
+                  <Analytics />
                 )
                 }
               </Col>
@@ -108,7 +120,6 @@ class DashboardTabs extends Component {
           ) : (
             null
           )}
-          
         </TabContent>
       </div>
     );

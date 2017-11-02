@@ -23,10 +23,14 @@ class Profile extends Component {
             {this.props.user.username}
           </CardTitle>
           <hr className="line-style"/>
-          <CardText>
-            Events Attending
-            <span className="card-stats">- {!this.props.user.attendingEvents ? 0 : this.props.user.attendingEvents.length} -</span>
-          </CardText>
+          {!this.props.user.isAdvertiser ? (
+            <CardText>
+              Events Attending
+              <span className="card-stats">- {!this.props.user.attendingEvents ? 0 : this.props.user.attendingEvents.length} -</span>
+            </CardText>
+          ) : (
+            null
+          )}
           <CardText>
             Events Added
             <span className="card-stats">- {!this.props.user.createdEvents ? 0 : this.props.user.createdEvents.length} -</span>

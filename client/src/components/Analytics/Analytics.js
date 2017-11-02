@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup, Form, FormGroup, Label, Input } from 'reactstrap';
+import './Analytics.css';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
-import {Pie} from 'react-chartjs-2';
-import { Row, Col } from 'reactstrap';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Pie, defaults } from 'react-chartjs-2';
 import { getUserEvents } from '../../actions/eventActions';
 import moment from 'moment';
 
+// Chart default values
+defaults.global.defaultFontColor = '#212529';
+defaults.global.defaultFontFamily = "'Quicksand', sans-serif";
+
 const sort_by = (field, reverse, primer) => {
 
-   var key = primer ?
-       function(x) {return primer(x[field])} :
-       function(x) {return x[field]};
+  let key = primer ?
+    function(x) {return primer(x[field])} :
+    function(x) {return x[field]};
 
-   reverse = !reverse ? 1 : -1;
+  reverse = !reverse ? 1 : -1;
 
-   return function (a, b) {
-       return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
-     }
+  return function (a, b) {
+    return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+  }
 }
-
 
 class Analytics extends Component {
   constructor (props) {
@@ -73,22 +75,22 @@ class Analytics extends Component {
     let prev = '';
 
     let arr = eventData || this.state.eventData;
-    if (param == 'age') {
+    if (param === 'age') {
       arr = arr.sort(sort_by(param, false, parseInt));
-    } else if (param == 'hasChildren') {
+    } else if (param === 'hasChildren') {
       arr.sort(sort_by(param, true));
     } else {
       arr = arr.sort(sort_by(param, false, function(a){return a.toUpperCase()}));
     }
 
-    if (param == 'age') {
-      for ( var i = 0; i < arr.length; i++ ) {
+    if (param === 'age') {
+      for ( let i = 0; i < arr.length; i++ ) {
           if ( '18 and under' !== prev && arr[i][param] < 19) {
               labels.push('18 and under');
               data.push(1);
               prev = '18 and under';
           } else {
-              data[data.length-1]++;
+              data[data.length - 1]++;
           }
 
           if ( '19-29' !== prev && arr[i][param] < 30 && arr[i][param] > 18) {
@@ -96,7 +98,7 @@ class Analytics extends Component {
               data.push(1);
               prev = '19-29';
           } else {
-              data[data.length-1]++;
+              data[data.length - 1]++;
           }
 
           if ( '30-39' !== prev && arr[i][param] < 40 && arr[i][param] > 29) {
@@ -104,7 +106,7 @@ class Analytics extends Component {
               data.push(1);
               prev = '30-39';
           } else {
-              data[data.length-1]++;
+              data[data.length - 1]++;
           }
 
           if ( '40-49' !== prev && arr[i][param] < 50 && arr[i][param] > 39) {
@@ -112,7 +114,7 @@ class Analytics extends Component {
               data.push(1);
               prev = '40-49';
           } else {
-              data[data.length-1]++;
+              data[data.length - 1]++;
           }
 
           if ( '50-64' !== prev && arr[i][param] < 65 && arr[i][param] > 49) {
@@ -120,7 +122,7 @@ class Analytics extends Component {
               data.push(1);
               prev = '60-64';
           } else {
-              data[data.length-1]++;
+              data[data.length - 1]++;
           }
 
           if ( '65 and over' !== prev && arr[i][param] > 64) {
@@ -128,30 +130,28 @@ class Analytics extends Component {
               data.push(1);
               prev = '65 and over';
           } else {
-              data[data.length-1]++;
+              data[data.length - 1]++;
           }
 
       }
     } else {
-      for ( var i = 0; i < arr.length; i++ ) {
+      for ( let i = 0; i < arr.length; i++ ) {
           if ( arr[i][param] !== prev ) {
               labels.push(arr[i][param]);
               data.push(1);
           } else {
-              data[data.length-1]++;
+              data[data.length - 1]++;
           }
           prev = arr[i][param];
       }
-      if (labels[0] == true) {
+      if (labels[0] === true) {
         labels[0] = 'Yes';
         labels[1] = 'No';
-      } else if (labels[0] == false) {
+      } else if (labels[0] === false) {
         labels[0] = 'No';
         labels[1] = 'Yes';
       }
     }
-
-
 
     this.setState({
       chartData: {
@@ -159,30 +159,24 @@ class Analytics extends Component {
         datasets: [{
           data: data,
           backgroundColor: [
-          '#4D4D4D',
-          '#5DA5DA',
-          '#FAA43A',
-          '#60BD68',
-          '#F17CB0',
-          '#B2912F',
-          '#B276B2',
-          '#DECF3F',
-          '#F15854',
-          '#63E7D8',
-          '#191970'
+            'rgba(62, 63, 106, 0.85)',
+            'rgba(47, 123, 153, 0.85)',
+            'rgba(29, 185, 172, 0.85)',
+            'rgba(92, 198, 135, 0.85)',
+            'rgba(174, 210, 100, 0.85)',
+            'rgba(236, 219, 95, 0.85)',
+            'rgba(254, 193, 46, 0.85)',
+            'rgba(253, 140, 48, 0.85)',
           ],
           hoverBackgroundColor: [
-            '#4D4D4D',
-            '#5DA5DA',
-            '#FAA43A',
-            '#60BD68',
-            '#F17CB0',
-            '#B2912F',
-            '#B276B2',
-            '#DECF3F',
-            '#F15854',
-            '#63E7D8',
-            '#191970'
+            'rgb(62, 63, 106)',
+            'rgb(47, 123, 153)',
+            'rgb(29, 185, 172)',
+            'rgb(92, 198, 135)',
+            'rgb(174, 210, 100)',
+            'rgb(236, 219, 95)',
+            'rgb(254, 193, 46)',
+            'rgb(253, 140, 48)',
           ]
         }]
       }
@@ -190,39 +184,55 @@ class Analytics extends Component {
   }
 
   render() {
+    // Pie chart options
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: {
+        position: 'bottom',
+        labels: {
+          boxWidth: 12,
+          fontSize: 14
+        }
+      },
+      tooltips: {
+        bodyFontSize: 14,
+        bodyFontColor: '#f5f5f5'
+      }
+    };
     return (
-      <div>
-        <Row>
-
+      <div className="analytics-container">
+        <h4>Demographics</h4>
+        <Form>
           <FormGroup>
-          <Label for="exampleSelectMulti">Your Events</Label>
-          <Input onChange={this.onChange}  type="select" name="selectMulti" id="exampleSelectMulti">
-            {(!this.props.userEvents || this.props.userEvents.length === 0)? (
-              <option>You have no events</option>
-            ) : (
+            <Label for="evt-select">Select Event</Label>
+            <Input onChange={this.onChange}  type="select" id="evt-select">
+              {(!this.props.userEvents || this.props.userEvents.length === 0)? (
+                <option>You have no events</option>
+              ) : (
                 this.props.userEvents.map(event => (
                   <option value={event._id}>
-                    {moment(event.date).format('ddd, MMMM D')} - {event.name}
+                    {moment(event.date).format('MM/DD/YYYY')} - {event.name}
                   </option>
                 )
               )
-            )
-            }
-
-          </Input>
-        </FormGroup>
-
-          <ButtonGroup>
-            <Button color="primary" onClick={() => this.onRadioBtnClick('sex')} active={this.state.rSelected === 'sex'}>Gender</Button>
-            <Button color="primary" onClick={() => this.onRadioBtnClick('age')} active={this.state.rSelected === 'age'}>Age</Button>
-            <Button color="primary" onClick={() => this.onRadioBtnClick('city')} active={this.state.rSelected === 'city'}>Location</Button>
-            <Button color="primary" onClick={() => this.onRadioBtnClick('maritalStatus')} active={this.state.rSelected === 'maritalStatus'}>Marital Status</Button>
-            <Button color="primary" onClick={() => this.onRadioBtnClick('hasChildren')} active={this.state.rSelected === 'hasChildren'}>Parent</Button>
-          </ButtonGroup>
-        </Row>
-        <Row>
-          <Pie data={this.state.chartData} />
-        </Row>
+            )}
+            </Input>
+          </FormGroup>
+        </Form>
+        <div className="button-group">
+          <Button className="button-primary" size="sm" onClick={() => this.onRadioBtnClick('sex')} active={this.state.rSelected === 'sex'}>Gender</Button>
+          <Button className="button-primary" size="sm" onClick={() => this.onRadioBtnClick('age')} active={this.state.rSelected === 'age'}>Age</Button>
+          <Button className="button-primary" size="sm" onClick={() => this.onRadioBtnClick('city')} active={this.state.rSelected === 'city'}>Location</Button>
+          <Button className="button-primary" size="sm" onClick={() => this.onRadioBtnClick('maritalStatus')} active={this.state.rSelected === 'maritalStatus'}>Status</Button>
+          <Button className="button-primary" size="sm" onClick={() => this.onRadioBtnClick('hasChildren')} active={this.state.rSelected === 'hasChildren'}>Parent</Button>
+        </div>
+        <div className="chart-container" style={{position: 'relative', height: '50vh'}}>
+          <Pie
+            data={this.state.chartData}
+            options={options}
+          />
+        </div>
       </div>
     );
   }

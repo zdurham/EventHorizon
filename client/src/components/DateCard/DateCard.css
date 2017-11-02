@@ -67,7 +67,6 @@
   font-size: 14px;
   color: #841983;
   border-bottom: 1px solid transparent;
-  transition: font-weight 0.4s ease-in-out;
 }
 
 .collapse .card-link:hover {
