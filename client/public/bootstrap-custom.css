@@ -467,6 +467,17 @@ h6, .h6 {
   font-size: 1rem;
 }
 
+/* New section */
+@media (max-width: 575px) {
+  h4, .h4 {
+    font-size: 1.3rem;
+  }
+
+  h5, .h5 {
+    font-size: 1.15rem;
+  }
+}
+
 .lead {
   font-size: 1.25rem;
   font-weight: 300;
