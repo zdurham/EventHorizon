@@ -4,7 +4,7 @@ import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, 
 import { NavLink as RRLink } from 'react-router-dom';
 import LogInBtn from '../LogInBtn';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../actions/authActions';
+import { logoutUser, toggleErr } from '../../actions/authActions';
 import { withRouter } from 'react-router';
 
 
@@ -20,6 +20,7 @@ class navbarInstance extends Component {
     this.setState({
       isOpen: !this.state.isOpen,
     });
+    this.props.toggleErr()
   }
 
   login = () => {
@@ -84,4 +85,4 @@ const mapStateToProps = state => ({
   authenticated: state.authUser.isAuthenticated
 })
 
-export default withRouter(connect(mapStateToProps, { logoutUser })(navbarInstance));
+export default withRouter(connect(mapStateToProps, { logoutUser, toggleErr })(navbarInstance));

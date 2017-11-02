@@ -3,6 +3,8 @@ import './LogInBtn.css';
 import LogInForm from '../LogInForm';
 // import SocialBtns from '../SocialBtns';
 import { Modal, ModalHeader, ModalBody, NavItem, NavLink } from 'reactstrap';
+import { toggleErr } from '../../actions/authActions'
+import { connect } from 'react-redux'
 
 class LogInBtn extends Component {
   constructor(props) {
@@ -19,6 +21,7 @@ class LogInBtn extends Component {
     this.setState({
       modal: !this.state.modal
     });
+    this.props.toggleErr()
   }
 
   handleInputChange = event => {
@@ -56,4 +59,4 @@ class LogInBtn extends Component {
   }
 }
 
-export default LogInBtn;
+export default connect(null, { toggleErr })(LogInBtn);

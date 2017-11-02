@@ -6,6 +6,8 @@ export function errors(state = {}, action) {
       return { ...state, regError: action.payload }
     case "AUTH_USER":
       return { ...state, logError: undefined, regError: undefined }
+    case "REMOVE_ERROR":
+      return { ...state, logError: undefined, regError: undefined }
     default:
       return state
   }
