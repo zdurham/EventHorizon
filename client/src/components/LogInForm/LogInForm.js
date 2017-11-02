@@ -8,7 +8,7 @@ import { loginUser } from '../../actions/authActions';
 
 class LogInForm extends Component {
   constructor(props) {
-    super(props) 
+    super(props)
     this.state = {
       email: '',
       password: ''
@@ -22,9 +22,9 @@ class LogInForm extends Component {
       email: this.state.values.email,
       password: this.state.values.password
     })
-    
+
     if (this.props.isAuth) {
-      this.props.toggle()    
+      this.props.toggle()
     }
     else {
       return
