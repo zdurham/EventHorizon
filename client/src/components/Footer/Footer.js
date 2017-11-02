@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import './Footer.css';
 import { Container, Row, Col } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 
 class Footer extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     let authLinks;
     if (this.props.authenticated === true) {
       authLinks =
       <span>
-        <a href="/new_event">Add Event</a>
-        <a href="/dashboard">Dashboard</a>
+        <NavLink to="/new_event">Add Event</NavLink>
+        <NavLink to="/dashboard">Dashboard</NavLink>
       </span>
     }
     return (
@@ -33,10 +31,9 @@ class Footer extends Component {
             <Col xs="12" md="4">
               <h5>Site Map</h5>
               <hr className="line-style"/>
-              <a href="/">Home</a>
-              <a href="/events">View Events</a>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/events">View Events</NavLink>
               {authLinks}
-              {/* <a href="/advertise">Advertise</a> */}
             </Col>
             <Col xs="12" md="4">
               <h5>Social</h5>

@@ -9,6 +9,16 @@ class Profile extends Component {
   }
 
   render() {
+    let userEventLikes = 0
+    let userLikes = this.props.user.userLikes.length
+    
+    this.props.userEvents.forEach(event => {
+      userEventLikes += event.vote.positive.length
+    })
+    userLikes = userEventLikes
+    
+
+    
     return (
       <Card className="profile-card" key={this.props.user._id} >
         <CardImg
@@ -26,18 +36,18 @@ class Profile extends Component {
           {!this.props.user.isAdvertiser ? (
             <CardText>
               Events Attending
-              <span className="card-stats">- {!this.props.user.attendingEvents ? 0 : this.props.user.attendingEvents.length} -</span>
+              <span className="card-stats">- {this.props.user.attendingEvents.length} -</span>
             </CardText>
           ) : (
             null
           )}
           <CardText>
             Events Added
-            <span className="card-stats">- {!this.props.user.createdEvents ? 0 : this.props.user.createdEvents.length} -</span>
+            <span className="card-stats">- {this.props.user.createdEvents.length} -</span>
           </CardText>
           <CardText>
-            User Likes
-            <span className="card-stats">- {!this.props.user.userLikes ? 0 : this.props.user.userLikes.length} -</span>
+            Total Event Likes
+            <span className="card-stats">- {userLikes} -</span>
           </CardText>
         </CardBody>
       </Card>
@@ -46,7 +56,8 @@ class Profile extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.authUser ? state.authUser.user : {}
+  user: state.authUser ? state.authUser.user : {},
+  userEvents: state.events.userEvents
 });
 
 export default connect(mapStateToProps)(Profile);

@@ -79,6 +79,9 @@ class DateCard extends Component {
 
       attend = '';
     }
+    else if (this.props.user.isAdvertiser) {
+      attend = ''
+    }
     else {
       // If user has already clicked to attend, show unattend
       if (this.props.event.attendingList.includes(this.props.user._id)) {
