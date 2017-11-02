@@ -105,6 +105,7 @@ class DateCard extends Component {
           <CardSubtitle tag="h5">{this.props.event.location}</CardSubtitle>
           <CardText >
             <span>
+              <FontAwesome name="calendar-check-o"></FontAwesome>
               {this.eventDateTime(this.props.event.date, this.props.event.startTime, this.props.event.endTime)}
             </span>
           </CardText>
