@@ -34,6 +34,7 @@ class navbarInstance extends Component {
   }
 
   closeNavbar = () => {
+    window.scrollTo(0, 0);
     if (this.state.isOpen) {
       this.toggle();
     }

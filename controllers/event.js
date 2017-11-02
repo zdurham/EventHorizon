@@ -26,7 +26,6 @@ module.exports = {
               if (err) {
                 res.send(err);
               } else {
-                console.log(doc)
                 res.json(doc);
               }
             });
@@ -47,7 +46,6 @@ module.exports = {
               if (err) {
                 res.send(err);
               } else {
-                console.log(doc)
                 res.json(doc);
               }
             });
@@ -115,7 +113,6 @@ module.exports = {
     .then(user => {
       db.Event.findById({ _id: req.body.eventId })
       .then(event => event.upvoted(userId, function(){
-        console.log(user.sanitize())
         res.json({
           event: event,
           user: user.sanitize()
@@ -147,7 +144,6 @@ module.exports = {
     .then(user => {
       db.Event.findById({ _id: req.body.eventId })
       .then(event => event.unvoted(userId, function(){
-        console.log(user.sanitize())
         res.json({
           user: user.sanitize(),
           event: event

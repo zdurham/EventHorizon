@@ -78,8 +78,12 @@ button:hover {
   color: #637f33;
 }
 
-.section-title {
-  margin-bottom: 40px;
+.section-title, .section-subtitle {
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  margin-top: 40px;
 }
 
 #search-form .button-primary {
