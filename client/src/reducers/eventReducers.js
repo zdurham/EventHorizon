@@ -38,7 +38,13 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
           event = action.event
         }
         return event
-      }) }
+      }), searchResult: state.searchResult.map(event => {
+        if (event._id === action.eventId) {
+          event = action.event
+        }
+        return event
+      })
+    }
     case "DOWNVOTE":
       return { ...state, events: state.events.map(event => {
         if (event._id === action.eventId) {
@@ -55,7 +61,13 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
           event = action.event
         }
         return event
-      }) }
+      }), searchResult: state.searchResult.map(event => {
+        if (event._id === action.eventId) {
+          event = action.event
+        }
+        return event
+      }) 
+    }
     case "UNVOTE":
       // return state with new array of events
       return { ...state, events: state.events.map(event => {
@@ -70,6 +82,11 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
         }
         return event
       }), userAttendingEvents: state.userAttendingEvents.map(event => {
+        if (event._id === action.eventId) {
+          event = action.event
+        }
+        return event
+      }), searchResult: state.searchResult.map(event => {
         if (event._id === action.eventId) {
           event = action.event
         }
@@ -91,6 +108,12 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
         }
         
         return event
+      }),
+      searchResult: state.searchResult.map(event => {
+        if (event._id === action.eventId) {
+          event = action.event
+        }
+        return event
       })
     }
     case "UNATTEND":
@@ -109,6 +132,12 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
         event = action.event
       }
       
+      return event
+    }),
+    searchResult: state.searchResult.map(event => {
+      if (event._id === action.eventId) {
+        event = action.event
+      }
       return event
     })
   }
