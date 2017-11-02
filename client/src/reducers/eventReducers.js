@@ -5,7 +5,7 @@ export function events(state = {events: [], searchResult: [], userAttendingEvent
   
   switch(action.type) {
     case "EVENT_CREATED":
-      return {...state, userEvents: [...state.userEvents, action.payload] }
+      return {...state, userEvents: [...state.userEvents, action.payload], events: [...state.events, action.payload] }
     case "USER_EVENTS":
       return {...state, userEvents: action.payload }
     case "ALL_EVENTS":
