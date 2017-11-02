@@ -70,7 +70,7 @@ class navbarInstance extends Component {
     return (
       <Navbar className='fixed-top' color="faded" light expand="lg">
         <Container>
-          <NavbarBrand onClick={this.closeNavbar} tag={RRLink} to="/">CommunityCal</NavbarBrand>
+          <NavbarBrand onClick={this.closeNavbar} tag={RRLink} to="/">EventHorizon</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             {dynamicNav}
