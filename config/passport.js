@@ -46,7 +46,7 @@ module.exports = function(passport) {
 
         // check to see if theres already a user with that email
         if (user) {
-            return done(null, false, { message: 'That email is already taken.'});
+            return done(null, false, { message: 'That email is already taken'});
         } else {
           // if there is no user with that email
           // create the user
@@ -59,7 +59,7 @@ module.exports = function(passport) {
           // save the user
           newUser.save(function(err) {
               if (err)
-                  throw err;
+                throw err;
               return done(null, newUser);
           });
         }
@@ -79,14 +79,13 @@ passport.use('local-login', new LocalStrategy({
           return errHandler(err);
           }
         if(!user) {
-          return done(null, false, { message: 'Email not found.'});
+          return done(null, false, { message: 'Email not found'});
           }
         if (!user.validPassword(password)) {
-          return done(null, false, { message: 'Your password is invalid.'}); 
-          
+          return done(null, false, { message: 'Your password is invalid'});
         }
       return done(null, user)
-                
+
     });
   }));
 }

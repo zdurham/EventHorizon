@@ -1,6 +1,8 @@
 .error {
   text-align: center;
   background-color: #ffcccc;
-  color: red;
-  border-radius: 4px; 
+  color: crimson;
+  border-radius: 4px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
