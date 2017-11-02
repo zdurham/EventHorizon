@@ -31,7 +31,7 @@ class About extends Component {
               size="lg"
               className="button-primary"
               onClick={this.handleOnClick}>
-              View My Dashboard
+              View Dashboard
             </Button>
           )}
         </Container>

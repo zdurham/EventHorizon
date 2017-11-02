@@ -29,7 +29,7 @@ class JumboPanel extends Component {
             <Button
               className="button-primary"
               onClick={this.handleOnClick}>
-              View My Dashboard
+              View Dashboard
             </Button>
           )}
         </Container>

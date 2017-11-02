@@ -70,7 +70,7 @@ class DateCard extends Component {
     let downvote = <FontAwesome onClick={() => this.clickDownvote(this.props.event._id, this.props.user._id)} className="down-vote" name="thumbs-o-down"></FontAwesome>;
 
     // Do some checks to see if the user is logged in
-    if (!this.props.user) {
+    if (!this.props.user || this.props.user.isAdvertiser) {
 
       upvote = <FontAwesome disabled='true' className="up-vote" name="thumbs-o-up" style={{cursor: "default"}}></FontAwesome>;
 
@@ -78,7 +78,7 @@ class DateCard extends Component {
 
       attend = '';
     }
-    else if (this.props.user.isAdvertiser) {
+    else if (this.props.user && this.props.user.isAdvertiser) {
       attend = ''
     }
     else {
