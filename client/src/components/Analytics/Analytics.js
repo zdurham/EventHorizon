@@ -81,8 +81,6 @@ class Analytics extends Component {
       }
     })
 
-
-    let arr = eventData || this.state.eventData;
     if (param === 'age') {
       arr = arr.sort(sort_by(param, false, parseInt));
     } else if (param === 'hasChildren') {
