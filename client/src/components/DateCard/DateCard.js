@@ -108,6 +108,15 @@ class DateCard extends Component {
               {this.eventDateTime(this.props.event.date, this.props.event.startTime, this.props.event.endTime)}
             </span>
           </CardText>
+          {this.props.attendees ? (
+            <CardText>
+              <span>
+                Total Attendees: {this.props.event.attendingList.length}
+              </span>
+            </CardText>
+          ) : (
+            null
+          )}
           <CardText>
             {
               (this.props.event.allDay === true) ?
