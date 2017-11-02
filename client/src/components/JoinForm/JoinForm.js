@@ -33,7 +33,14 @@ class SignUpForm extends Component {
         firstName: this.state.values.firstName,
         lastName: this.state.values.lastName
       })
-      this.props.toggle()
+
+      if (this.props.isAuth) {
+        this.props.toggle()
+      }
+      else {
+        return
+      }
+      
     }
     else {
       console.log("The passwords don't match")
@@ -43,6 +50,7 @@ class SignUpForm extends Component {
   render() {
     return(
       <AvForm id="join-form" onValidSubmit={this.handleValidSubmit}>
+      {this.props.error && <p className='error' >{this.props.error}</p>}
         <Row>
           <Col xs="12" sm="6">
             <AvGroup>
@@ -127,10 +135,9 @@ class SignUpForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  registerUser() {
-    dispatch(registerUser())
-  }
+const mapStateToProps = state => ({
+  error: state.errors ? state.errors.regError : undefined,
+  isAuth: state.authUser ? state.authUser.isAuthenticated : undefined
 })
 
-export default withRouter(connect(null, { registerUser })(SignUpForm));
+export default withRouter(connect(mapStateToProps, { registerUser })(SignUpForm));

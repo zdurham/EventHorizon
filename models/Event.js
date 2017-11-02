@@ -75,7 +75,7 @@ EventSchema.methods.attending = function attending(user, cb) {
 
     // Upvote
     this.vote.positive.addToSet(user);
-    User.findOneAndUpdate({ _id: user}, {$push: { userLikes: this._id }})
+    // User.findOneAndUpdate({ _id: user}, {$push: { userLikes: this._id }})
 
     // If callback fn, save and return
     if (2 === arguments.length) {
@@ -99,7 +99,7 @@ EventSchema.methods.attending = function attending(user, cb) {
   EventSchema.methods.unvote = function unvote(user, fn) {
     this.vote.negative.pull(user);
     this.vote.positive.pull(user);
-    User.findOneAndUpdate({ _id: user}, {$pull: { userLikes: this._id }})
+    // User.findOneAndUpdate({ _id: user}, {$pull: { userLikes: this._id }})
 
     // If callback fn, save and return
     if (2 === arguments.length) {

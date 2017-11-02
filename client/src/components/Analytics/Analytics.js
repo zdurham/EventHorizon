@@ -73,6 +73,14 @@ class Analytics extends Component {
     const labels = [];
     const data = [];
     let prev = '';
+    let unfilteredArray = eventData || this.state.eventData;
+    let arr = [];
+    unfilteredArray.forEach(function(user) {
+      if (param in user) {
+        arr.push(user);
+      }
+    })
+
 
     let arr = eventData || this.state.eventData;
     if (param === 'age') {

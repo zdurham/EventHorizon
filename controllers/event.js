@@ -111,10 +111,11 @@ module.exports = {
 
   upvoteEvent: function(req, res) {
     var userId = req.body.userId;
-    db.User.findOneAndUpdate({ _id: userId }, {$addToSet: { userLikes: req.body.eventId }})
+    db.User.findOneAndUpdate({ _id: userId }, {$push: { userLikes: req.body.eventId }}, {new: true})
     .then(user => {
       db.Event.findById({ _id: req.body.eventId })
       .then(event => event.upvoted(userId, function(){
+        console.log(user.sanitize())
         res.json({
           event: event,
           user: user.sanitize()
@@ -127,7 +128,7 @@ module.exports = {
 
   downvoteEvent: function(req, res) {
     let userId = req.body.userId;
-    db.User.findOneAndUpdate({ _id: userId }, {$pull: { userLikes: req.body.eventId }})
+    db.User.findOneAndUpdate({ _id: userId }, {$pull: { userLikes: req.body.eventId }}, {new: true})
     .then(user => {
       db.Event.findById({ _id: req.body.eventId })
       .then(event => event.downvoted(userId, function(){
@@ -142,13 +143,14 @@ module.exports = {
 
   unvoteEvent: function(req, res) {
     let userId = req.body.userId;
-    db.User.findOneAndUpdate({ _id: userId }, {$pull: { userLikes: req.body.eventId }})
+    db.User.findOneAndUpdate({ _id: userId }, {$pull: { userLikes: req.body.eventId }}, {new: true})
     .then(user => {
       db.Event.findById({ _id: req.body.eventId })
       .then(event => event.unvoted(userId, function(){
+        console.log(user.sanitize())
         res.json({
-          event: event,
-          user: user.sanitize()
+          user: user.sanitize(),
+          event: event
         })
       }))
     })
