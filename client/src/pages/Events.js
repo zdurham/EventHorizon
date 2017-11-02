@@ -46,9 +46,6 @@ class Events extends Component {
         }
       })
     }
-    console.log(dates)
-  
-    console.log('array of all events', this.props.allEvents)
     return (
       <Container tag="main">
         <Row>

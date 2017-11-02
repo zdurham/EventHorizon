@@ -11,13 +11,12 @@ import { withRouter } from 'react-router';
 class navbarInstance extends Component {
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
     };
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen,
     });
@@ -53,7 +52,7 @@ class navbarInstance extends Component {
       </Nav>
     }
     else {
-      dynamicNav = 
+      dynamicNav =
       <Nav className="ml-auto" navbar>
         {viewEvents}
         <NavItem>

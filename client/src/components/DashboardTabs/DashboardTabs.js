@@ -10,7 +10,6 @@ import Analytics from '../Analytics';
 class DashboardTabs extends Component {
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
     this.state = {
       activeTab: '1'
     };
@@ -25,7 +24,7 @@ class DashboardTabs extends Component {
     this.props.getUserAttending(this.props.user._id);
   }
 
-  toggle(tab) {
+  toggle = (tab) => {
     if (this.state.activeTab !== tab) {
       this.setState({
         activeTab: tab

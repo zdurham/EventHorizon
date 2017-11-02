@@ -12,11 +12,9 @@ class LogInBtn extends Component {
       username: '',
       password: ''
     };
-
-    this.toggle = this.toggle.bind(this);
   }
 
-  toggle() {
+  toggle = () => {
     this.props.login();
     this.setState({
       modal: !this.state.modal

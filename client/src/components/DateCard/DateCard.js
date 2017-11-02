@@ -9,11 +9,10 @@ import { upvote, downvote, unvote, attendEvent, unAttendEvent, deleteEvent } fro
 class DateCard extends Component {
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
     this.state = { collapse: false };
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({ collapse: !this.state.collapse });
   }
 
