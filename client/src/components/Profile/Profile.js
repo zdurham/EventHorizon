@@ -10,14 +10,20 @@ class Profile extends Component {
 
   render() {
     let userEventLikes = 0
-    let userLikes = this.props.user.userLikes.length
-    
-    this.props.userEvents.forEach(event => {
-      userEventLikes += event.vote.positive.length
-    })
-    userLikes = userEventLikes
-    
+    let totalEventLikes = '' 
+    if (this.props.user.isAdvertiser) {
+      this.props.userEvents.forEach(event => {
+        userEventLikes += event.vote.positive.length
+      })
 
+      totalEventLikes = 
+      <CardText>
+        Total Event Likes
+        <span className="card-stats">- {userEventLikes} -</span>
+      </CardText>
+    }
+    
+      
     
     return (
       <Card className="profile-card" key={this.props.user._id} >
@@ -45,10 +51,7 @@ class Profile extends Component {
             Events Added
             <span className="card-stats">- {this.props.user.createdEvents.length} -</span>
           </CardText>
-          <CardText>
-            Total Event Likes
-            <span className="card-stats">- {userLikes} -</span>
-          </CardText>
+          {totalEventLikes}
         </CardBody>
       </Card>
     );
