@@ -34,7 +34,6 @@ class Analytics extends Component {
       chartData: {},
       rSelected: 'sex'
     };
-    this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
   }
 
   componentDidMount = () => {
@@ -50,7 +49,7 @@ class Analytics extends Component {
     }
   }
 
-  onRadioBtnClick(rSelected) {
+  onRadioBtnClick = (rSelected) => {
     this.setState({ rSelected });
     this.collectChartData(rSelected);
   }
@@ -92,61 +91,61 @@ class Analytics extends Component {
     if (param === 'age') {
       for ( let i = 0; i < arr.length; i++ ) {
           if ( '18 and under' !== prev && arr[i][param] < 19) {
-              labels.push('18 and under');
-              data.push(1);
-              prev = '18 and under';
+            labels.push('18 and under');
+            data.push(1);
+            prev = '18 and under';
           } else {
-              data[data.length - 1]++;
+            data[data.length - 1]++;
           }
 
           if ( '19-29' !== prev && arr[i][param] < 30 && arr[i][param] > 18) {
-              labels.push('19-29');
-              data.push(1);
-              prev = '19-29';
+            labels.push('19-29');
+            data.push(1);
+            prev = '19-29';
           } else {
-              data[data.length - 1]++;
+            data[data.length - 1]++;
           }
 
           if ( '30-39' !== prev && arr[i][param] < 40 && arr[i][param] > 29) {
-              labels.push('30-39');
-              data.push(1);
-              prev = '30-39';
+            labels.push('30-39');
+            data.push(1);
+            prev = '30-39';
           } else {
-              data[data.length - 1]++;
+            data[data.length - 1]++;
           }
 
           if ( '40-49' !== prev && arr[i][param] < 50 && arr[i][param] > 39) {
-              labels.push('40-49');
-              data.push(1);
-              prev = '40-49';
+            labels.push('40-49');
+            data.push(1);
+            prev = '40-49';
           } else {
-              data[data.length - 1]++;
+            data[data.length - 1]++;
           }
 
           if ( '50-64' !== prev && arr[i][param] < 65 && arr[i][param] > 49) {
-              labels.push('50-64');
-              data.push(1);
-              prev = '60-64';
+            labels.push('50-64');
+            data.push(1);
+            prev = '60-64';
           } else {
-              data[data.length - 1]++;
+            data[data.length - 1]++;
           }
 
           if ( '65 and over' !== prev && arr[i][param] > 64) {
-              labels.push('65 and over');
-              data.push(1);
-              prev = '65 and over';
+            labels.push('65 and over');
+            data.push(1);
+            prev = '65 and over';
           } else {
-              data[data.length - 1]++;
+            data[data.length - 1]++;
           }
 
       }
     } else {
       for ( let i = 0; i < arr.length; i++ ) {
           if ( arr[i][param] !== prev ) {
-              labels.push(arr[i][param]);
-              data.push(1);
+            labels.push(arr[i][param]);
+            data.push(1);
           } else {
-              data[data.length - 1]++;
+            data[data.length - 1]++;
           }
           prev = arr[i][param];
       }
@@ -217,7 +216,7 @@ class Analytics extends Component {
                 <option>You have no events</option>
               ) : (
                 this.props.userEvents.map(event => (
-                  <option value={event._id}>
+                  <option key={event._id} value={event._id}>
                     {moment(event.date).format('MM/DD/YYYY')} - {event.name}
                   </option>
                 )

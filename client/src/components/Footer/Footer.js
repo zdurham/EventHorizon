@@ -7,13 +7,17 @@ import { connect } from 'react-redux';
 
 class Footer extends Component {
 
+  handleOnClick = () => {
+    window.scrollTo(0, 0)
+  }
+
   render() {
     let authLinks;
     if (this.props.authenticated === true) {
       authLinks =
       <span>
-        <NavLink to="/new_event">Add Event</NavLink>
-        <NavLink to="/dashboard">Dashboard</NavLink>
+        <NavLink to="/new_event" onClick={this.handleOnClick}>Add Event</NavLink>
+        <NavLink to="/dashboard" onClick={this.handleOnClick}>Dashboard</NavLink>
       </span>
     }
     return (
@@ -31,8 +35,8 @@ class Footer extends Component {
             <Col xs="12" md="4">
               <h5>Site Map</h5>
               <hr className="line-style"/>
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/events">View Events</NavLink>
+              <NavLink to="/" onClick={this.handleOnClick}>Home</NavLink>
+              <NavLink to="/events" onClick={this.handleOnClick}>View Events</NavLink>
               {authLinks}
             </Col>
             <Col xs="12" md="4">
