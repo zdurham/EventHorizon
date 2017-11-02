@@ -76,19 +76,53 @@ class Events extends Component {
                   </Button>
                 </FormGroup>
               </AvForm>
-              <h4 className="section-title">Upcoming events...</h4>
+              <h4 className="section-title">Sponsored events
+              {this.state.showAll ?
+                ' (' + this.props.allEvents.filter(event => event.advert).length + ')':
+                ' (' + this.props.searchResult.filter(event => event.advert).length + ')'}
+              </h4>
               {this.state.showAll ? (
-                (this.props.allEvents.length > 0 && this.props.allEvents.map(event => (
-                  <DateCard
-                    key={event._id}
-                    event={event}/>
-                )))
+                (this.props.allEvents.length > 0 && this.props.allEvents.filter(event =>
+                  event.advert).map(event => (
+                    <DateCard
+                      card='sponsored'
+                      key={event._id}
+                      event={event}/>
+                  )
+                ))
               ) : (
-                this.props.searchResult.length > 0 && this.props.searchResult.map(event => (
-                  <DateCard
-                    key={event._id}
-                    event={event}/>
-                )))
+                this.props.searchResult.length > 0 && this.props.searchResult.filter(event =>
+                  event.advert).map(event => (
+                    <DateCard
+                      card='sponsored'
+                      key={event._id}
+                      event={event}/>
+                    )
+                ))
+              }
+              <h4 className="section-subtitle">Other upcoming events
+              {this.state.showAll ?
+                ' (' + this.props.allEvents.filter(event => !event.advert).length + ')':
+                ' (' + this.props.searchResult.filter(event => !event.advert).length + ')'}
+              </h4>
+              {this.state.showAll ? (
+                (this.props.allEvents.length > 0 && this.props.allEvents.filter(event =>
+                  !event.advert).map(event => (
+                    <DateCard
+                      card='non-sponsored'
+                      key={event._id}
+                      event={event}/>
+                    )
+                ))
+              ) : (
+                this.props.searchResult.length > 0 && this.props.searchResult.filter(event =>
+                  !event.advert).map(event => (
+                    <DateCard
+                      card='non-sponsored'
+                      key={event._id}
+                      event={event}/>
+                    )
+                ))
               }
             </Col>
           )}

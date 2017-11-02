@@ -100,7 +100,7 @@ class DateCard extends Component {
 
     return (
       <Card key={this.props.event._id}>
-        <CardBody>
+        <CardBody className={this.props.card}>
           <CardTitle>{this.props.event.name}</CardTitle>
           <CardSubtitle tag="h5">{this.props.event.location}</CardSubtitle>
           <CardText >

@@ -40,7 +40,7 @@ class SignUpForm extends Component {
       else {
         return
       }
-      
+
     }
     else {
       console.log("The passwords don't match")
@@ -113,7 +113,7 @@ class SignUpForm extends Component {
             required />
           <AvFeedback>Enter password for account</AvFeedback>
         </AvGroup>
-        <AvGroup>
+        {/* <AvGroup>
           <Label for="join-confirm">Confirm Password</Label>
           <AvInput
             type="password"
@@ -121,7 +121,7 @@ class SignUpForm extends Component {
             id="join-confirm"
             required />
           <AvFeedback>Confirm password for account</AvFeedback>
-        </AvGroup>
+        </AvGroup> */}
         <FormGroup className="text-center">
           <Button
             size="lg"

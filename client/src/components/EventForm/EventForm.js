@@ -14,7 +14,6 @@ class EventForm extends Component {
   }
 
   handleValidSubmit = (event, values) => {
-    console.log(values)
     this.setState({values});
     this.props.createEvent(values, this.props.userId)
     this.props.history.push('/events')
