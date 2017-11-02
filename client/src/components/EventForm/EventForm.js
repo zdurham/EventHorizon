@@ -163,11 +163,15 @@ class EventForm extends Component {
                   <AvInput type="checkbox" name="petFriendly" />Pet friendly
                 </Label>
               </AvGroup>
-              <AvGroup>
+              {this.props.user.isAdvertiser ? (
+                <AvGroup>
                 <Label check inline>
                   <AvInput type="checkbox" name="advert" />Advertise event
                 </Label>
               </AvGroup>
+              ) : (
+                null
+              )}
               <p><em>* Required</em></p>
               <FormGroup>
                 <Button
@@ -191,6 +195,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
+  user: state.authUser.user,
   userId: state.authUser.user._id
 })
 
