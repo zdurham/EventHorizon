@@ -23,8 +23,8 @@ class LogInForm extends Component {
       password: this.state.values.password
     })
     
-    if (this.props.user) {
-      this.props.toggle()  
+    if (this.props.isAuth) {
+      this.props.toggle()    
     }
     else {
       return
