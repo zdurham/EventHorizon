@@ -37,6 +37,12 @@ function regError(data) {
   }
 }
 
+function removeErr() {
+  return {
+    type: 'REMOVE_ERROR'
+  }
+}
+
 /// ------------------------------------
 // ACTIONS
 
@@ -83,6 +89,12 @@ export const logoutUser = () => {
     .then(res => {
       dispatch(removeAuthUserAction())
     })
+  }
+}
+
+export const toggleErr = () => {
+  return dispatch => {
+    dispatch(removeErr())
   }
 }
 

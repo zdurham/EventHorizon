@@ -3,6 +3,8 @@ import './JoinBtn.css';
 import JoinForm from '../JoinForm';
 // import SocialBtns from '../SocialBtns';
 import { Modal, ModalHeader, ModalBody, Button } from 'reactstrap';
+import { toggleErr } from '../../actions/authActions'
+import { connect } from 'react-redux'
 
 class JoinBtn extends Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class JoinBtn extends Component {
     this.setState({
       modal: !this.state.modal
     });
+    this.props.toggleErr()
   }
 
   handleInputChange = event => {
@@ -59,4 +62,4 @@ class JoinBtn extends Component {
   }
 }
 
-export default JoinBtn;
+export default connect(null, { toggleErr })(JoinBtn);
