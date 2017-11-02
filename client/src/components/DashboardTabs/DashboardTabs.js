@@ -95,7 +95,7 @@ class DashboardTabs extends Component {
                   <h5 className="tab-message">You haven't added any events</h5>
                 ) : (
                     this.props.userEvents.map(event => (
-                      <DateCard key={event._id} event={event} deleteBtn={true} />
+                      <DateCard key={event._id} event={event} deleteBtn={true} attendees={true}/>
                     )
                   )
                 )
