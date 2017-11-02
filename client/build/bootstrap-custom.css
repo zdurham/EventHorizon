@@ -4003,7 +4003,7 @@ tbody.collapse.show {
 .navbar-light .navbar-nav .nav-link.active {
   /*color: rgba(0, 0, 0, 0.9);*/
   color: whitesmoke;
-  font-weight: 700;
+  /*font-weight: 700;*/
 }
 
 .navbar-light .navbar-toggler {
