@@ -38,9 +38,9 @@ class DateCard extends Component {
     this.props.unAttendEvent(eventId, userId)
   }
 
-  remove = (eventId) => {
-    // console.log(eventId)
-    this.props.deleteEvent(eventId)
+  remove = (eventId, userId) => {
+    console.log('userId',userId)
+    this.props.deleteEvent(eventId, userId)
   }
 
   eventDateTime = (date, start, end) => {
@@ -61,7 +61,7 @@ class DateCard extends Component {
     let attend = <Button size="sm" className="button-primary" onClick={() => this.clickAttend(this.props.event._id, this.props.user._id)}> Attend </Button>;
 
     // delete button
-    let deletes = <Button size="sm" className="button-delete" onClick={() => this.remove(this.props.event._id)}> Delete </Button>;
+    let deletes = <Button size="sm" className="button-delete" onClick={() => this.remove(this.props.event._id, this.props.user._id)}> Delete </Button>;
 
     // upvote button
     let upvote = <FontAwesome onClick={() => this.clickUpvote(this.props.event._id, this.props.user._id)} className="up-vote" name="thumbs-o-up"></FontAwesome>;
