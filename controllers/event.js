@@ -58,8 +58,14 @@ module.exports = {
   },
   remove: function(req, res) {
     db.Event
-      .findOneAndRemove({ _id: req.body.eventId }, (err, data) => {
-        res.json(data)
+      .findOneAndRemove({ _id: req.body.eventId }, (err, event) => {
+        db.User.findOneAndUpdate({ _id: req.body.userId }, {$pull: { "createdEvents": req.body.eventId }}, {new: true}, (err, user) => {
+          res.json({
+            user: user.sanitize(),
+            event: event
+          })
+        })
+        // res.json(data)
       })
       .catch(err => res.status(422).json(err));
   },

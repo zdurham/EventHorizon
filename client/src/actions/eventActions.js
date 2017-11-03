@@ -24,10 +24,12 @@ function allEvents(events) {
   }
 }
 
-function deleteOne(eventId) {
+function deleteOne(data) {
+  console.log(data.event)
   return {
     type: 'DELETE_EVENT',
-    eventId: eventId
+    eventId: data.event._id,
+    user: data.user,
   }
 }
 
@@ -144,11 +146,12 @@ export const getAllEvents = () => {
 }
 
 // This is for deleting an event
-export const deleteEvent = (eventId) => {
+export const deleteEvent = (eventId, userId) => {
   return dispatch => {
-    api.deleteEvent(eventId)
+    api.deleteEvent(eventId, userId)
       .then(res => {
-        dispatch(deleteOne(eventId))
+        console.log(res.data)
+        dispatch(deleteOne(res.data))
       })
   }
 }
