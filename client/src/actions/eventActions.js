@@ -24,11 +24,11 @@ function allEvents(events) {
   }
 }
 
-function deleteOne(data) {
+function deleteOne(data, eventId) {
   console.log(data.event)
   return {
     type: 'DELETE_EVENT',
-    eventId: data.event._id,
+    eventId: eventId,
     user: data.user,
   }
 }
@@ -150,8 +150,7 @@ export const deleteEvent = (eventId, userId) => {
   return dispatch => {
     api.deleteEvent(eventId, userId)
       .then(res => {
-        console.log(res.data)
-        dispatch(deleteOne(res.data))
+        dispatch(deleteOne(res.data, eventId))
       })
   }
 }

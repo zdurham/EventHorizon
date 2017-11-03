@@ -62,7 +62,6 @@ module.exports = {
         db.User.findOneAndUpdate({ _id: req.body.userId }, {$pull: { "createdEvents": req.body.eventId }}, {new: true}, (err, user) => {
           res.json({
             user: user.sanitize(),
-            event: event
           })
         })
         // res.json(data)
